@@ -1,16 +1,21 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 const PORT = process.env.PORT || 3500
-const cors = require("cors")
+const cors = require("cors");
 const morgan = require('morgan');
-const corsOptions = require("./config/corsOptions")
-const initDB = require('./config/db')
-const mongoose = require("mongoose")
+const bodyParser = require('body-parser');
+const corsOptions = require("./config/corsOptions");
+const initDB = require('./config/db');
+const mongoose = require("mongoose");
 
 
 initDB();
 //Cross Origin Resource Service
 app.use(cors(corsOptions));
+// for parsing json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(morgan("dev"));
 
