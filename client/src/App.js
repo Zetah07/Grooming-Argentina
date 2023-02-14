@@ -9,16 +9,17 @@ import Volunteer from './components/Pages/Volunteer/Volunteer';
 import Login from './components/Pages/Login/Login';
 import Contact from './components/Pages/Contact/Contact';
 import Register from './components/Pages/Register/Register';
-import { Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header"> */}
       <NavBar />
-      </header>
-      <Router>
-        <Route path="/" element={<LandingPage />}/>
+      {/* </header> */}
+        <Route path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/voluntariado" element ={<Volunteer />}/>
         <Route path='/contactanos' element={<Contact/>}/>
         <Route path="/login" element={<Login />}/>
@@ -27,7 +28,6 @@ function App() {
         <Route path="noticias" element={<News />}/>
         <Route path="/noticias/:id" element={<NewsDetail />}/>
         <Route path="/nosotros" element={<About />}/>
-      </Router>
     </div>
   );
 }

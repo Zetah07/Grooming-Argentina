@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import store from './Redux/Store';
-import store from './redux/store/index';
+// import store from './Redux/Store';
+// import store from './redux/store/index';
 import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 
@@ -20,13 +20,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <Suspense fallback={"Conecting ..."}>
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
         <BrowserRouter>
           <React.StrictMode>
             <App />
           </React.StrictMode>
         </BrowserRouter>
-      </Provider>
+      {/* </Provider> */}
     </Suspense>
   // </FirebaseAppProvider>
 );
