@@ -1,15 +1,15 @@
 import './App.css';
-import NavBar from './components/NavBar';
-import LandingPage from './components/LandingPage';
-import About from './components/Pages/About';
-import Home from './components/Home';
-import News from './components/News';
-import NewsDetail from './components/NewsDetail';
-import Volunteer from './components/Pages/Volunteer';
-import Login from './components/Pages/Login';
-import Contact from './component/Pages/Contact/Contact';
-
-import { Routes, Route } from 'react-router-dom';
+import NavBar from './components/Pages/NavBar/NavBar';
+import LandingPage from './components/LandingPage/LandingPage';
+import About from './components/Pages/About/About';
+import Home from './components/Home/Home';
+import News from './components/News/News';
+import NewsDetail from './components/NewDetails/NewDetails';
+import Volunteer from './components/Pages/Volunteer/Volunteer';
+import Login from './components/Pages/Login/Login';
+import Contact from './components/Pages/Contact/Contact';
+import Register from './components/Pages/Register/Register';
+import { Router, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,16 +17,17 @@ function App() {
       <header className="App-header">
       <NavBar />
       </header>
-      <Routes>
+      <Router>
         <Route path="/" element={<LandingPage />}/>
         <Route exact path="/voluntariado" element ={<Volunteer />}/>
         <Route path='/contactanos' element={<Contact/>}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Register />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="noticias" element={<News />}/>
         <Route path="/noticias/:id" element={<NewsDetail />}/>
         <Route path="/nosotros" element={<About />}/>
-      </Routes>
+      </Router>
     </div>
   );
 }

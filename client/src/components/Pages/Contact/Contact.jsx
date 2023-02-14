@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, {useRef} from 'react'
 import './Contact.module.css'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser';
 
 const {
   EMAIL_SERVICE, EMAIL_TEMPLATE, EMAIL_USER,
