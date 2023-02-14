@@ -19,8 +19,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  },
-  "scripts": {
-    "start": "nodemon -L"
   }
 }
