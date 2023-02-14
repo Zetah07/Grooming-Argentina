@@ -2,7 +2,7 @@ import React from 'react'
 
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <h1>LandingPage</h1>
   )
 }
 
