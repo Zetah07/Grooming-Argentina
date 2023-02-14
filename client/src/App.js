@@ -7,6 +7,7 @@ import News from './components/News';
 import NewsDetail from './components/NewsDetail';
 import Volunteer from './components/Pages/Volunteer';
 import Login from './components/Pages/Login';
+import Contact from './component/Pages/Contact/Contact';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -17,13 +18,14 @@ function App() {
       <NavBar />
       </header>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route exact path="/voluntariado" element ={<Volunteer />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<LandingPage />}/>
+        <Route exact path="/voluntariado" element ={<Volunteer />}/>
+        <Route path='/contactanos' element={<Contact/>}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/home" element={<Home />}/>
         <Route path="noticias" element={<News />}/>
-        <Route path="/noticias/:id" element={<NewsDetail />} />
-        <Route path="/nosotros" element={<About />} />
+        <Route path="/noticias/:id" element={<NewsDetail />}/>
+        <Route path="/nosotros" element={<About />}/>
       </Routes>
     </div>
   );
