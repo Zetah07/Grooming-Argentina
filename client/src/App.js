@@ -14,9 +14,13 @@ import { Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
+      {/* <header className="App-header"> */}
       <NavBar />
-        <Route exact path="/" element={<LandingPage />}/>
-        <Route path="/voluntariado" element ={<Volunteer />}/>
+      {/* </header> */}
+        <Route path="/">
+          <LandingPage />
+        </Route>
+        <Route exact path="/voluntariado" element ={<Volunteer />}/>
         <Route path='/contactanos' element={<Contact/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
