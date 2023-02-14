@@ -4,20 +4,21 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
+import store from './Redux/Store';
 import store from './redux/store/index';
 import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 
 //firebase:
-import {FirebaseAppProvider} from 'reactfire';
-import {firebaseConfig} from './firebaseConfig';
+// import {FirebaseAppProvider} from 'reactfire';
+// import {firebaseConfig} from './firebaseConfig';
 
 //axios:
 axios.defaults.baseURL = 'http://localhost:3001' && process.env.REACT_APP_API;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+  // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <Suspense fallback={"Conecting ..."}>
       <Provider store={store}>
         <BrowserRouter>
@@ -27,7 +28,7 @@ root.render(
         </BrowserRouter>
       </Provider>
     </Suspense>
-  </FirebaseAppProvider>
+  // </FirebaseAppProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
