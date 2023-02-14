@@ -1,4 +1,6 @@
-import React, {Suspense} from 'react';
+import React /* ,
+
+{Suspense}  */ from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -18,7 +20,7 @@ axios.defaults.baseURL = 'http://localhost:3001' && process.env.REACT_APP_API;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <Suspense fallback={"Conecting ..."}>
+    // <Suspense fallback={"Conecting ..."}>
       <Provider store={store}>
         <BrowserRouter>
           <React.StrictMode>
@@ -26,7 +28,7 @@ root.render(
           </React.StrictMode>
         </BrowserRouter>
       </Provider>
-    </Suspense>
+    // </Suspense>
   // </FirebaseAppProvider>
 );
 
