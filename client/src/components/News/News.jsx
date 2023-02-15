@@ -4,6 +4,8 @@ import Card from '../Card/Card.jsx';
 import newspaper from './NewsPractice.jsx';
 import { useState } from 'react';
 import style from "./News.module.css"
+import Button from '@mui/material/Button';
+
 
 const News = () => {
 
@@ -77,6 +79,7 @@ const News = () => {
           />
         })}
       </div>
+      <Button className='btn' variant="contained">Hello World</Button>
     </div >
   </>
   )
