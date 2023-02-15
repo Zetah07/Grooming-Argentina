@@ -1,5 +1,5 @@
 import React from 'react'
-import style from "./Pagination.module.css";
+import Button from '@mui/material/Button';
 
 const Pagination = ({ totalNews, firstHandler, prevHandler, nextHandler, lastHandler, pages, newsPerPage, currentPage, pageNumberLimit, maxPageNumberLimit, minPageNumberLimit }) => {
 
@@ -12,26 +12,21 @@ const Pagination = ({ totalNews, firstHandler, prevHandler, nextHandler, lastHan
     numOfPages.push(i);
   }
 
-  return (<>
-    <div>
-      <div className={style.buttons}>
-        <button onClick={() => firstHandler(firstPage)} className={currentPage === firstPage ? style.prevButtonActive : style.prevButton}>First</button>
-        <button onClick={prevHandler} className={currentPage === firstPage ? style.prevButtonActive : style.prevButton}>Prev</button>
-        {
-          numOfPages?.map((page) => {
-            if (page < maxPageNumberLimit && page >= minPageNumberLimit) {
-              return <button className={page === currentPage ? style.pageButtonActive : style.pageButton} id={page} key={page} onClick={() => pages(page)}>{page + 1}</button>
-            } else {
-              return null;
-            }
-          })
+  return (<div>
+    <Button size='small' onClick={() => firstHandler(firstPage)} >First</Button>
+    <Button size='small' onClick={prevHandler} >Prev</Button>
+    {
+      numOfPages?.map((page) => {
+        if (page < maxPageNumberLimit && page >= minPageNumberLimit) {
+          return <Button size='small' id={page} key={page} onClick={() => pages(page)}>{page + 1}</Button>
+        } else {
+          return null;
         }
-        <button onClick={nextHandler} className={currentPage === lastPage ? style.nextButtonActive : style.nextButton}>Next</button>
-        <button onClick={() => lastHandler(lastPage)} className={currentPage === lastPage ? style.nextButtonActive : style.nextButton}>Last</button>
-      </div>
-    </div>
-  </>
-  )
+      })
+    }
+    <Button size='small' onClick={nextHandler} >Next</Button>
+    <Button size='small' onClick={() => lastHandler(lastPage)} >Last</Button>
+  </div>)
 }
 
 export default Pagination
