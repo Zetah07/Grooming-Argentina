@@ -9,3 +9,86 @@
     background-size: 100% 125%;
     background-repeat: no-repeat;
 }
+.information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 129px;
+
+    position: absolute;
+    width: 1501px;
+    height: 410px;
+    left: 226px;
+    top: 372px;
+}
+.information h1{
+    width: 1501px;
+height: 97px;
+
+font-family: 'Gotham Rounded';
+font-style: normal;
+font-weight: 400;
+font-size: 98px;
+line-height: 97px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.information h2{
+    width: 1057px;
+height: 84px;
+
+font-family: 'Helvetica';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 101%;
+/* or 28px */
+
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.donateButton{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 22px 80px;
+    gap: 10px;
+
+    width: 321px;
+    height: 72px;
+
+    background: linear-gradient(90deg, #7DC8EC 0%, #004B82 100%);
+    border-radius: 60px;
+
+/* Inside auto layout */
+font-family: 'Gilroy';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 101%;
+/* or 28px */
+
+
+color: #FFFFFF;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
