@@ -18,8 +18,6 @@ const handleNewUser = async (req, res) => {
 
     await newUser.save();
 
-    console.log(newUser)
-
     res.status(201).json({ "messege": `User ${username} created` })
 
   } catch (error) {
