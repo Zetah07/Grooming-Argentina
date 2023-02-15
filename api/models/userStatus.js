@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const registerSchema = new mongoose.Schema(
+const userStatusSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -84,7 +84,7 @@ const registerSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        processState: {
+        Status: {
             type: String,
             required: true
         },
@@ -96,4 +96,4 @@ const registerSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('register', registerSchema)
+module.exports = mongoose.model('userStatus', userStatusSchema)
