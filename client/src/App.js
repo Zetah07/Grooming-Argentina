@@ -11,7 +11,6 @@ import Contact from "./components/Pages/Contact/Contact";
 // import Register from "./components/Pages/Register/Register";
 import { Route } from "react-router-dom";
 
-
 function App() {
   return (
     <div className="App">
