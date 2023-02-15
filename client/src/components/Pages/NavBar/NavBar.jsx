@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
 
 const NavBar = () => {
   return (
-    <div>NavBar</div>
-  )
-}
+    <div>
+      <Login />
+      <Register />
+    </div>
+  );
+};
 
-export default NavBar
+export default NavBar;
