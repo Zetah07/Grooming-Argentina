@@ -36,7 +36,7 @@ function App() {
       <Route exact path="/home">
         <Home />
       </Route>
-      <Route exact path="noticias">
+      <Route exact path="/noticias">
         <News />
       </Route>
       <Route exact path="/noticias/:id">
