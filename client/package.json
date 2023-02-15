@@ -9,7 +9,7 @@
     "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
+    "@mui/material": "^5.11.9",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
