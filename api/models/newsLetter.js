@@ -11,6 +11,10 @@ const newsLetterSchema = new mongoose.Schema(
             unique: true,
             required: true
         }
+    },
+    {
+        versionKey: false,
+        timestamps: true
     }
 );
 

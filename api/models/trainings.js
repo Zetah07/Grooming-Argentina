@@ -18,6 +18,10 @@ const capacitacionSchema = new mongoose.Schema(
             type: String,
             required: true
         }
+    },
+    {
+        versionKey: false,
+        timestamps: true
     }
 )
 

@@ -89,6 +89,10 @@ const registerSchema = new mongoose.Schema(
             required: true
         },
         howManyHours: Number
+    },
+    {
+        versionKey: false,
+        timestamps: true
     }
 );
 
