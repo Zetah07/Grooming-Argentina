@@ -1,10 +1,8 @@
 import React from 'react'
-import Pagination from "../Pages/Pagination/Pagination.jsx"
-import Card from '../Card/Card.jsx';
+import Pagination from "../Pages/Pagination/Pagination.jsx";
 import newspaper from './NewsPractice.jsx';
 import { useState } from 'react';
-import style from "./News.module.css"
-import Button from '@mui/material/Button';
+import NewCard from '../NewCard/NewCard';
 
 
 const News = () => {
@@ -66,11 +64,10 @@ const News = () => {
 
   return (<>
     <h1>Noticias</h1>
-    <Pagination totalNews={totalNews} firstHandler={firstHandler} prevHandler={prevHandler} nextHandler={nextHandler} lastHandler={lastHandler} pages={pages} newsPerPage={newsPerPage} currentPage={currentPage} pageNumberLimit={pageNumberLimit} maxPageNumberLimit={maxPageNumberLimit} minPageNumberLimit={minPageNumberLimit} />
-    <div className={style.container}>
+    <div>
       <div>
         {items.map(paper => {
-          return <Card
+          return <NewCard
             key={paper.id}
             id={paper.id}
             title={paper.title}
@@ -79,8 +76,8 @@ const News = () => {
           />
         })}
       </div>
-      <Button className='btn' variant="contained">Hello World</Button>
     </div >
+    <Pagination totalNews={totalNews} firstHandler={firstHandler} prevHandler={prevHandler} nextHandler={nextHandler} lastHandler={lastHandler} pages={pages} newsPerPage={newsPerPage} currentPage={currentPage} pageNumberLimit={pageNumberLimit} maxPageNumberLimit={maxPageNumberLimit} minPageNumberLimit={minPageNumberLimit} />
   </>
   )
 }
