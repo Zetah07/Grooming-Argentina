@@ -3,25 +3,28 @@ const app = express();
 const PORT = process.env.PORT || 3500
 const cors = require("cors");
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const corsOptions = require("./config/corsOptions");
 const initDB = require('./config/db');
 const mongoose = require("mongoose");
-
+const cookieParser = require("cookie-parser");
+const credentials = require("./middleware/credentials");
 
 initDB();
+
+//fixing credentials errors blocking cookies from cross-site
+app.use(credentials)
 //Cross Origin Resource Service
 app.use(cors(corsOptions));
-// for parsing json
-app.use(bodyParser.json());
-// for parsing application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(cookieParser())
 
 app.use(morgan("dev"));
 
+app.use(express.urlencoded({extended :false}));
+
+app.use(express.json());
+
 app.use('/', require("./routes/MainRouter"))
-app.use('/register', require("./routes/src/register"))
-app.use('/auth', require("./routes/src/auth"))
 
 mongoose.connection.once("open", () => {
   console.log("Connected to database")
