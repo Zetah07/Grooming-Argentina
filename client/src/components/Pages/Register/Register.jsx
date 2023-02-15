@@ -2,9 +2,7 @@
 import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom';
 
-
 const Register = () => {
-  const [showPassword, setshowPassword] = useState(false);
   const [error, setError] = useState('');
   const history = useHistory();
   const [form, setForm] = useState({
@@ -62,6 +60,5 @@ const Register = () => {
     </div>
   )
 }
-
 
 export default Register
