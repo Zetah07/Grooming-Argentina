@@ -1,12 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { useAuth } from '../../Firebase/Auth-context';
 import { useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const Register = () => {
-  const [showPassword, setshowPassword] = useState(false);
   const [error, setError] = useState('');
   const history = useHistory();
   const [form, setForm] = useState({
@@ -16,30 +12,39 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  const {signup, user, emailVerification} =useAuth();
-
-  const handleSubmit = async (e) => {
-    setError("");
-    try{
-      history.push('./verification');
-      await signup(form.email, form.password);
-      await axios.post('/createUser', form);
-      let response = await axios.get(`/getUserByEmail?email=${form.email}`);
-      //linea para encriptar informacion
-      localStorage.setItem("user", JSON.stringify(response.data)); // ejemplo
-    } catch (error) {
-      setError(error.message);
-      console.log(error.message);
-    }
+  const { fullName, email, password, confirmPassword } = form;
+  const handleChange = (e) => {
+    setForm({...form, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    })
-  }
+    if (password!== confirmPassword) {
+      setError('Passwords do not match');
+    } else {
+      setError('');
+      const newUser = {
+        fullName,
+        email,
+        password,
+      };
+      fetch('http://localhost:3001/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+          if (data.error) {
+            setError(data.error);
+          } else {
+            history.push('/login');
+          }
+        });
+    }
+  };
 
   return (
     <div className='container'>
