@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const capacitacionSchema = new mongoose.Schema(
+const newsSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -10,19 +10,21 @@ const capacitacionSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        thumbnail: {
+        img: {
             type: String,
             required: true
         },
         link: {
             type: String,
-            required: true
+        },
+        provinceOrLocation: {
+            type: String,
         }
     },
     {
         versionKey: false,
         timestamps: true
     }
-)
+);
 
-module.exports = mongoose.model('capacitacion', capacitacionSchema)
+module.exports = mongoose.model('new', newsSchema);

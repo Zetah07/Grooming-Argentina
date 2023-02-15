@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
 
-const postSchema = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
     {
         title: {
             type: String,
             required: true
         },
-        description: {
+        subtitle: {
+            type: String,
+        },
+        content: {
             type: String,
             required: true
         },
         img: {
             type: String,
-            required: true
         },
         link: {
             type: String,
-            required: true
         },
         provinceOrLocation: {
             type: String,
-            required: true
         }
     },
     {
@@ -29,4 +29,4 @@ const postSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('post', postSchema)
+module.exports = mongoose.model('blog', blogSchema);
