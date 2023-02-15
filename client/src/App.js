@@ -46,8 +46,5 @@ function App() {
       <Route exact path="/nosotros">
         <About />
       </Route>
-    </div>
-  );
-}
 
 export default App;
