@@ -1,34 +1,40 @@
 import React /* ,
 
-{Suspense}  */ from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import {BrowserRouter} from 'react-router-dom';
+{Suspense}  */ from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 // import {Provider} from 'react-redux';
 // import store from './Redux/Store';
-import axios from 'axios';
-import reportWebVitals from './reportWebVitals';
+import axios from "axios";
+import reportWebVitals from "./reportWebVitals";
+
+//MaterialUI
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./Theme";
 
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
 // import {firebaseConfig} from './firebaseConfig';
 
 //axios:
-axios.defaults.baseURL = 'http://localhost:3001' && process.env.REACT_APP_API;
+axios.defaults.baseURL = "http://localhost:3001" && process.env.REACT_APP_API;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    // <Suspense fallback={"Conecting ..."}>
-      // <Provider store={store}>
-        <BrowserRouter>
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
-        </BrowserRouter>
-      // </Provider>
-    // </Suspense>
+  // <Suspense fallback={"Conecting ..."}>
+  // <Provider store={store}>
+  <ThemeProvider theme={theme}>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </ThemeProvider>
+  // </Provider>
+  // </Suspense>
 
   // </FirebaseAppProvider>
 );
