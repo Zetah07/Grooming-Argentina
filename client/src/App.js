@@ -8,14 +8,13 @@ import NewsDetail from "./components/NewDetails/NewDetails";
 import Volunteer from "./components/Pages/Volunteer/Volunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
-import Register from "./components/Pages/Register/Register";
+// import Register from "./components/Pages/Register/Register";
 import { Route } from "react-router-dom";
-import { AuthProvider } from "./components/Firebase/Auth-context";
+
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider/>
       <header className="App-header">
         <NavBar />
       </header>
@@ -31,9 +30,9 @@ function App() {
       <Route exact path="/login">
         <Login />
       </Route>
-      <Route exact path="/register">
+      {/* <Route exact path="/register">
         <Register />
-      </Route>
+      </Route> */}
       <Route exact path="/home">
         <Home />
       </Route>
@@ -46,5 +45,8 @@ function App() {
       <Route exact path="/nosotros">
         <About />
       </Route>
+    </div>
+  );
+}
 
 export default App;
