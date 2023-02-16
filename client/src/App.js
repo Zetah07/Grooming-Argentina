@@ -8,6 +8,7 @@ import NewsDetail from "./components/NewDetails/NewDetails";
 import Volunteer from "./components/Pages/Volunteer/Volunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
+import 'bootstrap/dist/css/bootstrap.css';
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
 
