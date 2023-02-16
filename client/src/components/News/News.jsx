@@ -3,11 +3,12 @@ import Pagination from "../Pages/Pagination/Pagination.jsx";
 import newspaper from './NewsPractice.jsx';
 import { useState } from 'react';
 import NewCard from '../NewCard/NewCard';
-
+import { Grid } from '@mui/material';
+import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
 
 const News = () => {
 
-  const newsPerPage = 8;
+  const newsPerPage = 6;
   const pageNumberLimit = 5;
   const totalNews = newspaper.length;
   const [items, setItems] = useState([]);
@@ -61,25 +62,30 @@ const News = () => {
     setCurrentPage(numberPage);
   }
 
+  const handleChange = (event) => {
+    console.log(event);
+  }
 
   return (<>
-    <h1>Noticias</h1>
-    <div>
-      <div>
-        {items.map(paper => {
-          return <NewCard
-            key={paper.id}
-            id={paper.id}
-            title={paper.title}
-            image={paper.image}
-            description={paper.description}
-          />
-        })}
-      </div>
-    </div >
+    <Grid container spacing={3}>
+      <Grid item xs={5} md={5} lg={5}>
+        <SearchBar maxWidth= "345" 
+          placeholder="Buscar..."
+          onChange={(event) => { handleChange(event.target.value) }} />
+      </Grid>
+      {items.map(paper => {
+        return <NewCard
+          key={paper.id}
+          id={paper.id}
+          title={paper.title}
+          image={paper.image}
+          date={paper.date}
+          categories={paper.categories}
+        />
+      })}
+    </Grid>
     <Pagination totalNews={totalNews} firstHandler={firstHandler} prevHandler={prevHandler} nextHandler={nextHandler} lastHandler={lastHandler} pages={pages} newsPerPage={newsPerPage} currentPage={currentPage} pageNumberLimit={pageNumberLimit} maxPageNumberLimit={maxPageNumberLimit} minPageNumberLimit={minPageNumberLimit} />
-  </>
-  )
+  </>)
 }
 
 export default News
