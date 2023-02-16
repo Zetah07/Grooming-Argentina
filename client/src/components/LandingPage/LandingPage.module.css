@@ -1,87 +1,66 @@
-.background{
+.background {
+    position:relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
+    url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+  background-size: 100vh;
+  background-size:100%;
+  z-index: -100;
+}
+.NavBar{
     position: absolute;
+    display: flex;
+    
     width: 100%;
-    height: 100%;
+    height: 100px;
     left: 0px;
     top: 0px;
-
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)), url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
-    background-size: 100% 125%;
-    background-repeat: no-repeat;
+    z-index: 100;
 }
-.information{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    gap: 129px;
-
-    position: absolute;
-    width: 1501px;
-    height: 410px;
-    left: 226px;
-    top: 372px;
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 99px;
 }
-.information h1{
-    width: 1501px;
-height: 97px;
+.information h1 {
+  width: 1501px;
+  height: 97px;
 
-font-family: 'Gotham Rounded';
-font-style: normal;
-font-weight: 400;
-font-size: 98px;
-line-height: 97px;
+  font-family: "Gotham Rounded";
+  font-style: normal;
+  font-size: 68px;
+  line-height: 97px;
 
+  color: #ffffff;
 
-color: #FFFFFF;
-
-
-flex: none;
-order: 0;
-flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
-.information h2{
-    width: 1057px;
-height: 84px;
-
-font-family: 'Helvetica';
-font-style: normal;
-font-weight: 400;
-font-size: 28px;
-line-height: 101%;
-
-text-align: center;
-
-color: #FFFFFF;
-
-
-
-flex: none;
-order: 0;
-flex-grow: 0;
+.information span {
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
-.donateButton{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 22px 80px;
-    gap: 10px;
+.information h2 {
+  width: 1057px;
+  height: 84px;
 
-    width: 321px;
-    height: 72px;
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 101%;
 
-    background: linear-gradient(90deg, #7DC8EC 0%, #004B82 100%);
-    border-radius: 60px;
+  text-align: center;
 
-font-family: 'Gilroy';
-font-style: normal;
-font-weight: 600;
-font-size: 28px;
-line-height: 101%;
+  color: #ffffff;
 
-
-color: #FFFFFF;
-flex: none;
-order: 0;
-flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
