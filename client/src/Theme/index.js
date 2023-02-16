@@ -28,8 +28,8 @@ export const theme = createTheme({
       main: '#ff9800',
     },
   },
-  shape: {
-    borderRadius: 60,
+  shape:{
+    borderRadius: 4,
   }
 });
 
