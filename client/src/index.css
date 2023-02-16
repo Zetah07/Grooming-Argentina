@@ -1,5 +1,4 @@
 * {
-  margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
@@ -47,7 +46,7 @@ html {
 }
 
 body {
-  margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, "Gotham Rounded Bold",
     "HelveticaNeue Medium", "HelveticaNeue Regular", "HelveticaNeue Thin",
     sans-serif;

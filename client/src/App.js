@@ -1,5 +1,4 @@
 import "./App.css";
-import NavBar from "./components/Pages/NavBar/NavBar";
 import NavBar2 from "./components/Pages/NavBar2/NavBar2";
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/Pages/About/About";
@@ -16,7 +15,7 @@ function App() {
   
   return (
     <div className="App">
-      {useLocation().pathname === "/"? <NavBar2 />: <NavBar />}
+      {useLocation().pathname !== "/"? <NavBar2 />: null}
       <Route exact path="/">
         <LandingPage />
       </Route>
