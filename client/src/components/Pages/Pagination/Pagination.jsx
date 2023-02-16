@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button';
+import { ButtonGroup, Stack } from '@mui/material';
 
 const Pagination = ({ totalNews, firstHandler, prevHandler, nextHandler, lastHandler, pages, newsPerPage, currentPage, pageNumberLimit, maxPageNumberLimit, minPageNumberLimit }) => {
 
@@ -12,21 +13,21 @@ const Pagination = ({ totalNews, firstHandler, prevHandler, nextHandler, lastHan
     numOfPages.push(i);
   }
 
-  return (<div>
-    <Button size='small' onClick={() => firstHandler(firstPage)} >First</Button>
-    <Button size='small' onClick={prevHandler} >Prev</Button>
+  return (<ButtonGroup variant='contained' size='small' color='secondary'>
+    <Button onClick={() => firstHandler(firstPage)} >First</Button>
+    <Button onClick={prevHandler} >Prev</Button>
     {
       numOfPages?.map((page) => {
         if (page < maxPageNumberLimit && page >= minPageNumberLimit) {
-          return <Button size='small' id={page} key={page} onClick={() => pages(page)}>{page + 1}</Button>
+          return <Button id={page} key={page} onClick={() => pages(page)}>{page + 1}</Button>
         } else {
           return null;
         }
       })
     }
-    <Button size='small' onClick={nextHandler} >Next</Button>
-    <Button size='small' onClick={() => lastHandler(lastPage)} >Last</Button>
-  </div>)
+    <Button onClick={nextHandler} >Next</Button>
+    <Button onClick={() => lastHandler(lastPage)}>Last</Button>
+  </ButtonGroup>)
 }
 
 export default Pagination
