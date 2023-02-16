@@ -1,5 +1,4 @@
 import { Card, CardActionArea, CardMedia, CardContent, Typography, Container } from '@mui/material';
-// import style from './Card.module.css'
 
 const Cards = ({ imgUrl, name, body2 }) => {
   return (
