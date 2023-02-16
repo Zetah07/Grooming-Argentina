@@ -1,4 +1,4 @@
-/* .background{
+.background{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -84,4 +84,4 @@ color: #FFFFFF;
 flex: none;
 order: 0;
 flex-grow: 0;
-} */
+}
