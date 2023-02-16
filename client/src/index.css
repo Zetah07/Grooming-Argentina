@@ -77,7 +77,7 @@ h4{
 }
 
 
-.text-btn{
+.text-button{
   /* Donate Now */
   display: flex;
   justify-content: center;
@@ -86,7 +86,7 @@ h4{
   font-size: 24px;
   color: #FFFFFF;
 }
-.btn {
+.button {
 display: flex;
 flex-direction: row;
 justify-content: center;
@@ -98,12 +98,12 @@ height: 68px;
 background: linear-gradient(90deg, #7DC8EC 0%, #004B82 100%);
 }
 
-.btn:hover {
+.button:hover {
   background: linear-gradient(90deg, #36abe1 0%, #07395d);
   color: #fff;
   font-family: "Gotham Rounded Bold",sans-serif;
 }
 
-.btn:focus {
+.button:focus {
   outline: none;
 }
