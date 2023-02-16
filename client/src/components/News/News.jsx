@@ -1,13 +1,17 @@
 import React from 'react'
 import Pagination from "../Pages/Pagination/Pagination.jsx";
-import newspaper from './NewsPractice.jsx';
-import { useState } from 'react';
+// import newspaper from './NewsPractice.jsx';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import NewCard from '../NewCard/NewCard';
 import { Grid } from '@mui/material';
 import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
+import { getAllNews } from '../../Redux/Actions/index.js';
 
 const News = () => {
 
+  const dispatch = useDispatch();
+  const newspaper = useSelector(state => state.news);
   const newsPerPage = 6;
   const pageNumberLimit = 5;
   const totalNews = newspaper.length;
@@ -15,6 +19,12 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+
+  console.log(newspaper)
+
+  useEffect(() => {
+    dispatch(getAllNews());
+  }, [dispatch]);
 
   const firstHandler = (firstPage) => {
     const firstIndex = firstPage * newsPerPage;
@@ -69,7 +79,7 @@ const News = () => {
   return (<>
     <Grid container spacing={3}>
       <Grid item xs={5} md={5} lg={5}>
-        <SearchBar maxWidth= "345" 
+        <SearchBar maxWidth="345"
           placeholder="Buscar..."
           onChange={(event) => { handleChange(event.target.value) }} />
       </Grid>
