@@ -43,7 +43,7 @@ const userStatusSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        Phone: {
+        phone: {
             type: Number,
             required: true
         },
@@ -76,7 +76,7 @@ const userStatusSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        Linkedin: {
+        linkedIn: {
             type: String,
             required: true
         },
@@ -84,7 +84,7 @@ const userStatusSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        Status: {
+        status: {
             type: String,
             required: true
         },
