@@ -1,5 +1,6 @@
 import "./App.css";
 import NavBar from "./components/Pages/NavBar/NavBar";
+import NavBar2 from "./components/Pages/NavBar2/NavBar2";
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
@@ -9,14 +10,13 @@ import Volunteer from "./components/Pages/Volunteer/Volunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
 // import Register from "./components/Pages/Register/Register";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 
 function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar />
-      </header>
+      {useLocation().pathname === "/"? <NavBar2 />: <NavBar />}
       <Route exact path="/">
         <LandingPage />
       </Route>
