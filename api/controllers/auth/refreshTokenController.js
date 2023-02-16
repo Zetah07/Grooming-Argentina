@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const user = require("../models/user");
+const user = require("../../models/user");
 require("dotenv").config();
 
 const handleRefreshToken = async(req, res) => {
