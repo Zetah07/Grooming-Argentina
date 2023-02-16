@@ -9,10 +9,7 @@ import { Provider } from 'react-redux';
 import store from './Redux/Store'
 // import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
-
-//MaterialUI
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./Theme";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
