@@ -1,10 +1,10 @@
 const express = require("express");
-const {getNews, handleNews, modifyNews} = require("../../controllers/newsController");
+const {getNews, handleNews, modifyNews} = require("../../controllers/news/newsController");
 
 const router = express.Router();
 
-router.use("/mainNews", getNews);
-router.use("/createNews", handleNews);
-router.use("/modifyNews/:id", modifyNews);
+router.get("/mainNews", getNews);
+router.post("/createNews", handleNews);
+router.put("/modifyNews/:id", modifyNews);
 
 module.exports = router

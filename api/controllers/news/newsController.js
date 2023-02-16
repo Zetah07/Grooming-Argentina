@@ -1,5 +1,5 @@
 const mongoose  = require("mongoose");
-const news = require("../models/news");
+const news = require("../../models/news");
 
 const getNews = async (req, res) => {
     try {
@@ -12,8 +12,8 @@ const getNews = async (req, res) => {
 };
 
 const handleNews = async (req,res) => {
-    const {title, description, img, link, provinceOrLocation} = req.body;
-    if(!title || !description || !img) return res.status(400).json({"message": "Required data is missing"});
+    const {title, description, img, link, category, provinceOrLocation} = req.body;
+    if(!title || !description || !img || !category) return res.status(400).json({"message": "Required data is missing"});
 
     try {
         const newNews = new news({
