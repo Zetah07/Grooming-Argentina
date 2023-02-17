@@ -1,4 +1,3 @@
-const mongoose  = require("mongoose");
 const news = require("../../models/news");
 const ObjectID = require('mongoose').Types.ObjectId;
 
@@ -7,7 +6,7 @@ const modifyNews = async (req, res) => {
     // const {title, description, img, category, link, provinceOrLocation} = req.body;
     const body = req.body;
 
-    if (!ObjectID.isValid(id)) return res.status(400).json({ message: "Id no valida" });
+    if (!ObjectID.isValid(id)) return res.status(400).json({ message: "ID no válida" });
 
     news.updateOne(
         {_id: id},
@@ -16,15 +15,15 @@ const modifyNews = async (req, res) => {
         (err, docs) => {
             if(err) {
                 if(err.path === "_id") {
-                    res.status(400).json({"error": "The news doesn´t exist"})
+                    res.status(400).json({"error": "La noticia no existe"})
                 } else {
                     res.status(400).json({"error": err});
                 }
             } else {
                 if(docs.matchedCount === 1) {
-                    res.status(200).json({"message": "Updated :)"});
+                    res.status(200).json({"message": "Noticia actualizada"});
                 } else {
-                    res.status(400).json({"message": "failed to update :("})
+                    res.status(400).json({"message": "No se puedo actualizar la noticia"});
                 }
             }
         }
