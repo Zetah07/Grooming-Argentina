@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
+import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { AiOutlineMail } from "react-icons/ai";
+
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -21,7 +22,7 @@ const Login = () => {
   }, [isLoading]);
 
   const [input, setInput] = useState({
-    email: "",
+    dni: "",
     password: "",
     confirmPassword: "",
   });
@@ -44,24 +45,14 @@ const Login = () => {
     let errors = {};
     let formIsValid = true;
 
-    if (!input.email) {
+    if (!input.dni) {
       formIsValid = false;
-      errors.email = "Email is required";
+      errors.dni = "DNI is required";
     }
 
     if (!input.password) {
       formIsValid = false;
       errors.password = "Password is required";
-    }
-
-    if (!input.confirmPassword) {
-      formIsValid = false;
-      errors.confirmPassword = "Confirm Password is required";
-    }
-
-    if (input.password !== input.confirmPassword) {
-      formIsValid = false;
-      errors.confirmPassword = "Passwords must match";
     }
     setError(errors);
     return formIsValid;
@@ -90,16 +81,16 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div class="input-group mb-3">
             <span class="input-group-text">
-              <AiOutlineMail />
+              <HiOutlineIdentification />
             </span>
             <input
               class="form-control"
               id="floatingInputGroup1"
-              type="email"
-              name="email"
-              placeholder="Enter email"
+              type="DNI"
+              name="DNI"
+              placeholder="Ingresa DNI"
               onChange={handleInputChange}
-              value={input.email}
+              value={input.dni}
             />
             <label for="floatingInputGroup1"></label>
             {error.email ? <p>{error.email}</p> : null}
@@ -113,28 +104,12 @@ const Login = () => {
               id="floatingInputGroup2"
               type="password"
               name="password"
-              placeholder="Enter password"
+              placeholder="Ingresa contraseña"
               onChange={handleInputChange}
               value={input.password}
             />
             <label for="floatingInputGroup2"></label>
             {error.password ? <p>{error.password}</p> : null}
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <RiLockPasswordLine />
-            </span>
-            <input
-              class="form-control"
-              id="floatingInputGroup3"
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              onChange={handleInputChange}
-              value={input.confirmPassword}
-            />
-            <label for="floatingInputGroup3"></label>
-            {error.confirmPassword ? <p>{error.confirmPassword}</p> : null}
           </div>
           <Button
             disabled={isLoading}
