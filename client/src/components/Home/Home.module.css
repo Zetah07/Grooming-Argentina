@@ -1,0 +1,56 @@
+.container1{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
+  url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+  background-size: 100%;
+}
+.container1 h1 {
+    font-family: "Gotham Rounded";
+    font-style: normal;
+    font-size: 68px;
+    line-height: 97px;
+    color: #ffffff;
+  }
+  .container1 span {
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .container1 p {
+    font-family: "Helvetica";
+    font-style: normal;
+    font-size: 28px;
+    color: #ffffff;
+    padding: 15% 1% 0 1%;
+  }
+  .link{
+    color:#ffffff;
+  }
+  .btn{
+    font-family: "Helvetica";
+    padding: 0;
+  }
+  .divBecome{
+    padding-bottom: 10%;
+  }
+  .divBoxes{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .container2{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container2 div{
+    width: 50%;
+  }
+  .container2 h1{
+    font-family: "Gotham Rounded";
+    font-weight: bold;
+  }
+  .container2 p{
+    font-family: "Helvetica";
+  }
