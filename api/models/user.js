@@ -7,19 +7,18 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true
     },
+    name: {
+      type: String,
+      required: true
+    },
     password: {
       type: String,
       required: true
     },
     rol: {
-      User: {
-        type: Number,
-        default: 2001
-      },
-      Admin: Number,
-      Editor: Number,
-      HumanResources: Number,
-      Volunteer: Number
+      type: String,
+      enum: ["user", "admin", "editor", "hr", "volunteer"],
+      default: "user",
     },
     refreshToken: {
       type: String,
@@ -31,4 +30,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('user', userSchema)
+
+module.export = mongoose.model('user', userSchema);
+
