@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 
 const NavBarB = () => {
     return (
-        <Navbar /*bg="light"*/ bg='primary' expand="lg">
+        <Navbar className={s.colorF} expand="lg">
             <Container >
                 <Navbar.Brand as={Link} to='/'>
                     <img src={Logo} alt="Logo" />
@@ -19,11 +19,11 @@ const NavBarB = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
                     <Nav   /*"me-auto"*/ >
-                        <Nav.Link as={Link} to='/home'>Home</Nav.Link>
-                        <Nav.Link as={Link} to='/nosotros'>Nosotros</Nav.Link>
-                        <Nav.Link as={Link} to='/noticias'>Noticias</Nav.Link>
-                        <Nav.Link as={Link} to='/contactanos'>contactanos</Nav.Link>
-                        <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                        <Nav.Link as={Link} to='/home' className={s.lashes}>Home</Nav.Link>
+                        <Nav.Link as={Link} to='/nosotros' className={s.lashes}>Nosotros</Nav.Link>
+                        <Nav.Link as={Link} to='/noticias' className={s.lashes}>Noticias</Nav.Link>
+                        <Nav.Link as={Link} to='/contactanos' className={s.lashes}>contactanos</Nav.Link>
+                        <Nav.Link as={Link} to='/login' className={s.lashes}>Login</Nav.Link>
                     </Nav>
                     <Button><Nav.Link as={Link} to='/voluntariado'>Ser Voluntario</Nav.Link></Button>
                 </Navbar.Collapse>

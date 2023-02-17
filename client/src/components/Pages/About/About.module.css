@@ -1,0 +1,11 @@
+.banner {
+
+
+    width: 1920px;
+    height: 500px;
+    left: 0px;
+    top: -6px;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/c387.jpg);
+
+}
