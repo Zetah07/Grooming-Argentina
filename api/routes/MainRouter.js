@@ -11,4 +11,4 @@ router.use("/auth", authRouter);
 router.use("/userstatus",userStatusRouter);
 router.use("/news", newsRouter);
 
-module.exports = router
+module.exports = router;
