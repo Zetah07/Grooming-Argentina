@@ -2,7 +2,6 @@
   position:relative;
     background-color: var(--terciary-color);
     margin: 0 auto;
-    margin-top: 10rem;
     box-shadow: 0 0 10px rgba(3, 170, 253, 0.796);
     padding: 10px;
     border-radius: 0.5rem;
@@ -19,9 +18,8 @@
   margin-top: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  border-radius: 5rem;
+  border-radius: 4rem;
   color: var(--color-primary);
-  margin-bottom: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +28,7 @@
   position: absolute;
     color: var(--primary-color);
     font-size: 8rem;
-    bottom: 390px;
+    bottom: 295px;
     z-index: 50;
 }
 
