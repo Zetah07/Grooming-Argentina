@@ -77,7 +77,7 @@ const News = () => {
 
   return (<>
     <div className={s.container1}>
-      <span>News</span>
+      <span>Noticias</span>
     </div>
     <br />
     <div>

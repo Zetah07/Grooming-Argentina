@@ -21,7 +21,7 @@ const NavBarA = () => {
           <Nav   /*"me-auto"*/ >
             <Nav.Link as={Link} to='/home'>Home</Nav.Link>
             <Nav.Link as={Link} to='/nosotros'>Nosotros</Nav.Link>
-            <Nav.Link as={Link} to='/noticias/1'>Noticias</Nav.Link>
+            <Nav.Link as={Link} to='/noticias'>Noticias</Nav.Link>
             <Nav.Link as={Link} to='/contactanos'>contactanos</Nav.Link>
             <Nav.Link as={Link} to='/login'>Login</Nav.Link>
 
