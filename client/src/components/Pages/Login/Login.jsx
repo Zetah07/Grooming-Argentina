@@ -1,4 +1,8 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
@@ -6,12 +10,26 @@ import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 
+const Login = () => {
+
 function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
+return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-const Login = () => {
-  const [isLoading, setLoading] = useState(false);
+
+const dispach = useDispatch();
+const [dni, SetDni]= useState('');
+const [password, SetPassword]= useState('');
+const [success, setSuccess] = useState('');
+const [isLoading, setLoading] = useState(false);
+const [input, setInput] = useState({
+  dni:'',
+  password:''
+})
+const [error, setError] = useState({
+  dni:'',
+  password:''
+});
 
   useEffect(() => {
     if (isLoading) {
@@ -21,56 +39,45 @@ const Login = () => {
     }
   }, [isLoading]);
 
-  const [input, setInput] = useState({
-    dni: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const [error, setError] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleInputChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validateInput = (e) => {
-    e.preventDefault();
-    let errors = {};
-    let formIsValid = true;
-
-    if (!input.dni) {
-      formIsValid = false;
-      errors.dni = "DNI is required";
-    }
-
-    if (!input.password) {
-      formIsValid = false;
-      errors.password = "Password is required";
-    }
-    setError(errors);
-    return formIsValid;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    let errors = {};
-    let formIsValid = true;
-    if (!validateInput(e)) {
-      formIsValid = false;
-      errors = validateInput(e);
-    }
-    setError(errors);
-    return formIsValid;
-  };
+    setLoading(true);
+    axios
+    .post("/login", {
+        dni: dni,
+        password: password,
+      })
+    // .then((res) => {
+    //   if (res.data.success) {
+    //     setSuccess(res.data.success);
+    //     localStorage.setItem("token", res.data.token);
+    //     localStorage.setItem("user", JSON.stringify(res.data.user));
 
-  const handleClick = () => setLoading(true);
+    //   } else {
+    //     setError(res.data.error);
+    //   }
+    //   setLoading(false);
+    // })
+  .catch((err) => {
+    setError(err.response.data.error);
+    setLoading(false);
+  });
+
+  const handleInputChange = (data) =>{
+    setInput({
+    ...input,
+      [data.target.name]: data.target.value
+    })
+  }
+
+  const handleClick = (data) =>{
+    setInput({
+    ...input,
+      [data.target.name]: data.target.value
+    })
+  }
+
+
 
   return (
     <div className={Style.container}>
@@ -86,14 +93,17 @@ const Login = () => {
             <input
               class="form-control"
               id="floatingInputGroup1"
-              type="DNI"
+              type="number"
               name="DNI"
               placeholder="Ingresa DNI"
               onChange={handleInputChange}
               value={input.dni}
             />
             <label for="floatingInputGroup1"></label>
-            {error.email ? <p>{error.email}</p> : null}
+            <div class="invalid-feedback">
+              {error.dni}
+              <span class="d-block">{error.dni.length > 0 && error.dni}</span>
+            </div>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
@@ -115,12 +125,13 @@ const Login = () => {
             disabled={isLoading}
             onClick={!isLoading ? handleClick : null}
           >
-            {isLoading ? "Loading…" : "Login"}
+            {isLoading ? "Cargando..." : "Login"}
           </Button>
         </form>
       </div>
     </div>
   );
-};
+  }}
+
 
 export default Login;

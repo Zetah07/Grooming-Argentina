@@ -7,7 +7,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './Redux/Store'
-// import axios from "axios";
+import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import {firebaseConfig} from './firebaseConfig';
 
 //axios:
-// axios.defaults.baseURL = "http://localhost:3001" && process.env.REACT_APP_API;
+axios.defaults.baseURL = "http://localhost:3500" && process.env.REACT_APP_API;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
