@@ -6,9 +6,7 @@ import NewCard from '../NewCard/NewCard';
 import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
 import { getAllNews } from '../../Redux/Actions/index.js';
 import s from "./News.module.css";
-import Button from 'react-bootstrap/Button';
-import ThemeProvider from 'react-bootstrap/ThemeProvider';
-import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 
 const News = () => {
 
@@ -81,7 +79,7 @@ const News = () => {
     <div className={s.container1}>
       <span>News</span>
     </div>
-    <br/>
+    <br />
     <div>
       <ul>
         <li><SearchBar /></li>
@@ -102,6 +100,9 @@ const News = () => {
         })}
       </div>
     </div>
+    <Link to={"/crearnoticia"}>
+      <button type="button" class="btn btn-primary">Crear Noticia</button>
+    </Link>
     <Pagination totalNews={totalNews}
       firstHandler={firstHandler}
       prevHandler={prevHandler}
