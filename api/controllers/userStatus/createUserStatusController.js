@@ -67,6 +67,3 @@ const handleUserStatusCreation = async (req, res) => {
 };
 
 module.exports = handleUserStatusCreation;
-
-
-// module.exports = handleUserStatusCreation;
