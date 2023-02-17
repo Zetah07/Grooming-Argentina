@@ -1,10 +1,13 @@
 const mongoose  = require("mongoose");
 const news = require("../../models/news");
+const ObjectID = require('mongoose').Types.ObjectId;
 
 const modifyNews = async (req, res) => {
     const { id } = req.params;
     // const {title, description, img, category, link, provinceOrLocation} = req.body;
     const body = req.body;
+
+    if (!ObjectID.isValid(id)) return res.status(400).json({ message: "Id no valida" });
 
     news.updateOne(
         {_id: id},
