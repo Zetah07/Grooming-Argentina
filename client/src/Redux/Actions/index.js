@@ -18,3 +18,12 @@
 // export const GET_ALL_COURSES_BY_CATEGORY = "GET_ALL_COURSES_BY_CATEGORY";
 // export const FILTERS = "FILTERS";
 
+import axios from 'axios';
+export const GET_ALL_NEWS = "GET_ALL_NEWS";
+
+export const getAllNews = () => {
+    return async function (dispatch) {
+        const news = await axios.get('http://localhost:3500/news/');
+        dispatch({ type: GET_ALL_NEWS, payload: news.data.docs })
+    }
+};

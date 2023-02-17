@@ -5,35 +5,33 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-// import {Provider} from 'react-redux';
-// import store from './Redux/Store';
-import axios from "axios";
+import { Provider } from 'react-redux';
+import store from './Redux/Store'
+// import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
-
-//MaterialUI
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./Theme";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
 // import {firebaseConfig} from './firebaseConfig';
 
 //axios:
-axios.defaults.baseURL = "http://localhost:3001" && process.env.REACT_APP_API;
+// axios.defaults.baseURL = "http://localhost:3001" && process.env.REACT_APP_API;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
   // <Suspense fallback={"Conecting ..."}>
-  // <Provider store={store}>
-  <ThemeProvider theme={theme}>
+  // <ThemeProvider theme={theme}>
+  < Provider store={store} >
     <BrowserRouter>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </BrowserRouter>
-  </ThemeProvider>
-  // </Provider>
+  </Provider >
+  // </ThemeProvider> */
+
   // </Suspense>
 
   // </FirebaseAppProvider>
