@@ -1,10 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material"
 import s from "./LandingPage.module.css";
+// import NavBar from "../Pages/NavBarA/NavBarA";
 
 const LandingPage = () => {
   return (
     <div className={s.background}>
+      {/* <NavBar className={s.NavBar} /> */}
       <div >
         <div className={s.information}>
           <h1>Your <span>support</span> can help us a lot</h1>
@@ -13,7 +15,7 @@ const LandingPage = () => {
             us within our society and endeavours to bring about a change in
             their life - a "GROOMING ARGENTINA".
           </h2>
-          <Button className="btn" size="large" variant="contained" color="primary" sx={{borderRadius: 60}}>
+          <Button className="btn" size="large" variant="contained" color="primary" sx={{ borderRadius: 60 }}>
             <a
               className="text-btn"
               href="https://servicios.paypertic.com/formularios/comercios/1466"

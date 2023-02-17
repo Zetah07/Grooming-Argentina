@@ -7,7 +7,8 @@
   background-size: 100%;
   z-index: -100;
 }
-.NavBar {
+
+/* .NavBar {
   position: absolute;
   display: flex;
 
@@ -16,7 +17,8 @@
   left: 0px;
   top: 0px;
   z-index: 100;
-}
+} */
+
 .information {
   display: flex;
   flex-direction: column;
@@ -24,6 +26,7 @@
   padding: 0px;
   gap: 99px;
 }
+
 .information h1 {
   width: 1501px;
   height: 97px;
@@ -39,6 +42,7 @@
   order: 0;
   flex-grow: 0;
 }
+
 .information span {
   background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
   -webkit-background-clip: text;
@@ -46,6 +50,7 @@
   -webkit-background-clip: text;
   background-clip: text;
 }
+
 .information h2 {
   width: 1057px;
   height: 84px;
