@@ -1,27 +1,15 @@
-import { Card, CardActionArea, CardMedia, CardContent, Typography, Container } from '@mui/material';
+import Card from 'react-bootstrap/Card';
+import s from './Card.module.css';
 
-const Cards = ({ imgUrl, name, body2 }) => {
+const Cards = ({ imgUrl, tittle, body }) => {
   return (
-    <Container>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={imgUrl}
-            alt={name}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {body2}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Container>
+    <Card style={{ width: '400px' }}>
+      <Card.Img variant="top" src={imgUrl} />
+      <Card.Body>
+        <Card.Title>{tittle}</Card.Title>
+        <Card.Text style={{ fontSize: "20px" }}>{body}</Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
