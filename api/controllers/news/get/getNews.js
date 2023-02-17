@@ -1,4 +1,4 @@
-const news = require("../../models/news");
+const news = require("../../../models/news");
 
 const getNews = async (req, res) => {
     //http://localhost:3500/news?categoria=test&provinciaOLocacion=Paraiso+raro
