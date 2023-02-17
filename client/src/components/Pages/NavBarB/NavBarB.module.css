@@ -4,16 +4,25 @@
     justify-content: space-between;
     padding: 0 10px;
     background-color: transparent;
-    color: #c75a5a;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: Helvetica;
+
 
 }
 
 .span {
-    font-family: Helvetica;
+    font-family: "Gotham Rounded";
     font-size: larger;
     color: #7dc8ec;
     ;
+}
+
+.colorF {
+    background: var(--secondary-color)
+}
+
+.lashes {
+    font-family: Helvetica;
+    font-size: 18px;
+    color: rgba(31, 8, 8, 0.863);
 }
