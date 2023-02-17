@@ -1,19 +1,29 @@
 import React from 'react'
 import Pagination from "../Pages/Pagination/Pagination.jsx";
-import newspaper from './NewsPractice.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import NewCard from '../NewCard/NewCard';
-
+import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
+import { getAllNews } from '../../Redux/Actions/index.js';
+import s from "./News.module.css";
+import { Link } from 'react-router-dom';
 
 const News = () => {
 
-  const newsPerPage = 8;
+  const dispatch = useDispatch();
+  const newspaper = useSelector(state => state.news);
+  const newsPerPage = 6;
   const pageNumberLimit = 5;
   const totalNews = newspaper.length;
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+  if (newspaper.length > 0 && items.length === 0) setItems([...newspaper].splice(0, newsPerPage));
+
+  useEffect(() => {
+    dispatch(getAllNews());
+  }, [dispatch]);
 
   const firstHandler = (firstPage) => {
     const firstIndex = firstPage * newsPerPage;
@@ -61,25 +71,50 @@ const News = () => {
     setCurrentPage(numberPage);
   }
 
+  // const handleChange = (event) => {
+  //   console.log(event);
+  // }
 
   return (<>
-    <h1>Noticias</h1>
+    <div className={s.container1}>
+      <span>Noticias</span>
+    </div>
+    <br />
     <div>
-      <div>
+      <ul>
+        <li><SearchBar /></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="row g-5">
         {items.map(paper => {
           return <NewCard
             key={paper.id}
             id={paper.id}
             title={paper.title}
-            image={paper.image}
+            image={paper.img}
             description={paper.description}
+            createdAt={paper.createdAt}
+            category={paper.category}
           />
         })}
       </div>
-    </div >
-    <Pagination totalNews={totalNews} firstHandler={firstHandler} prevHandler={prevHandler} nextHandler={nextHandler} lastHandler={lastHandler} pages={pages} newsPerPage={newsPerPage} currentPage={currentPage} pageNumberLimit={pageNumberLimit} maxPageNumberLimit={maxPageNumberLimit} minPageNumberLimit={minPageNumberLimit} />
-  </>
-  )
+    </div>
+    <Link to={"/crearnoticia"}>
+      <button type="button" class="btn btn-primary">Crear Noticia</button>
+    </Link>
+    <Pagination totalNews={totalNews}
+      firstHandler={firstHandler}
+      prevHandler={prevHandler}
+      nextHandler={nextHandler}
+      lastHandler={lastHandler}
+      pages={pages}
+      newsPerPage={newsPerPage}
+      currentPage={currentPage}
+      pageNumberLimit={pageNumberLimit}
+      maxPageNumberLimit={maxPageNumberLimit}
+      minPageNumberLimit={minPageNumberLimit} />
+  </>)
 }
 
 export default News

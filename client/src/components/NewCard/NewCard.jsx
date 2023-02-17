@@ -1,23 +1,23 @@
-import { Box, Card, CardContent, Typography, CardActions, Button, CardMedia } from "@mui/material"
+import React from "react";
 
-const NewCard = (props) => {
-    return <Box width='400px'>
-        <Card>
-            <CardMedia component='img' height='180px' image={props.image} alt={props.title} />
-            <CardContent>
-                <Typography gutterBottom variant='h5' component='div'>
-                    {props.title}
-                </Typography>
-                <Typography variant='body2' color='text.secondary'>
-                    {props.description}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size='small'>Compartir</Button>
-                <Button size='small'>Leer más...</Button>
-            </CardActions>
-        </Card>
-    </Box>
+const NewCard = ({ image, title, description, createdAt, category }) => {
+    return (
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card" >
+                <img src={image} alt={title} class="card-img-top" />
+                <div class="card-body">
+                    <h2 class="card-title">{title}</h2>
+                    <p class="card-subtitle mb-2 text-muted">Categoria: {category}</p>
+                    <p class="card-subtitle mb-2 text-muted">Publicado: {createdAt}</p>
+                    <p class="card-text">{description}</p>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary">Compartir</a>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default NewCard;
