@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import "./App.css";
 import NavBar2 from "./components/Pages/NavBar2/NavBar2";
 import LandingPage from "./components/LandingPage/LandingPage";
@@ -8,15 +9,15 @@ import NewsDetail from "./components/NewDetails/NewDetails";
 import Volunteer from "./components/Pages/Volunteer/Volunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
+import NavBar from "./components/Pages/NavBar/NavBar";
 
 function App() {
-  
   return (
     <div className="App">
-      {useLocation().pathname !== "/"? <NavBar2 />: null}
+      {(useLocation().pathname === "/" ||useLocation().pathname ==="/login" ) ? <NavBar />  : <NavBar2 />}
       <Route exact path="/">
         <LandingPage />
       </Route>

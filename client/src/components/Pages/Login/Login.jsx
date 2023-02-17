@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -10,7 +10,6 @@ function simulateNetworkRequest() {
 }
 
 const Login = () => {
-
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -83,7 +82,6 @@ const Login = () => {
   const handleClick = () => setLoading(true);
 
   return (
-    
     <div className={Style.container}>
       <div className={Style.loginContainer}>
         <div className={Style.img}>
@@ -91,7 +89,9 @@ const Login = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <div class="input-group mb-3">
-          <span class="input-group-text"><AiOutlineMail/></span>
+            <span class="input-group-text">
+              <AiOutlineMail />
+            </span>
             <input
               class="form-control"
               id="floatingInputGroup1"
@@ -101,11 +101,13 @@ const Login = () => {
               onChange={handleInputChange}
               value={input.email}
             />
-            <label for='floatingInputGroup1'></label>
+            <label for="floatingInputGroup1"></label>
             {error.email ? <p>{error.email}</p> : null}
           </div>
           <div class="input-group mb-3">
-          <span class="input-group-text"><RiLockPasswordLine/></span>
+            <span class="input-group-text">
+              <RiLockPasswordLine />
+            </span>
             <input
               class="form-control"
               id="floatingInputGroup2"
@@ -115,11 +117,13 @@ const Login = () => {
               onChange={handleInputChange}
               value={input.password}
             />
-            <label for='floatingInputGroup2'></label>
+            <label for="floatingInputGroup2"></label>
             {error.password ? <p>{error.password}</p> : null}
           </div>
           <div class="input-group mb-3">
-          <span class="input-group-text"><RiLockPasswordLine/></span>
+            <span class="input-group-text">
+              <RiLockPasswordLine />
+            </span>
             <input
               class="form-control"
               id="floatingInputGroup3"
@@ -129,13 +133,14 @@ const Login = () => {
               onChange={handleInputChange}
               value={input.confirmPassword}
             />
-            <label for='floatingInputGroup3'></label>
+            <label for="floatingInputGroup3"></label>
             {error.confirmPassword ? <p>{error.confirmPassword}</p> : null}
           </div>
-          <Button disabled={isLoading}
-      onClick={!isLoading ? handleClick : null}
-    >
-      {isLoading ? 'Loading…' : 'Login'}
+          <Button
+            disabled={isLoading}
+            onClick={!isLoading ? handleClick : null}
+          >
+            {isLoading ? "Loading…" : "Login"}
           </Button>
         </form>
       </div>
