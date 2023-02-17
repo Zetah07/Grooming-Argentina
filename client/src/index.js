@@ -23,7 +23,6 @@ root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
   // <Suspense fallback={"Conecting ..."}>
   // <Provider store={store}>
-  <ThemeProvider theme={theme}>
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
@@ -31,7 +30,6 @@ root.render(
         </BrowserRouter>
       </Provider>
     </React.StrictMode>,
-  </ThemeProvider>
   // </Provider>
   // </Suspense>
 
