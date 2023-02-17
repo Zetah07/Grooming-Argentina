@@ -1,12 +1,10 @@
 import React from "react";
 import { Button } from "@mui/material"
 import s from "./LandingPage.module.css";
-import NavBar from "../Pages/NavBar/NavBar";
 
 const LandingPage = () => {
   return (
     <div className={s.background}>
-      <NavBar className={s.NavBar} />
       <div >
         <div className={s.information}>
           <h1>Your <span>support</span> can help us a lot</h1>
