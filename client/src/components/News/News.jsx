@@ -1,12 +1,14 @@
 import React from 'react'
 import Pagination from "../Pages/Pagination/Pagination.jsx";
-// import newspaper from './NewsPractice.jsx';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from '../NewCard/NewCard';
-import { Grid } from '@mui/material';
 import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
 import { getAllNews } from '../../Redux/Actions/index.js';
+import s from "./News.module.css";
+import Button from 'react-bootstrap/Button';
+import ThemeProvider from 'react-bootstrap/ThemeProvider';
+import Container from 'react-bootstrap/Container';
 
 const News = () => {
 
@@ -19,8 +21,7 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-
-  console.log(newspaper)
+  if (newspaper.length > 0 && items.length === 0) setItems([...newspaper].splice(0, newsPerPage));
 
   useEffect(() => {
     dispatch(getAllNews());
@@ -72,29 +73,46 @@ const News = () => {
     setCurrentPage(numberPage);
   }
 
-  const handleChange = (event) => {
-    console.log(event);
-  }
+  // const handleChange = (event) => {
+  //   console.log(event);
+  // }
 
   return (<>
-    <Grid container spacing={3}>
-      <Grid item xs={5} md={5} lg={5}>
-        <SearchBar maxWidth="345"
-          placeholder="Buscar..."
-          onChange={(event) => { handleChange(event.target.value) }} />
-      </Grid>
-      {items.map(paper => {
-        return <NewCard
-          key={paper.id}
-          id={paper.id}
-          title={paper.title}
-          image={paper.image}
-          date={paper.date}
-          categories={paper.categories}
-        />
-      })}
-    </Grid>
-    <Pagination totalNews={totalNews} firstHandler={firstHandler} prevHandler={prevHandler} nextHandler={nextHandler} lastHandler={lastHandler} pages={pages} newsPerPage={newsPerPage} currentPage={currentPage} pageNumberLimit={pageNumberLimit} maxPageNumberLimit={maxPageNumberLimit} minPageNumberLimit={minPageNumberLimit} />
+    <div className={s.container1}>
+      <span>News</span>
+    </div>
+    <br/>
+    <div>
+      <ul>
+        <li><SearchBar /></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="row g-5">
+        {items.map(paper => {
+          return <NewCard
+            key={paper.id}
+            id={paper.id}
+            title={paper.title}
+            image={paper.img}
+            description={paper.description}
+            createdAt={paper.createdAt}
+            category={paper.category}
+          />
+        })}
+      </div>
+    </div>
+    <Pagination totalNews={totalNews}
+      firstHandler={firstHandler}
+      prevHandler={prevHandler}
+      nextHandler={nextHandler}
+      lastHandler={lastHandler}
+      pages={pages}
+      newsPerPage={newsPerPage}
+      currentPage={currentPage}
+      pageNumberLimit={pageNumberLimit}
+      maxPageNumberLimit={maxPageNumberLimit}
+      minPageNumberLimit={minPageNumberLimit} />
   </>)
 }
 

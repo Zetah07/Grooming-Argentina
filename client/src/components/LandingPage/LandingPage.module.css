@@ -5,14 +5,8 @@
     url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
   background-size: 100vh;
   background-size: 100%;
-<<<<<<< HEAD
-  /* z-index: -100; */
-}
-
-=======
   z-index: -100;
 }
->>>>>>> 8631efa9fb29b38819b9f7c54e0cf10e36af3f12
 .NavBar {
   position: absolute;
   display: flex;

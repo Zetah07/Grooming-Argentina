@@ -24,7 +24,6 @@ export const GET_ALL_NEWS = "GET_ALL_NEWS";
 export const getAllNews = () => {
     return async function (dispatch) {
         const news = await axios.get('http://localhost:3500/news/');
-        console.log(news);
-        dispatch({ type: GET_ALL_NEWS, payload: news.data })
+        dispatch({ type: GET_ALL_NEWS, payload: news.data.docs })
     }
 };
