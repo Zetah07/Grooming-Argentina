@@ -1,6 +1,7 @@
 const news = require("../../models/news");
 
 const getNews = async (req, res) => {
+    //http://localhost:3500/news?categoria=test&provinciaOLocacion=Paraiso+raro
     const { categoria, provinciaOLocacion } = req.query;
     let filteredNews;
 
