@@ -46,7 +46,6 @@ html {
 }
 
 body {
-
   font-family: -apple-system, BlinkMacSystemFont, "Gotham Rounded Bold",
     "HelveticaNeue Medium", "HelveticaNeue Regular", "HelveticaNeue Thin",
     sans-serif;
@@ -54,56 +53,56 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1{
+h1 {
   font-size: 3rem;
-  font-family: "Gotham Rounded Bold",
+  font-family: "Gotham Rounded Bold";
 }
 
-h2{
+h2 {
   font-size: 2.5rem;
-  font-family: "HelveticaNeue Medium",
-    sans-serif;
+  font-family: "HelveticaNeue Medium", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 a,
-h3{
+h3 {
   font-size: 2rem;
-  font-family: "HelveticaNeue Regular",
+  font-family: "HelveticaNeue Regular";
 }
 
-h4{
+h4 {
   font-size: 1.5rem;
-  font-family: "HelveticaNeue Thin",
+  font-family: "HelveticaNeue Thin";
 }
 
-
-.text-btn{
+.text-button {
   /* Donate Now */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'HelveticaNeue Medium';
+  font-family: "HelveticaNeue Medium";
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.btn {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 14px;
-gap: 10px;
-width: 216px;
-height: 68px;
-background: linear-gradient(90deg, #7DC8EC 0%, #004B82 100%);
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  gap: 0.7rem;
+  font-family: "HelveticaNeue Medium", sans-serif;
+  font-size: 1.3rem;
+  border-radius: 60px;
+  color: #ffffff;
+  width: 10rem;
+  background: linear-gradient(90deg, #7dc8ec 0%, #004b82 100%);
 }
 
-.btn:hover {
+.button:hover {
   background: linear-gradient(90deg, #36abe1 0%, #07395d);
   color: #fff;
-  font-family: "Gotham Rounded Bold",sans-serif;
+  font-family: "HelveticaNeue Medium", sans-serif;
 }
 
-.btn:focus {
+.button:focus {
   outline: none;
 }
