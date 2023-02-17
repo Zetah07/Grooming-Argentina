@@ -110,7 +110,7 @@ const Login = () => {
                 type="number"
                 name="DNI"
                 placeholder="Ingresa DNI"
-                onChange={handleInputChange}
+                onChange={handleChange}
                 value={input.dni}
               />
               <label for="floatingInputGroup1"></label>
@@ -128,7 +128,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Ingresa contraseña"
-                onChange={handleInputChange}
+                onChange={handleChange}
                 value={input.password}
               />
               <label for="floatingInputGroup2"></label>
