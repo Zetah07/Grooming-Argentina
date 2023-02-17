@@ -9,10 +9,13 @@ import { BrowserRouter } from "react-router-dom";
 // import store from './Redux/Store';
 import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 //MaterialUI
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./Theme";
+// import { ThemeProvider } from "@mui/material";
+// import { theme } from "./Theme";
 
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
@@ -26,13 +29,13 @@ root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
   // <Suspense fallback={"Conecting ..."}>
   // <Provider store={store}>
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </BrowserRouter>
-  </ThemeProvider>
+  // <ThemeProvider theme={theme}>
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+  // </ThemeProvider>
   // </Provider>
   // </Suspense>
 

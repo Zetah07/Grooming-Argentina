@@ -1,5 +1,6 @@
 import "./App.css";
-import NavBar2 from "./components/Pages/NavBar2/NavBar3";
+import NavBarA from "./components/Pages/NavBarA/NavBarA";
+import NavBarB from "./components/Pages/NavBarB/NavBarB";
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
@@ -13,10 +14,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Route, useLocation } from "react-router-dom";
 
 function App() {
+  const usl = useLocation().pathname
+  console.log(usl)
 
   return (
     <div className="App">
-      {useLocation().pathname !== "/" ? <NavBar2 /> : null}
+      {(usl === "/" || usl === "/login") ? <NavBarB /> : <NavBarA />}
       <Route exact path="/">
         <LandingPage />
       </Route>
