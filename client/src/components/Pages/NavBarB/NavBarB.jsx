@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 
 const NavBarB = () => {
     return (
-        <Navbar className={s.colorF} expand="lg">
+        <Navbar expand="lg">
             <Container >
                 <Navbar.Brand as={Link} to='/'>
                     <img src={Logo} alt="Logo" />

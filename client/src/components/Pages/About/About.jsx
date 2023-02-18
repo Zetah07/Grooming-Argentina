@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 // import Banner from '../../../assets/c387.jpg';
 import imgUs from '../../../assets/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg'
 import s from './About.module.css'
+import Footer from '../../Footer/Footer';
 
 const About = () => {
   return (
@@ -31,7 +32,7 @@ const About = () => {
           </div>
         </Col>
       </Row>
-
+      <Footer />
     </Container>
   );
 }

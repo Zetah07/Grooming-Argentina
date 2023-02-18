@@ -18,7 +18,8 @@
 }
 
 .colorF {
-    background: var(--secondary-color)
+    background: transparent
+        /*var(--secondary-color)*/
 }
 
 .lashes {
