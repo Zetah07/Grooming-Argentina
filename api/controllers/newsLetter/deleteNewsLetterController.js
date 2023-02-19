@@ -1,7 +1,7 @@
 const newsLetter = require("../../models/newsLetter")
 
 const handleDeleteNewsLetter = async(req, res)=>{
-    const  {email} = req.query
+    const  {email} = req.body
     try {
         await newsLetter.findOneAndRemove({email:email})
         return res.sendStatus(200) 
