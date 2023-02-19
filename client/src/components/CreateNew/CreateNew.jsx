@@ -1,12 +1,11 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import style from './CreateNew.module.css';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const CreateNew = () => {
-  const dispatch = useDispatch();
-  const allTemperaments = useSelector(state => state.temperaments);
   const [errors, setErrors] = useState({})
   const [modal, setModal] = useState(false);
   const [apiResponse, setApiResponse] = useState("");
@@ -45,6 +44,7 @@ const CreateNew = () => {
       setLoading(true);
       axios.post("http://localhost:3500/news", form)
         .then(res => {
+          alert("Creado");
           setIsApiError(false);
           setApiResponse(res.data.message);
           setLoading(false);
@@ -56,12 +56,13 @@ const CreateNew = () => {
             description: "",
             link: "",
             category: "",
-            provinceOrLocation: "",
+            provinceOrLocation: ""
           });
         })
         .catch((error) => {
+          console.log(error)
           setIsApiError(true);
-          setApiResponse(error.response.data.error);
+          setApiResponse(error.response.data.message);
           setLoading(false);
           setModal(!modal);
           setErrors({});
@@ -104,72 +105,99 @@ const CreateNew = () => {
   }
 
   return (
-    <form onSubmit={submitHandler} className={style.form}>
-      {(modal) && (
-        <div className={style.modal}>
-          <div onClick={toggleModal} className={style.overlay}></div>
-          <div className={style.modalContent}>
-            {!loading ? (
-              <>
-                {isApiError ?
-                  <><img className={style.imgNotCreate} src="notCreate-icon.png" alt="not create img"></img>
-                    <h2>Hubo un error con la creación de la noticia</h2></>
-                  :
-                  <><img className={style.imgCreate} src="create-icon.png" alt="create img"></img>
-                    <h2>Se creó la noticia correctamente</h2></>}
-                <p>{apiResponse}</p>
-              </>
-            ) : (
-              <>
-                <img className={style.imgNotCreate} src="loading.gif" alt="loading img"></img>
-              </>
-            )}
-            < button className={style.closeModal} onClick={toggleModal}>X</button>
-          </div>
-        </div>
-      )
-      }
-      <div className={style.title}>
-        <h2> Crear Noticia </h2>
-      </div>
-      <label>Titulo </label>
-      <input type="text" value={form.title} name="title" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.title && <><img className={style.img} src="error-icon.png" alt="error"></img><span className={style.span}>{errors.title}</span></>}
-      </span>
-      <br />
-      <label>Image URL: </label>
-      <input type="url" value={form.img} name="img" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.img && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.img}</span></>}
-      </span>
-      <br />
-      <label>Link: </label>
-      <input type="url" value={form.link} name="link" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.link && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.link}</span></>}
-      </span>
-      <br />
-      <label>Categoria </label>
-      <input type="text" value={form.category} name="category" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.category && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.category}</span></>}
-      </span>
-      <br />
-      <label>Provincia o localización: </label>
-      <input type="text" value={form.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.provinceOrLocation && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.provinceOrLocation}</span></>}
-      </span>
-      <br />
-      <label>Description: </label>
-      <input type="textarea" value={form.description} name="description" onChange={changeHandler} />
-      <span className={style.error}>
-        {errors.description && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.description}</span></>}
-      </span>
-      <br />
-      <button type="submit" class="btn btn-primary">Crear</button>
-    </form >
+    <Form onSubmit={submitHandler}>
+      <Form.Group className="mb-3" value={form.title} name="title" onChange={changeHandler}>
+        <Form.Label>Titulo</Form.Label>
+        <Form.Control type="text" />
+      </Form.Group>
+      <Form.Group className="mb-3" value={form.img} name="img" onChange={changeHandler}>
+        <Form.Label>Imagen</Form.Label>
+        <Form.Control type="url" />
+      </Form.Group>
+      <Form.Group className="mb-3" value={form.link} name="link" onChange={changeHandler}>
+        <Form.Label>Enlace adicional</Form.Label>
+        <Form.Control type="url" />
+      </Form.Group>
+      <Form.Group className="mb-3" value={form.category} name="category" onChange={changeHandler}>
+        <Form.Label>Categoria</Form.Label>
+        <Form.Control type="text" />
+      </Form.Group>
+      <Form.Group className="mb-3" value={form.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler}>
+        <Form.Label>Provincia o Localización</Form.Label>
+        <Form.Control type="text" />
+      </Form.Group>
+      <Form.Group className="mb-3" value={form.description} name="description" onChange={changeHandler}>
+        <Form.Label>Descripción de la noticia</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+      <Button variant="primary">Crear</Button>
+    </Form>
+    // <form onSubmit={submitHandler} className={style.form}>
+    //   {(modal) && (
+    //     <div className={style.modal}>
+    //       <div onClick={toggleModal} className={style.overlay}></div>
+    //       <div className={style.modalContent}>
+    //         {!loading ? (
+    //           <>
+    //             {isApiError ?
+    //               <><img className={style.imgNotCreate} src="notCreate-icon.png" alt="not create img"></img>
+    //                 <h2>Hubo un error con la creación de la noticia</h2></>
+    //               :
+    //               <><img className={style.imgCreate} src="create-icon.png" alt="create img"></img>
+    //                 <h2>Se creó la noticia correctamente</h2></>}
+    //             <p>{apiResponse}</p>
+    //           </>
+    //         ) : (
+    //           <>
+    //             <img className={style.imgNotCreate} src="loading.gif" alt="loading img"></img>
+    //           </>
+    //         )}
+    //         < button className={style.closeModal} onClick={toggleModal}>X</button>
+    //       </div>
+    //     </div>
+    //   )
+    //   }
+    //   <div className={style.title}>
+    //     <h2> Crear Noticia </h2>
+    //   </div>
+    //   <label>Titulo </label>
+    //   <input type="text" value={form.title} name="title" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.title && <><img className={style.img} src="error-icon.png" alt="error"></img><span className={style.span}>{errors.title}</span></>}
+    //   </span>
+    //   <br />
+    //   <label>Image URL: </label>
+    //   <input type="url" value={form.img} name="img" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.img && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.img}</span></>}
+    //   </span>
+    //   <br />
+    //   <label>Link: </label>
+    //   <input type="url" value={form.link} name="link" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.link && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.link}</span></>}
+    //   </span>
+    //   <br />
+    //   <label>Categoria </label>
+    //   <input type="text" value={form.category} name="category" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.category && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.category}</span></>}
+    //   </span>
+    //   <br />
+    //   <label>Provincia o localización: </label>
+    //   <input type="text" value={form.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.provinceOrLocation && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.provinceOrLocation}</span></>}
+    //   </span>
+    //   <br />
+    //   <label>Description: </label>
+    //   <input type="textarea" value={form.description} name="description" onChange={changeHandler} />
+    //   <span className={style.error}>
+    //     {errors.description && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.description}</span></>}
+    //   </span>
+    //   <br />
+    //   <button type="submit" class="btn btn-primary">Crear</button>
+    // </form >
   )
 }
 
