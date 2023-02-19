@@ -10,7 +10,7 @@ const handleCreateNewsLetter = async(req, res)=>{
         if (duplicate)return res.status(400).json({message:"Este email ya esta registrado"})
         const newSuscriber = await new newsLetter({fullName,email})
         await newSuscriber.save();
-        return res.status(200).json(newSuscriber)
+        return res.sendStatus(201)
     } catch (error) {
         return res.status(400).json({message:error.message})
     }

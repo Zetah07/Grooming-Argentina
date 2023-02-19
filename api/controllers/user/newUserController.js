@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const userStatus = require("../../models/userStatus");
 
 const handleNewUser = async (req, res) => {
-  const { username, password, registrationId, name } = req.body;
+  const { username, password, registrationId, name, rol} = req.body;
   if (!username || !password)
     return res
       .status(400)
@@ -30,7 +30,9 @@ const handleNewUser = async (req, res) => {
       password: hashedPwd,
       name: name,
     });
-
+    if (rol){
+      newUser.rol = rol
+    }
     await newUser.save();
     return res.status(201).json({ messege: `Usuario ${username} creado` });
   } catch (error) {
