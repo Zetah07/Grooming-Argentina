@@ -1,12 +1,15 @@
 import React from 'react'
-import Pagination from "../Pages/Pagination/Pagination.jsx";
+import PaginationNews from "../Pages/PaginationNews/PaginationNews.jsx";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from '../NewCard/NewCard';
 import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
 import { getAllNews } from '../../Redux/Actions/index.js';
 import s from "./News.module.css";
-import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const News = () => {
 
@@ -80,30 +83,34 @@ const News = () => {
       <span>Noticias</span>
     </div>
     <br />
-    <div>
+    <Container>
+      <Row>
+        <Col xs={12} md={8}>
+          {items.map(paper => {
+            return <NewCard
+              key={paper.id}
+              id={paper.id}
+              title={paper.title}
+              image={paper.img}
+              description={paper.description}
+              createdAt={paper.createdAt}
+              category={paper.category}
+            />
+          })}</Col>
+        <Col xs={6} md={4}><SearchBar /></Col>
+      </Row>
+    </Container>
+    {/* <div>
       <ul>
-        <li><SearchBar /></li>
+        <li></li>
       </ul>
     </div>
     <div class="container">
       <div class="row g-5">
-        {items.map(paper => {
-          return <NewCard
-            key={paper.id}
-            id={paper.id}
-            title={paper.title}
-            image={paper.img}
-            description={paper.description}
-            createdAt={paper.createdAt}
-            category={paper.category}
-          />
-        })}
       </div>
-    </div>
-    <Link to={"/crearnoticia"}>
-      <button type="button" class="btn btn-primary">Crear Noticia</button>
-    </Link>
-    <Pagination totalNews={totalNews}
+    </div> */}
+    <Button variant="primary" href="/crearnoticia">Crear Noticia</Button>
+    <PaginationNews totalNews={totalNews}
       firstHandler={firstHandler}
       prevHandler={prevHandler}
       nextHandler={nextHandler}

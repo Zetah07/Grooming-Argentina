@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 
 const NewCard = ({ image, title, description, createdAt, category }) => {
     return (
@@ -11,8 +12,8 @@ const NewCard = ({ image, title, description, createdAt, category }) => {
                     <p class="card-subtitle mb-2 text-muted">Publicado: {createdAt}</p>
                     <p class="card-text">{description}</p>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary">Compartir</a>
-                        <a href="#" class="btn btn-primary">Leer más</a>
+                        <Button href="#" variant="primary">Compartir</Button>
+                        <Button href="#" variant="primary">Leer más</Button>
                     </div>
                 </div>
             </div>
