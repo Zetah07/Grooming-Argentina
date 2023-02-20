@@ -1,7 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 
-const NewCard = ({ image, title, description, createdAt, category }) => {
+const NewCard = ({ id, image, title, description, createdAt, category }) => {
     return (
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card" >
@@ -13,7 +13,7 @@ const NewCard = ({ image, title, description, createdAt, category }) => {
                     <p class="card-text">{description}</p>
                     <div class="card-body">
                         <Button href="#" variant="primary">Compartir</Button>
-                        <Button href="#" variant="primary">Leer más</Button>
+                        <Button href={`/noticias/${id}`} variant="primary">Leer más</Button>
                     </div>
                 </div>
             </div>
