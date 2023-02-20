@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 const NewCard = ({ id, image, title, description, createdAt, category }) => {
     return (
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-6">
             <div class="card" >
                 <img src={image} alt={title} class="card-img-top" />
                 <div class="card-body">
