@@ -163,7 +163,7 @@ Por ejemplo:
 		"location": "Medellin",
 		"address": "direccion de muestra",
 		"document": 11111111,
-		"adjDocument": "placeholder",
+		"adjDocument": "document path",
 		"phone": 22222222,
 		"schooling": "Nivel de estudios",
 		"profession": "Profesion",
@@ -173,7 +173,7 @@ Por ejemplo:
 		"twitter": "link de twitter",
 		"instagram": "link de instagram",
 		"linkedIn": "link de linkedin",
-		"CV": "placeholder",
+		"CV": "CV path",
 		"status": "pending",
 		"howManyHours": 1987,
 		"createdAt": "2023-02-15T23:53:28.279Z",
@@ -185,35 +185,51 @@ Por ejemplo:
 
 ## Post
 Para crear un nuevo userStatus se debe proporcionar toda la informacion del usuario
-Nota a excepcion del "howManyHours" todos los demas campos son obligatorios
-Ejemplo:
+Esta peticion espera que el body sea tipo "multipart/form-data"  con 3 campos: "userRegister", "CV" ,"adjDocument".
+El campo userRegister espera que su contenido sea un JSON con los datos del usuario en registro, mientras que CV y adjDocument espera un archivo tipo PDF.
+Ejemplo de peticion con axios:
 
 ```
 /userstatus
-BODY:
-{
-  "userRegister": {
-    "name": "nombres",
-    "lastName": "apellidos",
-    "birthDate": "1995-12-17T03:24:00",
-    "genre": "genero",
-    "nationality": "Nacionalidad",
-    "province": "Provincia",
-    "location": "Medellin",
-    "address": "direccion de muestra",
-    "document": 11111,
-    "phone": 111111,
-    "schooling": "Nivel de estudios",
-    "profession": "Profesion",
-    "email": "correoUsuario@muestra.com",
-    "howKnowGrooming": "Como conocio grooming",
-    "facebook": "link de facebook",
-	"twitter": "link de twitter",
-	"instagram": "link de instagram",
-	"linkedIn": "link de linkedin",
-    "howManyHours": 40
-  }
+
+const sampleInfo = {
+  "name": "nombres",
+  "lastName": "apellidos",
+  "birthDate": "1995-12-17T03:24:00",
+  "genre": "genero",
+  "nationality": "Nacionalidad",
+  "province": "Provincia",
+  "location": "Medellin",
+  "address": "direccion de muestra",
+  "document": 11111,
+  "phone": 111111,
+  "schooling": "Nivel de estudios",
+  "profession": "Profesion",
+  "email": "correoUsuario@muestra.com",
+  "howKnowGrooming": "Como conocio grooming",
+  "facebook": "link de facebook",
+  "twitter": "link de twitter",
+  "instagram": "link de instagram",
+  "linkedIn": "link de linkedin",
+  "howManyHours": 40
 }
+
+const formData = new FormData();
+//CV and documentCopy are files
+formData.append("CV", CV);
+formData.append("documentCopy", documentCopy);
+formData.set("userRegister", JSON.stringify(sampleInfo));
+axios.post("apiPath/userstatus", formData, {
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+}).then((res) => {
+//Succes code here;
+})
+.catch((err) => {
+//Error code here;
+});
+
 ```
 
 ## Put
@@ -501,3 +517,19 @@ Por ejemplo:
 	"message": "Se ha borrado el usuario 11111"
 }
 ```
+
+
+## Documents
+
+# Get
+Para traer un documento se debe especificar cualDocumento y el numero de documento del usuario
+Se puede consultar el "CV" o el "adJDocument"
+Por ejemplo
+```
+/documents
+BODY
+{
+	"adjDocument":"1111"
+}
+```
+Este respondera con el archivo buscado
