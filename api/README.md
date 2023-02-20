@@ -517,3 +517,19 @@ Por ejemplo:
 	"message": "Se ha borrado el usuario 11111"
 }
 ```
+
+
+## Documents
+
+# Get
+Para traer un documento se debe especificar cualDocumento y el numero de documento del usuario
+Se puede consultar el "CV" o el "adJDocument"
+Por ejemplo
+```
+/documents
+BODY
+{
+	"adjDocument":"1111"
+}
+```
+Este respondera con el archivo buscado
