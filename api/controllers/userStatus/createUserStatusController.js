@@ -1,11 +1,21 @@
 const userStatus = require("../../models/userStatus");
 const user = require("../../models/user");
 
-
 const handleUserStatusCreation = async (req, res) => {
   try {
-    const { userRegister } = req.body;
-    //pendiente de CV Y DocumentoAdj
+    const { CV, adjDocument } = req.files;
+    const userRegister = JSON.parse(req.body["userRegister"]);
+
+    //console.log(userRegister, "-------USER REGISTER------");
+    if (!CV.name.includes(".pdf") || !adjDocument.name.includes(".pdf")) {
+      return res
+        .status(400)
+        .json({ message: `Los archivos deben ser tipo PDF` });
+    }
+
+    const pathCV = __dirname + "../../../files/CVs/" + CV.name;
+    const pathDcoument =
+      __dirname + "../../../files/copyDocument/" + adjDocument.name;
 
     for (const key in userRegister) {
       if (key !== "howManyHours") {
@@ -33,29 +43,53 @@ const handleUserStatusCreation = async (req, res) => {
       "howManyHours",
     ];
 
-    const promises = Object.keys(userRegister)
-      .filter(key => !repeatables.includes(key))
-      .map(key => userStatus.findOne({ [key]: userRegister[key] }).exec());
+    const noRepeatables = [
+      "document",
+      "phone",
+      "email",
+      "facebook",
+      "twitter",
+      "instagram",
+      "linkedIn"
+    ]
 
+    const promises = Object.keys(userRegister)
+      .filter((key) => !repeatables.includes(key))
+      .map((key) => userStatus.findOne({ [key]: userRegister[key] }).exec());
     const results = await Promise.all(promises);
 
     for (let i = 0; i < results.length; i++) {
       const duplicate = results[i];
+      console.log(duplicate);
       if (duplicate) {
-        return res
-          .status(400)
-          .json({ message: `El campo ${Object.keys(userRegister)[i]} Ya se encuentra regisrtado` });
+        console.log(i);
+        return res.status(400).json({
+          message: `El campo ${
+            noRepeatables[i]
+          } Ya se encuentra regisrtado`,
+        });
       }
     }
-    //revisar el front con que formato va a enviar la fecha
-    const brithDate = new Date(userRegister.brithDate);
+
+    CV.mv(pathCV, (err) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+    });
+    adjDocument.mv(pathDcoument, (err) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+    });
+
+    const brithDate = new Date(userRegister["birthDate"]);
     const userStatusCorrection = {
       ...userRegister,
       status: "pending",
-      adjDocument: "placeholder",
-      CV: "placeholder",
-      brithDate: brithDate,
+      adjDocument: pathDcoument,
+      CV: pathCV,
     };
+
     const newUserStatus = new userStatus(userStatusCorrection);
     await newUserStatus.save();
 
