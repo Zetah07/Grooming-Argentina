@@ -5,8 +5,6 @@ const handleUserStatusCreation = async (req, res) => {
   try {
     const { CV, adjDocument } = req.files;
     const userRegister = JSON.parse(req.body["userRegister"]);
-
-    //console.log(userRegister, "-------USER REGISTER------");
     if (!CV.name.includes(".pdf") || !adjDocument.name.includes(".pdf")) {
       return res
         .status(400)
@@ -59,10 +57,8 @@ const handleUserStatusCreation = async (req, res) => {
     const results = await Promise.all(promises);
 
     for (let i = 0; i < results.length; i++) {
-      const duplicate = results[i];
-      console.log(duplicate);
+      const duplicate = results[i];;
       if (duplicate) {
-        console.log(i);
         return res.status(400).json({
           message: `El campo ${
             noRepeatables[i]
