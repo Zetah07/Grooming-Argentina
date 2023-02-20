@@ -15,7 +15,7 @@ const NewDetails = () => {
     dispatch(getNewByID(id));
   }, [dispatch, id]);
   return (
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="container">
       <div class="card" >
         <img src={newID.img} alt={newID.title} class="card-img-top" />
         <div class="card-body">

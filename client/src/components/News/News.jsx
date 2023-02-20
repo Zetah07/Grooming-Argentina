@@ -77,7 +77,7 @@ const News = () => {
   // const handleChange = (event) => {
   //   console.log(event);
   // }
-  
+
   return (<>
     <div className={s.container1}>
       <span>Noticias</span>
@@ -85,7 +85,7 @@ const News = () => {
     <br />
     <Container>
       <Row>
-        <Col xs={12} md={8}>
+        <Col xs={12} md={8} lg={8}>
           {items.map(paper => {
             return <NewCard
               key={paper._id}
@@ -97,7 +97,7 @@ const News = () => {
               category={paper.category}
             />
           })}</Col>
-        <Col xs={6} md={4}><SearchBar /></Col>
+        <Col xs={6} md={4} lg={4}><SearchBar /></Col>
       </Row>
     </Container>
     <Button variant="primary" href="/crearnoticia">Crear Noticia</Button>
