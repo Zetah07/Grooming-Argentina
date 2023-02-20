@@ -5,15 +5,14 @@ const handleUserStatusCreation = async (req, res) => {
   try {
     const { CV, adjDocument } = req.files;
     const userRegister = JSON.parse(req.body["userRegister"]);
-    if (!CV.name.includes(".pdf") || !adjDocument.name.includes(".pdf")) {
+    if (!CV || !adjDocument)
+      return res
+        .status(400)
+        .json({ message: `No se resivio CV y/o Documento` });
+    if (!CV.name.includes(".pdf") || !adjDocument.name.includes(".pdf"))
       return res
         .status(400)
         .json({ message: `Los archivos deben ser tipo PDF` });
-    }
-
-    const pathCV = __dirname + "../../../files/CVs/" + CV.name;
-    const pathDcoument =
-      __dirname + "../../../files/copyDocument/" + adjDocument.name;
 
     for (const key in userRegister) {
       if (key !== "howManyHours") {
@@ -48,8 +47,8 @@ const handleUserStatusCreation = async (req, res) => {
       "facebook",
       "twitter",
       "instagram",
-      "linkedIn"
-    ]
+      "linkedIn",
+    ];
 
     const promises = Object.keys(userRegister)
       .filter((key) => !repeatables.includes(key))
@@ -57,15 +56,17 @@ const handleUserStatusCreation = async (req, res) => {
     const results = await Promise.all(promises);
 
     for (let i = 0; i < results.length; i++) {
-      const duplicate = results[i];;
+      const duplicate = results[i];
       if (duplicate) {
         return res.status(400).json({
-          message: `El campo ${
-            noRepeatables[i]
-          } Ya se encuentra regisrtado`,
+          message: `El campo ${noRepeatables[i]} Ya se encuentra regisrtado`,
         });
       }
     }
+
+    const pathCV = __dirname + "../../../files/CVs/" + userRegister["document"] + ".pdf";
+    const pathDcoument =
+      __dirname + "../../../files/copyDocument/" + userRegister["document"] +  ".pdf";
 
     CV.mv(pathCV, (err) => {
       if (err) {
