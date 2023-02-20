@@ -77,7 +77,7 @@ const News = () => {
   // const handleChange = (event) => {
   //   console.log(event);
   // }
-
+  
   return (<>
     <div className={s.container1}>
       <span>Noticias</span>
@@ -88,8 +88,8 @@ const News = () => {
         <Col xs={12} md={8}>
           {items.map(paper => {
             return <NewCard
-              key={paper.id}
-              id={paper.id}
+              key={paper._id}
+              id={paper._id}
               title={paper.title}
               image={paper.img}
               description={paper.description}
@@ -100,15 +100,6 @@ const News = () => {
         <Col xs={6} md={4}><SearchBar /></Col>
       </Row>
     </Container>
-    {/* <div>
-      <ul>
-        <li></li>
-      </ul>
-    </div>
-    <div class="container">
-      <div class="row g-5">
-      </div>
-    </div> */}
     <Button variant="primary" href="/crearnoticia">Crear Noticia</Button>
     <PaginationNews totalNews={totalNews}
       firstHandler={firstHandler}
