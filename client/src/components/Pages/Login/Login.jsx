@@ -36,7 +36,7 @@ const Login = () => {
     }
   }, [isLoading]);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
