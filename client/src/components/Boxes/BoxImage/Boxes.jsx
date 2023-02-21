@@ -6,7 +6,7 @@ export default function BoxImage({src}){
     backgroundImage: `url(${src})`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
-    height: '300px', // altura opcional
+    height: '320px', // altura opcional
     width: '500px', // largura opcional
   };
     return(

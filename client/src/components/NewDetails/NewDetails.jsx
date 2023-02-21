@@ -15,15 +15,15 @@ const NewDetails = () => {
     dispatch(getNewByID(id));
   }, [dispatch, id]);
   return (
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="container">
       <div class="card" >
+        <h2 class="card-title">{newID.title}</h2>
         <img src={newID.img} alt={newID.title} class="card-img-top" />
         <div class="card-body">
-          <h2 class="card-title">{newID.title}</h2>
           <p class="card-subtitle mb-2 text-muted">Categoria: {newID.category}</p>
           <p class="card-subtitle mb-2 text-muted">Publicado: {newID.createdAt}</p>
           <p class="card-text">Descripción: {newID.description}</p>
-          <p class="card-text">Enlaces adicionales: {newID.Link}</p>
+          <p>Enlaces adicionales:</p><a href={newID.link} class="card-link fs-6">{newID.link}</a>
           <div class="card-body">
             <Button href="#" variant="primary">Compartir</Button>
           </div>
