@@ -8,6 +8,8 @@ const userStatusRouter = require("./userStatus/userStatusRouter")
 const coursesRouter = require("./courses/coursesRouter")
 const newsLetterRouter = require("./newsLetter/newsLetterRoter")
 const blogs = require("./blogs/blogsRouter")
+const reports = require("./reports/reportsRout")
+const documentsRouter = require("./documents/documentsRouter")
 
 router.use("/users", userRoute);
 router.use("/auth", authRouter);
@@ -15,7 +17,9 @@ router.use("/userstatus", userStatusRouter);
 router.use("/news", newsRouter);
 router.use("/courses", coursesRouter)
 router.use("/newsletter", newsLetterRouter)
-router.use("/blogs", blogs);
+router.use("/blog", blogs);
+router.use("/reports", reports);
+router.use("/documents", documentsRouter)
 
 
 module.exports = router;

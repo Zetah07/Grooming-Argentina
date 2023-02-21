@@ -14,11 +14,11 @@ import CreateNew from "./components/CreateNew/CreateNew";
 import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
+import Footerx from "../src/components/Footerx/Footerx";
 
 
 function App() {
   const usl = useLocation().pathname
-  console.log(usl)
 
   return (
     <div className="App">
@@ -53,6 +53,7 @@ function App() {
       <Route exact path="/nosotros">
         <About />
       </Route>
+      {usl !== "/" ? <Footerx /> : null}
     </div>
   );
 }

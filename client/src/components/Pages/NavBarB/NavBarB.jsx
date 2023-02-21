@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 
 const NavBarB = () => {
     return (
-        <Navbar className={s.colorF} expand="lg">
+        <Navbar expand="lg" sticky=''>
             <Container >
                 <Navbar.Brand as={Link} to='/'>
                     <img src={Logo} alt="Logo" />
@@ -23,7 +23,7 @@ const NavBarB = () => {
                         <Nav.Link as={Link} to='/nosotros' className={s.lashes}>Nosotros</Nav.Link>
                         <Nav.Link as={Link} to='/noticias' className={s.lashes}>Noticias</Nav.Link>
                         <Nav.Link as={Link} to='/contactanos' className={s.lashes}>contactanos</Nav.Link>
-                        <Nav.Link as={Link} to='/login' className={s.lashes}>Login</Nav.Link>
+                        <Nav.Link as={Link} to='/login' ><i className="bi bi-person "></i></Nav.Link>
                     </Nav>
                     <Button><Nav.Link as={Link} to='/voluntariado'>Ser Voluntario</Nav.Link></Button>
                 </Navbar.Collapse>
