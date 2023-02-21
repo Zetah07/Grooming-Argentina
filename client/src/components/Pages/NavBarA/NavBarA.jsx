@@ -11,19 +11,19 @@ import Button from 'react-bootstrap/Button';
 
 const NavBarA = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" sticky='top'>
       <Container >
         <Navbar.Brand as={Link} to='/'>
           <img src={Logo} alt="Logo" />
           <span className={s.span}>Grooming</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
-          <Nav   /*"me-auto"*/ >
+          <Nav /*"me-auto"*/ >
             <Nav.Link as={Link} to='/home'>Home</Nav.Link>
             <Nav.Link as={Link} to='/nosotros'>Nosotros</Nav.Link>
             <Nav.Link as={Link} to='/noticias'>Noticias</Nav.Link>
             <Nav.Link as={Link} to='/contactanos'>contactanos</Nav.Link>
-            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+            <Nav.Link as={Link} to='/login' className="bi bi-person "></Nav.Link>
 
           </Nav>
           <Button><Nav.Link as={Link} to='/voluntariado'>Ser Voluntario</Nav.Link></Button>
