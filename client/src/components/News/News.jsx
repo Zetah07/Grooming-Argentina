@@ -4,17 +4,15 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from '../NewCard/NewCard';
 import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
-import { getAllNews } from '../../Redux/Actions/index.js';
+import { getAllNews, resetFilter } from '../../Redux/Actions/index.js';
 import s from "./News.module.css";
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const News = () => {
 
   const dispatch = useDispatch();
   const newspaper = useSelector(state => state.news);
+  const filter = useSelector(state => state.filter);
   const newsPerPage = 6;
   const pageNumberLimit = 5;
   const totalNews = newspaper.length;
@@ -27,6 +25,16 @@ const News = () => {
   useEffect(() => {
     dispatch(getAllNews());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (filter === true) {
+      setCurrentPage(0);
+      setmaxPageNumberLimit(5);
+      setminPageNumberLimit(0);
+      setItems([...newspaper].splice(0, newsPerPage));
+      dispatch(resetFilter());
+    }
+  }, [dispatch, filter, newspaper]);
 
   const firstHandler = (firstPage) => {
     const firstIndex = firstPage * newsPerPage;
@@ -83,9 +91,10 @@ const News = () => {
       <span>Noticias</span>
     </div>
     <br />
-    <Container>
-      <Row>
-        <Col xs={12} md={8} lg={8}>
+    <div class="container">
+      <section class="row pb-3">
+        <article class="row g-3 col-12 col-md-4 order-md-1 col-lg-4 order-lg-1"><SearchBar /></article>
+        <article class="row g-3 col-12 col-md-8 col-lg-8 ">
           {items.map(paper => {
             return <NewCard
               key={paper._id}
@@ -96,22 +105,25 @@ const News = () => {
               createdAt={paper.createdAt}
               category={paper.category}
             />
-          })}</Col>
-        <Col xs={6} md={4} lg={4}><SearchBar /></Col>
-      </Row>
-    </Container>
+          })}
+        </article>
+      </section>
+      <div className="row offset-2">
+        <PaginationNews totalNews={totalNews}
+          firstHandler={firstHandler}
+          prevHandler={prevHandler}
+          nextHandler={nextHandler}
+          lastHandler={lastHandler}
+          pages={pages}
+          newsPerPage={newsPerPage}
+          currentPage={currentPage}
+          pageNumberLimit={pageNumberLimit}
+          maxPageNumberLimit={maxPageNumberLimit}
+          minPageNumberLimit={minPageNumberLimit} />
+      </div>
+    </div>
+    <br />
     <Button variant="primary" href="/crearnoticia">Crear Noticia</Button>
-    <PaginationNews totalNews={totalNews}
-      firstHandler={firstHandler}
-      prevHandler={prevHandler}
-      nextHandler={nextHandler}
-      lastHandler={lastHandler}
-      pages={pages}
-      newsPerPage={newsPerPage}
-      currentPage={currentPage}
-      pageNumberLimit={pageNumberLimit}
-      maxPageNumberLimit={maxPageNumberLimit}
-      minPageNumberLimit={minPageNumberLimit} />
   </>)
 }
 
