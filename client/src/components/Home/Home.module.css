@@ -1,8 +1,8 @@
 .container1{
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-  linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
+  background: linear-gradient(0deg, rgba(83, 82, 82, 0.2), rgba(0, 0, 0, 0.2)),
+  linear-gradient(0deg, rgba(36, 126, 190, 0.45), rgba(0, 75, 130, 0.45)),
   url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .container1 h1, .container3 h1, .container4 h1 {
     font-family: "Gotham Rounded";
@@ -27,6 +27,9 @@
   }
   .link{
     color:#ffffff;
+    font-family: "Helvetica";
+    font-size: 25px;
+    margin-top: 0;
   }
   .btn{
     font-family: "Helvetica";
@@ -39,13 +42,17 @@
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
+    gap: 5px;
+    justify-content: center;
   }
   .container2{
     display: flex;
-    flex-wrap: wrap;
+    padding: 10px 10%;
   }
-  .container2 div{
+  .divHalf{
     width: 50%;
+    padding: 10px;
+    justify-content: center;
   }
   .container2 h1{
     font-family: "Gotham Rounded";
@@ -71,4 +78,19 @@
   display: flex;
   flex-wrap: wrap;
   padding: 10%;
+}
+.container7{
+  padding: 10%;
+}
+.container6 div{
+  text-align: right;
+  padding-right: 10%;
+}
+@media (max-width: 600px) {
+  .divHalf {
+    width: 100%;
+  }
+  .container2{
+    display: block;
+  }
 }
