@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import s from './Boxes.module.css';
 
-export default function Boxes({Icon1, name}){
+export default function BoxColor({Icon1, name}){
     return(
         <Box
       sx={{
