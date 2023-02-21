@@ -1,0 +1,74 @@
+.title {
+  font-size: 50px;
+  font-family: "Gotham Rounded Bold";
+  color: #38568f;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.contact_link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #38568f;
+  font-family: "HelveticaNeue Medium";
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  color: #69696c;
+}
+
+.contact_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.contact_option {
+  color: #38568f;
+  text-align: center;
+  margin-bottom: 10px;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 576px) {
+  .contact_container {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .contact_option {
+    margin: 10px 0;
+    padding: 10px;
+  }
+}
+
+.contactForm {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.form_label {
+  color: #38568f;
+  font-size: 20px;
+  font-family: "HelveticaNeue Medium";
+}
+
+.submitButton {
+  font-size: 20px;
+  font-family: "HelveticaNeue Medium";
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 150px;
+}
