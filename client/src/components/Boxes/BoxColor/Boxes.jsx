@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import s from './Boxes.module.css';
 
-export default function BoxColor({Icon1, name}){
+export default function BoxColor({Icon1, name, width, height}){
     return(
         <Box
       sx={{
-        width: 150,
-        height: 160,
+        width: `${width}px`,
+        height: `${height}px`,
         marginBottom: 1,
         backgroundColor: 'primary.dark',
         '&:hover': {
