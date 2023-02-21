@@ -94,11 +94,12 @@
 @media (max-width: 480px) {
   .information h1 {
     height: 30vh;
-    font-size: 48px;
+    font-size: 45px;
   }
 
   .information h2 {
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: 35px;
   }
 
   /* .background {

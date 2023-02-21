@@ -36,6 +36,7 @@ const Contact = () => {
             >
               <i className="bi bi-envelope-at"></i>
             </a>
+
           </article>
 
           <article className={style.contact_option}>
@@ -51,6 +52,7 @@ const Contact = () => {
           </article>
         </div>
       </div>
+
       <Form ref={form} onSubmit={sendEmail} className={style.contactForm}>
         <Form.Group controlId="formName">
           <Form.Label className={style.form_label}>Nombre completo:</Form.Label>
@@ -104,5 +106,10 @@ const Contact = () => {
     </section>
   );
 };
+      <Footerx />
+    </section>
+
+  )
+}
 
 export default Contact;
