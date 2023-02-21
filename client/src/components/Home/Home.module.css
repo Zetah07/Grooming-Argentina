@@ -86,7 +86,7 @@
   text-align: right;
   padding-right: 10%;
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .divHalf {
     width: 100%;
   }
