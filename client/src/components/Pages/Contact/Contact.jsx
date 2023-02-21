@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import './Contact.module.css'
 import emailjs from '@emailjs/browser';
+import Footerx from '../../Footerx/Footerx';
 
 const {
   EMAIL_SERVICE, EMAIL_TEMPLATE, EMAIL_USER,
@@ -10,10 +11,10 @@ const {
 const Contact = () => {
   const form = useRef();
 
-  const sendEmail =(e) =>{
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(EMAIL_SERVICE,EMAIL_TEMPLATE, form.current,EMAIL_USER )
+    emailjs.sendForm(EMAIL_SERVICE, EMAIL_TEMPLATE, form.current, EMAIL_USER)
     e.target.reset()
   }
   return (
@@ -24,7 +25,7 @@ const Contact = () => {
         <div className='contact-options'>
           <article className='contact-option'>
             <h3>Email</h3>
-            <a href='mailto:contacto@groomingarg.org'target='_blank' >Envia el mensaje</a>
+            <a href='mailto:contacto@groomingarg.org' target='_blank' >Envia el mensaje</a>
           </article>
 
           <article className='contact-option'>
@@ -39,7 +40,9 @@ const Contact = () => {
           <button type='submit'>Enviar</button>
         </form>
       </div>
+      <Footerx />
     </section>
+
 
   )
 }
