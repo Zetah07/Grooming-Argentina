@@ -88,7 +88,6 @@ h4 {
 }
 
 .button {
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
@@ -119,3 +118,8 @@ h4 {
 
   }
 }
+
+/***********************Styles Boostrap Changed*******************/
+
+
+/*NavBar*/
