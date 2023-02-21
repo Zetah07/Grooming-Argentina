@@ -1,6 +1,9 @@
 import React from "react";
 // import { useDispatch } from "react-redux";
 import { useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
 
 const SearchBar = () => {
 
@@ -18,11 +21,14 @@ const SearchBar = () => {
             console.log(title)
         }
     }
-    return (
-        <div>
-            <input id="search" type="search" placeholder="Buscar..." onChange={searchHandler} value={search.title} />
-            <button type="submit" onClick={submitHandler} value={search.title}>Buscar</button>
-        </div>
+    const clearHandler = () => {
+    }
+    return (<Stack>
+        <Form.Control id="search" onChange={searchHandler} value={search.title} className="me-auto" placeholder="Buscar..." />
+        <Button variant="secondary" onClick={submitHandler} value={search.title}>Buscar</Button>
+        <div className="vr" />
+        <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
+    </Stack>
     )
 }
 

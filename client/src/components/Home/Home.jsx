@@ -3,10 +3,11 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import Container from 'react-bootstrap/Container';
 import React from 'react'
 import s from './Home.module.css';
-import Boxes from '../Boxes/Boxes';
-import { MdSportsTennis, MdBloodtype, MdCastForEducation } from 'react-icons/md';
-import { FaHandHoldingMedical, FaVirus } from 'react-icons/fa';
-import { GiFallingBlob } from 'react-icons/gi';
+// import BoxColor from '../Boxes/BoxColor/Boxes';
+// import BoxImage from '../Boxes/BoxImage/Boxes';
+// import { MdSportsTennis, MdBloodtype, MdCastForEducation } from 'react-icons/md';
+// import { FaHandHoldingMedical, FaVirus, FaPeopleArrows } from 'react-icons/fa';
+// import { GiFallingBlob } from 'react-icons/gi';
 import Cards from '../Card/Card';
 import Footerx from '../Footerx/Footerx';
 
@@ -37,14 +38,14 @@ const Home = () => {
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown was popularised.</p>
           <Button className="button" variant="primary">Learn more</Button>
         </div>
-        <div className={s.divBoxes}>
+        {/* <div className={s.divBoxes}>
           <Boxes name="Sports" Icon1={MdSportsTennis} />
           <Boxes name="Medical" Icon1={FaHandHoldingMedical} />
           <Boxes name="Blood" Icon1={MdBloodtype} />
           <Boxes name="Education" Icon1={MdCastForEducation} />
           <Boxes name="Natural disaster" Icon1={GiFallingBlob} />
           <Boxes name="Covid - 19" Icon1={FaVirus} />
-        </div>
+        </div> */}
       </div>
       <div className={s.container3}>
         <div>
