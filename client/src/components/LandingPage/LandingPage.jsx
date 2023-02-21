@@ -9,11 +9,10 @@ const LandingPage = () => {
     <div className={s.background}>
       {/* <NavBar className={s.NavBar} /> */}
       <Container className={s.information}>
-        <h1>Ahora  si soy un  <span>Puto</span> Responsive</h1>
+        <h1>Aqui debemos poner <span>una frase</span> que los describa</h1>
         <h2>
-          This help is focussed towards the poor and the needy who live among
-          us within our society and endeavours to bring about a change in
-          their life - a "GROOMING ARGENTINA".
+          En Grooming Argentina consideramos que la prevención es fundamental para evitar este flagelo y trabajamos en consecuencia de ello. No existe vacuna contra el grooming, por lo que las charlas y talleres de concientización, tanto para adultos como para niños,
+          son de fundamental importancia para erradicar este delito.
         </h2>
         <button className="button">
           <a
@@ -22,19 +21,10 @@ const LandingPage = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Donate Now
+            Dona Ahora
           </a>
         </button>
-        {/* <Button variant="contained" color="primary" >
-          <a
-            // className="text-btn"
-            href="https://servicios.paypertic.com/formularios/comercios/1466"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Donate Now
-          </a>
-        </Button> */}
+
       </Container>
     </div>
   );
