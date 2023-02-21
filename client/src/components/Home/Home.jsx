@@ -93,37 +93,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={s.container3}>
-        <div>
-          <h1>
-            Latest caused of <span>GROOMING ARGENTINA</span>
-          </h1>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the when an unknown was popularised. It is a long
-            established fact that reader distracted by the the readable content
-            off page looking at its layout point.
-          </p>
-          <div className={s.divCards}>
-            <Cards
-              tittle="Event Registration"
-              body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              imgUrl="https://images.pexels.com/photos/1212805/pexels-photo-1212805.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            />
-            <Cards
-              tittle="Monthly Donation"
-              body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              imgUrl="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            />
-            <Cards
-              tittle="Donate Now"
-              body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              imgUrl="https://images.pexels.com/photos/939702/pexels-photo-939702.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            />
-          </div>
-          <button className="button">More causes</button>
-        </div>
         <div className={s.container3}>
           <div>
             <h1>
@@ -155,7 +124,6 @@ const Home = () => {
             </div>
             <button className="button">More causes</button>
           </div>
-        </div>
         <div className={s.container4}>
           <div>
             <Container>
