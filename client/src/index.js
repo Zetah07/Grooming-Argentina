@@ -10,6 +10,7 @@ import store from './Redux/Store'
 import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
