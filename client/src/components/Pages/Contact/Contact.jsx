@@ -36,7 +36,6 @@ const Contact = () => {
             >
               <i className="bi bi-envelope-at"></i>
             </a>
-
           </article>
 
           <article className={style.contact_option}>
@@ -106,10 +105,5 @@ const Contact = () => {
     </section>
   );
 };
-      <Footerx />
-    </section>
-
-  )
-}
 
 export default Contact;
