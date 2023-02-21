@@ -1,19 +1,17 @@
-import React from 'react'
-import { useState } from 'react';
-import style from './CreateNew.module.css';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import s from "./CreateNew.module.css"
 
 const CreateNew = () => {
-  const [errors, setErrors] = useState({})
-  const [modal, setModal] = useState(false);
-  const [apiResponse, setApiResponse] = useState("");
-  const [isApiError, setIsApiError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const regexURL = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/;
 
-  const [form, setForm] = useState({
+  const [validated, setValidated] = useState(false);
+
+  const [formNew, setFormNew] = useState({
     title: "",
     img: "",
     description: "",
@@ -22,183 +20,107 @@ const CreateNew = () => {
     provinceOrLocation: "",
   });
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  if (modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
-
   const changeHandler = (event) => {
     const { name, value } = event.target;
-    setForm({ ...form, [name]: value })
+    setFormNew({ ...formNew, [name]: value })
   }
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const err = onValidate(form);
-    if (err === null) {
-      setLoading(true);
-      axios.post("http://localhost:3500/news", form)
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      axios.post("http://localhost:3500/news", formNew)
         .then(res => {
-          alert("Creado");
-          setIsApiError(false);
-          setApiResponse(res.data.message);
-          setLoading(false);
-          setModal(!modal);
-          setErrors({});
-          setForm({
-            title: "",
-            img: "",
-            description: "",
-            link: "",
-            category: "",
-            provinceOrLocation: ""
-          });
+          alert(res.data.message);
         })
         .catch((error) => {
-          console.log(error)
-          setIsApiError(true);
-          setApiResponse(error.response.data.message);
-          setLoading(false);
-          setModal(!modal);
-          setErrors({});
+          alert(error.response.data.message);
         });
     }
-    else {
-      setErrors(err);
-    }
-  }
+    setValidated(true);
+  };
 
-
-  const onValidate = (form) => {
-    let isError = false;
-    let error = {};
-    if (form.title.length <= 3) {
-      error.title = "El titulo no puede ser menor a 3 letras";
-      isError = true;
-    }
-    if (!regexURL.test(form.img)) {
-      error.img = "La url ingresada no es valida";
-      isError = true;
-    }
-    if (!regexURL.test(form.link)) {
-      error.image = "La url ingresada no es valida";
-      isError = true;
-    }
-    if (form.description.length <= 20) {
-      error.description = "La descripción no puede ser menor a 20 letras";
-      isError = true;
-    }
-    if (form.category.length <= 3) {
-      error.category = "La categoria no puede ser menor a 3 letras";
-      isError = true;
-    }
-    if (form.provinceOrLocation.length <= 3) {
-      error.provinceOrLocation = "La provincia no puede ser menor a 3 letras";
-      isError = true;
-    }
-    return isError ? error : null;
-  }
-
-  return (
-    <Form onSubmit={submitHandler}>
-      <Form.Group className="mb-3" value={form.title} name="title" onChange={changeHandler}>
-        <Form.Label>Titulo</Form.Label>
-        <Form.Control type="text" />
-      </Form.Group>
-      <Form.Group className="mb-3" value={form.img} name="img" onChange={changeHandler}>
-        <Form.Label>Imagen</Form.Label>
-        <Form.Control type="url" />
-      </Form.Group>
-      <Form.Group className="mb-3" value={form.link} name="link" onChange={changeHandler}>
-        <Form.Label>Enlace adicional</Form.Label>
-        <Form.Control type="url" />
-      </Form.Group>
-      <Form.Group className="mb-3" value={form.category} name="category" onChange={changeHandler}>
-        <Form.Label>Categoria</Form.Label>
-        <Form.Control type="text" />
-      </Form.Group>
-      <Form.Group className="mb-3" value={form.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler}>
-        <Form.Label>Provincia o Localización</Form.Label>
-        <Form.Control type="text" />
-      </Form.Group>
-      <Form.Group className="mb-3" value={form.description} name="description" onChange={changeHandler}>
-        <Form.Label>Descripción de la noticia</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-      <Button variant="primary">Crear</Button>
-    </Form>
-    // <form onSubmit={submitHandler} className={style.form}>
-    //   {(modal) && (
-    //     <div className={style.modal}>
-    //       <div onClick={toggleModal} className={style.overlay}></div>
-    //       <div className={style.modalContent}>
-    //         {!loading ? (
-    //           <>
-    //             {isApiError ?
-    //               <><img className={style.imgNotCreate} src="notCreate-icon.png" alt="not create img"></img>
-    //                 <h2>Hubo un error con la creación de la noticia</h2></>
-    //               :
-    //               <><img className={style.imgCreate} src="create-icon.png" alt="create img"></img>
-    //                 <h2>Se creó la noticia correctamente</h2></>}
-    //             <p>{apiResponse}</p>
-    //           </>
-    //         ) : (
-    //           <>
-    //             <img className={style.imgNotCreate} src="loading.gif" alt="loading img"></img>
-    //           </>
-    //         )}
-    //         < button className={style.closeModal} onClick={toggleModal}>X</button>
-    //       </div>
-    //     </div>
-    //   )
-    //   }
-    //   <div className={style.title}>
-    //     <h2> Crear Noticia </h2>
-    //   </div>
-    //   <label>Titulo </label>
-    //   <input type="text" value={form.title} name="title" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.title && <><img className={style.img} src="error-icon.png" alt="error"></img><span className={style.span}>{errors.title}</span></>}
-    //   </span>
-    //   <br />
-    //   <label>Image URL: </label>
-    //   <input type="url" value={form.img} name="img" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.img && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.img}</span></>}
-    //   </span>
-    //   <br />
-    //   <label>Link: </label>
-    //   <input type="url" value={form.link} name="link" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.link && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.link}</span></>}
-    //   </span>
-    //   <br />
-    //   <label>Categoria </label>
-    //   <input type="text" value={form.category} name="category" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.category && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.category}</span></>}
-    //   </span>
-    //   <br />
-    //   <label>Provincia o localización: </label>
-    //   <input type="text" value={form.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.provinceOrLocation && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.provinceOrLocation}</span></>}
-    //   </span>
-    //   <br />
-    //   <label>Description: </label>
-    //   <input type="textarea" value={form.description} name="description" onChange={changeHandler} />
-    //   <span className={style.error}>
-    //     {errors.description && <><img className={style.img} src="error-icon.png" alt="error img"></img><span className={style.span}>{errors.description}</span></>}
-    //   </span>
-    //   <br />
-    //   <button type="submit" class="btn btn-primary">Crear</button>
-    // </form >
-  )
+  return (<>
+    <div className={s.container1}>
+      <span>Crear Noticia</span>
+    </div>
+    <div class="container">
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>Titulo</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              value={formNew.title}
+              name="title"
+              onChange={changeHandler}
+            />
+            <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationCustom02">
+            <Form.Label>Imagen URL</Form.Label>
+            <Form.Control
+              required
+              type="Url"
+              placeholder="Ingresar el enlace de la Imagen"
+              value={formNew.img}
+              name="img"
+              onChange={changeHandler}
+            />
+            <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+            <Form.Label>Link adicional</Form.Label>
+            <InputGroup hasValidation>
+              <Form.Control
+                type="Url"
+                placeholder="Ingrese el enlace externo de la noticia"
+                aria-describedby="inputGroupPrepend"
+                value={formNew.link}
+                name="link"
+                onChange={changeHandler}
+              />
+            </InputGroup>
+          </Form.Group>
+        </Row>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="6" controlId="validationCustom03">
+            <Form.Label>Provincia o Localización</Form.Label>
+            <Form.Control type="text" required value={formNew.provinceOrLocation} name="provinceOrLocation" onChange={changeHandler} />
+            <Form.Control.Feedback type="invalid">
+              Por favor ingrese la provincia o Localización de la noticia.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="6" controlId="validationCustom04">
+            <Form.Label>Categoria</Form.Label>
+            <Form.Control type="text" required value={formNew.category} name="category" onChange={changeHandler} />
+            <Form.Control.Feedback type="invalid">
+              Por favor ingrese al menos una categoria.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="validationCustom05">
+            <Form.Label>Descripción de la noticia</Form.Label>
+            <Form.Control as="textarea" rows={3} required value={formNew.description} name="description" onChange={changeHandler} />
+            <Form.Control.Feedback type="invalid">
+              Por favor ingrese la descaripción de la noticia.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Row>
+        <Form.Group className="mb-3">
+          <Form.Check
+            required
+            label="Acepta que la información se encuentra correcta."
+            feedback="Por favor valide que la información se encuentre correcta.."
+            feedbackType="invalid"
+          />
+        </Form.Group>
+        <Button type="submit">Crear</Button>
+      </Form>
+    </div>
+  </>);
 }
 
 export default CreateNew;

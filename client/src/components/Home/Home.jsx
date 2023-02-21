@@ -4,11 +4,12 @@ import React from 'react'
 import s from './Home.module.css';
 import BoxColor from '../Boxes/BoxColor/Boxes';
 import BoxImage from '../Boxes/BoxImage/Boxes';
-import {MdSportsTennis, MdBloodtype, MdCastForEducation} from 'react-icons/md';
-import {FaHandHoldingMedical, FaVirus, FaPeopleArrows} from 'react-icons/fa';
-import {GiFallingBlob} from 'react-icons/gi';
+import { MdSportsTennis, MdBloodtype, MdCastForEducation } from 'react-icons/md';
+import { FaHandHoldingMedical, FaVirus, FaPeopleArrows } from 'react-icons/fa';
+import { GiFallingBlob } from 'react-icons/gi';
 import Cards from '../Card/Card';
 import Row from 'react-bootstrap/Row';
+import Footerx from '../Footerx/Footerx';
 
 const Home = () => {
   return (
@@ -59,13 +60,27 @@ const Home = () => {
         </div>
         <button className='button'>More causes</button>
       </div>
-    </div>
-    <div className={s.container4}>
-      <div>
-        <Container>
-          <h1>Events</h1>
+      <div className={s.container3}>
+        <div>
+          <h1>Latest caused of <span>GROOMING ARGENTINA</span></h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown was popularised. It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
-        </Container>
+          <div className={s.divCards}>
+            <Cards tittle="Event Registration" body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. " imgUrl="https://images.pexels.com/photos/1212805/pexels-photo-1212805.jpeg?auto=compress&cs=tinysrgb&w=1600" />
+            <Cards tittle="Monthly Donation" body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. " imgUrl="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&w=1600" />
+            <Cards tittle="Donate Now" body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. " imgUrl="https://images.pexels.com/photos/939702/pexels-photo-939702.jpeg?auto=compress&cs=tinysrgb&w=1600" />
+          </div>
+          <Button className='button' variant="primary">More causes</Button>
+        </div>
+      </div>
+      <div className={s.container4}>
+        <div>
+          <Container>
+            <h1>Events</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown was popularised. It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
+          </Container>
+
+        </div>
+
       </div>
     </div>
     <div className={s.container5}>
@@ -93,6 +108,7 @@ const Home = () => {
           <BoxImage src="https://images.pexels.com/photos/14679223/pexels-photo-14679223.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" />
         </Row>
     </div>
+      <Footerx />
     </>
   )
 }
