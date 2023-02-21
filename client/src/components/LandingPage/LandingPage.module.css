@@ -1,47 +1,59 @@
-.background {
-  position: relative;
+/* .background {
+  position: absolute;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
     url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
   background-size: 100vh;
   background-size: 100%;
   z-index: -100;
+} */
+.background {
+
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -100;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
+    url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-position: center;
+
 }
 
-/* .NavBar {
-  position: absolute;
-  display: flex;
 
-  width: 100%;
-  height: 100px;
-  left: 0px;
-  top: 0px;
-  z-index: 100;
-} */
 
 .information {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   padding: 0px;
-  gap: 99px;
+  gap: 15x;
+  margin-top: 15rem;
 }
 
 .information h1 {
-  width: 1501px;
-  height: 97px;
-
+  max-width: 90%;
+  height: 35vh;
   font-family: "Gotham Rounded";
   font-style: normal;
   font-size: 68px;
-  line-height: 97px;
-
+  /* line-height: 97px; */
   color: #ffffff;
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
+
 
 .information span {
   background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
@@ -52,15 +64,14 @@
 }
 
 .information h2 {
-  width: 1057px;
-  height: 84px;
-
+  max-width: 90%;
   font-family: "Helvetica";
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
-  line-height: 101%;
-
+  /* line-height: 101%; */
+  padding-bottom: 3rem;
+  justify-content: center;
   text-align: center;
 
   color: #ffffff;
@@ -68,4 +79,30 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+@media (max-width: 992px) {
+  .information {
+    margin-top: 23rem;
+  }
+
+  .background {
+    height: 115vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .information h1 {
+    height: 30vh;
+    font-size: 45px;
+  }
+
+  .information h2 {
+    font-size: 16px;
+    margin-top: 35px;
+  }
+
+  /* .background {
+    height: auto;
+  } */
 }

@@ -2,7 +2,7 @@ const news = require("../../models/news");
 
 const getNews = async (req, res) => {
     //http://localhost:3500/news?categoria=test&provinciaOLocacion=Paraiso+raro
-    const { categoria, provinciaOLocacion } = req.query;
+    const { categoria, provinciaOLocacion, id, name } = req.query;
     let filteredNews;
 
     try {
@@ -16,6 +16,15 @@ const getNews = async (req, res) => {
         }
         else if(provinciaOLocacion) {
             filteredNews = await news.find({provinceOrLocation: provinciaOLocacion}).exec();
+            res.status(200).json(filteredNews);  
+        } 
+        else if(id){
+            filteredNews = await news.findById(id).exec();
+            res.status(200).json(filteredNews);  
+        } 
+        else if(name){
+            const regex = new RegExp(name, "i");
+            filteredNews = await news.find({ title: { $regex: regex}});
             res.status(200).json(filteredNews);
         } else {
             filteredNews = await news.find({});

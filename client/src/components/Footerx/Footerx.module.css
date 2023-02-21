@@ -1,0 +1,69 @@
+.a_social {
+    color: var(--primary-color)
+}
+
+.copy {
+    background-color: var(--primary-color);
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    color: var(--terciary-color);
+
+}
+
+.data_Contact {
+    color: var(--light-gray-color);
+    text-align: start;
+    padding-bottom: 15px;
+    margin-left: 25px;
+    font-family: Helvetica;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 5px;
+    background-color: var(--terciary-color);
+
+}
+
+.h2_ft {
+    text-decoration: underline;
+    color: var(--light-gray-color);
+    font-family: "Gotham Rounded Bold";
+    font-size: 25px;
+    text-align: start;
+    margin-left: 20px;
+}
+
+.img_ft_news {
+    background-image: url(../../assets/image-news.png);
+    margin-right: 4;
+
+
+}
+
+.ul_ft_social {
+    margin-top: 20px;
+    /* padding-right: 4px; */
+    text-align: start;
+}
+
+.lashes {
+    text-decoration: none !important;
+    font-family: Helvetica;
+    font-size: 18px;
+    padding: 15px;
+    color: var(--light-gray-color)
+}
+
+.textFt {
+    padding-left: 15px;
+    text-align: start;
+    color: var(--light-gray-color);
+    font-family: Helvetica;
+}

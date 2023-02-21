@@ -14,7 +14,7 @@ const Login = () => {
     return new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
   const [dni, SetDni] = useState("");
   const [password, SetPassword] = useState("");
   const [success, setSuccess] = useState("");
@@ -36,7 +36,7 @@ const Login = () => {
     }
   }, [isLoading]);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -67,84 +67,83 @@ const Login = () => {
         setLoading(false);
       });
     }
-
-    const handleClick = (data) => {
-      setInput({
-        ...input,
-        [data.target.name]: data.target.value,
-      });
-    };
-
-    const validateInput = (form) => {
-      let setError = false;
-      let error = {};
-      if (form.dni.length <= 8) {
-        setError = true;
-        error.dni = "El DNI debe tener al menos 8 caracteres";
-      }
-      if (!form.dni.match(/[0-9]/g)) {
-        setError = true;
-        error.dni = "El DNI debe contener solo numeros";
-      }
-      if (form.password.length <= 8) {
-        setError = true;
-        error.password = "La contraseña debe tener al menos 8 caracteres";
-      }
-      return setError ? error : null;
-    };
-
-    return (
-      <div className={Style.container}>
-        <div className={Style.loginContainer}>
-          <div className={Style.img}>
-            <BiUserCircle />
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div class="input-group mb-3">
-              <span class="input-group-text">
-                <HiOutlineIdentification />
-              </span>
-              <input
-                class="form-control"
-                id="floatingInputGroup1"
-                type="number"
-                name="DNI"
-                placeholder="Ingresa DNI"
-                onChange={handleChange}
-                value={input.dni}
-              />
-              <label for="floatingInputGroup1"></label>
-              <span class="invalid-feedback">
-                {error.dni && <p>{error.dni}</p>}
-              </span>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">
-                <RiLockPasswordLine />
-              </span>
-              <input
-                class="form-control"
-                id="floatingInputGroup2"
-                type="password"
-                name="password"
-                placeholder="Ingresa contraseña"
-                onChange={handleChange}
-                value={input.password}
-              />
-              <label for="floatingInputGroup2"></label>
-              {error.password && <p>{error.password}</p>}
-            </div>
-            <Button
-              disabled={isLoading}
-              onClick={!isLoading ? handleClick : null}
-            >
-              Ingresar
-            </Button>
-          </form>
-        </div>
-      </div>
-    );
   };
+  const handleClick = (data) => {
+    setInput({
+      ...input,
+      [data.target.name]: data.target.value,
+    });
+  };
+
+  const validateInput = (form) => {
+    let setError = false;
+    let error = {};
+    if (form.dni.length <= 8) {
+      setError = true;
+      error.dni = "El DNI debe tener al menos 8 caracteres";
+    }
+    if (!form.dni.match(/[0-9]/g)) {
+      setError = true;
+      error.dni = "El DNI debe contener solo numeros";
+    }
+    if (form.password.length <= 8) {
+      setError = true;
+      error.password = "La contraseña debe tener al menos 8 caracteres";
+    }
+    return setError ? error : null;
+  };
+
+  return (
+    <div className={Style.container}>
+      <div className={Style.loginContainer}>
+        <div className={Style.img}>
+          <BiUserCircle />
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <HiOutlineIdentification />
+            </span>
+            <input
+              class="form-control"
+              id="floatingInputGroup1"
+              type="number"
+              name="DNI"
+              placeholder="Ingresa DNI"
+              onChange={handleInputChange}
+              value={input.dni}
+            />
+            <label for="floatingInputGroup1"></label>
+            <span class="invalid-feedback">
+              {error.dni && <p>{error.dni}</p>}
+            </span>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <RiLockPasswordLine />
+            </span>
+            <input
+              class="form-control"
+              id="floatingInputGroup2"
+              type="password"
+              name="password"
+              placeholder="Ingresa contraseña"
+              onChange={handleInputChange}
+              value={input.password}
+            />
+            <label for="floatingInputGroup2"></label>
+            {error.password && <p>{error.password}</p>}
+          </div>
+          <Button
+            disabled={isLoading}
+            onClick={!isLoading ? handleClick : null}
+          >
+            Ingresar
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Login;

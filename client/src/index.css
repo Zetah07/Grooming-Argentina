@@ -41,6 +41,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -63,6 +64,7 @@ h2 {
   font-family: "HelveticaNeue Medium", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
 a,
 h3 {
   font-size: 2rem;
@@ -82,18 +84,20 @@ h4 {
   font-family: "HelveticaNeue Medium";
   font-size: 24px;
   color: #ffffff;
+  text-decoration: none;
 }
+
 .button {
-  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.4rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
   gap: 0.7rem;
-  font-family: "HelveticaNeue Medium", sans-serif;
+  font-family: "HelveticaNeue Medium";
   font-size: 1.3rem;
   border-radius: 60px;
   color: #ffffff;
-  width: 10rem;
+  width: 20rem;
   background: linear-gradient(90deg, #7dc8ec 0%, #004b82 100%);
 }
 
@@ -106,3 +110,16 @@ h4 {
 .button:focus {
   outline: none;
 }
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.3rem;
+    width: 18rem;
+
+  }
+}
+
+/***********************Styles Boostrap Changed*******************/
+
+
+/*NavBar*/
