@@ -5,13 +5,17 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import emailjs from "@emailjs/browser";
 import style from "./Contact.module.css";
 
-const { EMAIL_SERVICE, EMAIL_TEMPLATE, EMAIL_USER } = process.env;
+// const { EMAIL_SERVICE, EMAIL_TEMPLATE, EMAIL_USER } = process.env;
 
 const Contact = () => {
   const form = useRef();
 
   const sendEmail = (event) => {
     event.preventDefault();
+
+    const EMAIL_SERVICE = "service_8ggyea2";
+    const EMAIL_TEMPLATE = "template_9rpwucg";
+    const EMAIL_USER = "wx_Yw_885OqaG5o9a";
 
     emailjs.sendForm(EMAIL_SERVICE, EMAIL_TEMPLATE, form.current, EMAIL_USER);
     event.target.reset();
@@ -55,6 +59,7 @@ const Contact = () => {
             placeholder="Escribe tu nombre completo"
             required
             className={style.formControl}
+            name="name"
           />
         </Form.Group>
 
@@ -65,6 +70,7 @@ const Contact = () => {
             placeholder="Escribe tu email"
             required
             className={style.formControl}
+            name="email"
           />
         </Form.Group>
 
@@ -75,6 +81,7 @@ const Contact = () => {
             placeholder="Escribe el asunto"
             required
             className={style.formControl}
+            name="subject"
           />
         </Form.Group>
 
@@ -86,6 +93,7 @@ const Contact = () => {
             placeholder="Escribe tu mensaje"
             required
             className={style.formControl}
+            name="message"
           />
         </Form.Group>
 
