@@ -5,20 +5,44 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import emailjs from "@emailjs/browser";
 import style from "./Contact.module.css";
 
-// const { EMAIL_SERVICE, EMAIL_TEMPLATE, EMAIL_USER } = process.env;
-
 const Contact = () => {
   const form = useRef();
 
-  const sendEmail = (event) => {
+  const {
+    REACT_APP_EMAIL_SERVICE,
+    REACT_APP_EMAIL_TEMPLATE,
+    REACT_APP_EMAIL_USER,
+  } = process.env;
+
+  const sendEmail = async (event) => {
     event.preventDefault();
 
-    const EMAIL_SERVICE = "service_8ggyea2";
-    const EMAIL_TEMPLATE = "template_9rpwucg";
-    const EMAIL_USER = "wx_Yw_885OqaG5o9a";
+    try {
+      await emailjs.sendForm(
+        REACT_APP_EMAIL_SERVICE,
+        REACT_APP_EMAIL_TEMPLATE,
+        form.current,
+        REACT_APP_EMAIL_USER
+      );
+      showAlert("Email enviado correctamente!");
+      form.current.reset();
+    } catch (error) {
+      console.error("Email failed to send", error);
+      showAlert("el email no se pudo enviar, por favor intente más tarde");
+    }
+  };
 
-    emailjs.sendForm(EMAIL_SERVICE, EMAIL_TEMPLATE, form.current, EMAIL_USER);
-    event.target.reset();
+  const showAlert = (message) => {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-success", "text-center");
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.classList.add("hide");
+      setTimeout(() => {
+        document.body.removeChild(alertDiv);
+      }, 600);
+    }, 3000);
   };
 
   return (
