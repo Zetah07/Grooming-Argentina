@@ -1,3 +1,7 @@
+.hide {
+  display: none;
+}
+
 .title {
   font-size: 50px;
   font-family: "Gotham Rounded Bold";
