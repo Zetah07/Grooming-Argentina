@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import s from './Card.module.css';
+import React from 'react';
 
 const Cards = ({ imgUrl, tittle, body }) => {
   return (

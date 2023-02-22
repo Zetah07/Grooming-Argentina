@@ -10,88 +10,41 @@ import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 const Login = () => {
-  function simulateNetworkRequest() {
-    return new Promise((resolve) => setTimeout(resolve, 2000));
-  }
 
-  const dispatch = useDispatch();
-  const [dni, SetDni] = useState("");
-  const [password, SetPassword] = useState("");
-  const [success, setSuccess] = useState("");
-  const [isLoading, setLoading] = useState(false);
-  const [input, setInput] = useState({
+  const [date, setDate] = useState({
     dni: "",
     password: "",
-  });
+  })
+
   const [error, setError] = useState({
     dni: "",
     password: "",
-  });
-
-  useEffect(() => {
-    if (isLoading) {
-      simulateNetworkRequest().then(() => {
-        setLoading(false);
-      });
-    }
-  }, [isLoading]);
+  })
 
   const handleInputChange = (e) => {
-    setInput({
-      ...input,
+    setDate({
+      ...date,
       [e.target.name]: e.target.value,
     });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.dni === "" || input.password === "") {
-      setError({
-        ...error,
-        [e.target.name]: "Campo requerido",
-      });
-    } else {
-      setError({
-        ...error,
-        ...input,
-      });
-    }
-    if (!input.dni === "" || !input.password === "") {
-      setSuccess("");
-    } else {
-      setSuccess("Bienvenido");
-    }
-    if (input.dni === "" || input.password === "") {
-      setLoading(true);
-    } else {
-      simulateNetworkRequest().then(() => {
-        setLoading(false);
-      });
-    }
-  };
-  const handleClick = (data) => {
-    setInput({
-      ...input,
-      [data.target.name]: data.target.value,
-    });
-  };
+  }
 
-  const validateInput = (form) => {
-    let setError = false;
-    let error = {};
-    if (form.dni.length <= 8) {
-      setError = true;
-      error.dni = "El DNI debe tener al menos 8 caracteres";
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if(!e.target.checkValidity()){
+        console.log('no enviar');
+      }else{
+        let res =await axios.post("/auth/login", date)
+        console.log (res.data);
+      }
     }
-    if (!form.dni.match(/[0-9]/g)) {
-      setError = true;
-      error.dni = "El DNI debe contener solo numeros";
+
+    const handleClick =(e) =>{
+      setDate({
+        ...date, 
+        [e.target.name]: e.target.value
+      }) 
     }
-    if (form.password.length <= 8) {
-      setError = true;
-      error.password = "La contraseña debe tener al menos 8 caracteres";
-    }
-    return setError ? error : null;
-  };
+
 
   return (
     <div className={Style.container}>
@@ -99,7 +52,7 @@ const Login = () => {
         <div className={Style.img}>
           <BiUserCircle />
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="needs-validartion" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
           <div class="input-group mb-3">
             <span class="input-group-text">
               <HiOutlineIdentification />
@@ -108,10 +61,10 @@ const Login = () => {
               class="form-control"
               id="floatingInputGroup1"
               type="number"
-              name="DNI"
+              name="dni"
               placeholder="Ingresa DNI"
               onChange={handleInputChange}
-              value={input.dni}
+              value={date.dni}
             />
             <label for="floatingInputGroup1"></label>
             <span class="invalid-feedback">
@@ -129,17 +82,19 @@ const Login = () => {
               name="password"
               placeholder="Ingresa contraseña"
               onChange={handleInputChange}
-              value={input.password}
+              value={date.password}
             />
             <label for="floatingInputGroup2"></label>
             {error.password && <p>{error.password}</p>}
           </div>
           <Button
-            disabled={isLoading}
-            onClick={!isLoading ? handleClick : null}
+            type="submit"
+            className="btn btn-primary btn-block"
+            onClick={handleClick}
           >
             Ingresar
           </Button>
+          <a href="/rest" className="float-end"> Olvidaste tu contraseña</a>
         </form>
       </div>
     </div>
