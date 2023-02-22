@@ -8,4 +8,4 @@ Ronald Ormea - rormeas@gmail.com
 Jonathan Gomez -jg350u@gmail.com
 Andres Vargas - andresvargas094@gmail.com
 Juan Pablo Romero -
-Johan Sebastian Castro -jszetah@gmail.com
+Johan Sebastian Castro - jszetah@gmail.com
