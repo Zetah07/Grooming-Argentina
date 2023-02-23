@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { getNewsByTitle } from "../../../Redux/Actions";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
-import { getAllNews } from '../../../Redux/Actions/index.js';
+import { getAllNews, getNewsByTitle, getBlogByTitle } from '../../../Redux/Actions/index.js';
+import { useLocation } from "react-router-dom";
 
 const SearchBar = () => {
-
     const dispatch = useDispatch();
+    const usl = useLocation().pathname;
     const [search, setSearch] = useState({
         title: ""
     })
@@ -19,7 +19,12 @@ const SearchBar = () => {
     const submitHandler = () => {
         const title = search.title
         if (title.length > 0) {
-            dispatch(getNewsByTitle(title));
+            if (usl === "/noticias") {
+                dispatch(getNewsByTitle(title));
+            }
+            else if (usl === "/blog"){
+                dispatch(getBlogByTitle(title));
+            }
         }
     }
 
