@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
+import FormVolunteer from "./components/FormVolunteer/FormVolunteer";
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/voluntariado">
-        <Volunteer />
+      <Route exact path="/volunteer">
+        <FormVolunteer />
       </Route>
       <Route exact path="/contactanos">
         <Contact />
