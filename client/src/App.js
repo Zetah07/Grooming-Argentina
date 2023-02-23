@@ -7,7 +7,7 @@ import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
 import News from "./components/News/News";
 import NewsDetail from "./components/NewDetails/NewDetails";
-import Volunteer from "./components/Pages/Volunteer/Volunteer";
+import FormVolunteer from "./components/FormVolunteer/FormVolunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
 import CreateNew from "./components/CreateNew/CreateNew";
@@ -28,8 +28,8 @@ function App() {
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/voluntariado">
-        <Volunteer />
+      <Route exact path="/volunteer">
+        <FormVolunteer />
       </Route>
       <Route exact path="/contactanos">
         <Contact />
