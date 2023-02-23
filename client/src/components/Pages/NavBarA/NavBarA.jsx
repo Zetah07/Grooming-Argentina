@@ -22,7 +22,8 @@ const NavBarA = () => {
             <Nav.Link as={Link} to='/home'>Home</Nav.Link>
             <Nav.Link as={Link} to='/nosotros'>Nosotros</Nav.Link>
             <Nav.Link as={Link} to='/noticias'>Noticias</Nav.Link>
-            <Nav.Link as={Link} to='/contactanos'>contactanos</Nav.Link>
+            <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
+            <Nav.Link as={Link} to='/contactanos'>Contactanos</Nav.Link>
             <Nav.Link as={Link} to='/login' className="bi bi-person "></Nav.Link>
 
           </Nav>
