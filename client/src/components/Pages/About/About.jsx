@@ -119,6 +119,12 @@ const About = () => {
         <div className={s.statitics}>
           <img src={staticsimg} alt="statitics" />
         </div>
+        {/*The team*/}
+        <div className={s.mainContainer3}>
+          <div>
+            
+          </div>
+        </div>
       </div>
     </>
   );
