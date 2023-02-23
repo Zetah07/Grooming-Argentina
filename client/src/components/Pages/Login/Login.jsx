@@ -3,48 +3,65 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
+import { FormControl, Button } from "react-bootstrap";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 const Login = () => {
-
-  const [date, setDate] = useState({
-    dni: "",
+  const [input, setinput] = useState({
+    username: "",
     password: "",
-  })
+  });
 
   const [error, setError] = useState({
-    dni: "",
+    username: "",
     password: "",
-  })
+  });
 
   const handleInputChange = (e) => {
-    setDate({
-      ...date,
+    setinput({
+      ...input,
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      if(!e.target.checkValidity()){
-        console.log('no enviar');
-      }else{
-        let res =await axios.post("/auth/login", date)
-        console.log (res.data);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(input);
+    if (!event.target.checkValidity()) {
+      console.log("no enviar");
+    } else {
+      try {
+        const response = await axios.post("/auth/login", input);
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        window.location.href = "noticias";
+      } catch (error) {
+        console.log(error);
+
+        setError({
+          ...error,
+          username: "Nombre de usuario invalido",
+          password: "Contraseña invalida",
+        });
       }
     }
+  };
 
-    const handleClick =(e) =>{
-      setDate({
-        ...date, 
-        [e.target.name]: e.target.value
-      }) 
+  const handleClick = (event) => {
+    setinput({
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 13) {
+      handleSubmit(event);
     }
-
+  };
 
   return (
     <div className={Style.container}>
@@ -52,49 +69,52 @@ const Login = () => {
         <div className={Style.img}>
           <BiUserCircle />
         </div>
-        <form className="needs-validartion" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <HiOutlineIdentification />
-            </span>
-            <input
-              class="form-control"
-              id="floatingInputGroup1"
-              type="number"
-              name="dni"
-              placeholder="Ingresa DNI"
-              onChange={handleInputChange}
-              value={date.dni}
-            />
-            <label for="floatingInputGroup1"></label>
-            <span class="invalid-feedback">
-              {error.dni && <p>{error.dni}</p>}
-            </span>
+        <form
+          className="needs-validartion"
+          noValidate={true}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <div className={Style.inputContainer}>
+            <div className={Style.input}>
+              <FormControl
+                type="text"
+                id="usernameInput"
+                name="username"
+                placeholder="Ingresa DNI"
+                value={input.username}
+                onChange={handleInputChange}
+                isInvalid={!!error.username}
+                onKeyDown={handleKeyPress}
+              />
+              <FormControl.Feedback type="invalid" className={Style.feedback}>
+                {error.username}
+              </FormControl.Feedback>
+            </div>
+            <div className={Style.input}>
+              <FormControl
+                type="password"
+                id="passwordInput"
+                name="password"
+                placeholder="Ingresa contraseña"
+                value={input.password}
+                onChange={handleInputChange}
+                isInvalid={!!error.password}
+                onKeyDown={handleKeyPress}
+              />
+              <FormControl.Feedback type="invalid" className={Style.feedback}>
+                {error.password}
+              </FormControl.Feedback>
+            </div>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <RiLockPasswordLine />
-            </span>
-            <input
-              class="form-control"
-              id="floatingInputGroup2"
-              type="password"
-              name="password"
-              placeholder="Ingresa contraseña"
-              onChange={handleInputChange}
-              value={date.password}
-            />
-            <label for="floatingInputGroup2"></label>
-            {error.password && <p>{error.password}</p>}
-          </div>
-          <Button
-            type="submit"
-            className="btn btn-primary btn-block"
-            onClick={handleClick}
-          >
+          <br />
+          <Button type="submit" className={Style.button} onClick={handleClick}>
             Ingresar
           </Button>
-          <a href="/rest" className="float-end"> Olvidaste tu contraseña</a>
+          <br />
+          <a href="/rest" className={Style.forgot}>
+            Olvidaste tu contraseña
+          </a>
         </form>
       </div>
     </div>
