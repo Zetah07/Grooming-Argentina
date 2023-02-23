@@ -15,6 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
+import Blog from "./components/Blog/Blog"
+import BlogDetail from "./components/BlogDetail/BlogDetail"
 
 
 function App() {
@@ -52,6 +54,12 @@ function App() {
       </Route>
       <Route exact path="/nosotros">
         <About />
+      </Route>
+      <Route exact path="/blog">
+        <Blog />
+      </Route>
+      <Route exact path="/blog/:id">
+        <BlogDetail />
       </Route>
       {usl !== "/" ? <Footerx /> : null}
     </div>
