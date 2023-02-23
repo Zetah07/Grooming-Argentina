@@ -1,36 +1,48 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import imgUs from '../../../assets/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg'
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import imgUs from '../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg'
 import s from './About.module.css'
 
 
 const About = () => {
   return (
-    //Hola
-    <Container className={s.container}>
+    <>
+      <div className={s.banner}>
+          <h1>Acerca de <span>nosotros</span></h1>
+      </div>
 
-      <Row>
-        <Col className={s.banner}>
-          <h1 >Acerca de Nosotros</h1>
-        </Col>
-      </Row>
+      <div className={s.mainContainer}>
+        <div className={s.container1}>
+          <div className={s.imgContainer}>
+            <img src={imgUs} alt="img_us" />
+          </div>
+          <div className={s.textContainer}>
+              <div className={s.title}>
+                <div className={s.globo}>
+                  <h3>Acerca de grooming</h3>
+                </div>
+                <h4>Ayudar es nuestro <span>objetivo principal</span></h4>
+              </div>
+              <p text='end'>
+              Es un gran placer para nosotros presentarles el Maatram Educational and Charitable Trust. Somos un grupo de amigos cuyo ideal en la vida es ayudar donde podamos, como podamos y siempre que podamos. Esta ayuda está enfocada hacia los pobres y necesitados que conviven entre nosotros dentro de nuestra sociedad y pretende lograr un cambio en su vida - una "ARGENTINA GROOMING"<br /><br />
+              Esta es una organización dirigida por voluntarios que son profesionales sinceros y bien establecidos y que están interesados ​​​​en que cada donación llegue a los estudiantes necesitados y brillantes, sin los cuales, habrían perecido en la oscuridad del abismo social. <br /><br />
+              Estamos extremadamente agradecidos por su amabilidad y la generosidad de su donación. Con su amable cooperación y apoyo, estamos localizando a estudiantes brillantes y necesitados de las áreas rurales y haciendo arreglos para brindarles asistencia financiera para estudios superiores. Provee comida, abrigo, vestido y asistencia médica junto con amor y afecto a las personas mayores.
+              </p>
+          </div>
+        </div>
+      </div>
 
-      <Row className={s.container2}>
-        <Col className={s.imgContainer}>
-          <img src={imgUs} alt="img_us" />
-        </Col>
-        <Col className={s.textContainer}>
-            <h4>¿QUIÉNES SOMOS?</h4>
-            <p text='end'>
-              Grooming Argentina nació Institucionalmente en el año 2014 y se convirtió en la primera Organización global creada para combatir el delito de «grooming o child grooming». Fue originada con el propósito de trabajar fundamentalmente sobre ejes basados en la prevención y concientización en pos de la erradicación del grooming en Argentina y América Latina.
-              La ONG se encuentra conformada por un grupo multidisciplinario de profesionales técnicos y voluntarios idóneos no técnicos, destinado a tratar este flagelo que avanza de manera alarmante con el advenimiento de los medios sociales de comunicación y las nuevas tecnologías. El eje central de la Institución está orientado al fortalecimiento de las acciones diarias tendientes a la prevención así como también al acompañamiento y asistencia de las víctimas y sus familias.
-              A su vez, cuenta con la novedosa app de denuncias «GAPP» gratuita y de alcance global, que permite denunciar el delito con tan solo «presionar un botón».
-              Grooming Argentina se encuentra a la vanguardia en materia de promoción y protección de los derechos de niños, niñas y adolescentes en el ecosistema de Internet.
-            </p>
-        </Col>
-      </Row>
-    </Container>
+      <div className={s.mainContainer2}>
+          <div className={s.textContainer2}>
+            <h4>Trabajamos en todo el mundo para salvar vidas, vencer la pobreza y lograr la justicia social.</h4>
+            <p>
+Nuestra misión es ayudar a los niños y adultos jóvenes desfavorecidos a escapar de un entorno de pobreza, vida en barrios marginales, analfabetismo e ignorancia, creando así oportunidades para su integración en la sociedad en general.
+
+El objetivo final de Maatram es proporcionar a todos sus participantes los conocimientos y habilidades para una vida digna y sostenible. La visión final de Matram es hacer una contribución significativa hacia la eliminación de los barrios marginales urbanos y la pobreza rural.</p>
+          </div>
+      </div>
+    </>
   );
 };
 
