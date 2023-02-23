@@ -1,5 +1,5 @@
 import React from "react";
-import PaginationNews from "../Pages/PaginationNews/PaginationNews.jsx";
+import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from "../NewCard/NewCard";
@@ -19,8 +19,7 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (newspaper.length > 0 && items.length === 0)
-    setItems([...newspaper].splice(0, newsPerPage));
+  if (newspaper.length > 0 && items.length === 0) setItems([...newspaper].splice(0, newsPerPage));
 
   useEffect(() => {
     dispatch(getAllNews());
@@ -82,10 +81,6 @@ const News = () => {
     setCurrentPage(numberPage);
   };
 
-  // const handleChange = (event) => {
-  //   console.log(event);
-  // }
-
   return (
     <>
       <div className={s.container1}>
@@ -114,14 +109,14 @@ const News = () => {
           </article>
         </section>
         <div className="row offset-2">
-          <PaginationNews
-            totalNews={totalNews}
+          <PaginationComp
+            totalItems={totalNews}
             firstHandler={firstHandler}
             prevHandler={prevHandler}
             nextHandler={nextHandler}
             lastHandler={lastHandler}
             pages={pages}
-            newsPerPage={newsPerPage}
+            itemsPerPage={newsPerPage}
             currentPage={currentPage}
             pageNumberLimit={pageNumberLimit}
             maxPageNumberLimit={maxPageNumberLimit}

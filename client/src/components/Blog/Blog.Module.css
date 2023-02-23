@@ -1,0 +1,17 @@
+.container1 {
+    background: url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    background-size: cover;
+    min-height: 40vh;
+}
+
+.container1 span {
+    font-family: "Gotham Rounded";
+    font-style: normal;
+    font-size: 68px;
+    line-height: 97px;
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
