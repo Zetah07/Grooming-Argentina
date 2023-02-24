@@ -29,7 +29,6 @@ import Volunteer from "./components/Pages/Volunteer/Volunteer"
 
 function App() {
   const usl = useLocation().pathname;
-  console.log(usl);
 
   return (
     <div className="App">
