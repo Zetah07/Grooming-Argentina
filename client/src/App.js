@@ -17,6 +17,7 @@ import { Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
 import Blog from "./components/Blog/Blog"
 import BlogDetail from "./components/BlogDetail/BlogDetail"
+import Students from "./components/Students/Students/Students";
 
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
       </Route>
       <Route exact path="/blog/:id">
         <BlogDetail />
+      </Route>
+      <Route exact path="/estudiantes">
+        <Students />
       </Route>
       {usl !== "/" ? <Footerx /> : null}
     </div>
