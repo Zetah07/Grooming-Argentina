@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button';
 const NewDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id)
   const newID = useSelector(state => state.newID);
   useEffect(() => {
     dispatch(getNewByID(id));

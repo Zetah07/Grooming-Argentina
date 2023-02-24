@@ -17,7 +17,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 // import {firebaseConfig} from './firebaseConfig';
 
 //axios:
-axios.defaults.baseURL = "http://localhost:3500" && process.env.REACT_APP_API;
+axios.defaults.baseURL = "http://localhost:3500" /* && process.env.REACT_APP_API; */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
