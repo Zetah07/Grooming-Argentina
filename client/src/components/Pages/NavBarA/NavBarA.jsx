@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/Grooming_Logo.png';
+import LogoB from '../../../assets/LogoB.png';
 import s from './NavBarA.module.css'
 import Button from 'react-bootstrap/Button';
 
@@ -14,7 +14,7 @@ const NavBarA = () => {
     <Navbar bg="light" expand="lg" sticky='top'>
       <Container >
         <Navbar.Brand as={Link} to='/'>
-          <img src={Logo} alt="Logo" />
+          <img src={LogoB} alt="Logo" className='w-50  h-50' />
           <span className={s.span}>Grooming</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
