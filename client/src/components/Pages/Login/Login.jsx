@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import {  useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useLogout from "../../../hooks/useLogout";
 import axios from "../../../api/axios";
@@ -36,7 +36,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(input);
-    
+
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -47,9 +47,9 @@ const Login = () => {
         }
       );
       const accessToken = response?.data?.accessToken;
-      const rol = response?.data?.roles
-      setAuth({ user: input.username, pwd: input.password, accessToken, rol});
-      setinput({username: "",password: ""});
+      const rol = response?.data?.roles;
+      setAuth({ user: input.username, pwd: input.password, accessToken, rol });
+      setinput({ username: "", password: "" });
       navigate(from, { replace: true });
     } catch (error) {
       if (!error?.response) {
@@ -59,7 +59,7 @@ const Login = () => {
       } else if (error.response?.status === 402) {
         alert("Unauthorized");
       } else {
-        setinput({...input,password: ""});
+        setinput({ ...input, password: "" });
         alert("Login failed");
       }
     }
