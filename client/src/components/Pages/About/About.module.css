@@ -236,11 +236,10 @@
     padding: 50px;
     padding-top: 20px;
 }
-.title2  h4{
+.title2  h4, .title h4{
     font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 70px;
-    padding-left: 50px;
+    font-size: 60px;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -256,4 +255,29 @@
 .statitics img{
     width: 1700px;
     height: 500px;
+}
+
+.mainContainer3{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.teamContainer{
+    background-color: #e7edf1;
+    border-top-right-radius: 70px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bodyContainer{
+    background-color: #0099ff;
+    width: 80%;
+}
+
+.team{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }

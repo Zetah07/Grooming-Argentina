@@ -5,6 +5,8 @@ import imgUs from '../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg'
 import imgMission from '../../../assets/About/NuestraMision.png'
 import s from './About.module.css'
 import staticsimg from '../../../assets/About/StadisticContainer.png'
+import team from '../About/AboutPractice'
+import TeamCard from '../About/TeamCards/Card'
 
 const About = () => {
   return (
@@ -119,10 +121,31 @@ const About = () => {
         <div className={s.statitics}>
           <img src={staticsimg} alt="statitics" />
         </div>
-        {/*The team*/}
-        <div className={s.mainContainer3}>
-          <div>
-            
+      </div>
+      {/*The team*/}
+      <div className={s.mainContainer3}>
+        <div className={s.teamContainer}>
+          <div className={s.bodyContainer}>
+            <div className={s.title}>
+              <div className={s.globo2}>
+                <h3>Lo que hacemos</h3>
+              </div>
+              <h4>Conoce nuestro equipo</h4>
+            </div>
+            <div className={s.team}>
+              {
+                team.map((member) => {
+                  return (
+                    <TeamCard
+                    name={member.name}
+                    avatar={member.avatar}
+                    rol={member.rol}
+                    />
+                  )
+                })
+              }
+            </div>
+            <button>Se voluntario</button>
           </div>
         </div>
       </div>
