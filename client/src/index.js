@@ -4,33 +4,34 @@ import React /* ,
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from 'react-redux';
-import store from './Redux/Store'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Redux/Store";
 import axios from "axios";
 import reportWebVitals from "./reportWebVitals";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css'
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { AuthProvider } from "./contex/AuthProvider";
 //firebase:
 // import {FirebaseAppProvider} from 'reactfire';
 // import {firebaseConfig} from './firebaseConfig';
-
-//axios:
-axios.defaults.baseURL = "http://localhost:3500" /* && process.env.REACT_APP_API; */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <FirebaseAppProvider firebaseConfig={firebaseConfig}>
   // <Suspense fallback={"Conecting ..."}>
   // <ThemeProvider theme={theme}>
-  < Provider store={store} >
+  <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
-        <App />
+        <AuthProvider>
+          <Routes>
+            <Route path="*" element={<App />} />
+          </Routes>
+        </AuthProvider>
       </React.StrictMode>
     </BrowserRouter>
-  </Provider >
+  </Provider>
   // </ThemeProvider> */
 
   // </Suspense>
