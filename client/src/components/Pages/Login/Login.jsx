@@ -8,40 +8,47 @@ import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { getLogin } from "../../../Redux/Actions";
 
 const Login = () => {
 
-  const [date, setDate] = useState({
-    dni: "",
+  const [input, setInput] = useState({
+    username: "",
     password: "",
   })
-
   const [error, setError] = useState({
-    dni: "",
+    username: "",
     password: "",
   })
 
-  const handleInputChange = (e) => {
-    setDate({
-      ...date,
-      [e.target.name]: e.target.value,
+  // useEffect(() => {
+  //   if (user=== true) {
+  //     window.location.href = "/noticias";
+  //   }else{
+  //     console.log('no logueado');
+  //   }
+  // }, [user])
+
+  const handleInputChange = (event) => {
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
     });
   }
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      if(!e.target.checkValidity()){
-        console.log('no enviar');
-      }else{
-        let res =await axios.post("/auth/login", date)
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+        let res =await axios.post("/auth/login",input)
         console.log (res.data);
       }
-    }
 
-    const handleClick =(e) =>{
-      setDate({
-        ...date, 
-        [e.target.name]: e.target.value
+    
+
+    const handleClick =(event) =>{
+      setInput({
+        ...input, 
+        [event.target.name]: event.target.value
       }) 
     }
 
@@ -52,7 +59,7 @@ const Login = () => {
         <div className={Style.img}>
           <BiUserCircle />
         </div>
-        <form className="needs-validartion" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
+        <form className="needs-validation" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
           <div class="input-group mb-3">
             <span class="input-group-text">
               <HiOutlineIdentification />
@@ -61,14 +68,14 @@ const Login = () => {
               class="form-control"
               id="floatingInputGroup1"
               type="number"
-              name="dni"
-              placeholder="Ingresa DNI"
+              name="username"
+              placeholder="Ingresa username"
               onChange={handleInputChange}
-              value={date.dni}
+              value={input.username}
             />
             <label for="floatingInputGroup1"></label>
             <span class="invalid-feedback">
-              {error.dni && <p>{error.dni}</p>}
+              {error.username && <p>{error.username}</p>}
             </span>
           </div>
           <div class="input-group mb-3">
@@ -82,7 +89,7 @@ const Login = () => {
               name="password"
               placeholder="Ingresa contraseña"
               onChange={handleInputChange}
-              value={date.password}
+              value={input.password}
             />
             <label for="floatingInputGroup2"></label>
             {error.password && <p>{error.password}</p>}
@@ -93,8 +100,8 @@ const Login = () => {
             onClick={handleClick}
           >
             Ingresar
-          </Button>
-          <a href="/rest" className="float-end"> Olvidaste tu contraseña</a>
+          </Button> <br/>
+          <a href="/rest" className="small bg-center"> Olvidaste tu contraseña</a>
         </form>
       </div>
     </div>

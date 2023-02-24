@@ -13,7 +13,7 @@ import Contact from "./components/Pages/Contact/Contact";
 import CreateNew from "./components/CreateNew/CreateNew";
 import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
-import { Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
 
 
@@ -23,36 +23,18 @@ function App() {
   return (
     <div className="App">
       {(usl === "/" || usl === "/login") ? <NavBarB /> : <NavBarA />}
-      <Route exact path="/">
-        <LandingPage />
-      </Route>
-      <Route exact path="/voluntariado">
-        <Volunteer />
-      </Route>
-      <Route exact path="/contactanos">
-        <Contact />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-      {/* <Route exact path="/register">
-        <Register />
-      </Route> */}
-      <Route exact path="/home">
-        <Home />
-      </Route>
-      <Route exact path="/noticias">
-        <News />
-      </Route>
-      <Route exact path="/noticias/:id">
-        <NewsDetail />
-      </Route>
-      <Route exact path="/crearnoticia">
-        <CreateNew />
-      </Route>
-      <Route exact path="/nosotros">
-        <About />
-      </Route>
+      <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+          {/* <Route exact path="/test" element={<TestPage />} /> */}
+          <Route exact path="/voluntariado" element={<Volunteer />} />
+          <Route exact path="/contactanos" element={<Contact />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/noticias" element={<News />} />
+          <Route exact path="/noticias/:id" element={<NewsDetail />} />
+          <Route exact path="/crearnoticia" element={<CreateNew />} />
+          <Route exact path="/nosotros" element={<About />} />
+      </Routes>
       {usl !== "/" ? <Footerx /> : null}
     </div>
   );
