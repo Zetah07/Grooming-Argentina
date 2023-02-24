@@ -7,7 +7,7 @@ import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
 import News from "./components/News/News";
 import NewsDetail from "./components/NewDetails/NewDetails";
-import Volunteer from "./components/Pages/Volunteer/Volunteer";
+import FormVolunteer from "./components/FormVolunteer/FormVolunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
 import CreateNew from "./components/CreateNew/CreateNew";
@@ -15,6 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
+import Blog from "./components/Blog/Blog"
+import BlogDetail from "./components/BlogDetail/BlogDetail"
 
 
 function App() {
@@ -26,8 +28,8 @@ function App() {
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/voluntariado">
-        <Volunteer />
+      <Route exact path="/volunteer">
+        <FormVolunteer />
       </Route>
       <Route exact path="/contactanos">
         <Contact />
@@ -52,6 +54,12 @@ function App() {
       </Route>
       <Route exact path="/nosotros">
         <About />
+      </Route>
+      <Route exact path="/blog">
+        <Blog />
+      </Route>
+      <Route exact path="/blog/:id">
+        <BlogDetail />
       </Route>
       {usl !== "/" ? <Footerx /> : null}
     </div>
