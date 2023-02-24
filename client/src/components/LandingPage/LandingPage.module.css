@@ -93,8 +93,9 @@
 
 @media (max-width: 480px) {
   .information h1 {
+    margin-top: 50px;
     height: 30vh;
-    font-size: 45px;
+    font-size: 40px;
   }
 
   .information h2 {

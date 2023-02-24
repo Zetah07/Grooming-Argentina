@@ -28,7 +28,7 @@ function App() {
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/volunteer">
+      <Route exact path="/voluntariado">
         <FormVolunteer />
       </Route>
       <Route exact path="/contactanos">
