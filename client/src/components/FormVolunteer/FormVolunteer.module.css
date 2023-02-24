@@ -1,3 +1,7 @@
+.form {
+    padding-right: 15rem;
+}
+
 .head_volunt {
     background-image: url(../../assets/Rectangle.png);
     border-radius: 10px;
@@ -24,4 +28,15 @@
 
 .p1_volunt li {
     list-style-type: decimal;
+}
+
+.label_volunt {
+    font-family: "HelveticaNeue Medium";
+    font-size: 18px;
+    padding: 3px;
+    color: var(--primary-color);
+}
+
+.label_volunt spam {
+    color: red;
 }
