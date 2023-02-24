@@ -7,7 +7,7 @@ import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
 import News from "./components/News/News";
 import NewsDetail from "./components/NewDetails/NewDetails";
-import Volunteer from "./components/Pages/Volunteer/Volunteer";
+import FormVolunteer from "./components/FormVolunteer/FormVolunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
 import CreateNew from "./components/CreateNew/CreateNew";
@@ -15,6 +15,9 @@ import "bootstrap/dist/css/bootstrap.css";
 // import Register from "./components/Pages/Register/Register";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
+import Blog from "./components/Blog/Blog"
+import BlogDetail from "./components/BlogDetail/BlogDetail"
+import Students from "./components/Students/Students/Students";
 
 
 function App() {

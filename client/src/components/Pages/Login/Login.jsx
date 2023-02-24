@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
+import { FormControl, Button } from "react-bootstrap";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi";
@@ -11,16 +11,25 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { getLogin } from "../../../Redux/Actions";
 
 const Login = () => {
+<<<<<<< HEAD
 
   const [input, setInput] = useState({
     username: "",
     password: "",
   })
+=======
+  const [input, setinput] = useState({
+    username: "",
+    password: "",
+  });
+
+>>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
   const [error, setError] = useState({
     username: "",
     password: "",
-  })
+  });
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   if (user=== true) {
   //     window.location.href = "/noticias";
@@ -33,9 +42,16 @@ const Login = () => {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
+=======
+  const handleInputChange = (e) => {
+    setinput({
+      ...input,
+      [e.target.name]: e.target.value,
+>>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
     });
-  }
+  };
 
+<<<<<<< HEAD
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -50,8 +66,43 @@ const Login = () => {
         ...input, 
         [event.target.name]: event.target.value
       }) 
-    }
+=======
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(input);
+    if (!event.target.checkValidity()) {
+      console.log("no enviar");
+    } else {
+      try {
+        const response = await axios.post("/auth/login", input);
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        window.location.href = "noticias";
+      } catch (error) {
+        console.log(error);
 
+        setError({
+          ...error,
+          username: "Nombre de usuario invalido",
+          password: "Contraseña invalida",
+        });
+      }
+    }
+  };
+
+  const handleClick = (event) => {
+    setinput({
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 13) {
+      handleSubmit(event);
+>>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
+    }
+  };
 
   return (
     <div className={Style.container}>
@@ -59,6 +110,7 @@ const Login = () => {
         <div className={Style.img}>
           <BiUserCircle />
         </div>
+<<<<<<< HEAD
         <form className="needs-validation" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
           <div class="input-group mb-3">
             <span class="input-group-text">
@@ -102,6 +154,54 @@ const Login = () => {
             Ingresar
           </Button> <br/>
           <a href="/rest" className="small bg-center"> Olvidaste tu contraseña</a>
+=======
+        <form
+          className="needs-validartion"
+          noValidate={true}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <div className={Style.inputContainer}>
+            <div className={Style.input}>
+              <FormControl
+                type="text"
+                id="usernameInput"
+                name="username"
+                placeholder="Ingresa DNI"
+                value={input.username}
+                onChange={handleInputChange}
+                isInvalid={!!error.username}
+                onKeyDown={handleKeyPress}
+              />
+              <FormControl.Feedback type="invalid" className={Style.feedback}>
+                {error.username}
+              </FormControl.Feedback>
+            </div>
+            <div className={Style.input}>
+              <FormControl
+                type="password"
+                id="passwordInput"
+                name="password"
+                placeholder="Ingresa contraseña"
+                value={input.password}
+                onChange={handleInputChange}
+                isInvalid={!!error.password}
+                onKeyDown={handleKeyPress}
+              />
+              <FormControl.Feedback type="invalid" className={Style.feedback}>
+                {error.password}
+              </FormControl.Feedback>
+            </div>
+          </div>
+          <br />
+          <Button type="submit" className={Style.button} onClick={handleClick}>
+            Ingresar
+          </Button>
+          <br />
+          <a href="/rest" className={Style.forgot}>
+            Olvidaste tu contraseña
+          </a>
+>>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
         </form>
       </div>
     </div>

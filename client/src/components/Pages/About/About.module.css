@@ -1,50 +1,62 @@
 .banner {
-
-
-    width: 1920px;
-    height: 400px;
-    left: 0px;
-    top: -6px;
-
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/c387.jpg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
     background-size: cover;
-
+    min-height: 40vh;
+    display: grid;
+    padding: 50px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .banner h1 {
-    font-family: "Gotham Rounded";
+    font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 68px;
+    font-size: 90px;
     line-height: 97px;
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    background-color: var(--bs-info);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.banner span {
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-size: 100px;
+    line-height: 97px;
+    background-color: var(--bs-white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    text-align: center;
 }
 
-.container{
+.mainContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    padding: 0%;
 }
 
-.container2{
+.container1{
     background-color: #e7edf1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 95%;
+    padding: 0px;
 }
 
-.container2 img{
-    width: 60%;
-    height: 80%;
-    border-radius: 20px;
-    gap: 50px;
-}
 
 .imgContainer{
     display: flex;
     justify-content: right;
     align-items: flex-end;
-    padding: 20px;
+    padding: 50px;
     padding-right: 20px;
+}
+.imgContainer img{
+    width: 500px;
+    height: 400px;
+    border-radius: 30px;
 }
 
 .textContainer{
@@ -56,19 +68,192 @@
 }
 
 .textContainer h4{
-    font-family: "Gotham Rounded";
+    font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 40px;
-    line-height: 97px;
+    font-size: 70px;
+
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
 }
 
+.textContainer span{
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-size: 70px;
+
+    background-color:var(--bs-info);
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 .textContainer p {
     text-align: left;
-    font-family: "Gotham Rounded";
+    font-family: Helvetica;
     font-style: normal;
-    font-size: 15px;
+    font-size: 20px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 50px;
+    padding-left: 0;
+}
+
+.globo{
+    background: url(../../../assets/About/globo.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+}
+
+.globo h3, .globo2 h3{
+    font-family: "Gotham Rounded Bold";
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.container2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 88%;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.textContainer2{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 30px;
+    float: right;
+}
+.textContainer2 h4{
+    text-align: left;
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    padding: 30px;
+    padding-left: 0px;
+}
+.textContainer2 p{
+    text-align: left;
+    font-family: Helvetica;
+    font-style: normal;
+    font-size: 20px;
+}
+.imgContainer2{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+.imgContainer2 img{
+    width: 600px;
+    height: 400px;
+}
+
+.videoContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+.videoDiv{
+    background: url("../../../assets/eventos-de-marketing-2021.jpg"); 
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+    height: 400px;
+    border-radius: 30px;
+}
+
+.visionDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1200px;
+}
+.visionTitle{
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-size: 70px;
+    font-weight: bold;
+    background-color: black;
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    padding: 30px;
+}
+
+.visionDiv h3 {
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: black;
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+}
+.visionDiv p{
+    font-family: Helvetica;
+    font-style: normal;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+
+.mainContainer2{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+}
+.globo2{
+    background: url(../../../assets/About/globo.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+}
+.globo2 h3{
+    font-size: 20px;
+}
+.title2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    padding-top: 20px;
+}
+.title2  h4{
+    font-family: "Gotham Rounded Bold";
+    font-style: normal;
+    font-size: 70px;
+    padding-left: 50px;
+    background-color: black;
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.statitics{
+    background-size: cover;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    padding: 50px;
+    padding-top: 0;
+}
+.statitics img{
+    width: 1700px;
+    height: 500px;
 }
