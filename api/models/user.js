@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true
     },
+    email: {
+      type: String,
+      unique: true,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -22,6 +27,12 @@ const userSchema = new mongoose.Schema(
     },
     refreshToken: {
       type: String,
+    },
+    resetPasswordToken: {
+      type: String,
+    },
+    resetPasswordExpires: {
+      type: Date,
     },
   },
   {
