@@ -25,7 +25,6 @@ import Layout from "./components/Layout/Layout";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import PersistLogin from "./components/PersistLogin/PersistLogin";
-import Volunteer from "./components/Pages/Volunteer/Volunteer";
 import CreateBlog from "./components/CreateBlog/CreateBlog";
 
 function App() {
@@ -51,7 +50,7 @@ function App() {
           <Route exact path="/recuperar" element={<PasswordRecovery />} />
           <Route exact path="/recuperar/:token" element={<PasswordReset />} />
           <Route element={<PersistLogin />}>
-            <Route element={<RequireAuth allowedRoles={["user","volunteer"]} />}>
+            <Route element={<RequireAuth allowedRoles={["user", "admin", "hr", "volunteer", "editor"]} />}>
               <Route exact path="/crearblog" element={<CreateBlog />} />
             </Route>
           </Route>
