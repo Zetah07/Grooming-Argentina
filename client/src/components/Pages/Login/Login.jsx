@@ -1,8 +1,10 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import {  useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import useLogout from "../../../hooks/useLogout";
+import axios from "../../../api/axios";
 import { FormControl, Button } from "react-bootstrap";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
@@ -10,82 +12,56 @@ import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { getLogin } from "../../../Redux/Actions";
 
+const LOGIN_URL = "/auth/login";
 const Login = () => {
-<<<<<<< HEAD
-
-  const [input, setInput] = useState({
-    username: "",
-    password: "",
-  })
-=======
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const [input, setinput] = useState({
     username: "",
     password: "",
   });
 
->>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
   const [error, setError] = useState({
     username: "",
     password: "",
   });
 
-<<<<<<< HEAD
-  // useEffect(() => {
-  //   if (user=== true) {
-  //     window.location.href = "/noticias";
-  //   }else{
-  //     console.log('no logueado');
-  //   }
-  // }, [user])
-
-  const handleInputChange = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value,
-=======
   const handleInputChange = (e) => {
     setinput({
       ...input,
       [e.target.name]: e.target.value,
->>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
     });
   };
 
-<<<<<<< HEAD
-
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-        let res =await axios.post("/auth/login",input)
-        console.log (res.data);
-      }
-
-    
-
-    const handleClick =(event) =>{
-      setInput({
-        ...input, 
-        [event.target.name]: event.target.value
-      }) 
-=======
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(input);
-    if (!event.target.checkValidity()) {
-      console.log("no enviar");
-    } else {
-      try {
-        const response = await axios.post("/auth/login", input);
-        const { token } = response.data;
-        localStorage.setItem("token", token);
-        window.location.href = "noticias";
-      } catch (error) {
-        console.log(error);
-
-        setError({
-          ...error,
-          username: "Nombre de usuario invalido",
-          password: "Contraseña invalida",
-        });
+    
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ username: input.username, password: input.password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      const accessToken = response?.data?.accessToken;
+      const rol = response?.data?.roles
+      setAuth({ user: input.username, pwd: input.password, accessToken, rol});
+      setinput({username: "",password: ""});
+      navigate(from, { replace: true });
+    } catch (error) {
+      if (!error?.response) {
+        alert("No server response");
+      } else if (error.response?.status === 400) {
+        alert("missing username or password");
+      } else if (error.response?.status === 402) {
+        alert("Unauthorized");
+      } else {
+        setinput({...input,password: ""});
+        alert("Login failed");
       }
     }
   };
@@ -100,7 +76,6 @@ const Login = () => {
   const handleKeyPress = (event) => {
     if (event.keyCode === 13) {
       handleSubmit(event);
->>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
     }
   };
 
@@ -110,51 +85,6 @@ const Login = () => {
         <div className={Style.img}>
           <BiUserCircle />
         </div>
-<<<<<<< HEAD
-        <form className="needs-validation" noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <HiOutlineIdentification />
-            </span>
-            <input
-              class="form-control"
-              id="floatingInputGroup1"
-              type="number"
-              name="username"
-              placeholder="Ingresa username"
-              onChange={handleInputChange}
-              value={input.username}
-            />
-            <label for="floatingInputGroup1"></label>
-            <span class="invalid-feedback">
-              {error.username && <p>{error.username}</p>}
-            </span>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <RiLockPasswordLine />
-            </span>
-            <input
-              class="form-control"
-              id="floatingInputGroup2"
-              type="password"
-              name="password"
-              placeholder="Ingresa contraseña"
-              onChange={handleInputChange}
-              value={input.password}
-            />
-            <label for="floatingInputGroup2"></label>
-            {error.password && <p>{error.password}</p>}
-          </div>
-          <Button
-            type="submit"
-            className="btn btn-primary btn-block"
-            onClick={handleClick}
-          >
-            Ingresar
-          </Button> <br/>
-          <a href="/rest" className="small bg-center"> Olvidaste tu contraseña</a>
-=======
         <form
           className="needs-validartion"
           noValidate={true}
@@ -198,10 +128,9 @@ const Login = () => {
             Ingresar
           </Button>
           <br />
-          <a href="/rest" className={Style.forgot}>
+          <a href="/recuperar" className={Style.forgot}>
             Olvidaste tu contraseña
           </a>
->>>>>>> f86fcfaf892444b6c120441d07899d8c47677196
         </form>
       </div>
     </div>
