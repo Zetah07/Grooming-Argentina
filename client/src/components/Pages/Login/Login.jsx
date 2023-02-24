@@ -1,15 +1,21 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import {  useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import useLogout from "../../../hooks/useLogout";
+import axios from "../../../api/axios";
 import { FormControl, Button } from "react-bootstrap";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
+const LOGIN_URL = "/auth/login";
 const Login = () => {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const [input, setinput] = useState({
     username: "",
     password: "",
@@ -30,22 +36,31 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(input);
-    if (!event.target.checkValidity()) {
-      console.log("no enviar");
-    } else {
-      try {
-        const response = await axios.post("/auth/login", input);
-        const { token } = response.data;
-        localStorage.setItem("token", token);
-        window.location.href = "noticias";
-      } catch (error) {
-        console.log(error);
-
-        setError({
-          ...error,
-          username: "Nombre de usuario invalido",
-          password: "Contraseña invalida",
-        });
+    
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ username: input.username, password: input.password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      const accessToken = response?.data?.accessToken;
+      const rol = response?.data?.roles
+      setAuth({ user: input.username, pwd: input.password, accessToken, rol});
+      setinput({username: "",password: ""});
+      navigate(from, { replace: true });
+    } catch (error) {
+      if (!error?.response) {
+        alert("No server response");
+      } else if (error.response?.status === 400) {
+        alert("missing username or password");
+      } else if (error.response?.status === 402) {
+        alert("Unauthorized");
+      } else {
+        setinput({...input,password: ""});
+        alert("Login failed");
       }
     }
   };

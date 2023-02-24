@@ -40,12 +40,12 @@ const handleLogin = async (req, res) => {
         httpOnly: true,
         sameSite: "None",
         maxAge: 24 * 60 * 60 * 1000,
-        secure: false,
+        secure: true,
       });
       //in production add: secure: true to the cookie
 
       //sending the accessToken as json
-      res.json({ accessToken });
+      res.json({ roles: rol, accessToken: accessToken });
       // res.json({ success: `User ${username} is logged in` });
     } else {
       return res.status(401).json({ message: "usuario o contraseña incorrectas" });

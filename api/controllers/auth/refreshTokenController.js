@@ -5,6 +5,7 @@ require("dotenv").config();
 const handleRefreshToken = async(req, res) => {
   
   const cookies = req.cookies;
+  console.log(cookies);
   if (!cookies?.jwt) return res.sendStatus(401);
   const refreshToken = cookies.jwt;
   
@@ -20,7 +21,7 @@ const handleRefreshToken = async(req, res) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "30m" }
     );
-    res.json({ accessToken })
+    res.json({rol, accessToken })
   });
 };
 

@@ -14,9 +14,9 @@ initDB();
 //fixing credentials errors blocking cookies from cross-site
 app.use(credentials)
 //Cross Origin Resource Service
-app.use(cors(corsOptions));
-
 app.use(cookieParser())
+
+app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
 
