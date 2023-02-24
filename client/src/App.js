@@ -18,6 +18,8 @@ import Footerx from "../src/components/Footerx/Footerx";
 import Blog from "./components/Blog/Blog"
 import BlogDetail from "./components/BlogDetail/BlogDetail"
 import Students from "./components/Students/Students/Students";
+import PasswordRecovery from "./components/Pages/passwordRecovery/PasswordRecovery";
+import PasswordReset from "./components/Pages/passwordReset/PasswordReset";
 
 
 function App() {
@@ -62,6 +64,13 @@ function App() {
       <Route exact path="/blog/:id">
         <BlogDetail />
       </Route>
+      <Route exact path="/recuperar">
+        <PasswordRecovery />
+      </Route>
+      <Route exact path="/recuperar/:token">
+        <PasswordReset />
+      </Route>
+
       <Route exact path="/estudiantes">
         <Students />
       </Route>

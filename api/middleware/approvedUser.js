@@ -21,6 +21,7 @@ const approvedUser = async (id) => {
 
     const newUser = new user({
       username: approvedStatus.document,
+      email: approvedStatus.email,
       name: `${approvedStatus.name} ${approvedStatus.lastName}`,
       password: hashedPassword,
       rol: "volunteer"
