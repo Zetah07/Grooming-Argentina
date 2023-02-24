@@ -1,0 +1,42 @@
+.form {
+    padding-right: 15rem;
+}
+
+.head_volunt {
+    background-image: url(../../assets/Rectangle.png);
+    border-radius: 10px;
+}
+
+.head_volunt h1 {
+    font-family: "Gotham Rounded Bold";
+    color: var(--primary-color);
+
+}
+
+.p1_volunt {
+    font-family: "HelveticaNeue Regular";
+    text-align: start;
+    font-size: 20px;
+    padding: 10px 10px;
+}
+
+.p1_volunt h2 {
+    font-family: "HelveticaNeue Medium";
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+.p1_volunt li {
+    list-style-type: decimal;
+}
+
+.label_volunt {
+    font-family: "HelveticaNeue Medium";
+    font-size: 18px;
+    padding: 3px;
+    color: var(--primary-color);
+}
+
+.label_volunt spam {
+    color: red;
+}
