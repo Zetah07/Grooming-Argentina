@@ -32,12 +32,11 @@ function App() {
 
   return (
     <div className="App">
-      {usl === "/" || usl === "/login" ? <NavBarB /> : <NavBarA />}
+      {(usl === "/" || usl === "/login") ? <NavBarB /> : <NavBarA />}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/test" element={<TestPage />} />
-          <Route exact path="/voluntariado" element={<Volunteer />} />
           <Route exact path="/contactanos" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/home" element={<Home />} />
@@ -45,9 +44,9 @@ function App() {
           <Route exact path="/noticias/:id" element={<NewsDetail />} />
           <Route exact path="/crearnoticia" element={<CreateNew />} />
           <Route exact path="/nosotros" element={<About />} />
-          <Route exact path="/volunteer" element={<FormVolunteer />}/>
+          <Route exact path="/voluntariado" element={<FormVolunteer />}/>
           <Route exact path="/blog" element={<Blog />}/>
-          <Route exact path="/blog:id" element={<BlogDetail />}/>
+          <Route exact path="/blog/:id" element={<BlogDetail />}/>
           <Route exact path="/recuperar" element={<PasswordRecovery />}/>
           <Route exact path="/recuperar/:token" element={<PasswordReset />}/>
 
