@@ -112,7 +112,7 @@ const Login = () => {
             Ingresar
           </Button>
           <br />
-          <a href="/rest" className={Style.forgot}>
+          <a href="/recuperar" className={Style.forgot}>
             Olvidaste tu contraseña
           </a>
         </form>
