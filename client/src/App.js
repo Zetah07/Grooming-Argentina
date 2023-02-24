@@ -17,6 +17,7 @@ import { Route, useLocation } from "react-router-dom";
 import Footerx from "../src/components/Footerx/Footerx";
 import Blog from "./components/Blog/Blog"
 import BlogDetail from "./components/BlogDetail/BlogDetail"
+import Students from "./components/Students/Students/Students";
 import PasswordRecovery from "./components/Pages/passwordRecovery/PasswordRecovery";
 import PasswordReset from "./components/Pages/passwordReset/PasswordReset";
 
@@ -70,6 +71,9 @@ function App() {
         <PasswordReset />
       </Route>
 
+      <Route exact path="/estudiantes">
+        <Students />
+      </Route>
       {usl !== "/" ? <Footerx /> : null}
     </div>
   );

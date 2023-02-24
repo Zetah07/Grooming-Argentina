@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactPlayer from 'react-player';
-import './students.css';
+import './studentsPlayer.css';
 
-export default function Students(){
+export default function StudentsPlayer(){
     const [title, setTitle] = useState('');
 
     const handleReady = (player)=>{
