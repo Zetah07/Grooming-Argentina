@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../../../api/axios";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import style from "./PasswordReset.module.css";
