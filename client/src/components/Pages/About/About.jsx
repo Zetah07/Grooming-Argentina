@@ -20,7 +20,7 @@ const About = () => {
           <div class="container-fluid" className={s.container1}>
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 container-fluid d-flex justify-content-end align-items-end p-3">
-                <img class="img-fluid" className={s.image} width="500px" height="400px"  src={imgUs} alt="img_us"/>
+                <img class="img-fluid" className={s.image} width="500px" height="400px" src={imgUs} alt="img_us"/>
               </div>
                   <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid" >
                     <div className={s.textContainer}>
@@ -66,15 +66,15 @@ const About = () => {
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 container-fluid d-flex justify-content-start align-items-center p-3">
-              <img class="img-fluid" className={s.image2} src={imgMission} alt="mission"/>
+              <img class="img-fluid" className={s.image2} width="550px" height="400px" src={imgMission} alt="mission"/>
             </div>
           </div>
         </div>
       </div>
       {/*Video*/}
-      <div className={s.videoContainer}>
-        <div className={s.videoDiv}>
-          <h4>Aquí va un video re loco</h4>
+      <div class="container-fluid" className={s.videoContainer}>
+        <div class="row" className={s.videoDiv} >
+            <h4>Aquí va un video re loco</h4>
         </div>
       </div>
       {/*Vision*/}

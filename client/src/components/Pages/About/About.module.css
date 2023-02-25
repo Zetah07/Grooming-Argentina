@@ -171,6 +171,8 @@
     width: 800px;
     height: 400px;
     border-radius: 30px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .visionDiv{
