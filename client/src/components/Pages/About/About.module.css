@@ -179,7 +179,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 1200px;
+    padding-top: 0px;
+    width: 70%;
 }
 .visionTitle{
     font-family: "Gotham Rounded Bold";
