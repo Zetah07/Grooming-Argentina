@@ -24,19 +24,30 @@ const Contact = () => {
         form.current,
         REACT_APP_EMAIL_USER
       );
-      showAlert("Email enviado correctamente!");
+      showAlert("Email enviado correctamente!", "green");
       form.current.reset();
     } catch (error) {
       console.error("Email failed to send", error);
-      showAlert("el email no se pudo enviar, por favor intente más tarde");
+      showAlert(
+        "el email no se pudo enviar, por favor intente más tarde",
+        "red"
+      );
     }
   };
 
-  const showAlert = (message) => {
+  const showAlert = (message, color) => {
     const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "alert-success", "text-center");
+    alertDiv.classList.add("alert", "text-center");
+
+    if (color === "green") {
+      alertDiv.classList.add("alert-success");
+    } else if (color === "red") {
+      alertDiv.classList.add("alert-danger");
+    }
+
     alertDiv.textContent = message;
     document.body.appendChild(alertDiv);
+
     setTimeout(() => {
       alertDiv.classList.add("hide");
       setTimeout(() => {
