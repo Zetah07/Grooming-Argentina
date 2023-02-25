@@ -26,7 +26,6 @@ const handleCourses = async (req, res) => {
   } else if (!title) {
     try {
       const userCoursesList = await courses.find({});
-      console.log(userCoursesList.length);
       if (order) {
         if (order === "descending") {
           const orderedUserCoursesList = userCoursesList.sort(function (a, b) {
