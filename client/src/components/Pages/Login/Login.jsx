@@ -10,6 +10,7 @@ import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { getLogin } from "../../../Redux/Actions";
 
 const LOGIN_URL = "/auth/login";
 const Login = () => {
