@@ -15,35 +15,39 @@ const About = () => {
       <div className={s.banner}>
           <h1>Acerca de <span>nosotros</span></h1>
       </div>
-
-      <div className={s.mainContainer}>
-        <div className={s.container1}>
-          <div className={s.imgContainer}>
-            <img src={imgUs} alt="img_us" />
-          </div>
-          <div className={s.textContainer}>
-              <div className={s.title}>
-                <div className={s.globo}>
-                  <h3>Acerca de grooming</h3>
-                </div>
-                <h4>Ayudar es nuestro <span>objetivo principal</span></h4>
+      {/* mission*/}
+      <div class="container-fluid" className={s.mainContainer0}>
+          <div class="container-fluid" className={s.container1}>
+            <div class="row">
+              <div class="col container-fluid d-flex justify-content-end align-items-end" >
+                  <img  src={imgUs} alt="img_us" className={s.image}/>
               </div>
-              <p text='end'>
-              Es un gran placer para nosotros presentarles el Maatram Educational and 
-              Charitable Trust. Somos un grupo de amigos cuyo ideal en la vida es ayudar 
-              donde podamos, como podamos y siempre que podamos. Esta ayuda está enfocada 
-              hacia los pobres y necesitados que conviven entre nosotros dentro de nuestra 
-              sociedad y pretende lograr un cambio en su vida - una "ARGENTINA GROOMING"<br /><br />
-              Esta es una organización dirigida por voluntarios que son profesionales sinceros y bien
-               establecidos y que están interesados ​​​​en que cada donación llegue a los estudiantes necesitados
-                y brillantes, sin los cuales, habrían perecido en la oscuridad del abismo social. <br /><br />
-              Estamos extremadamente agradecidos por su amabilidad y la generosidad de su donación. Con su amable 
-              cooperación y apoyo, estamos localizando a estudiantes brillantes y necesitados de las áreas rurales
-               y haciendo arreglos para brindarles asistencia financiera para estudios superiores. Provee comida, 
-               abrigo, vestido y asistencia médica junto con amor y afecto a las personas mayores.
-              </p>
+                  <div class="col container-fluid" >
+                    <div className={s.textContainer}>
+                      <div className={s.title}>
+                        <div className={s.globo}>
+                          <h3>Acerca de grooming</h3>
+                        </div>
+                        <h4>Ayudar es nuestro <span>objetivo principal</span></h4>
+                      </div>
+                      <p text='end'>
+                      Es un gran placer para nosotros presentarles el Maatram Educational and 
+                      Charitable Trust. Somos un grupo de amigos cuyo ideal en la vida es ayudar 
+                      donde podamos, como podamos y siempre que podamos. Esta ayuda está enfocada 
+                      hacia los pobres y necesitados que conviven entre nosotros dentro de nuestra 
+                      sociedad y pretende lograr un cambio en su vida - una "ARGENTINA GROOMING"<br /><br />
+                      Esta es una organización dirigida por voluntarios que son profesionales sinceros y bien
+                        establecidos y que están interesados ​​​​en que cada donación llegue a los estudiantes necesitados
+                        y brillantes, sin los cuales, habrían perecido en la oscuridad del abismo social. <br /><br />
+                      Estamos extremadamente agradecidos por su amabilidad y la generosidad de su donación. Con su amable 
+                      cooperación y apoyo, estamos localizando a estudiantes brillantes y necesitados de las áreas rurales
+                        y haciendo arreglos para brindarles asistencia financiera para estudios superiores. Provee comida, 
+                        abrigo, vestido y asistencia médica junto con amor y afecto a las personas mayores.
+                      </p>
+                  </div>
+                </div>
+            </div>
           </div>
-        </div>
       </div>
       {/* Global mission*/}
       <div className={s.mainContainer}>
@@ -132,18 +136,21 @@ const About = () => {
               </div>
               <h4>Conoce nuestro equipo</h4>
             </div>
-            <div className={s.team}>
-              {
-                team.map((member) => {
-                  return (
-                    <TeamCard
-                    name={member.name}
-                    avatar={member.avatar}
-                    rol={member.rol}
-                    />
-                  )
-                })
-              }
+            <div class="container">
+              <div class="row">
+                  {
+                    team.map((member) => {
+                      return (
+                        <TeamCard
+                        name={member.name}
+                        avatar={member.avatar}
+                        rol={member.rol}
+                        />
+                      )
+                    })
+                  }
+
+              </div>
             </div>
             <button>Se voluntario</button>
           </div>
