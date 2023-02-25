@@ -1,6 +1,3 @@
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import imgUs from '../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg'
 import imgMission from '../../../assets/About/NuestraMision.png'
 import s from './About.module.css'
@@ -137,17 +134,17 @@ const About = () => {
         </div>
       </div>
       {/*The team*/}
-      <div className={s.mainContainer3}>
-        <div className={s.teamContainer}>
+      <div class="container-fluid" className={s.videoContainer}>
+        <div class="row" className={s.teamContainer}>
           <div className={s.bodyContainer}>
-            <div className={s.title}>
+            <div className={s.textContainer}>
               <div className={s.globo2}>
                 <h3>Lo que hacemos</h3>
               </div>
               <h4>Conoce nuestro equipo</h4>
             </div>
             <div class="container">
-              <div class="row">
+              <div class="row g-3">
                   {
                     team.map((member) => {
                       return (
@@ -159,10 +156,11 @@ const About = () => {
                       )
                     })
                   }
-
               </div>
             </div>
-            <button>Se voluntario</button>
+            <div className={s.divButton}>
+              <button className="button">Se voluntario</button>
+            </div>
           </div>
         </div>
       </div>
