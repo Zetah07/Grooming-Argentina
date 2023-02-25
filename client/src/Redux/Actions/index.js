@@ -55,7 +55,9 @@ export const getBlogByID = (id) => {
 
 export const getNewsByTitle = (name) => {
   return async function (dispatch) {
-    const newsByTitle = await axios.get(`http://localhost:3500/news/?name=${name}`);
+    const newsByTitle = await axios.get(
+      `http://localhost:3500/news/?name=${name}`
+    );
     if (newsByTitle.data) {
       dispatch({ type: GET_NEWS_BY_TITLE, payload: newsByTitle.data });
     } else {
@@ -77,9 +79,9 @@ export const getBlogByTitle = (name) => {
 
 export const getLogin = () => {
   return async function (dispatch) {
-    const user = await axios.post("/auth/login");
-    if (user.data.user) {
-      dispatch({ type: GET_LOGIN, payload: user.data.user });
+    const user = await axios.post("http://localhost:3500/auth/login");
+    if (user.data) {
+      dispatch({ type: GET_LOGIN, payload: user.data });
     } else {
       dispatch({ type: ERROR });
     }
@@ -92,6 +94,6 @@ export const setError = () => {
 
 export const resetFilter = () => {
   return function (dispatch) {
-    dispatch({ type: RESET_FILTER })
-  }
-}
+    dispatch({ type: RESET_FILTER });
+  };
+};
