@@ -63,6 +63,7 @@
     align-items: flex-start;
     padding: 50px;
     padding-top: 0px;
+    padding-left: 20px;
 }
 
 .textContainer h4{
@@ -180,6 +181,7 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 0px;
+    padding-bottom: 0px;
     width: 70%;
 }
 .visionTitle{
@@ -227,10 +229,6 @@
     font-size: 20px;
 }
 .title2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 50px;
     padding-top: 20px;
 }
@@ -279,4 +277,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+}
+
+.statiticsDiv{
+    width: 80%;
 }
