@@ -19,10 +19,10 @@ const About = () => {
       <div class="container-fluid" className={s.mainContainer0}>
           <div class="container-fluid" className={s.container1}>
             <div class="row">
-              <div class="col container-fluid d-flex justify-content-end align-items-end" >
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 container-fluid d-flex justify-content-end align-items-end" >
                   <img  src={imgUs} alt="img_us" className={s.image}/>
               </div>
-                  <div class="col container-fluid" >
+                  <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid" >
                     <div className={s.textContainer}>
                       <div className={s.title}>
                         <div className={s.globo}>
