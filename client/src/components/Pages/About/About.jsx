@@ -121,15 +121,19 @@ const About = () => {
         </div>
       </div>
       {/*Statistics*/}
-      <div className={s.mainContainer2}>
-        <div className={s.title2}>
-          <div className={s.globo2}>
-            <h3>Lo que hacemos</h3>
+      <div class="container-fluid" className={s.videoContainer}>
+        <div class="row" className={s.statiticsDiv}>
+          <div class="col">
+            <div className={s.textContainer}>
+              <div className={s.globo2}>
+                <h3>Lo que hacemos</h3>
+              </div>
+              <h4>Nuestras estadísticas</h4>
+            </div>
           </div>
-          <h4>Nuestras estadísticas</h4>
-        </div>
-        <div className={s.statitics}>
-          <img src={staticsimg} alt="statitics" />
+          <div class="col">
+            <img  class="img-fluid" width="1700px" height="400px" src={staticsimg} alt="statitics" />
+          </div>
         </div>
       </div>
       {/*The team*/}
