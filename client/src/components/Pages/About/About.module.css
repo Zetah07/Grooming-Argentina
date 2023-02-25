@@ -64,6 +64,7 @@
     padding: 50px;
     padding-top: 0px;
     padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .textContainer h4{
@@ -269,7 +270,7 @@
     justify-content: center;
 }
 .bodyContainer{
-    background-color: #0099ff;
+    padding-top: 80px;
     width: 80%;
 }
 
@@ -281,4 +282,14 @@
 
 .statiticsDiv{
     width: 80%;
+}
+.divButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0px;
+    padding: 20px;
+}
+.volunteerButton{
+    border-radius: 20px;
 }
