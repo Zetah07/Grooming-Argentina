@@ -44,18 +44,18 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
-          {usl !== "/" ? (activeMenu ? (
-            <div className="w-1 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+          {activeMenu ? (
+            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
             </div>
           ) : (
             <div className="w-0 dark:bg-secondary-dark-bg">
               <Sidebar />
             </div>
-          )):null}
+          )}
           <div
             className={
-              activeMenu
+              usl !== '/' && activeMenu
                 ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
                 : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
             }
@@ -67,8 +67,6 @@ const App = () => {
               {themeSettings && <ThemeSettings />}
 
             <Routes>
-            
-            
               <Route path="/" element={<Login />} />
               {/* Login  */}
 
@@ -94,7 +92,7 @@ const App = () => {
               {/* Ruta crear noticias y/o editar/eliminar blog */}
             </Routes>
           </div>
-          {usl !== "/" ? <Footer /> : null}
+          <Footer />
         </div>
       </div>
     </div>
