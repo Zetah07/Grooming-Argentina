@@ -8,7 +8,7 @@ const TeamCard = ({name, avatar, rol}) => {
                 <div class="card-body">
                     <div className={s.bodycss}>
                         <h2 class="card-title">{name}</h2>
-                        <span class="card-subtitle mb-2 text-muted">{rol}</span>
+                        <span class="card-subtitle mb-2">{rol}</span>
                     </div>
                 </div>
             </div>

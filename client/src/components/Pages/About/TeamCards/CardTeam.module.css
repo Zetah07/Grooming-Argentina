@@ -9,6 +9,7 @@
 
 .container:hover{
     background-color:rgb(21, 86, 146);
+    color: white;
 }
 
 .avatarIMG{
