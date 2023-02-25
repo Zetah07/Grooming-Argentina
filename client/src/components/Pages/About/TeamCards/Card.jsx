@@ -2,10 +2,14 @@ import s from "./CardTeam.module.css"
 
 const TeamCard = ({name, avatar, rol}) => {
     return (
-        <div className={s.container}>
-            <img src={avatar} alt="avatar" />
-            <h2>{name}</h2>
-            <span>{rol}</span>
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            <div class="card h-100 w-100">
+                <img src={avatar} alt="avatar" class="card-img-top h-50"/>
+                <div class="card-body">
+                    <h2 class="card-title">{name}</h2>
+                    <span class="card-subtitle mb-2 text-muted">{rol}</span>
+                </div>
+            </div>
         </div>
     )
 };
