@@ -26,6 +26,7 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import PersistLogin from "./components/PersistLogin/PersistLogin";
 import CreateBlog from "./components/CreateBlog/CreateBlog";
+import StudentsPlayer from "./components/Students/StudentsPlayer/StudentsPlayer";
 
 function App() {
   const usl = useLocation().pathname;
@@ -62,6 +63,8 @@ function App() {
           </Route>
 
           <Route exact path="/unauthorized" element={<Unauthorized />} />
+          <Route exact path="/estudiantes" element={<Students />} />
+          <Route exact path="/estudiantes/:id" element={<StudentsPlayer />}/>
         </Route>
       </Routes>
       {usl !== "/" ? <Footerx /> : null}
