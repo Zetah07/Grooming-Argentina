@@ -1,19 +1,18 @@
 import { Card } from 'react-bootstrap';
-import ReactPlayer from 'react-player';
-import s from './VideoCard.module.css';
+import { Link } from 'react-router-dom';
 
-export default function VideoCard(){
+export default function VideoCard({title, description, thumbnail, id}){
     return(
-        <Card>
-            <Card.Body>
-                <ReactPlayer
-                    url="https://vimeo.com/798384070?access_token="
-                    width='98%'
-                    height='100%'
-                    muted
-                />
-            </Card.Body>
-            <Card.Title>Video Card</Card.Title>
+        <Card style={{ width: '397px' }}>
+        <Link to={`/estudiantes/${id}`}>
+            <Card.Img variant="top" src={thumbnail} />  
+        </Link>
+        <Card.Body>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>
+                {description}
+            </Card.Text>
+        </Card.Body>
         </Card>
     )
 };
