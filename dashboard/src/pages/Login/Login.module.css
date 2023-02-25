@@ -12,6 +12,7 @@
   background-image: url("../../assets/Rectangle.png");
   background-repeat: no-repeat;
   background-size: cover;
+  min-height:100vh;
 }
 
 .loginContainer {

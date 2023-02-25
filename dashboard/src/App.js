@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import Students from "./components/Students/Students/Students"
@@ -13,10 +13,10 @@ import {
 } from "./pages";
 
 import { useStateContext } from "./contexts/ContextProvider";
-
 import "./App.css";
 
 const App = () => {
+  const usl = useLocation().pathname;
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   useEffect(() => {
@@ -44,15 +44,15 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
-          {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+          {usl !== "/" ? (activeMenu ? (
+            <div className="w-1 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
             </div>
           ) : (
             <div className="w-0 dark:bg-secondary-dark-bg">
               <Sidebar />
             </div>
-          )}
+          )):null}
           <div
             className={
               activeMenu
@@ -61,12 +61,14 @@ const App = () => {
             }
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-              <Navbar />
+            {usl !== "/" ? <Navbar /> : null}
             </div>
             <div>
               {themeSettings && <ThemeSettings />}
 
             <Routes>
+            
+            
               <Route path="/" element={<Login />} />
               {/* Login  */}
 
@@ -92,7 +94,7 @@ const App = () => {
               {/* Ruta crear noticias y/o editar/eliminar blog */}
             </Routes>
           </div>
-          <Footer />
+          {usl !== "/" ? <Footer /> : null}
         </div>
       </div>
     </div>
