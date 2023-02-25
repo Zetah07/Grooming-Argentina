@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import {  useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useLogout from "../../../hooks/useLogout";
 import axios from "../../../api/axios";
@@ -37,7 +37,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(input);
-    
+
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -48,22 +48,35 @@ const Login = () => {
         }
       );
       const accessToken = response?.data?.accessToken;
-      const rol = response?.data?.roles
-      setAuth({ user: input.username, pwd: input.password, accessToken, rol});
-      setinput({username: "",password: ""});
+      const rol = response?.data?.roles;
+      setAuth({ user: input.username, pwd: input.password, accessToken, rol });
+      setinput({ username: "", password: "" });
       navigate(from, { replace: true });
     } catch (error) {
       if (!error?.response) {
-        alert("No server response");
+        showAlert("Sin respuesta del servidor");
       } else if (error.response?.status === 400) {
-        alert("missing username or password");
+        showAlert("Nombre de usuario o contraseña incorrecta");
       } else if (error.response?.status === 402) {
-        alert("Unauthorized");
+        showAlert("No autorizado");
       } else {
-        setinput({...input,password: ""});
-        alert("Login failed");
+        setinput({ ...input, password: "" });
+        showAlert("Error al iniciar sesión");
       }
     }
+  };
+
+  const showAlert = (message) => {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-danger", "text-center");
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.classList.add("hide");
+      setTimeout(() => {
+        document.body.removeChild(alertDiv);
+      }, 600);
+    }, 3000);
   };
 
   const handleClick = (event) => {
@@ -92,36 +105,35 @@ const Login = () => {
           onSubmit={handleSubmit}
         >
           <div className={Style.inputContainer}>
-            <div className={Style.input}>
-              <FormControl
-                type="text"
-                id="usernameInput"
-                name="username"
-                placeholder="Ingresa DNI"
-                value={input.username}
-                onChange={handleInputChange}
-                isInvalid={!!error.username}
-                onKeyDown={handleKeyPress}
-              />
-              <FormControl.Feedback type="invalid" className={Style.feedback}>
-                {error.username}
-              </FormControl.Feedback>
-            </div>
-            <div className={Style.input}>
-              <FormControl
-                type="password"
-                id="passwordInput"
-                name="password"
-                placeholder="Ingresa contraseña"
-                value={input.password}
-                onChange={handleInputChange}
-                isInvalid={!!error.password}
-                onKeyDown={handleKeyPress}
-              />
-              <FormControl.Feedback type="invalid" className={Style.feedback}>
-                {error.password}
-              </FormControl.Feedback>
-            </div>
+            <FormControl
+              type="text"
+              id="usernameInput"
+              name="username"
+              placeholder="Ingrese número de DNI"
+              value={input.username}
+              onChange={handleInputChange}
+              isInvalid={!!error.username}
+              onKeyDown={handleKeyPress}
+              className={Style.input}
+            />
+            <FormControl.Feedback type="invalid" className={Style.feedback}>
+              {error.username}
+            </FormControl.Feedback>
+
+            <FormControl
+              type="password"
+              id="passwordInput"
+              name="password"
+              placeholder="Ingrese contraseña"
+              value={input.password}
+              onChange={handleInputChange}
+              isInvalid={!!error.password}
+              onKeyDown={handleKeyPress}
+              className={Style.input}
+            />
+            <FormControl.Feedback type="invalid" className={Style.feedback}>
+              {error.password}
+            </FormControl.Feedback>
           </div>
           <br />
           <Button type="submit" className={Style.button} onClick={handleClick}>
