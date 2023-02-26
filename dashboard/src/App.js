@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Login/>} />
           <Route exact path="/unauthorized" element={<Unauthorized />} />
-          <Route exact path="/panel/profile" element={<Profile/>} />
+          <Route path="/panel/profile" element={<Profile/>} />
   
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuth allowedRoles={["user", "admin", "hr", "volunteer", "editor"]} />}>
