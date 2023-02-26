@@ -6,9 +6,12 @@ import {
   GET_BLOG_BY_ID,
   GET_NEWS_BY_TITLE,
   GET_BLOGS_BY_TITLE,
+  GET_NEWS_BY_CATEGORY,
+  GET_NEWS_BY_PROVINCE,
   GET_LOGIN,
   ERROR,
   RESET_FILTER,
+  GET_BLOGS_SORT_BY_DATE,
 } from "../Actions";
 
 const initialState = {
@@ -16,7 +19,7 @@ const initialState = {
   newID: [],
   blogs: [],
   blogId: [],
-  filter: false
+  filter: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -33,12 +36,18 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, news: action.payload, filter: true };
     case GET_BLOGS_BY_TITLE:
       return { ...state, blogs: action.payload, filter: true };
+    case GET_NEWS_BY_CATEGORY:
+      return { ...state, news: action.payload, filter: true };
+    case GET_NEWS_BY_PROVINCE:
+      return { ...state, news: action.payload, filter: true };
     case GET_LOGIN:
       return { ...state, user: action.payload };
     case ERROR:
       return { ...state, error: action.payload };
     case RESET_FILTER:
-      return { ...state, filter: false }
+      return { ...state, filter: false };
+    case GET_BLOGS_SORT_BY_DATE:
+      return { ...state, blogs: action.payload, filter: true };
     default:
       return { ...state };
   }

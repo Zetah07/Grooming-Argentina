@@ -32,6 +32,7 @@ const NewDetails = () => {
         <img src={newID.img} alt={newID.title} class="card-img-top" />
         <div class="card-body">
           <p class="card-subtitle mb-2 text-muted">Categoria: {newID.category}</p>
+          <p class="card-subtitle mb-2 text-muted">Provincia: {newID.provinceOrLocation}</p>
           <p class="card-subtitle mb-2 text-muted">Publicado: {newID.createdAt}</p>
           <p class="card-text">Descripción: {newID.description}</p>
           <p>Enlaces adicionales:</p><a href={newID.link} class="card-link fs-6">{newID.link}</a>

@@ -4,10 +4,13 @@ export const GET_ALL_BLOGS = "GET_ALL_BLOGS";
 export const GET_NEW_BY_ID = "GET_NEW_BY_ID";
 export const GET_BLOG_BY_ID = "GET_BLOG_BY_ID";
 export const GET_NEWS_BY_TITLE = "GET_NEWS_BY_TITLE";
+export const GET_NEWS_BY_CATEGORY = "GET_NEWS_BY_CATEGORY";
+export const GET_NEWS_BY_PROVINCE = "GET_NEWS_BY_PROVINCE";
 export const GET_LOGIN = "GET_LOGIN";
 export const ERROR = "ERROR";
 export const RESET_FILTER = "RESET_FILTER";
 export const GET_BLOGS_BY_TITLE = "GET_BLOGS_BY_TITLE";
+export const GET_BLOGS_SORT_BY_DATE = "GET_BLOGS_SORT_BY_DATE";
 
 export const getAllNews = () => {
   return async function (dispatch) {
@@ -68,9 +71,53 @@ export const getNewsByTitle = (name) => {
 
 export const getBlogByTitle = (name) => {
   return async function (dispatch) {
-    const blogByTitle = await axios.get(`http://localhost:3500/blog/?title=${name}`);
+    const blogByTitle = await axios.get(
+      `http://localhost:3500/blog/?title=${name}`
+    );
     if (blogByTitle.data) {
       dispatch({ type: GET_BLOGS_BY_TITLE, payload: blogByTitle.data });
+    } else {
+      dispatch({ type: ERROR });
+    }
+  };
+};
+
+export const getNewsByCategory = (name) => {
+  return async function (dispatch) {
+    const newsByCategory = await axios.get(
+      `http://localhost:3500/news?categoria=${name}`
+    );
+    if (newsByCategory.data) {
+      dispatch({ type: GET_NEWS_BY_CATEGORY, payload: newsByCategory.data });
+    } else {
+      dispatch({ type: ERROR });
+    }
+  };
+};
+
+export const getNewsByProvince = (province) => {
+  return async function (dispatch) {
+    const newsByProvince = await axios.get(
+      `http://localhost:3500/news?provinciaOLocacion=${province}`
+    );
+    if (newsByProvince.data) {
+      dispatch({ type: GET_NEWS_BY_PROVINCE, payload: newsByProvince.data });
+    } else {
+      dispatch({ type: ERROR });
+    }
+  };
+};
+
+
+
+
+export const getBlogsSortByDate = (sort) => {
+  return async function (dispatch) {
+    const blogSort = await axios.get(
+      `http://localhost:3500/blog?sort=${sort}`
+    );
+    if (blogSort.data) {
+      dispatch({ type: GET_BLOGS_SORT_BY_DATE, payload: blogSort.data });
     } else {
       dispatch({ type: ERROR });
     }
