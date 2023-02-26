@@ -7,9 +7,9 @@ const RequireAuth = ({ allowedRoles }) => {
   return allowedRoles.includes(auth?.rol) ? (
     <Outlet />
   ) : auth?.accessToken ? (
-    <Navigate to="/unauthorized" state={{ from: location }} replace/>
+    <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (
-    <Navigate to="/test" state={{ from: location }} replace />
+    <Navigate to="/login" state={{ from: location }} replace />
   );
 };
 
