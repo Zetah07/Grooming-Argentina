@@ -16,7 +16,7 @@ import {
     WhatsappIcon,
 } from "react-share";
 
-const NewCard = ({ id, image, title, createdAt, category }) => {
+const NewCard = ({ id, image, title, createdAt, category, provinceOrLocation }) => {
     return (
         <div class="col-12 col-md-6 col-lg-6 ">
             <div class="card h-100" >
@@ -24,6 +24,7 @@ const NewCard = ({ id, image, title, createdAt, category }) => {
                 <div class="card-body">
                     <h5 class="card-title">{title}</h5>
                     <p class="card-subtitle mb-2 text-muted">Categoria: {category}</p>
+                    <p class="card-subtitle mb-2 text-muted">Provincia: {provinceOrLocation}</p>
                     <p class="card-subtitle mb-2 text-muted">Publicado: {createdAt}</p>
                     <div class="card-body">
                         <FacebookShareButton url={`http://localhost:3000/noticias/${id}`} quote={title}>
