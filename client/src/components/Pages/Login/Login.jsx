@@ -16,6 +16,7 @@ const LOGIN_URL = "/auth/login";
 const Login = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const [input, setinput] = useState({
     username: "",

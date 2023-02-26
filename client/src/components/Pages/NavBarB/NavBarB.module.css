@@ -1,29 +1,29 @@
 .containex {
-    display: flex;
-    flex-direction: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    background-color: transparent;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  display: flex;
+  flex-direction: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: transparent;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
 
 }
 
 .span {
-    font-family: "Gotham Rounded";
-    font-size: larger;
-    color: #7dc8ec;
-    ;
+  font-family: "Gotham Rounded";
+  font-size: larger;
+  color: #7dc8ec;
+  ;
 }
 
 .colorF {
-    background: transparent
-        /*var(--secondary-color)*/
+  background: transparent
+    /*var(--secondary-color)*/
 }
 
 .lashes {
-    font-family: Helvetica;
-    font-size: 18px;
-    color: rgba(31, 8, 8, 0.863);
+  font-family: "Helvetica Neue Medium";
+  font-size: 18px;
+  color: rgba(31, 8, 8, 0.863);
 }
