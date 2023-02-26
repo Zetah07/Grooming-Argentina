@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 const userStatus = require("../../models/userStatus");
 
 const handleNewUser = async (req, res) => {
-  const { username, password, registrationId, name, rol} = req.body;
+  const { username, password, registrationId, name, rol, email} = req.body;
   if (!username || !password)
     return res
       .status(400)
       .json({ messege: "Username y password son requeridos" });
-  if (!name) return res.status(400).json({ messege: "el nombre es requerido" });
+  if (!name ||  !password || !username) return res.status(400).json({ messege: "Datos faltantes" });
   try {
     const duplicate = await user.findOne({ username: username }).exec();
     if (duplicate)
@@ -29,6 +29,7 @@ const handleNewUser = async (req, res) => {
       username: username,
       password: hashedPwd,
       name: name,
+      email: email
     });
     if (rol){
       newUser.rol = rol
