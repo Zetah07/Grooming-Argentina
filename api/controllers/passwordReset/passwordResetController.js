@@ -4,12 +4,12 @@ const nodemailer = require("nodemailer");
 
 
 const handlePasswordReset = async (req, res) => {
-  const { username } = req.body;
+  const { email } = req.body;
   try {
-    const User = await user.findOne({ username });
+    const User = await user.findOne({ email });
     if (!User) {
       return res.status(400).json({
-        message: "El usuario ingresado no existe",
+        message: "Correo no registrado",
       });
     }
 
