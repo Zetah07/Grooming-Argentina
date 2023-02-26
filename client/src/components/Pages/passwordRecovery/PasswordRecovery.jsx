@@ -5,18 +5,26 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import style from "./PasswordRecovery.module.css";
 
 const PasswordRecovery = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!validateEmail(email)) {
+      showAlert(
+        "Por favor ingrese una dirección de correo electrónico valida.",
+        "red"
+      );
+      return;
+    }
+
     try {
-      const response = await axios.post("/reset", { username });
+      const response = await axios.post("/reset", { email });
 
       if (response.status === 200) {
         showAlert(response.data.message, "green");
       } else {
-        throw new Error("El usuario no existe");
+        throw new Error("Correo no registrado");
       }
     } catch (error) {
       if (
@@ -53,7 +61,12 @@ const PasswordRecovery = () => {
   };
 
   const handleChange = (event) => {
-    setUsername(event.target.value);
+    setEmail(event.target.value);
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
   };
 
   const handleKeyPress = (event) => {
@@ -73,9 +86,10 @@ const PasswordRecovery = () => {
       >
         <Form.Group>
           <Form.Control
-            type="text"
-            placeholder="Ingrese número de DNI"
-            value={username}
+            type="email"
+            placeholder="Ingrese Email registrado"
+            value={email}
+            validate
             onChange={handleChange}
             className={style.input}
             onKeyDown={handleKeyPress}

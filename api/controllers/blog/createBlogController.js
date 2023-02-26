@@ -21,7 +21,7 @@ const handleCreatePost = async (req, res) => {
       author: `${author.name} ${author._id.toString().substr(0, 5)}`,
       username: author.username
     });
-    console.log("User ID:", req.user);
+
     await post.save();
 
     res.json(post);
