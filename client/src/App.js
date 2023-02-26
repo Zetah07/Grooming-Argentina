@@ -20,7 +20,6 @@ import BlogDetail from "./components/BlogDetail/BlogDetail";
 import Students from "./components/Students/Students/Students";
 import PasswordRecovery from "./components/Pages/passwordRecovery/PasswordRecovery";
 import PasswordReset from "./components/Pages/passwordReset/PasswordReset";
-import TestPage from "./components/Pages/testPage/TestPAge";
 import Layout from "./components/Layout/Layout";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
@@ -37,13 +36,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/test" element={<TestPage />} />
           <Route exact path="/contactanos" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/noticias" element={<News />} />
           <Route exact path="/noticias/:id" element={<NewsDetail />} />
-          <Route exact path="/crearnoticia" element={<CreateNew />} />
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuth allowedRoles={["admin", "hr", "editor"]} />}>
+              <Route exact path="/crearnoticia" element={<CreateNew />} />
+            </Route>
+          </Route>
           <Route exact path="/nosotros" element={<About />} />
           <Route exact path="/voluntariado" element={<FormVolunteer />} />
           <Route exact path="/blog" element={<Blog />} />
@@ -64,7 +66,7 @@ function App() {
 
           <Route exact path="/unauthorized" element={<Unauthorized />} />
           <Route exact path="/estudiantes" element={<Students />} />
-          <Route exact path="/estudiantes/:id" element={<StudentsPlayer />}/>
+          <Route exact path="/estudiantes/:id" element={<StudentsPlayer />} />
         </Route>
       </Routes>
       {usl !== "/" ? <Footerx /> : null}

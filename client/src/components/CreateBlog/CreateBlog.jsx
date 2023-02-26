@@ -22,28 +22,54 @@ const CreateNew = () => {
     setFormBlog({ ...formBlog, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     const form = event.currentTarget;
+
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
-      axios
-        .post("http://localhost:3500/blog", formBlog, {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${auth?.accessToken}`,
-          },
-        })
-        .then((res) => {
-          alert("Creado");
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("Fallo");
-        });
+      setValidated(true);
+      return;
     }
-    setValidated(true);
+
+    try {
+      await axios.post("http://localhost:3500/blog", formBlog, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      });
+
+      showAlert("post creado correctamente.", "green");
+      form.reset();
+      setFormBlog({ title: "", subtitle: "", content: "" });
+      setValidated(false);
+    } catch (error) {
+      console.log(error);
+      showAlert("No se pudo crear el post, intente de nuevo", "red");
+    }
+  };
+
+  const showAlert = (message, color) => {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "text-center");
+
+    if (color === "green") {
+      alertDiv.classList.add("alert-success");
+    } else if (color === "red") {
+      alertDiv.classList.add("alert-danger");
+    }
+
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+      alertDiv.classList.add("hide");
+      setTimeout(() => {
+        document.body.removeChild(alertDiv);
+      }, 600);
+    }, 3000);
   };
 
   return (
@@ -51,11 +77,11 @@ const CreateNew = () => {
       <div className={s.container1}>
         <span>Crear Blog</span>
       </div>
-      <div class="container">
+      <div className={s.formContainer}>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">
-              <Form.Label>Titulo</Form.Label>
+              <Form.Label>Titulo:</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -66,7 +92,7 @@ const CreateNew = () => {
               <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationCustom02">
-              <Form.Label>Subtitulo</Form.Label>
+              <Form.Label>Subtitulo:</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -79,7 +105,7 @@ const CreateNew = () => {
           </Row>
           <Row className="mb-3">
             <Form.Group className="mb-3" controlId="validationCustom05">
-              <Form.Label>Contenido del Blog</Form.Label>
+              <Form.Label>Contenido del Blog:</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -96,12 +122,16 @@ const CreateNew = () => {
           <Form.Group className="mb-3">
             <Form.Check
               required
+              inline
               label="Acepta que la información se encuentra correcta."
               feedback="Por favor valide que la información se encuentre correcta."
               feedbackType="invalid"
+              className={s.feedback}
             />
           </Form.Group>
-          <Button type="submit">Crear</Button>
+          <Button type="submit" className={s.button}>
+            Crear
+          </Button>
         </Form>
       </div>
     </>
