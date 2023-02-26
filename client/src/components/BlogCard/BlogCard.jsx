@@ -21,7 +21,7 @@ export const BlogCard = ({ key, id, author, title, content, createdAt }) => {
             <div class="card h-100" key={key} >
                 <div class="card-body">
                     <h5 class="card-title">{title}</h5>
-                    <p class="card-subtitle mb-2 text-muted">Categoria: {author}</p>
+                    <p class="card-subtitle mb-2 text-muted">Autor: {author}</p>
                     <p class="card-subtitle mb-2 text-muted">Publicado: {createdAt}</p>
                     <p class="card-text">{content}</p>
                     <div class="card-body">
