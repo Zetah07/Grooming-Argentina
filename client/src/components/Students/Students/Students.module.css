@@ -12,4 +12,8 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 15px;
+    font-family: "Helvetica";
+}
+.title{
+    font-family: "Gotham Rounded";
 }
