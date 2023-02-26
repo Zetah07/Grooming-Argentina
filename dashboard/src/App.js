@@ -1,23 +1,46 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Reports from './pages/Reports';
-import Products from './pages/Products';
+import Navbar from "./components/NavBar/Navbar"
+import { Routes, Route, useLocation} from 'react-router-dom';
+import Bienvenidos from './components/pages/Bienvenidos/Bienvenidos';
+import PersistLogin from './components/PersistLogin/PersistLogin';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+import CreateNew from './components/CreateBlog/CreateBlog';
+import Login from "./components/pages/Login/Login"
+import Unauthorized from './components/pages/Unauthorized/Unauthorized';
+import DownloadButton from "./components/downloadButton/downloadReportButton"
+import ManageBlogs from './components/pages/ManageBlogs/ManageBlogs';
+import ManageNews from './components/pages/ManageNews/ManageNews';
+import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
+
 
 function App() {
+  const location = useLocation().pathname
   return (
-    <>
-      <Router>
-        <Navbar />
+    <div className='App'>
+      
+        {location !== "/" && <Navbar />}
         <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/reports' component={Reports} />
-          <Route path='/products' component={Products} />
+          <Route exact path='/' element={<Login/>} />
+          <Route exact path="/unauthorized" element={<Unauthorized />} />
+  
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuth allowedRoles={["user", "admin", "hr", "volunteer", "editor"]} />}>
+              <Route path="/panel/bienvenidos" element={<Bienvenidos/>}/>
+              <Route exact path="/panel/crearblog" element={<CreateNew />} />
+            </Route>
+            <Route element={<RequireAuth allowedRoles={["admin", "hr"]} />}>
+              <Route exact path="/panel/reportes" element={<DownloadButton />} />
+              <Route path="/panel/voluntarios" element={<ManageVolunteers/>}/>
+            </Route>
+            <Route element={<RequireAuth allowedRoles={["admin", "editor"]} />}>
+            <Route path="/panel/news" element={<ManageNews/>}/>
+            <Route path="/panel/blogs" element={<ManageBlogs/>}/>
+            </Route>
+          </Route>
         </Routes>
-      </Router>
-    </>
+   
+    </div>
   );
 }
 

@@ -6,7 +6,8 @@
   margin-left: 1rem;
 }
 
-.menu-bars {
+.menu-bars {display: flex;
+  align-self: center;
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
@@ -55,6 +56,7 @@
 }
 
 .nav-menu-items {
+  padding-left: 0;
   width: 100%;
 }
 
@@ -99,7 +101,9 @@ align-items: flex-end;
   color: #f1f1f1;
 
 }
-.container{
+.containerNavbar{
+  z-index: 2;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   background-color: #004b82;
