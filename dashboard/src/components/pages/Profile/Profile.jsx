@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "../../../api/axios";
-import  useAuth  from "../../../hooks/useAuth";
-import  showAlert  from "../../ShowAlert/ShowAlert";
+import useAuth from "../../../hooks/useAuth";
+import showAlert from "../../ShowAlert/ShowAlert";
 
 const Profile = () => {
   const { auth } = useAuth();
@@ -60,8 +60,8 @@ const Profile = () => {
         validate={validated}
         class="container rounded bg-white mt-5 mb-5"
       >
-        <div class="row">
-          <div class="col-md3 border-right">
+        <section class="row pb-3">
+          <article class="row g-3 col-12 col-md-12 col-lg-4">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
               <img
                 class="rounded-circle mt-5"
@@ -72,8 +72,8 @@ const Profile = () => {
               <span class="font-weight-bold">nombre</span>
               <span class="text-black-50">email</span>
             </div>
-          </div>
-          <div class="col-md5 border-right">
+          </article>
+          <article class="row g-3 col-12 col-md-12 col-lg-4">
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="text-right">Profile Settings</h4>
@@ -96,7 +96,7 @@ const Profile = () => {
                 <div class="col-md-6">
                   <label class="labels">Apellido</label>
                   <input
-                  id="lastname"
+                    id="lastname"
                     type="text"
                     class="form-control"
                     value="lastname"
@@ -208,17 +208,10 @@ const Profile = () => {
                 </div>
               </div>
               <div class="mt-5 text-center">
-                <button
-                  onClick={handleClick}
-                  class="btn btn-primary profile-button"
-                  type="button"
-                >
-                  Actualizar Perfil
-                </button>
               </div>
             </div>
-          </div>
-          <div class="col-md-4">
+          </article>
+          <article class="row g-3 col-12 col-md-12 col-lg-4">
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center experience">
                 <span>Edit Experience</span>
@@ -247,7 +240,15 @@ const Profile = () => {
                 />
               </div>
             </div>
-          </div>
+          </article>
+        </section>
+        <div className="col-5 offset-5 col-md-5 offset-md-5">
+          <button
+            onClick={handleClick}
+            class="btn btn-primary profile-button"
+            type="button"
+          > Actualizar Perfil
+          </button>
         </div>
       </form>
     </div>
