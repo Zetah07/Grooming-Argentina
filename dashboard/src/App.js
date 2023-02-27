@@ -12,7 +12,7 @@ import DownloadButton from "./components/downloadButton/downloadReportButton"
 import ManageBlogs from './components/pages/ManageBlogs/ManageBlogs';
 import ManageNews from './components/pages/ManageNews/ManageNews';
 import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
-
+import Suscriptores from './components/pages/Sustcriptors/Suscriptors';
 
 function App() {
   const location = useLocation().pathname
@@ -32,11 +32,13 @@ function App() {
             <Route element={<RequireAuth allowedRoles={["admin", "hr"]} />}>
               <Route exact path="/panel/reportes" element={<DownloadButton />} />
               <Route path="/panel/voluntarios" element={<ManageVolunteers/>}/>
+              <Route exact path='/panel/suscriptores' element={<Suscriptores/>}/>
             </Route>
             <Route element={<RequireAuth allowedRoles={["admin", "editor"]} />}>
             <Route path="/panel/news" element={<ManageNews/>}/>
             <Route path="/panel/blogs" element={<ManageBlogs/>}/>
             </Route>
+
           </Route>
         </Routes>
    
