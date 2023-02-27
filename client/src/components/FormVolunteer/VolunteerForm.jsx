@@ -70,8 +70,8 @@ const VolunteerForm = () => {
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
         facebook: string().url('Ingrese una URL válida')/*.required('El campo no puede estar vacío')*/,
         // .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
-        twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
+        twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida'),
+        // .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
         instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.instagram.com/pages/'),
         linkedIn: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')

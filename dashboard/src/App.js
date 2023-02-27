@@ -10,6 +10,7 @@ import Login from "./components/pages/Login/Login"
 import Unauthorized from './components/pages/Unauthorized/Unauthorized';
 import DownloadButton from "./components/downloadButton/downloadReportButton"
 import ManageBlogs from './components/pages/ManageBlogs/ManageBlogs';
+import ManageBlogsById from './components/pages/ManageBlogsById/ManageBlogsById'
 import ManageNews from './components/pages/ManageNews/ManageNews';
 import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
 import Suscriptores from './components/pages/Sustcriptors/Suscriptors';
@@ -40,6 +41,7 @@ function App() {
             <Route element={<RequireAuth allowedRoles={["admin", "editor"]} />}>
             <Route path="/panel/news" element={<ManageNews/>}/>
             <Route path="/panel/blogs" element={<ManageBlogs/>}/>
+            <Route path="/panel/blogs/:id" element={<ManageBlogsById/>}/>
             </Route>
 
           </Route>
