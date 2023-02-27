@@ -11,6 +11,7 @@ import Unauthorized from './components/pages/Unauthorized/Unauthorized';
 import DownloadButton from "./components/downloadButton/downloadReportButton"
 import ManageBlogs from './components/pages/ManageBlogs/ManageBlogs';
 import ManageBlogsById from './components/pages/ManageBlogsById/ManageBlogsById'
+import ManageNewsById from './components/pages/ManageNewsById/ManageNewsById'
 import ManageNews from './components/pages/ManageNews/ManageNews';
 import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
 import Suscriptores from './components/pages/Sustcriptors/Suscriptors';
@@ -39,7 +40,8 @@ function App() {
               <Route exact path='/panel/suscriptores' element={<Suscriptores/>}/>
             </Route>
             <Route element={<RequireAuth allowedRoles={["admin", "editor"]} />}>
-            <Route path="/panel/news" element={<ManageNews/>}/>
+            <Route path="/panel/noticias" element={<ManageNews/>}/>
+            <Route path="/panel/noticias/:id" element={<ManageNewsById/>}/>
             <Route path="/panel/blogs" element={<ManageBlogs/>}/>
             <Route path="/panel/blogs/:id" element={<ManageBlogsById/>}/>
             </Route>
