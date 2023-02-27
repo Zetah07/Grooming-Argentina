@@ -3,8 +3,8 @@
   background-color: var(--terciary-color);
   margin: 0 auto;
   box-shadow: 0 0 7px rgba(3, 170, 253, 0.796);
-  padding: 10px;
-  /* border-radius: 0.5rem; */
+  padding-top: 20px;
+  padding-bottom: 36px;
   color: var(--color-primary);
   display: flex;
   justify-content: center;
@@ -12,6 +12,7 @@
   background-image: url("../../../assets/Rectangle.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .loginContainer {
@@ -30,6 +31,12 @@
   align-items: center;
 }
 
+@media (max-width: 400px) {
+  .loginContainer {
+    width: 85%;
+  }
+}
+
 .img {
   position: absolute;
   color: var(--primary-color);
@@ -40,7 +47,11 @@
 
 
 .inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 7rem;
+  text-align: center;
 }
 
 .input {
@@ -49,6 +60,7 @@
   border-radius: 8px;
   font-size: 0.9rem;
   color: var(--terciary-color);
+  text-align: center;
 }
 
 .feedback {

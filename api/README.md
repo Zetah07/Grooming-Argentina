@@ -242,31 +242,33 @@ Para pedir todos los cursos:
 ```
 /courses
 ```
-Este respondera con un array de objetos cursos
+Este respondera con un array de objetos cursos y el numero total de paginas
 Por ejemplo:
 ```
-[
-    {
-		"_id": "63eea215df81851336708c2f",
-		"title": "titulo de muestra",
-		"description": "descripcion de muestra",
-		"thumbnail": "thumbnail de muestra",
-		"link": "link del video",
-		"createdAt": "2023-02-16T21:37:25.496Z",
-		"updatedAt": "2023-02-16T22:13:59.900Z"
-	},
-	{
-		"_id": "63eea2b3df81851336708c33",
-		"title": "titulo de muestra",
-		"description": "descripcion de muestra",
-		"thumbnail": "thumbnail de muestra",
-		"link": "link del video",
-		"createdAt": "2023-02-16T21:40:03.403Z",
-		"updatedAt": "2023-02-16T21:40:03.403Z"
-	}
-]
+{
+	"maxPage": 2,
+	"pagedArr": [
+		{
+			"_id": "63ee8cf344b6ba47bcfafa78",
+			"title": "Video muestra1",
+			"description": "Nueva description",
+			"thumbnail": "https://i.vimeocdn.com/video/693747235-849707dc23c99fc43095504600b1e845aba6e8d0595bd6c9d21e095eb6f903a2-d_390x220",
+			"link": "https://vimeo.com/264061964",
+			"updatedAt": "2023-02-24T17:33:04.183Z"
+		},
+		{
+			"_id": "63f077d4f992f78b09178998",
+			"title": "el curso mas testeado",
+			"description": "El fafa3",
+			"thumbnail": "https://i.vimeocdn.com/video/701433851-ad4092f190bf9b216606508c1f9f0de896565d49000b0428d162c10e4ba6ce81-d_390x220",
+			"link": "https://vimeo.com/266931123",
+			"createdAt": "2023-02-18T07:01:40.333Z",
+			"updatedAt": "2023-02-24T18:02:04.895Z"
+		}
+}
+
 ```
-NOTA: por defecto estos vendran ordenados por fecha de creacion de mas reciente a mas antiguo (descendiente)
+NOTA: por defecto estos vendran ordenados por fecha de creacion de mas reciente a mas antiguo (descendiente) y paginados de a 6 cursos por pagina
 
 Si se desea ordenar los cursos de manera especifica se debera pasar por query el orden deseado
 Este orden siempre sera relacionado a la fecha de creacion
@@ -295,6 +297,56 @@ Por ejemplo:
 	"updatedAt": "2023-02-16T21:40:03.403Z"
 }
 ```
+
+Si se desea buscar un curso especifico se debe pasar por query el id del curso buscado
+Por ejemplo:
+```
+/courses?id=63ee8cf344b6ba47bcfafa78
+```
+Este retornara el primer curso que coincida en titulo con el enviado
+Por ejemplo:
+```
+{
+	"_id": "63ee8cf344b6ba47bcfafa78",
+	"title": "Video muestra1",
+	"description": "Nueva description",
+	"thumbnail": "https://i.vimeocdn.com/video/693747235-849707dc23c99fc43095504600b1e845aba6e8d0595bd6c9d21e095eb6f903a2-d_390x220",
+	"link": "https://vimeo.com/264061964",
+	"updatedAt": "2023-02-24T17:33:04.183Z"
+}
+```
+Para el Paginado se pasa por query la propiedad page: con el numero de la pagina y perPage: con cuantos resultados por pagina en caso de no poner pagina por defecto sera la 1 y perPge por defecto sera 6
+Ejemplo
+```
+/courses?page=4&perPage=2
+```
+
+```
+{
+	"maxPage": 5,
+	"pagedArr": [
+		{
+			"_id": "63eea810004aa7ecd2ec383f",
+			"title": "el curso mas clonado",
+			"description": "El lorem ipsum mas multiplicativo",
+			"thumbnail": "https://i.vimeocdn.com/video/697143807-2ff0c588b6209aa7951c64eb7f51e3447fb587763c9cd76d95d01bf9f4feda3b-d_390x220",
+			"link": "https://vimeo.com/266448492",
+			"createdAt": "2023-02-16T22:02:56.034Z",
+			"updatedAt": "2023-02-24T17:59:02.945Z"
+		},
+		{
+			"_id": "63eeac6aaea9166acca8e717",
+			"title": "el curso mas testeado",
+			"description": "El fafa3",
+			"thumbnail": "https://i.vimeocdn.com/video/699388666-55772707637609305cc3c4898d0902a80c4459ae8c654be5397f20ee9eb2cffd-d_390x220",
+			"link": "https://vimeo.com/268614303",
+			"createdAt": "2023-02-16T22:21:30.817Z",
+			"updatedAt": "2023-02-24T18:00:59.026Z"
+		}
+	]
+}
+```
+
 
 ## Post
 

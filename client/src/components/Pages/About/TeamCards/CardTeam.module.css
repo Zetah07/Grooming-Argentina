@@ -1,0 +1,26 @@
+.container{
+    max-width: 100%;
+    max-height: 100%;
+    width: 260px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.container:hover{
+    background-color:rgb(21, 86, 146);
+    color: white;
+}
+
+.avatarIMG{
+    max-width: 100%;
+    max-height: 100%;
+    width: 180px;
+    height: 180px;
+    border-radius: 150px;
+}
+
+.bodycss{
+    padding: 20px;
+    padding-bottom: 30px;
+}

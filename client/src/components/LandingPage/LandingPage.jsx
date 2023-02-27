@@ -3,16 +3,13 @@ import s from "./LandingPage.module.css";
 import Container from "react-bootstrap/esm/Container";
 import NavBarB from "../Pages/NavBarB/NavBarB";
 // import Button from "react-bootstrap/esm/Button";
-
+// import NavBar from "../Pages/NavBarA/NavBarA";
 
 const LandingPage = () => {
   return (
-
-    <div className={` ${s.background} `}>
-
+    <div className={s.background}>
       <NavBarB />
       <Container className={s.information}>
-
         <h1>Aqui debemos poner <span>una frase</span> que los describa</h1>
         <h2>
           En Grooming Argentina consideramos que la prevención es fundamental para evitar este flagelo y trabajamos en consecuencia de ello. No existe vacuna contra el grooming, por lo que las charlas y talleres de concientización, tanto para adultos como para niños,

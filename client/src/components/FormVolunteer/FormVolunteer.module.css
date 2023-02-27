@@ -33,7 +33,7 @@
 .label_volunt {
     font-family: "HelveticaNeue Medium";
     font-size: 18px;
-    margin-bottom: 0 !important;
+    padding: 3px;
     color: var(--primary-color);
 }
 

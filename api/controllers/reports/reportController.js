@@ -45,7 +45,6 @@ const getReport = async () => {
 
     return await workbook.xlsx.writeBuffer();
   } catch (err) {
-    console.error(err);
     throw new Error("se ha generado un error creando el reporte.");
   }
 }

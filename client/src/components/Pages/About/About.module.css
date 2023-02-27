@@ -31,32 +31,29 @@
     text-align: center;
 }
 
-.mainContainer{
+.mainContainer0{
     display: flex;
-    flex-direction: row-reverse;
-    padding: 0%;
+    justify-content: flex-end;
 }
 
 .container1{
     background-color: #e7edf1;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
     width: 95%;
     padding: 0px;
 }
 
-
-.imgContainer{
-    display: flex;
-    justify-content: right;
-    align-items: flex-end;
-    padding: 50px;
-    padding-right: 20px;
-}
-.imgContainer img{
-    width: 500px;
-    height: 400px;
+.image{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 50px;
+    margin-right: 0px;
     border-radius: 30px;
+}
+.image2{
+    max-width: 100%;
+    max-height: 100%;
+    padding: 10px;
+    padding-left: 0px;
 }
 
 .textContainer{
@@ -65,6 +62,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 50px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .textContainer h4{
@@ -121,11 +121,8 @@
 }
 
 .container2{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 88%;
-    padding: 20px;
-    padding-top: 0px;
+    width: 90%;
+    padding: 0px;
 }
 
 .textContainer2{
@@ -176,13 +173,17 @@
     width: 800px;
     height: 400px;
     border-radius: 30px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .visionDiv{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 1200px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 70%;
 }
 .visionTitle{
     font-family: "Gotham Rounded Bold";
@@ -229,18 +230,13 @@
     font-size: 20px;
 }
 .title2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 50px;
     padding-top: 20px;
 }
-.title2  h4{
+.title2  h4, .title h4{
     font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 70px;
-    padding-left: 50px;
+    font-size: 60px;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -256,4 +252,44 @@
 .statitics img{
     width: 1700px;
     height: 500px;
+}
+
+.mainContainer3{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.teamContainer{
+    background-color: #e7edf1;
+    border-top-right-radius: 70px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bodyContainer{
+    padding-top: 80px;
+    width: 80%;
+}
+
+.team{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.statiticsDiv{
+    width: 80%;
+}
+.divButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0px;
+    padding: 20px;
+}
+.volunteerButton{
+    border-radius: 20px;
 }
