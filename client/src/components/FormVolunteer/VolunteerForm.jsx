@@ -39,7 +39,7 @@ const VolunteerForm = () => {
         whyGroomin: "",
         theme: "",
         expectations: "",
-        dniImg: "",
+        pdfDni: "",
         pdfCv: ""
     }
 
@@ -68,8 +68,8 @@ const VolunteerForm = () => {
         howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
-        facebook: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
+        facebook: string().url('Ingrese una URL válida').required('El campo no puede estar vacío'),
+        // .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
         twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
         instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
@@ -310,7 +310,7 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.facebook?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* Facebook ---> twitter */}
+                {/* Twitter ---> twitter */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Twitter</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.twitter.com/tu_usuario" isInvalid={!!errors.twitter} isValid={touchedFields.twitter && !errors.twitter}
@@ -318,7 +318,7 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.twitter?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* Facebook ---> instagram */}
+                {/* Instagram ---> instagram */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Instagram</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.instagram.com/tu_usuario" isInvalid={!!errors.instagram} isValid={touchedFields.instagram && !errors.instagram}
@@ -326,7 +326,7 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.instagram?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* Facebook ---> linkedIn */}
+                {/* LinkedIn ---> linkedIn */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de LinkedIn</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.linkedIn.com/tu_usuario" isInvalid={!!errors.linkedIn} isValid={touchedFields.linkedIn && !errors.linkedIn}
@@ -338,13 +338,13 @@ const VolunteerForm = () => {
 
 
 
-                {/* Img Dni ---> dniImg */}
+                {/* Pdf Dni ---> pdfDni */}
                 <FormGroup className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Identificación</Form.Label>
-                    <Form.Control type="file" placeholder="Adjunte la imagen de su DNI" isInvalid={!!errors.dniImg} isValid={touchedFields.dniImg && !errors.dniImg}
-                        {...register('dniImg')} />
+                    <Form.Control type="file" placeholder="Adjunte la imagen de su DNI" isInvalid={!!errors.pdfDni} isValid={touchedFields.pdfDni && !errors.pdfDni}
+                        {...register('pdfDni')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">{errors?.dniImg?.message}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{errors?.pdfDni?.message}</Form.Control.Feedback>
                 </FormGroup>
                 {/* Pdf CV ---> pdfCv */}
                 <FormGroup className='d-flex flex-column align-items-start pb-3 col-lg-8'>
@@ -409,16 +409,6 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.expectations?.message}</Form.Control.Feedback>
                 </Form.Group>
-
-
-
-
-
-
-
-
-
-
                 <br />
                 <Form.Group className='d-flex flex-column align-items-center pb-3 col-lg-8'>
                     <Button type="submit">Crear</Button>
