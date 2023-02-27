@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../assets/Grooming_Logo.png";
 import s from "./NavBarB.module.css";
 import Button from "react-bootstrap/Button";
-import LogoutButton from "../../LogoutButton/LogoutButton";
+
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -58,11 +58,7 @@ const NavBarB = () => {
                 IOS
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/login">
-              <i className="bi bi-person "></i>
-            </Nav.Link>
           </Nav>
-          <LogoutButton />
           <Button>
             <Nav.Link as={Link} to="/voluntariado">
               Ser Voluntario
