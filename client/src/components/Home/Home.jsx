@@ -1,4 +1,3 @@
-import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Container from "react-bootstrap/Container";
 import React, { useEffect, useState } from "react";
 import s from "./Home.module.css";
@@ -13,7 +12,7 @@ import { FaHandHoldingMedical, FaVirus, FaPeopleArrows } from "react-icons/fa";
 import { GiFallingBlob } from "react-icons/gi";
 import Cards from "../Card/Card";
 import Row from "react-bootstrap/Row";
-import axios from "axios";
+import axios from '../../api/axios';
 import NewCard from "../NewCard/NewCard";
 import Carousel from 'react-bootstrap/Carousel';
 
@@ -37,7 +36,7 @@ const Home = () => {
   return (
     <>
       <div className={s.container1}>
-      <Carousel>
+      <Carousel className={s.carousel}>
       <Carousel.Item>
       <Container>
         <div className={s.carousel1}>
@@ -105,7 +104,7 @@ const Home = () => {
       </div>
       <div className={s.container2}>
         <div className={s.divHalf}>
-          <h1>Varias causas</h1>
+          <h1 className={s.title}>Varias causas</h1>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
