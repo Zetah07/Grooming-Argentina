@@ -6,8 +6,6 @@
   background-color: transparent;
   letter-spacing: 1px;
   text-transform: uppercase;
-
-
 }
 
 .span {
@@ -25,5 +23,6 @@
 .lashes {
   font-family: "Helvetica Neue Medium";
   font-size: 18px;
-  color: rgba(31, 8, 8, 0.863);
+  color: white;
 }
+
