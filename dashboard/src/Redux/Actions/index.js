@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 export const GET_ALL_NEWS = "GET_ALL_NEWS";
 export const GET_ALL_BLOGS = "GET_ALL_BLOGS";
 export const GET_NEW_BY_ID = "GET_NEW_BY_ID";

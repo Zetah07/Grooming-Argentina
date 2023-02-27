@@ -11,8 +11,8 @@ const ManageBlogs = () => {
     dispatch(getAllBlogs());
   }, [dispatch]);
   return (
-    <div>
-      <Table striped bordered hover>
+    <div >
+      <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
             <th>Id</th>
@@ -40,6 +40,9 @@ const ManageBlogs = () => {
           })}
         </tbody>
       </Table>
+      <Button variant="primary" href="/panel/crearblog">
+      Crear Blog
+    </Button>
     </div>
   );
 

@@ -11,8 +11,8 @@ const ManageNews = () => {
     dispatch(getAllNews());
   }, [dispatch]);
   return (
-    <div>
-      <Table striped bordered hover>
+    <div className="container">
+      <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
             <th>Id</th>
@@ -40,6 +40,9 @@ const ManageNews = () => {
           })}
         </tbody>
       </Table>
+      <Button variant="primary" href="/panel/crearnoticia">
+        Crear Noticia
+      </Button>
     </div>
   );
 

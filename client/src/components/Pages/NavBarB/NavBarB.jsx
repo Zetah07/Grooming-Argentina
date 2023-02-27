@@ -21,19 +21,19 @@ const NavBarB = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
           <Nav /*"me-auto"*/>
-            <Nav.Link as={Link} to="/home" className={s.lashes}>
+            <Nav.Link as={Link} to="/home" className={s.lashes}  style={{color:"white"}}>
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/nosotros" className={s.lashes}>
+            <Nav.Link as={Link} to="/nosotros" className={s.lashes}  style={{color:"white"}}>
               Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/noticias" className={s.lashes}>
+            <Nav.Link as={Link} to="/noticias" className={s.lashes}  style={{color:"white"}}>
               Noticias
             </Nav.Link>
-            <Nav.Link as={Link} to="/blog">
+            <Nav.Link as={Link} to="/blog"  style={{color:"white"}}>
               Blog
             </Nav.Link>
-            <Nav.Link as={Link} to="/contactanos" className={s.lashes}>
+            <Nav.Link as={Link} to="/contactanos" className={s.lashes}  style={{color:"white"}}>
               contactanos
             </Nav.Link>
             <NavDropdown
@@ -46,6 +46,7 @@ const NavBarB = () => {
                 to="https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2"
                 className={s.lashes}
                 target="_blank"
+                
               >
                 Android
               </NavDropdown.Item>
