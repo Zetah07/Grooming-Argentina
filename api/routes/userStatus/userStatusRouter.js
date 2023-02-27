@@ -7,10 +7,12 @@ const {
 const handleUserStatusCreation = require("../../controllers/userStatus/createUserStatusController.js");
 const updateUserStatus = require("../../controllers/userStatus/updateUserStatusController.js");
 const fileUpload = require("express-fileupload");
+const veryfyJWT = require("../../middleware/verifyJWT");
+const verifyRoles = require("../../middleware/verifyRoles");
 
-router.get("/", handleUserStatus);
-router.get("/:id", getUserStatusByid);
-router.put("/:id", updateUserStatus);
+router.get("/", veryfyJWT, verifyRoles(["admin", "hr"]), handleUserStatus);
+router.get("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), getUserStatusByid);
+router.put("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
 router.post(
   "/",
   fileUpload({

@@ -26,6 +26,7 @@ import Unauthorized from "./components/Unauthorized/Unauthorized";
 import PersistLogin from "./components/PersistLogin/PersistLogin";
 import CreateBlog from "./components/CreateBlog/CreateBlog";
 import StudentsPlayer from "./components/Students/StudentsPlayer/StudentsPlayer";
+import ManageVolunteers from "./components/Pages/ManageVolunteers/ManageVolunteers";
 
 function App() {
   const usl = useLocation().pathname;
@@ -59,8 +60,8 @@ function App() {
           </Route>
 
           <Route element={<PersistLogin />}>
-            <Route element={<RequireAuth allowedRoles={["user"]} />}>
-              <Route exact path="/nosotros2" element={<About />} />
+            <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+              <Route exact path="/voluntarios" element={<ManageVolunteers />} />
             </Route>
           </Route>
 
