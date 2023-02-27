@@ -33,7 +33,6 @@ function Navbar() {
               </Link>
             </li>
             <div>
-              {console.log(auth.rol)}
               {SidebarData[ auth.rol || "user"].map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
