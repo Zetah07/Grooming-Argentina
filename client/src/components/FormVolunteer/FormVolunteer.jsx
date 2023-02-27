@@ -29,7 +29,7 @@ const FormVolunteer = () => {
         "howManyHours": 40
     });
 
-    // console.log(errors)
+    console.log(errors)
 
     const onSubmit = (data) => {
         // e.preventDefault()
@@ -54,7 +54,6 @@ const FormVolunteer = () => {
             message: 'Solo se permiten letras y espacios'
         }
     };
-
 
 
 
@@ -83,30 +82,33 @@ const FormVolunteer = () => {
                         <p>El equipo de Grooming Argentina. </p>
                         <br />
                     </div>
-                    <form noValidate onSubmit={handleSubmit(onSubmit)} /*className={`needs-validation ${s.form} `}*/>
+                    <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Dirección de correo electrónico (debe ser de GMAIL)
                                 <spam>*</spam></label>
-                            <input type="email" className="form-control  lg-8" placeholder="name@gmail.com"  {...register('email', {
+                            <input type="email" className="form-control lg-8" placeholder="name@gmail.com" {...register('email', {
                                 ...personalDataValidate, pattern: {
                                     value: /[^@ \t\r\n]+@gmail\.com/,
                                     message: 'El formato de correo electrónico no es válido'
                                 }
-                            })}
-                            />
-                            <span className="text-danger">{errors.email && errors.email.message}</span>
-
+                            })} />
+                            {errors.email && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.email.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Nombres<spam>*</spam></label>
                             <input type="text" className="form-control lg-8" placeholder="Nombre/s" {...register('name', personalDataValidate)} />
-
-                            <span className="text-danger">{errors.name && errors.name.message}</span>
+                            {errors.name && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.name.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Apellidos<spam>*</spam></label>
                             <input type="text" className="form-control lg-8" placeholder="Apellido/s" {...register('lastName', personalDataValidate)} />
-                            <span className="text-danger">{errors.lastName && errors.lastName.message}</span>
+                            {errors.lastName && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.lastName.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Número de Documento<spam>*</spam></label>
@@ -116,61 +118,54 @@ const FormVolunteer = () => {
                                     message: 'El formato de número de documento no es válido'
                                 }
                             })} />
-                            <span className="text-danger">{errors.document && errors.document.message}</span>
+                            {errors.document && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.document.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Nacionalidad<spam>*</spam></label>
                             <input type="text" className="form-control lg-8" placeholder="Argentina" {...register('nationality', personalDataValidate)} />
-                            <span className="text-danger">{errors.nationality && errors.nationality.message}</span>
+                            {errors.nationality && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.nationality.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Fecha de Nacimiento<spam>*</spam></label>
                             <input type="date" className="form-control lg-8" placeholder="dd/mm/aaa" {...register('birthDate')} />
                         </div>
-
-
-
                         <div className="d-flex flex-column align-items-start py-3">
                             <label className={s.label_volunt}>Género<spam>*</spam></label>
-                        </div>
-                        <div className='d-flex flex-column align-items-start pb-2' >
-                            <div className='form-check' >
-                                <input type="radio" value='Masculino' className="form-check-input lg-8" {...register('genre')} />
+                            <div className='form-check' {...register('genre')}>
+                                <input type="checkbox" value='Masculino' className="form-control form-check-input lg-8" />
                                 <label className='form-check-label ms-2'>Masculino</label><br />
-                            </div>
-                            <div className='form-check'>
-                                <input type="radio" value='Femenino' className="form-check-input lg-8" {...register('genre')} />
+                                <input type="checkbox" value='Femenino' className="form-control form-check-input lg-8" />
                                 <label className='form-check-label ms-2'>Femenino</label><br />
-                            </div>
-                            <div lassName='form-check'>
-                                <input type="radio" value='Otro' className="form-check-input lg-8"{...register('genre')} />
+                                <input type="checkbox" value='Otro' className="form-control form-check-input lg-8" />
                                 <label className='form-check-label ms-2 text-start'>Otro</label>
                             </div>
                         </div>
-
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Localidad<spam>*</spam></label>
                             <input type="text" className="form-control lg-8"  {...register('location', personalDataValidate)} />
-                            <span className="text-danger">{errors.location && errors.location.message}</span>
+                            {errors.location && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.location.message}
+                            </button>}
                         </div>
                         <div className="d-flex flex-column align-items-start ">
                             <label className={s.label_volunt}>Dirección<spam>*</spam></label>
-                            <input type="text" className="form-control lg-8"  {...register('address', {
-                                required: {
-                                    value: true,
-                                    message: 'El campo no puede estar vacío'
-                                },
-                            })} />
-                            <span className="text-danger">{errors.address && errors.address.message}</span>
+                            <input type="text" className="form-control lg-8"  {...register('address', personalDataValidate)} />
+                            {errors.address && <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                                {errors.address.message}
+                            </button>}
                         </div>
 
 
                         <input type="submit" value="Enviar" className='button' />
                     </form>
                 </div>
-            </Container >
+            </Container>
 
-        </div >
+        </div>
     );
 };
 

@@ -11,7 +11,7 @@ const Footerx = () => {
     <footer className={s.footer}>
 
       <Container>
-        <Row className='pt-0d-flex-colum '>
+        <Row className='px-5 d-flex-colum '>
           <Col className='md-6 lg-3 mt-5  '>
             <h2 className={s.h2_ft}>Grooming</h2>
             <p className={s.textFt}>Grooming Argentina nació Institucionalmente en el año 2014 y se convirtió en la primera Organización global creada para combatir el delito de «grooming o child grooming».</p>

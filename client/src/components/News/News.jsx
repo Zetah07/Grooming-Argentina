@@ -101,6 +101,7 @@ const News = () => {
                   title={paper.title}
                   image={paper.img}
                   description={paper.description}
+                  provinceOrLocation={paper.provinceOrLocation}
                   createdAt={paper.createdAt}
                   category={paper.category}
                 />

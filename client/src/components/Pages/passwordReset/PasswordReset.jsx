@@ -1,20 +1,37 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import axios from "axios";
+import axios from "../../../api/axios";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
-// import style from "./PasswordReset.module.css";
+import { useNavigate } from "react-router-dom";
+import style from "./PasswordReset.module.css";
 
 const PasswordReset = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden");
+      showAlert("Las contraseñas no coinciden", "red");
+      return;
+    }
+
+    if (password.length < 6) {
+      showAlert("La contraseña debe tener al menos 6 caracteres", "red");
+      return;
+    }
+
+    if (!password.match(/[A-Z]/)) {
+      showAlert(
+        "La contraseña debe contener al menos una letra mayúscula",
+        "red"
+      );
       return;
     }
 
@@ -22,8 +39,15 @@ const PasswordReset = () => {
       const token = window.location.pathname.split("/").pop();
       await axios.put(`/users`, { token, newPass: password });
       setSuccess(true);
+
+      showAlert("Su contraseña ha sido cambiada exitosamente", "green");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 4000);
     } catch (error) {
-      setError(error.message);
+      const errorMessage = error.response.data.message;
+      showAlert(errorMessage, "red");
     }
   };
 
@@ -35,34 +59,73 @@ const PasswordReset = () => {
     setConfirmPassword(event.target.value);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 13) {
+      handleSubmit(event);
+    }
+  };
+
+  const showAlert = (message, color) => {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "text-center");
+
+    if (color === "green") {
+      alertDiv.classList.add("alert-success");
+    } else if (color === "red") {
+      alertDiv.classList.add("alert-danger");
+    }
+
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+      alertDiv.classList.add("hide");
+      setTimeout(() => {
+        document.body.removeChild(alertDiv);
+      }, 600);
+    }, 3000);
+  };
+
   if (success) {
-    return <p>Tu contraseña ha sido cambiada exitosamente</p>;
+    return (
+      <div className={style.success}>
+        <p>será redirigido a la pagina de inicio de sesión</p>
+      </div>
+    );
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2>Resetear Contraseña</h2>
-      <Form.Group>
-        <Form.Label>Nueva Contraseña</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={handleChangePassword}
-          required
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Confirmar Nueva Contraseña</Form.Label>
-        <Form.Control
-          type="password"
-          value={confirmPassword}
-          onChange={handleChangeConfirmPassword}
-          required
-        />
-      </Form.Group>
-      {error && <p>{error}</p>}
-      <Button type="submit">Resetear Contraseña</Button>
-    </Form>
+    <div className={style.container}>
+      <Form onSubmit={handleSubmit}>
+        <h1 className={style.title}>Resetear Contraseña</h1>
+        <h3 className={style.underTitle}>
+          *Debe contener al menos una mayúscula y 6 caracteres
+        </h3>
+        <Form.Group>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={handleChangePassword}
+            required
+            placeholder="Nueva Contraseña"
+            className={style.input}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            type="password"
+            value={confirmPassword}
+            onChange={handleChangeConfirmPassword}
+            required
+            placeholder="Confirmar Nueva Contraseña"
+            className={style.input}
+            onKeyDown={handleKeyPress}
+          />
+        </Form.Group>
+        {error && <p className="alert alert-danger text-center">{error}</p>}
+        <Button type="submit">Resetear Contraseña</Button>
+      </Form>
+    </div>
   );
 };
 

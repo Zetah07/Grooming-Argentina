@@ -68,7 +68,7 @@ const VolunteerForm = () => {
         howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
-        facebook: string().url('Ingrese una URL válida').required('El campo no puede estar vacío'),
+        facebook: string().url('Ingrese una URL válida')/*.required('El campo no puede estar vacío')*/,
         // .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
         twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
