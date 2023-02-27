@@ -1,7 +1,19 @@
-.container1{
+.carousel1{
   background: linear-gradient(0deg, rgba(83, 82, 82, 0.2), rgba(0, 0, 0, 0.2)),
   linear-gradient(0deg, rgba(36, 126, 190, 0.45), rgba(0, 75, 130, 0.45)),
   url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+  background-size: 100% 100%;
+}
+.carousel2{
+  background: linear-gradient(0deg, rgba(83, 82, 82, 0.2), rgba(0, 0, 0, 0.2)),
+  linear-gradient(0deg, rgba(36, 126, 190, 0.45), rgba(0, 75, 130, 0.45)),
+  url(https://images.pexels.com/photos/939702/pexels-photo-939702.jpeg?auto=compress&cs=tinysrgb&w=1600);
+  background-size: 100% 100%;
+}
+.carousel3{
+  background: linear-gradient(0deg, rgba(83, 82, 82, 0.2), rgba(0, 0, 0, 0.2)),
+  linear-gradient(0deg, rgba(36, 126, 190, 0.45), rgba(0, 75, 130, 0.45)),
+  url(https://images.pexels.com/photos/1250452/pexels-photo-1250452.jpeg?auto=compress&cs=tinysrgb&w=1600);
   background-size: 100% 100%;
 }
 .container1 h1, .container3 h1, .container4 h1 {
@@ -72,7 +84,8 @@
 .divCards{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
 }
 .container5{
   display: flex;
@@ -86,7 +99,14 @@
   text-align: right;
   padding-right: 10%;
 }
-@media (max-width: 700px) {
+.container6 h1, .container7 h1 {
+  font-family: "Gotham Rounded";
+  font-style: normal;
+  font-size: 68px;
+  line-height: 97px;
+  color: black;
+}
+@media (max-width: 1013px) {
   .divHalf {
     width: 100%;
   }
