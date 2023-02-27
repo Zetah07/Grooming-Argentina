@@ -1,4 +1,4 @@
-import axios from "../../../api/axios";
+import axios from '../../../api/axios';
 import React, { useEffect, useState } from "react";
 import ReactPlayer from 'react-player';
 import { useParams } from "react-router-dom";
@@ -9,15 +9,13 @@ export default function StudentsPlayer(){
     const [video, setVideo] =useState();
     const [title, setTitle] = useState('');
 
-    const {REACT_APP_REST_API} = process.env;
-
     const handleReady = (player)=>{
         setTitle(player.getInternalPlayer().element.title);
     };
 
     const getVideo = ()=>{
         if(video!==undefined) return video;
-        axios.get(`${REACT_APP_REST_API}/courses?id=${id}`)
+        axios.get(`/courses?id=${id}`)
         .then(res=>setVideo(res.data));
     };
 

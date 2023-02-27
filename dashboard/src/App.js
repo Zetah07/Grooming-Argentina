@@ -18,6 +18,7 @@ import Profile from './components/pages/Profile/Profile';
 import Students from './components/Students/Students/Students';
 import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
 import CreateNew from './components/CreateNew/CreateNew';
+import StudentsPlayer from './components/Students/StudentsPlayer/StudentsPlayer';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             </Route>
             <Route element={<RequireAuth allowedRoles={["admin", "volunteer"]} />}>
             <Route path="/panel/cursos" element={<Students/>}/>
+            <Route path="/panel/cursos/:id" element={<StudentsPlayer/>}/>
             </Route>
 
           </Route>
