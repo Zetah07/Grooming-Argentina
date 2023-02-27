@@ -61,8 +61,8 @@ function Navbar() {
             loading="lazy"
           />
           <div className="dropDownContent">
-            <Link to="/" className="links">
-              <div
+            <Link to="/panel/profile" className="links">
+              <button className="button_drop"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -73,11 +73,11 @@ function Navbar() {
               >
                 <p style={{margin: 0}}>Perfil</p>
                 <BiUser />
-              </div>
+              </button>
             </Link>
             <div type="button" className="links">
-              <button
-              onClick={logout}
+              <button className="button_drop"
+              onClick={(logout)}
                 style={{
                   display: "flex",
                   alignItems: "center",
