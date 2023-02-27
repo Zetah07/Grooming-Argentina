@@ -7,7 +7,6 @@ import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
 import News from "./components/News/News";
 import NewsDetail from "./components/NewDetails/NewDetails";
-import FormVolunteer from "./components/FormVolunteer/FormVolunteer";
 import Login from "./components/Pages/Login/Login";
 import Contact from "./components/Pages/Contact/Contact";
 import CreateNew from "./components/CreateNew/CreateNew";
@@ -26,13 +25,16 @@ import Unauthorized from "./components/Unauthorized/Unauthorized";
 import PersistLogin from "./components/PersistLogin/PersistLogin";
 import CreateBlog from "./components/CreateBlog/CreateBlog";
 import StudentsPlayer from "./components/Students/StudentsPlayer/StudentsPlayer";
+import ManageVolunteers from "./components/Pages/ManageVolunteers/ManageVolunteers";
+import VolunteerForm from "./components/FormVolunteer/VolunteerForm";
+
 
 function App() {
   const usl = useLocation().pathname;
 
   return (
     <div className="App">
-      {usl === "/" || usl === "/login" ? <NavBarB /> : <NavBarA />}
+      {usl === "/" /*|| usl === "/login"*/ ? null : <NavBarA />}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route exact path="/" element={<LandingPage />} />
@@ -47,7 +49,7 @@ function App() {
             </Route>
           </Route>
           <Route exact path="/nosotros" element={<About />} />
-          <Route exact path="/voluntariado" element={<FormVolunteer />} />
+          <Route exact path="/voluntariado" element={<VolunteerForm />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<BlogDetail />} />
           <Route exact path="/recuperar" element={<PasswordRecovery />} />
@@ -59,8 +61,8 @@ function App() {
           </Route>
 
           <Route element={<PersistLogin />}>
-            <Route element={<RequireAuth allowedRoles={["user"]} />}>
-              <Route exact path="/nosotros2" element={<About />} />
+            <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+              <Route exact path="/voluntarios" element={<ManageVolunteers />} />
             </Route>
           </Route>
 

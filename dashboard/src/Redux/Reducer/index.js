@@ -29,9 +29,9 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_BLOGS:
       return { ...state, blogs: action.payload, filter: true };
     case GET_NEW_BY_ID:
-      return { ...state, newID: action.payload };
+      return { ...state, newID: action.payload, filter: true };
     case GET_BLOG_BY_ID:
-      return { ...state, blogId: action.payload };
+      return { ...state, blogId: action.payload, filter: true };
     case GET_NEWS_BY_TITLE:
       return { ...state, news: action.payload, filter: true };
     case GET_BLOGS_BY_TITLE:

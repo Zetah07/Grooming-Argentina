@@ -88,7 +88,7 @@ const CreateNew = () => {
       <div className={s.container1}>
         <span>Crear Noticia</span>
       </div>
-      <div className={s.newsContainer}>
+      <div className="container">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationCustom01">

@@ -73,11 +73,11 @@ const CreateNew = () => {
   };
 
   return (
-    <>
+    <div>
       <div className={s.container1}>
         <span>Crear Blog</span>
       </div>
-      <div className={s.formContainer}>
+      <div className="container">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">
@@ -134,7 +134,7 @@ const CreateNew = () => {
           </Button>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 
