@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../../api/axios';
 import { useEffect, useState } from 'react';
 import { Button, Stack } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
