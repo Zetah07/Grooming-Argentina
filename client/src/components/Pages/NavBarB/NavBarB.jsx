@@ -11,14 +11,14 @@ import Button from 'react-bootstrap/Button';
 
 const NavBarB = () => {
     return (
-        <Navbar expand="lg" sticky='top'>
+        <Navbar expand="lg" className=" bg-transparent" >
             <Container >
                 <Navbar.Brand as={Link} to='/'>
                     <img src={Logo} alt="Logo" />
                     <span className={s.span}>Grooming</span></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
-                    <Nav   /*"me-auto"*/ >
+                    <Nav   /*"me-auto"*/ className='d-flex justify-content-evenly' >
                         <Nav.Link as={Link} to='/home' className={s.lashes}>Home</Nav.Link>
                         <Nav.Link as={Link} to='/nosotros' className={s.lashes}>Nosotros</Nav.Link>
                         <Nav.Link as={Link} to='/noticias' className={s.lashes}>Noticias</Nav.Link>
