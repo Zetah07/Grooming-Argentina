@@ -50,7 +50,7 @@ function Navbar() {
       <div className="perfil">
         <div className="container_text">
           <h3 className="name">pato batman programador</h3>
-          <h3 className="rol">Rol: {auth?.rol}</h3>
+          <h3 className="rol">Rol: {auth?.rol || "user"}</h3>
         </div>
         <div className="dropDown">
           <img
