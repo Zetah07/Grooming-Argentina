@@ -21,7 +21,7 @@ const ManageBlogs = () => {
             <th>Autor</th>
             <th>Creado</th>
             <th>Actualizado</th>
-            <th>Modificar Noticia</th>
+            <th>Modificar Blog</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@ const ManageBlogs = () => {
                 <td>{blog.author}</td>
                 <td>{blog.createdAt}</td>
                 <td>{blog.updatedAt}</td>
-                <td><Button href={`panel/blogs/${blog._id}`} variant="primary">Modificar</Button></td>
+                <td><Button href={`blogs/${blog._id}`} variant="primary">Modificar</Button></td>
               </tr>
             )
           })}
