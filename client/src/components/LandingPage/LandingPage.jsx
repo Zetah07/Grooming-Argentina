@@ -1,13 +1,14 @@
 import React from "react";
 import s from "./LandingPage.module.css";
 import Container from "react-bootstrap/esm/Container";
+import NavBarB from "../Pages/NavBarB/NavBarB";
 // import Button from "react-bootstrap/esm/Button";
 // import NavBar from "../Pages/NavBarA/NavBarA";
 
 const LandingPage = () => {
   return (
     <div className={s.background}>
-      {/* <NavBar className={s.NavBar} /> */}
+      <NavBarB />
       <Container className={s.information}>
         <h1>Aqui debemos poner <span>una frase</span> que los describa</h1>
         <h2>
