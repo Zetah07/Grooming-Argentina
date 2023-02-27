@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import axios from "../../../api/axios";
+import DownloadSuscriptorsButton from "../../DownloadSuscriptorsButton/DownloadSuscriptorsButton";
 
 const Suscriptores = () => {
   const [perPage, setPerPage] = useState(5);
@@ -22,6 +23,7 @@ const Suscriptores = () => {
 
   return (
     <div className="container">
+      <h1>Suscriptores a News Letter</h1>
       <Table responsive>
         <thead>
           <tr>
@@ -45,75 +47,80 @@ const Suscriptores = () => {
                   );
                 })}
         </tbody>
-        <tfoot>
-          <tr aria-label="...">
-            <td class="pagination">
-              <li class={page > 1 ? "page-item" : "page-item disabled"}>
-                <button class="page-link" onClick={() => setPage(page - 1)}>
-                  Previous
-                </button>
-              </li>
-              {page - 2 > 0 && (
-                <li class="page-item">
-                  <button class="page-link" onClick={() => setPage(page - 2)}>
-                    {page - 2}
-                  </button>
-                </li>
-              )}
-              {page - 1 > 0 && (
-                <li class="page-item">
-                  <button class="page-link" onClick={() => setPage(page - 1)}>
-                    {page - 1}
-                  </button>
-                </li>
-              )}
-              <li class="page-item active">
-                <button class="page-link" onClick={() => setPage(page)}>
-                  {page}
-                </button>
-              </li>
-              {page + 1 <= Math.ceil(suscriptors.length / perPage) && (
-                <li class="page-item">
-                  <button class="page-link" onClick={() => setPage(page + 1)}>
-                    {page + 1}
-                  </button>
-                </li>
-              )}
-              {page + 2 <= Math.ceil(suscriptors.length / perPage) && (
-                <li class="page-item">
-                  <button class="page-link" onClick={() => setPage(page + 2)}>
-                    {page + 2}
-                  </button>
-                </li>
-              )}
-              <li
-                class={
-                  page < Math.ceil(suscriptors.length / perPage)
-                    ? "page-item"
-                    : "page-item disabled"
-                }
-              >
-                <button class="page-link" onClick={() => setPage(page + 1)}>
-                  Next
-                </button>
-              </li>
-            </td>
-            <td>
-            <select
-              class="form-select form-select-sm"
-              aria-label=".form-select-lg example"
-              onChange={(event)=> {setPerPage(event.target.value); setPage(1)}}
-            >
-              <option disabled selected>Registros por pagina</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
-            </td>
-          </tr>
-        </tfoot>
+     
       </Table>
+      <div aria-label="..." style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap"}}>
+        <ul class="pagination">
+          <li class={page > 1 ? "page-item" : "page-item disabled"}>
+            <button class="page-link" onClick={() => setPage(page - 1)}>
+              Previous
+            </button>
+          </li>
+          {page - 2 > 0 && (
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPage(page - 2)}>
+                {page - 2}
+              </button>
+            </li>
+          )}
+          {page - 1 > 0 && (
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPage(page - 1)}>
+                {page - 1}
+              </button>
+            </li>
+          )}
+          <li class="page-item active">
+            <button class="page-link" onClick={() => setPage(page)}>
+              {page}
+            </button>
+          </li>
+          {page + 1 <= Math.ceil(suscriptors.length / perPage) && (
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPage(page + 1)}>
+                {page + 1}
+              </button>
+            </li>
+          )}
+          {page + 2 <= Math.ceil(suscriptors.length / perPage) && (
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPage(page + 2)}>
+                {page + 2}
+              </button>
+            </li>
+          )}
+          <li
+            class={
+              page < Math.ceil(suscriptors.length / perPage)
+                ? "page-item"
+                : "page-item disabled"
+            }
+          >
+            <button class="page-link" onClick={() => setPage(page + 1)}>
+              Next
+            </button>
+          </li>
+        </ul>
+        <ul>
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-lg example"
+            onChange={(event) => {
+              setPerPage(event.target.value);
+              setPage(1);
+            }}
+          >
+            <option disabled>
+              Registros por pagina
+            </option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </ul>
+      <DownloadSuscriptorsButton />
+      </div>
     </div>
   );
 };
