@@ -83,6 +83,7 @@ span {
   gap: .8rem;
   color: #f5f5f5;
   margin-right: 1rem;
+  z-index: 100;
 }
 .container_text{
 display: flex;
@@ -128,7 +129,6 @@ align-items: flex-end;
   min-width: 1rem;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
-  z-index: 1;
   border-radius: 1rem;
 }
 .dropDown:hover .dropDownContent {
