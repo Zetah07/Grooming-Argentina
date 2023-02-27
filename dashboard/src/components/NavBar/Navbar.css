@@ -26,6 +26,7 @@
 }
 
 .nav-menu.active {
+  z-index: 1000;
   left: 0;
   transition: 350ms;
 }

@@ -57,7 +57,7 @@ export const SidebarData = {
     reports,
   ],
   user: [bienvenidos],
-  hr: [bienvenidos, estatusVoluntarios, reports],
-  voluntarios: [bienvenidos],
+  hr: [bienvenidos, estatusVoluntarios, reports, suscriptores],
+  volunteer: [bienvenidos],
   editor:[bienvenidos,panelBlogs, panelNoticias]
 };
