@@ -1,0 +1,15 @@
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  display: flex;
+  justify-content: center;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+}
+.title{
+  font-size: 3rem;
+  font-family: "Gotham Rounded Bold";
+}
