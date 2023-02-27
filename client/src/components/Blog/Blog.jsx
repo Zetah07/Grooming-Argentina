@@ -20,7 +20,6 @@ const Blog = () => {
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   if (blogs.length > 0 && items.length === 0) setItems([...blogs].splice(0, blogsPerPage));
-  console.log(blogs);
 
   useEffect(() => {
     dispatch(getAllBlogs());
