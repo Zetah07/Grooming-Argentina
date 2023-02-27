@@ -126,9 +126,6 @@ const News = () => {
         </div>
       </div>
       <br />
-      <Button variant="primary" href="/crearnoticia">
-        Crear Noticia
-      </Button>
     </>
   );
 };

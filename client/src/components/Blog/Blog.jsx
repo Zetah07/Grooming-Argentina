@@ -123,9 +123,6 @@ const Blog = () => {
       </div>
     </div>
     <br />
-    <Button variant="primary" href="/crearblog">
-      Crear Blog
-    </Button>
   </>)
 }
 
