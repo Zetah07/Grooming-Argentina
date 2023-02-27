@@ -1,0 +1,14 @@
+/* basic button styles with border */
+
+.btn {
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "HelveticaNeue Regular";
+}
