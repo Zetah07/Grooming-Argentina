@@ -12,6 +12,7 @@ import DownloadButton from "./components/downloadButton/downloadReportButton"
 import ManageBlogs from './components/pages/ManageBlogs/ManageBlogs';
 import ManageNews from './components/pages/ManageNews/ManageNews';
 import ManageVolunteers from './components/pages/ManageVolunteers/ManageVolunteers';
+import Profile from './components/pages/Profile/Profile';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Login/>} />
           <Route exact path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/panel/profile" element={<Profile/>} />
   
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuth allowedRoles={["user", "admin", "hr", "volunteer", "editor"]} />}>

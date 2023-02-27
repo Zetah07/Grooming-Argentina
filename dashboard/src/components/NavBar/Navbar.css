@@ -140,3 +140,7 @@ align-items: flex-end;
   text-decoration: none;
   color: white;
 }
+.button_drop{
+  background-color: transparent;
+  color: aliceblue;
+}
