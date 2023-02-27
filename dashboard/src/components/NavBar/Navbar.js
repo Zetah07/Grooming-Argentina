@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import logo from "../../assest/LogoB.png";
+import logo from "../../assets/LogoB.png";
 import useAuth from "../../hooks/useAuth";
 import useLogout from "../../hooks/useLogout"
 
@@ -33,6 +33,7 @@ function Navbar() {
               </Link>
             </li>
             <div>
+              {console.log(auth.rol)}
               {SidebarData[ auth.rol || "user"].map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
@@ -50,7 +51,7 @@ function Navbar() {
       <div className="perfil">
         <div className="container_text">
           <h3 className="name">pato batman programador</h3>
-          <h3 className="rol">Rol: {auth?.rol}</h3>
+          <h3 className="rol">Rol: {auth?.rol || "user"}</h3>
         </div>
         <div className="dropDown">
           <img
