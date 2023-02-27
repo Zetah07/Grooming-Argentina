@@ -1,10 +1,10 @@
 const express = require('express');
 const veryfyJWT = require("../../middleware/verifyJWT");
+const verifyRoles = require("../../middleware/verifyRoles");
 const { getPosts, getPostById } = require("../../controllers/blog/getBlogController")
 const createBlogController = require("../../controllers/blog/createBlogController")
 const updateBlogController = require("../../controllers/blog/updateBlogController")
 const deleteBlogController = require("../../controllers/blog/deleteBlogController")
-const verifyRoles = require("../../middleware/verifyRoles");
 
 const router = express.Router();
 
