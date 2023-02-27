@@ -34,7 +34,7 @@ const ManageBlogsById = () => {
             });
             dispatch(resetFilter());
         }
-    }, [dispatch, filter]);
+    }, [dispatch, filter, blogId.title, blogId.subtitle, blogId.content]);
 
     const [validated, setValidated] = useState(false);
     const { auth } = useAuth();
