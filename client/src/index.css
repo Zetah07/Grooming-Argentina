@@ -55,24 +55,20 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
   font-family: "Gotham Rounded Bold";
 }
 
 h2 {
-  font-size: 2.5rem;
   font-family: "HelveticaNeue Medium", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 a,
 h3 {
-  font-size: 2rem;
   font-family: "HelveticaNeue Regular";
 }
 
 h4 {
-  font-size: 1.5rem;
   font-family: "HelveticaNeue Thin";
 }
 
