@@ -147,16 +147,6 @@
     font-style: normal;
     font-size: 20px;
 }
-.imgContainer2{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-}
-.imgContainer2 img{
-    width: 600px;
-    height: 400px;
-}
 
 .videoContainer{
     display: flex;
@@ -213,10 +203,6 @@
     padding-bottom: 30px;
 }
 
-.mainContainer2{
-    display: grid;
-    grid-template-columns:1fr 1fr;
-}
 .globo2{
     background: url(../../../assets/About/globo.png);
     background-size: 100% 100%;
@@ -242,24 +228,8 @@
     -webkit-background-clip: text;
     background-clip: text;
 }
-.statitics{
-    background-size: cover;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    padding: 50px;
-    padding-top: 0;
-}
-.statitics img{
-    width: 1700px;
-    height: 500px;
-}
 
-.mainContainer3{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px;
-}
+
 .teamContainer{
     background-color: #e7edf1;
     border-top-right-radius: 70px;
@@ -274,12 +244,6 @@
     width: 80%;
 }
 
-.team{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
 .statiticsDiv{
     width: 80%;
 }
@@ -289,7 +253,4 @@
     justify-content: center;
     padding-top: 0px;
     padding: 20px;
-}
-.volunteerButton{
-    border-radius: 20px;
 }
