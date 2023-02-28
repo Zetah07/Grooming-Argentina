@@ -133,6 +133,7 @@ const Login = () => {
             </FormControl.Feedback>
           </div>
           <br />
+          <div className={Style.buttonContainer}>
           <Button type="submit" className={Style.button} onClick={handleClick}>
             Ingresar
           </Button>
@@ -140,6 +141,7 @@ const Login = () => {
           <a href="/recuperar" className={Style.forgot}>
             Olvidaste tu contraseña
           </a>
+          </div>
         </form>
       </div>
     </div>
