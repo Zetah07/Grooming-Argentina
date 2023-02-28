@@ -91,7 +91,6 @@ const userStatusSchema = new mongoose.Schema(
     },
     howManyHours: {
       type: String,
-      required: true
     },
     opinion: {
       type: String,
@@ -103,7 +102,6 @@ const userStatusSchema = new mongoose.Schema(
     },
     whoGroominPerson: {
       type: String,
-      required: true
     },
     whyGroomin: {
       type: String,
