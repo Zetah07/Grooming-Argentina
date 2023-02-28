@@ -47,6 +47,13 @@ const reports = {
   cName: "nav-text",
 };
 
+const cursos = {
+  title: "Cursos",
+  path: "/panel/cursos",
+  icon: <BiIcons.BiBookBookmark/>,
+  cName: "nav-text",
+}
+
 export const SidebarData = {
   admin: [
     bienvenidos,
@@ -55,9 +62,10 @@ export const SidebarData = {
     panelBlogs,
     suscriptores,
     reports,
+    cursos
   ],
   user: [bienvenidos],
   hr: [bienvenidos, estatusVoluntarios, reports, suscriptores],
-  volunteer: [bienvenidos],
+  volunteer: [bienvenidos,cursos],
   editor:[bienvenidos,panelBlogs, panelNoticias]
 };

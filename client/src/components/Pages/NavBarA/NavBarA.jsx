@@ -7,9 +7,6 @@ import LogoB from "../../../assets/LogoB.png";
 import s from "./NavBarA.module.css";
 import Button from "react-bootstrap/Button";
 
-
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-
 const NavBarA = () => {
   return (
     <Navbar bg="light" expand="lg" sticky="top">
