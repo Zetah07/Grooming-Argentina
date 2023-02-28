@@ -2,11 +2,13 @@ import React from 'react';
 import { Container, Form, Button, FormGroup } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import s from './FormVolunteer.module.css'
-import { object, string, date, mixed, number, boolean } from 'yup';
+// import { object, string, date, mixed, number, boolean } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import Logo from '../../assets/Grooming_Logo.png';
+import * as yup from 'yup';
+
 
 
 
@@ -43,48 +45,50 @@ const VolunteerForm = () => {
         pdfCv: ""
     }
 
-    const schema = object().shape({
-        email: string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
+    const regExpFacebook = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/;
+
+    const schema = yup.object().shape({
+        email: yup.string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
             .matches(/[^@ \t\r\n]+@gmail\.com/, "El correo debe ser de tipo email"),
-        name: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        name: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(30, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        lastName: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        lastName: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        document: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        document: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(8, "Debe tener hasta  8 caracteres").matches(/^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/, 'El formato de número de documento no es válido'),
-        nationality: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        nationality: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 20 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        birthDate: date().required('El campo no puede estar vacío'),
-        province: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        birthDate: yup.date().required('El campo no puede estar vacío'),
+        province: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        address: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        address: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-        genre: mixed().oneOf(['male', 'female', 'other']).defined(),
-        phone: string().required('El campo no puede estar vacío').min(5, "Debe tener al menos 5 caracteres")
+        genre: yup.mixed().oneOf(['male', 'female', 'other']).defined(),
+        phone: yup.string().required('El campo no puede estar vacío').min(5, "Debe tener al menos 5 caracteres")
             .max(20, "Debe tener menos de 20 caracteres"),
-        schooling: mixed().oneOf(['secundary', 'technical', 'university']).defined(),
-        profession: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        schooling: yup.mixed().oneOf(['secundary', 'technical', 'university']).defined(),
+        profession: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
-        howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
+        howKnowGrooming: yup.mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
+        howManyHours: yup.number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
-        facebook: string().url('Ingrese una URL válida')/*.required('El campo no puede estar vacío')*/,
-        // .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
-        twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida'),
-        // .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
-        instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+        facebook: yup.string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+            .matches(regExpFacebook, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
+        twitter: yup.string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+            .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
+        instagram: yup.string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.instagram.com/pages/'),
-        linkedIn: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+        linkedIn: yup.string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?linkedIn\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.linkedIn.com/pages/'),
-        opinion: string().min(3, "Debe tener al menos 3 caracteres").max(255, "Debe tener hasta 255 caracteres"),
-        knowGroominPerson: boolean().required('El campo no puede estar vacío'),
-        whoGroominPerson: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        opinion: yup.string().min(3, "Debe tener al menos 3 caracteres").max(255, "Debe tener hasta 255 caracteres"),
+        knowGroominPerson: yup.boolean().required('El campo no puede estar vacío'),
+        whoGroominPerson: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 50 caracteres"),
-        whyGroomin: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        whyGroomin: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-        theme: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+        theme: yup.string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-        expectations: string().min(3, "Debe tener al menos 3 caracteres")
+        expectations: yup.string().min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
     })
 
@@ -99,7 +103,8 @@ const VolunteerForm = () => {
             defaultValues: defaultValues
         })
 
-    console.log(errors.message)
+    // console.log(errors.message)
+
 
     const onSave = (data, event) => {
         console.log(data);
@@ -111,6 +116,7 @@ const VolunteerForm = () => {
         //     // event.stopPropagation();
         // }
     };
+
 
 
 
@@ -305,7 +311,8 @@ const VolunteerForm = () => {
                 {/* Facebook ---> facebook */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Facebook</Form.Label>
-                    <Form.Control type="text" placeholder=" https://www.facebook.com/tu_usuario" isInvalid={!!errors.facebook} isValid={touchedFields.facebook && !errors.facebook}
+                    <Form.Control type="text" placeholder="https://www.facebook.com/tu_usuario"
+                        isInvalid={!!errors.facebook} isValid={touchedFields.facebook && !errors.facebook}
                         {...register('facebook')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.facebook?.message}</Form.Control.Feedback>
@@ -314,7 +321,7 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Twitter</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.twitter.com/tu_usuario" isInvalid={!!errors.twitter} isValid={touchedFields.twitter && !errors.twitter}
-                        {...register('facebook')} />
+                        {...register('twitter')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.twitter?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -322,7 +329,7 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Instagram</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.instagram.com/tu_usuario" isInvalid={!!errors.instagram} isValid={touchedFields.instagram && !errors.instagram}
-                        {...register('facebook')} />
+                        {...register('instagram')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.instagram?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -330,7 +337,7 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de LinkedIn</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.linkedIn.com/tu_usuario" isInvalid={!!errors.linkedIn} isValid={touchedFields.linkedIn && !errors.linkedIn}
-                        {...register('facebook')} />
+                        {...register('linkedIn')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.linkedIn?.message}</Form.Control.Feedback>
                 </Form.Group>
