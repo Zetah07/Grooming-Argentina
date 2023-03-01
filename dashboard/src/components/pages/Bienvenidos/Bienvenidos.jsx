@@ -1,43 +1,49 @@
-import style from "./Bienvenido.module.css";
-import React, { useEffect, useState } from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
-import axios from 'axios';
-import useAuth from "../../../hooks/useAuth";
+import React, { useEffect } from "react";
+import useAuth from "../../../hooks/useAuth.js";
+import style from "./Bienvenidos.module.css";
+import axios from "axios";
 
 const Bienvenidos = () => {
-  const [username, setUsername] = useState('');
-  const {auth} = useAuth()
-  console.log(auth);
-  const dni = localStorage.getItem('dni');
+  const { user, auth } = useAuth();
 
   useEffect(() => {
-    const fetchUsername = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3001/api/usuarios/${dni}`);
-        setUsername(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUsername();
-  }, [dni]);
+    try{
+      axios.get("http://localhost:4000/panel/bienvenidos", {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }, [auth]);
 
-  
+  const goToLogin = () => {
+    window.location.href = "http://localhost:4000/";
+  };
+
   
 
   return (
-      <Container>
     <div className={style.container}>
-      <div className={style.desing}>
-        <Jumbotron>
-        <div class="container-md">
-          <h1 class="g-col-6">Bienvenido</h1>
-          <h3>Para nosotros es un gusto tenerte aquí, {username.name}!</h3>
+      {user ? (
+        <div>
+          <h1>Bienvenido {user.name}</h1>
+          <h2>Estas en la pagina de Bienvenidos</h2>
         </div>
-        </Jumbotron>
-      </div>
+      ) : (
+        <div className="containerAlter">
+          <button className={style.button} onClick={goToLogin}>
+            <h2>
+              Lo siento, <br />
+              no puedo dejarte entrar aqui 🙄
+            </h2>
+          </button>
+        </div>
+      )}
     </div>
-      </Container>
   );
 };
+
 export default Bienvenidos;
