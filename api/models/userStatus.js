@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const userStatusSchema = new mongoose.Schema(
   {
@@ -122,5 +123,7 @@ const userStatusSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+userStatusSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('userStatus', userStatusSchema)
