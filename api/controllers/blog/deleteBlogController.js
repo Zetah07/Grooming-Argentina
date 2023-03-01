@@ -5,11 +5,11 @@ const deletePost = async (req, res) => {
     const post = await blog.findById(req.params.id);
 
     if (!req.user) {
-      return res.status(401).json({ error: 'debe iniciar sesión para eliminar una publicación' });
+      return res.status(401).json({ error: 'Debe iniciar sesión para eliminar una publicación' });
     }
 
-    if (req.user.toString() !== post.username.toString()) {
-      return res.status(401).json({ error: 'no está autorizado para eliminar esta publicación' });
+    if (req.rol !== 'admin' && req.user.toString() !== post.username.toString()) {
+      return res.status(401).json({ error: 'No está autorizado para eliminar esta publicación' });
     }
 
     await post.remove();
