@@ -33,7 +33,6 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(input);
 
     try {
       const response = await axios.post(
@@ -46,7 +45,7 @@ const Login = () => {
       );
       const accessToken = response?.data?.accessToken;
       const rol = response?.data?.roles;
-      setAuth({ user: input.username, pwd: input.password, accessToken, rol });
+      setAuth({ user: input.username, accessToken, rol });
       setinput({ username: "", password: "" });
       navigate(from, { replace: true });
     } catch (error) {
