@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const newsSchema = new mongoose.Schema(
     {
@@ -31,5 +32,7 @@ const newsSchema = new mongoose.Schema(
         timestamps: true
     }
 );
+
+newsSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('new', newsSchema);

@@ -2,8 +2,13 @@ const news = require("../../models/news");
 
 const getNews = async (req, res) => {
     //http://localhost:3500/news?categoria=test&provinciaOLocacion=Paraiso+raro
-    const { categoria, provinciaOLocacion, id, name } = req.query;
+    const { categoria, provinciaOLocacion, id, name, page, limit } = req.query;
     let filteredNews;
+
+    const options = {
+        page: page,
+        limit: limit
+    };
 
     try {
         if(categoria && provinciaOLocacion) {
@@ -27,7 +32,7 @@ const getNews = async (req, res) => {
             filteredNews = await news.find({ title: { $regex: regex}});
             res.status(200).json(filteredNews);
         } else {
-            filteredNews = await news.find({});
+            filteredNews = await news.paginate({}, options);
             res.status(200).json(filteredNews);
         }
     } catch (error) {
