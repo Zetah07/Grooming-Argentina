@@ -43,7 +43,7 @@ const PasswordReset = () => {
       showAlert("Su contraseña ha sido cambiada exitosamente", "green");
 
       setTimeout(() => {
-        navigate("/login");
+        navigate("/");
       }, 4000);
     } catch (error) {
       const errorMessage = error.response.data.message;
