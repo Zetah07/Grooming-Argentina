@@ -7,8 +7,6 @@ const updatePost = async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ error: "debe iniciar sesión para modificar una publicación" });
     }
-    console.log("User ID:", req.user);
-    console.log("Post author:", post.username);
     if (req.user.toString() !== post.username.toString()) {
       return res.status(401).json({ error: 'no está autorizado para modificar esta publicación' });
     }
