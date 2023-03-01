@@ -9,6 +9,7 @@ import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import Logo from '../../assets/Grooming_Logo.png';
 import axios from 'axios';
 
+
 // import * as yup from 'yup';
 
 
@@ -43,8 +44,8 @@ const VolunteerForm = () => {
         whyGroomin: "",
         theme: "",
         expectations: "",
-        pdfDni: "",
-        pdfCv: ""
+        adjDocument: "",
+        CV: ""
     }
 
     const regExpFacebook = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/;
@@ -94,14 +95,14 @@ const VolunteerForm = () => {
             .max(255, "Debe tener menos de 255 caracteres"),
         expectations: string().min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-        pdfDni: mixed().required('Debe adjuntar la imgen de su DNI en formato pdf.')
+        adjDocument: mixed().required('Debe adjuntar la imgen de su DNI en formato pdf.')
             .test('fileType', 'Solo se permiten archivos PDF', (value) => {
                 return value && value[0].type === 'application/pdf';
             })
             .test('fileSize', 'El tamaño del archivo no debe exceder 1 MB', (value) => {
                 return value && value[0].size <= 1048576; // es  1MB
             }),
-        pdfCv: mixed().required('Debe adjuntar la imgen de su CV en formato pdf.')
+        CV: mixed().required('Debe adjuntar la imgen de su CV en formato pdf.')
             .test('fileType', 'Solo se permiten archivos PDF', (value) => {
                 return value && value[0].type === 'application/pdf';
             })
@@ -123,45 +124,47 @@ const VolunteerForm = () => {
 
         })
 
-    // console.log(errors.pdfDni)
+    // console.log(errors.adjDocument)
     // console.log(errors.email)
     // console.log(errors)
 
 
-    // const url = "https://api.pdf.co/v1/pdf/convert/from/"
+    //const { REACT_APP_REST_API } = process.env;
 
-    const sendFormData = (data) => {
-        console.log(data);
+    const sendFormData = async (data) => {
+        console.log(data.CV)
         const formData = new FormData();
-        formData.append('email', data.email);
-        formData.append('lastName', data.lastName);
-        formData.append('birthDate', data.birthDate);
-        formData.append('genre', data.genre);
-        formData.append('nationality', data.nationality);
-        formData.append('province', data.province);
-        formData.append('location', data.location);
-        formData.append('address', data.address);
-        formData.append('document', data.document);
-        formData.append('schooling', data.schooling);
-        formData.append('profession', data.profession);
-        formData.append('howKnowGrooming', data.howKnowGrooming);
-        formData.append('facebook', data.facebook);
-        formData.append('twitter', data.twitter);
-        formData.append('instagram', data.instagram);
-        formData.append('linkedIn', data.linkedIn);
-        formData.append('howManyHours', data.howManyHours);
-        formData.append('opinion', data.opinion);
-        formData.append('knowGroominPerson', data.knowGroominPerson);
-        formData.append('whoGroominPerson', data.whoGroominPerson);
-        formData.append('whyGroomin', data.whyGroomin);
-        formData.append('theme', data.theme);
-        formData.append('expectations', data.expectations);
-        formData.append('pdfDni', data.pdfDni[0]);
-        formData.append('pdfCv', data.pdfCv[0]);
+        // formData.append('email', data.email);
+        // formData.append('lastName', data.lastName);
+        // formData.append('birthDate', data.birthDate);
+        // formData.append('genre', data.genre);
+        // formData.append('nationality', data.nationality);
+        // formData.append('province', data.province);
+        // formData.append('location', data.location);
+        // formData.append('address', data.address);
+        // formData.append('document', data.document);
+        // formData.append('schooling', data.schooling);
+        // formData.append('profession', data.profession);
+        // formData.append('howKnowGrooming', data.howKnowGrooming);
+        // formData.append('facebook', data.facebook);
+        // formData.append('twitter', data.twitter);
+        // formData.append('instagram', data.instagram);
+        // formData.append('linkedIn', data.linkedIn);
+        // formData.append('howManyHours', data.howManyHours);
+        // formData.append('opinion', data.opinion);
+        // formData.append('knowGroominPerson', data.knowGroominPerson);
+        // formData.append('whoGroominPerson', data.whoGroominPerson);
+        // formData.append('whyGroomin', data.whyGroomin);
+        // formData.append('theme', data.theme);
+        // formData.append('expectations', data.expectations);
+        formData.append('adjDocument', data.adjDocument[0]);
+        formData.append('CV', data.CV[0]);
         formData.set("userRegister", JSON.stringify(data));
 
+        console.log([...formData])
 
-        axios.post("apiPath/userstatus", formData, {
+
+        await axios.post('http://localhost:3500/userstatus', formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
@@ -169,7 +172,7 @@ const VolunteerForm = () => {
             console.log(res)
         })
             .catch((err) => {
-                console.log(err)
+                //console.log(err)
             });
         // reset(defaultValues);
     };
@@ -398,21 +401,21 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.linkedIn?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* Pdf Dni ---> pdfDni */}
+                {/* Pdf Dni ---> adjDocument */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Dni en Formato pdf</Form.Label>
-                    <Form.Control type="file" isInvalid={!!errors.pdfDni} isValid={touchedFields.pdfDni && !errors.pdfDni}
-                        {...register('pdfDni')} />
+                    <Form.Control type="file" isInvalid={!!errors.adjDocument} isValid={touchedFields.adjDocument && !errors.adjDocument}
+                        {...register('adjDocument')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">{errors?.pdfDni?.message}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{errors?.adjDocument?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* Pdf CV ---> pdfCv */}
+                {/* Pdf CV ---> CV */}
                 <FormGroup className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Curriculum Vitae</Form.Label>
-                    <Form.Control type="file" placeholder="Adjunte la pdf de su CV" isInvalid={!!errors.pdfCv} isValid={touchedFields.pdfCv && !errors.pdfCv}
-                        {...register('pdfCv')} />
+                    <Form.Control type="file" placeholder="Adjunte la pdf de su CV" isInvalid={!!errors.CV} isValid={touchedFields.CV && !errors.CV}
+                        {...register('CV')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">{errors?.pdfCv?.message}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{errors?.CV?.message}</Form.Control.Feedback>
                 </FormGroup>
                 {/* opinion ---> opinion */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
