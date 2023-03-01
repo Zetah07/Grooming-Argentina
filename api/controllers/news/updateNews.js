@@ -24,7 +24,7 @@ const modifyNews = async (req, res) => {
                     if(docs.matchedCount === 1) {
                         res.status(200).json({"message": "Noticia actualizada"});
                     } else {
-                        res.status(400).json({"message": "No se puedo actualizar la noticia"});
+                        res.status(400).json({"message": "No se pudo actualizar la noticia"});
                     }
                 }
             }
