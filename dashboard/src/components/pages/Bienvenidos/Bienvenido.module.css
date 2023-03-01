@@ -1,22 +1,19 @@
-.title {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #38568F;
-  font-family: "Gotham Rounded Bold";
-}
+.container{
+position: absolute;
+width: 1439px;
+height: 1024px;
+left: 1px;
+top: 0px;
 
-.text {
-  font-family: "Helvetica Neue Regular";
-  font-size: 20px;
-  line-height: 25px;
-  color: #414042;
-  margin-top: 10px;
+background: #8CACBA;
 }
+.desing{
+  position: absolute;
+width: 1230px;
+height: 1165px;
+left: -488px;
+top: -103px;
 
-.img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  object-fit: cover;
+background: rgba(54, 105, 134, 0.42);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
