@@ -7,6 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import Logo from '../../assets/Grooming_Logo.png';
+import axios from 'axios';
+
 // import * as yup from 'yup';
 
 
@@ -65,13 +67,13 @@ const VolunteerForm = () => {
             .max(255, "Debe tener menos de 255 caracteres"),
         address: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-        genre: mixed().oneOf(['male', 'female', 'other']).defined(),
+        genre: mixed().oneOf(['masculino', 'femenino', 'otro']).defined(),
         phone: string().required('El campo no puede estar vacío').min(5, "Debe tener al menos 5 caracteres")
             .max(20, "Debe tener menos de 20 caracteres"),
-        schooling: mixed().oneOf(['secundary', 'technical', 'university']).defined(),
+        schooling: mixed().oneOf(['secundario', 'tecnico', 'universitario']).defined(),
         profession: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
+        howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'twitter', 'radio', 'televisión', 'charla', 'conocido', 'otros']).defined(),
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
         facebook: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
@@ -121,24 +123,55 @@ const VolunteerForm = () => {
 
         })
 
-    console.log(errors.pdfDni)
-    console.log(errors.email)
-    console.log(object.data)
+    // console.log(errors.pdfDni)
+    // console.log(errors.email)
+    // console.log(errors)
 
 
+    // const url = "https://api.pdf.co/v1/pdf/convert/from/"
 
-    const sendFormData = (data, event) => {
+    const sendFormData = (data) => {
         console.log(data);
+        const formData = new FormData();
+        formData.append('email', data.email);
+        formData.append('lastName', data.lastName);
+        formData.append('birthDate', data.birthDate);
+        formData.append('genre', data.genre);
+        formData.append('nationality', data.nationality);
+        formData.append('province', data.province);
+        formData.append('location', data.location);
+        formData.append('address', data.address);
+        formData.append('document', data.document);
+        formData.append('schooling', data.schooling);
+        formData.append('profession', data.profession);
+        formData.append('howKnowGrooming', data.howKnowGrooming);
+        formData.append('facebook', data.facebook);
+        formData.append('twitter', data.twitter);
+        formData.append('instagram', data.instagram);
+        formData.append('linkedIn', data.linkedIn);
+        formData.append('howManyHours', data.howManyHours);
+        formData.append('opinion', data.opinion);
+        formData.append('knowGroominPerson', data.knowGroominPerson);
+        formData.append('whoGroominPerson', data.whoGroominPerson);
+        formData.append('whyGroomin', data.whyGroomin);
+        formData.append('theme', data.theme);
+        formData.append('expectations', data.expectations);
+        formData.append('pdfDni', data.pdfDni[0]);
+        formData.append('pdfCv', data.pdfCv[0]);
+        formData.set("userRegister", JSON.stringify(data));
 
+
+        axios.post("apiPath/userstatus", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        }).then((res) => {
+            console.log(res)
+        })
+            .catch((err) => {
+                console.log(err)
+            });
         // reset(defaultValues);
-
-
-
-        // const form = event.currentTarget;
-        // if (form.checkValidity() === false) {
-        //     // event.preventDefault();
-        //     // event.stopPropagation();
-        // }
     };
 
 
@@ -171,7 +204,7 @@ const VolunteerForm = () => {
             <Form noValidate className='px-5' onSubmit={handleSubmit(sendFormData)}>
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Dirección de correo electrónico (debe ser de GMAIL)</Form.Label>
-                    <Form.Control type="email" placeholder="name@gmail.com" isInvalid={!!errors.email} isValid={touchedFields.email && !errors.email}
+                    <Form.Control type="email" name='email' placeholder="name@gmail.com" isInvalid={!!errors.email} isValid={touchedFields.email && !errors.email}
                         {...register('email')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.email?.message}</Form.Control.Feedback>
@@ -313,7 +346,7 @@ const VolunteerForm = () => {
                     <FormCheckLabel className='ms-2' htmlFor="tv">Televisión</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="charla" value='Charla' {...register('howKnowGrooming')} />
+                    <FormCheckInput type='radio' id="charla" value='charla' {...register('howKnowGrooming')} />
                     <FormCheckLabel className='ms-2' htmlFor="charla">Charla en Institución</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
@@ -321,7 +354,7 @@ const VolunteerForm = () => {
                     <FormCheckLabel htmlFor='conoc' className='ms-2' >Por un/a conocido/a</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="otro" value='Otros'  {...register('howKnowGrooming')} />
+                    <FormCheckInput type='radio' id="otro" value='otros'  {...register('howKnowGrooming')} />
                     <FormCheckLabel className='ms-2' htmlFor="otro">Otros</FormCheckLabel>
                 </Form.Group>
                 {/* howManyHours ---> howManyHours */}
