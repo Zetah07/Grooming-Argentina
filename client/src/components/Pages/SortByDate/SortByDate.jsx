@@ -20,7 +20,7 @@ const SortByDate = () => {
     }
     return (<>
         <div className="vr" />
-        <h5 class="card-title">Ordenar</h5>
+        <h5 className="card-title">Ordenar</h5>
         <div className="vr" />
         <Form.Select aria-label="Default select example" onChange={selectHandler}>
             <option disabled selected>Seleccione el orden</option>
