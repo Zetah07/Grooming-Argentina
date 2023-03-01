@@ -39,7 +39,7 @@ const handlePasswordReset = async (req, res) => {
       subject: "Password Reset",
       text: `Usted está recibiendo este correo porque solicitó el cambio de contraseña para su cuenta de Grooming Argentina.\n\n
         por favor haga click en el enlace o copie la dirección en su navegador para continuar con el proceso:\n\n
-        http://localhost:3000/recuperar/${token} \n\n
+        http://localhost:4000/recuperar/${token} \n\n
         Si usted no envió esta solicitud, ignore este mensaje y su contraseña se mantendra igual.\n`,
     };
 
