@@ -27,10 +27,7 @@ const getCategoriesAndNews = async (req, res) => {
         res.status(400).json({"categories": result});
     } catch (error) {
         res.status(500).json({"message": error});
-    }
-
-    if(!result) return res.status(400).json({"message": "Error al traer las categorias"});
-    
+    } 
 };
 
 module.exports = { getCategoriesAndNews };
