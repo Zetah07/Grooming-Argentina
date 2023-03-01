@@ -2,11 +2,13 @@ import React from 'react';
 import { Container, Form, Button, FormGroup } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import s from './FormVolunteer.module.css'
-import { object, string, date, mixed, number, boolean } from 'yup';
+import { object, string, date, mixed, number } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import Logo from '../../assets/Grooming_Logo.png';
+// import * as yup from 'yup';
+
 
 
 
@@ -43,6 +45,8 @@ const VolunteerForm = () => {
         pdfCv: ""
     }
 
+    const regExpFacebook = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/;
+
     const schema = object().shape({
         email: string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
             .matches(/[^@ \t\r\n]+@gmail\.com/, "El correo debe ser de tipo email"),
@@ -57,6 +61,8 @@ const VolunteerForm = () => {
         birthDate: date().required('El campo no puede estar vacío'),
         province: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+        location: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
+            .max(255, "Debe tener menos de 255 caracteres"),
         address: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
         genre: mixed().oneOf(['male', 'female', 'other']).defined(),
@@ -68,16 +74,16 @@ const VolunteerForm = () => {
         howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'Twitter', 'radio', 'televisión', 'Charla', 'conocido', 'Otros']).defined(),
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
-        facebook: string().url('Ingrese una URL válida')/*.required('El campo no puede estar vacío')*/,
-        // .matches(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
-        twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida'),
-        // .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
+        facebook: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+            .matches(regExpFacebook, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
+        twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
+            .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
         instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.instagram.com/pages/'),
         linkedIn: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(/(?:https?:\/\/)?(?:www\.)?linkedIn\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.linkedIn.com/pages/'),
         opinion: string().min(3, "Debe tener al menos 3 caracteres").max(255, "Debe tener hasta 255 caracteres"),
-        knowGroominPerson: boolean().required('El campo no puede estar vacío'),
+        knowGroominPerson: string().required('El campo no puede estar vacío'),
         whoGroominPerson: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 50 caracteres"),
         whyGroomin: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
@@ -86,24 +92,47 @@ const VolunteerForm = () => {
             .max(255, "Debe tener menos de 255 caracteres"),
         expectations: string().min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
-    })
+        pdfDni: mixed().required('Debe adjuntar la imgen de su DNI en formato pdf.')
+            .test('fileType', 'Solo se permiten archivos PDF', (value) => {
+                return value && value[0].type === 'application/pdf';
+            })
+            .test('fileSize', 'El tamaño del archivo no debe exceder 1 MB', (value) => {
+                return value && value[0].size <= 1048576; // es  1MB
+            }),
+        pdfCv: mixed().required('Debe adjuntar la imgen de su CV en formato pdf.')
+            .test('fileType', 'Solo se permiten archivos PDF', (value) => {
+                return value && value[0].type === 'application/pdf';
+            })
+            .test('fileSize', 'El tamaño del archivo no debe exceder 1 MB', (value) => {
+                return value && value[0].size <= 1048576; // es  1MB
+            }),
+    });
 
 
 
-    const { register, formState: { errors, touchedFields }, handleSubmit, reset } = useForm(
+    const { register, formState: { errors, touchedFields }, handleSubmit } = useForm(
 
         {
             mode: 'onTouched',
             reValidateMode: 'onChange',
             resolver: yupResolver(schema),
-            defaultValues: defaultValues
+            defaultValues: defaultValues,
+            validationSchema: schema
+
         })
 
-    console.log(errors.message)
+    console.log(errors.pdfDni)
+    console.log(errors.email)
+    console.log(object.data)
 
-    const onSave = (data, event) => {
+
+
+    const sendFormData = (data, event) => {
         console.log(data);
-        reset(defaultValues);
+
+        // reset(defaultValues);
+
+
 
         // const form = event.currentTarget;
         // if (form.checkValidity() === false) {
@@ -111,6 +140,7 @@ const VolunteerForm = () => {
         //     // event.stopPropagation();
         // }
     };
+
 
 
 
@@ -138,7 +168,7 @@ const VolunteerForm = () => {
                 <p>El equipo de Grooming Argentina. </p>
                 <br />
             </div>
-            <Form noValidate className='px-5' onSubmit={handleSubmit(onSave)}>
+            <Form noValidate className='px-5' onSubmit={handleSubmit(sendFormData)}>
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Dirección de correo electrónico (debe ser de GMAIL)</Form.Label>
                     <Form.Control type="email" placeholder="name@gmail.com" isInvalid={!!errors.email} isValid={touchedFields.email && !errors.email}
@@ -146,7 +176,7 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.email?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* nombres ---> name */}
+                {/* 2-nombres ---> name */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Nombres</Form.Label>
                     <Form.Control type="text" placeholder="Nombre's" isInvalid={!!errors.name} isValid={touchedFields.name && !errors.name}
@@ -215,15 +245,15 @@ const VolunteerForm = () => {
                     <Form.Label className={s.label_volunt}>Género</Form.Label>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="m" value='male' {...register('genre')} />
+                    <FormCheckInput type='radio' id="m" value='masculino' {...register('genre')} />
                     <FormCheckLabel htmlFor='m' className='ms-2' >Masculino</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="f" value='female'  {...register('genre')} />
+                    <FormCheckInput type='radio' id="f" value='femenino'  {...register('genre')} />
                     <FormCheckLabel className='ms-2' htmlFor="f">Femenino</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="o" value='other' {...register('genre')} />
+                    <FormCheckInput type='radio' id="o" value='otro' {...register('genre')} />
                     <FormCheckLabel className='ms-2' htmlFor="o">Otro</FormCheckLabel>
                 </Form.Group>
                 {/* Teléfono celular ---> phone */}
@@ -239,15 +269,15 @@ const VolunteerForm = () => {
                     <Form.Label className={s.label_volunt}>Estudios</Form.Label>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="sec" value='secundary' {...register('schooling')} />
+                    <FormCheckInput type='radio' id="sec" value='secundario' {...register('schooling')} />
                     <FormCheckLabel htmlFor='sec' className='ms-2' >Secundario</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="tech" value='technical'  {...register('schooling')} />
+                    <FormCheckInput type='radio' id="tech" value='tecnico'  {...register('schooling')} />
                     <FormCheckLabel className='ms-2' htmlFor="tech">Técnico</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="univ" value='university' {...register('schooling')} />
+                    <FormCheckInput type='radio' id="univ" value='universitario' {...register('schooling')} />
                     <FormCheckLabel className='ms-2' htmlFor="univ">Universitario</FormCheckLabel>
                 </Form.Group>
                 {/* Profesión ---> profession */}
@@ -258,7 +288,7 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.profession?.message}</Form.Control.Feedback>
                 </Form.Group>
-                {/* howKnowGrooming ---> howKnowGrooming */}
+                {/* ¿Cómo conociste a Grooming Argentina? ---> howKnowGrooming */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>¿Cómo conociste a Grooming Argentina?</Form.Label>
                 </Form.Group>
@@ -305,7 +335,8 @@ const VolunteerForm = () => {
                 {/* Facebook ---> facebook */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Facebook</Form.Label>
-                    <Form.Control type="text" placeholder=" https://www.facebook.com/tu_usuario" isInvalid={!!errors.facebook} isValid={touchedFields.facebook && !errors.facebook}
+                    <Form.Control type="text" placeholder="https://www.facebook.com/tu_usuario"
+                        isInvalid={!!errors.facebook} isValid={touchedFields.facebook && !errors.facebook}
                         {...register('facebook')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.facebook?.message}</Form.Control.Feedback>
@@ -314,7 +345,7 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Twitter</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.twitter.com/tu_usuario" isInvalid={!!errors.twitter} isValid={touchedFields.twitter && !errors.twitter}
-                        {...register('facebook')} />
+                        {...register('twitter')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.twitter?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -322,7 +353,7 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Instagram</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.instagram.com/tu_usuario" isInvalid={!!errors.instagram} isValid={touchedFields.instagram && !errors.instagram}
-                        {...register('facebook')} />
+                        {...register('instagram')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.instagram?.message}</Form.Control.Feedback>
                 </Form.Group>
@@ -330,22 +361,18 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de LinkedIn</Form.Label>
                     <Form.Control type="text" placeholder=" https://www.linkedIn.com/tu_usuario" isInvalid={!!errors.linkedIn} isValid={touchedFields.linkedIn && !errors.linkedIn}
-                        {...register('facebook')} />
+                        {...register('linkedIn')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.linkedIn?.message}</Form.Control.Feedback>
                 </Form.Group>
-
-
-
-
                 {/* Pdf Dni ---> pdfDni */}
-                <FormGroup className='d-flex flex-column align-items-start pb-3 col-lg-8'>
-                    <Form.Label className={s.label_volunt}>Identificación</Form.Label>
-                    <Form.Control type="file" placeholder="Adjunte la imagen de su DNI" isInvalid={!!errors.pdfDni} isValid={touchedFields.pdfDni && !errors.pdfDni}
+                <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
+                    <Form.Label className={s.label_volunt}>Dni en Formato pdf</Form.Label>
+                    <Form.Control type="file" isInvalid={!!errors.pdfDni} isValid={touchedFields.pdfDni && !errors.pdfDni}
                         {...register('pdfDni')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.pdfDni?.message}</Form.Control.Feedback>
-                </FormGroup>
+                </Form.Group>
                 {/* Pdf CV ---> pdfCv */}
                 <FormGroup className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Curriculum Vitae</Form.Label>
@@ -354,9 +381,6 @@ const VolunteerForm = () => {
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.pdfCv?.message}</Form.Control.Feedback>
                 </FormGroup>
-
-
-
                 {/* opinion ---> opinion */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>¿Cómo definirías el grooming?</Form.Label>
@@ -370,11 +394,11 @@ const VolunteerForm = () => {
                     <Form.Label className={s.label_volunt}>¿Conocés a alguien dentro de Grooming Argentina?</Form.Label>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="true" value='true' {...register('knowGroominPerson')} />
+                    <FormCheckInput type='radio' id="true" value='si' {...register('knowGroominPerson')} />
                     <FormCheckLabel htmlFor='true' className='ms-2' >Si</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="false" value='false'  {...register('knowGroominPerson')} />
+                    <FormCheckInput type='radio' id="false" value='no'  {...register('knowGroominPerson')} />
                     <FormCheckLabel className='ms-2' htmlFor="false">No</FormCheckLabel>
                 </Form.Group>
                 {/* A quien conoces? ---> whoGroominPerson */}
@@ -404,7 +428,7 @@ const VolunteerForm = () => {
                 {/* espectativas ---> expectations */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}> ¿Cuáles son tus expectativas dentro de la ONG?</Form.Label>
-                    <Form.Control as="textarea" placeholder="Temática de interés" isInvalid={!!errors.expectations} isValid={touchedFields.expectations && !errors.expectations}
+                    <Form.Control as="textarea" placeholder="Espectativas" isInvalid={!!errors.expectations} isValid={touchedFields.expectations && !errors.expectations}
                         {...register('expectations')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.expectations?.message}</Form.Control.Feedback>
@@ -413,8 +437,6 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-center pb-3 col-lg-8'>
                     <Button type="submit">Crear</Button>
                 </Form.Group>
-
-
             </Form>
         </Container >
     );
