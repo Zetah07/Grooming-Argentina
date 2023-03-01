@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./App.css";
 import NavBarA from "./components/Pages/NavBarA/NavBarA";
-import NavBarB from "./components/Pages/NavBarB/NavBarB";
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/Pages/About/About";
 import Home from "./components/Home/Home";
