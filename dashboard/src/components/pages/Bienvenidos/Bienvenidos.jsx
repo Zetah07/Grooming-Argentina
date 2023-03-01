@@ -2,24 +2,28 @@ import style from "./Bienvenido.module.css";
 import React, { useEffect, useState } from 'react';
 import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
+import useAuth from "../../../hooks/useAuth";
 
 const Bienvenidos = () => {
   const [username, setUsername] = useState('');
+  const {auth} = useAuth()
+  console.log(auth);
   const dni = localStorage.getItem('dni');
 
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const response = await axios.get(`/auth/login/${dni}`);
-        const usuario = response.data;
-        setUsername(usuario.username);
+        const response = await axios.get(`http://localhost:3001/api/usuarios/${dni}`);
+        setUsername(response.data);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     };
     fetchUsername();
   }, [dni]);
 
+  
+  
 
   return (
       <Container>
