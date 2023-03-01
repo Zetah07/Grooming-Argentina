@@ -1,15 +1,21 @@
 const userStatus = require("../../models/userStatus")
 
 const handleUserStatus = async (req, res) => {
+  const { page, limit } = req.query;
+  const options = {
+    page: page,
+    limit: limit
+  }
+
   try {
     let userName;
     const { name } = req.query;
 
     if (name) {
       const regex = new RegExp(name, "i");
-      userName = await userStatus.find({ name: { $regex: regex } });
+      userName = await userStatus.paginate({ name: { $regex: regex } }, options);
     } else {
-      userName = await userStatus.find({});
+      userName = await userStatus.paginate({}, options);
     }
 
     res.status(200).json(userName);
