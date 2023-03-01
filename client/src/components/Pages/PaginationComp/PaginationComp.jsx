@@ -1,12 +1,12 @@
 import React from 'react'
 import Pagination from 'react-bootstrap/Pagination';
 
-const PaginationComp = ({ totalItems, firstHandler, prevHandler, nextHandler, lastHandler, pages, itemsPerPage, currentPage, pageNumberLimit, maxPageNumberLimit, minPageNumberLimit }) => {
+const PaginationComp = ({ totalPages, firstHandler, prevHandler, nextHandler, lastHandler, pages, itemsPerPage, currentPage, pageNumberLimit, maxPageNumberLimit, minPageNumberLimit }) => {
 
   const numOfPages = [];
   const firstPage = 0;
   let lastPage = 0;
-  const amountOfPages = Math.ceil(totalItems / itemsPerPage);
+  const amountOfPages = totalPages;
   for (let i = 0; i < amountOfPages; i++) {
     lastPage = i;
     numOfPages.push(i);
