@@ -12,16 +12,18 @@ import { FaHandHoldingMedical, FaVirus, FaPeopleArrows } from "react-icons/fa";
 import { GiFallingBlob } from "react-icons/gi";
 import Cards from "../Card/Card";
 import Row from "react-bootstrap/Row";
-import axios from '../../api/axios';
+import axios from 'axios';
 import NewCard from "../NewCard/NewCard";
 import Carousel from 'react-bootstrap/Carousel';
 
+
 const Home = () => {
   const [news, setNews] = useState();
+  const {REACT_APP_REST_API} = process.env;
 
   const getNews = ()=>{
     if(news!==undefined) return;
-    axios.get(`/news`)
+    axios.get(`${REACT_APP_REST_API}/news`)
         .then(res=>{
             const arr = res.data;
             setNews(arr.slice(arr.length-3, arr.length).reverse())

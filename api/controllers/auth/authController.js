@@ -45,8 +45,7 @@ const handleLogin = async (req, res) => {
       //in production add: secure: true to the cookie
 
       //sending the accessToken as json
-      res.json({ roles: rol, accessToken: accessToken });
-      // res.json({ success: `User ${username} is logged in` });
+      return res.json({ roles: rol, accessToken: accessToken, user: username });
     } else {
       return res.status(401).json({ message: "usuario o contraseña incorrectas" });
     }

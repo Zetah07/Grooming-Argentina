@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const userStatusSchema = new mongoose.Schema(
   {
@@ -36,7 +37,7 @@ const userStatusSchema = new mongoose.Schema(
       required: true
     },
     document: {
-      type: Number,
+      type: String,
       unique: true,
       required: true
     },
@@ -45,7 +46,7 @@ const userStatusSchema = new mongoose.Schema(
       required: true
     },
     phone: {
-      type: Number,
+      type: String,
       required: true
     },
     schooling: {
@@ -89,12 +90,40 @@ const userStatusSchema = new mongoose.Schema(
       type: String,
       default: "pending"
     },
-    howManyHours: Number
+    howManyHours: {
+      type: String,
+    },
+    opinion: {
+      type: String,
+      required: true
+    },
+    knowGroominPerson: {
+      type: String,
+      required: true
+    },
+    whoGroominPerson: {
+      type: String,
+    },
+    whyGroomin: {
+      type: String,
+      required: true
+    },
+    theme: {
+      type: String,
+      required: true
+    },
+    expectations: {
+      type: String,
+      required: true
+    },
   },
+
   {
     versionKey: false,
     timestamps: true
   }
 );
+
+userStatusSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('userStatus', userStatusSchema)
