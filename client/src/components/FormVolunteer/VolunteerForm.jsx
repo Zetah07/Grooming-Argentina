@@ -245,15 +245,15 @@ const VolunteerForm = () => {
                     <Form.Label className={s.label_volunt}>Género</Form.Label>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="m" value='male' {...register('genre')} />
+                    <FormCheckInput type='radio' id="m" value='masculino' {...register('genre')} />
                     <FormCheckLabel htmlFor='m' className='ms-2' >Masculino</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="f" value='female'  {...register('genre')} />
+                    <FormCheckInput type='radio' id="f" value='femenino'  {...register('genre')} />
                     <FormCheckLabel className='ms-2' htmlFor="f">Femenino</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="o" value='other' {...register('genre')} />
+                    <FormCheckInput type='radio' id="o" value='otro' {...register('genre')} />
                     <FormCheckLabel className='ms-2' htmlFor="o">Otro</FormCheckLabel>
                 </Form.Group>
                 {/* Teléfono celular ---> phone */}
@@ -269,15 +269,15 @@ const VolunteerForm = () => {
                     <Form.Label className={s.label_volunt}>Estudios</Form.Label>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="sec" value='secundary' {...register('schooling')} />
+                    <FormCheckInput type='radio' id="sec" value='secundario' {...register('schooling')} />
                     <FormCheckLabel htmlFor='sec' className='ms-2' >Secundario</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="tech" value='technical'  {...register('schooling')} />
+                    <FormCheckInput type='radio' id="tech" value='tecnico'  {...register('schooling')} />
                     <FormCheckLabel className='ms-2' htmlFor="tech">Técnico</FormCheckLabel>
                 </Form.Group>
                 <Form.Group className='d-flex flex-row align-items-start pb-2 col-lg-8'>
-                    <FormCheckInput type='radio' id="univ" value='university' {...register('schooling')} />
+                    <FormCheckInput type='radio' id="univ" value='universitario' {...register('schooling')} />
                     <FormCheckLabel className='ms-2' htmlFor="univ">Universitario</FormCheckLabel>
                 </Form.Group>
                 {/* Profesión ---> profession */}
@@ -437,8 +437,6 @@ const VolunteerForm = () => {
                 <Form.Group className='d-flex flex-column align-items-center pb-3 col-lg-8'>
                     <Button type="submit">Crear</Button>
                 </Form.Group>
-
-
             </Form>
         </Container >
     );
