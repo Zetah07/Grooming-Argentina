@@ -2,7 +2,7 @@ const news = require("../../models/news");
 
 const handleNews = async (req, res) => {
   const { title, description, img, link, category, provinceOrLocation } = req.body;
-  if (!title || !description || !img || !category) return res.status(400).json({ "message": "Required data is missing" });
+  if (!title || !description || !img || !category) return res.status(400).json({ "message": "Hay campos que hacen falta" });
 
   try {
 
@@ -21,7 +21,7 @@ const handleNews = async (req, res) => {
 
     await newNews.save();
 
-    res.status(201).json({ "message": "The news is created" });
+    res.status(201).json({ "message": "La noticia fue creada" });
   } catch (error) {
     res.status(500).json({ "message": error });
   }
