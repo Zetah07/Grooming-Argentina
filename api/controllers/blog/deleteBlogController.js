@@ -8,7 +8,7 @@ const deletePost = async (req, res) => {
       return res.status(401).json({ error: 'Debe iniciar sesión para eliminar una publicación' });
     }
 
-    if (req.rol !== 'admin' && req.user.toString() !== post.username.toString()) {
+    if (req.rol !== 'admin' && req.rol !== 'editor' && req.user.toString() !== post.username.toString()) {
       return res.status(401).json({ error: 'No está autorizado para eliminar esta publicación' });
     }
 
