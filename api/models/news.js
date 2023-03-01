@@ -15,8 +15,9 @@ const newsSchema = new mongoose.Schema(
             required: true
         },
         category: {
-            type: String,
-            required: true
+            type: Array,
+            required: true,
+            default: []
         },
         link: {
             type: String,
