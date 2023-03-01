@@ -26,7 +26,7 @@ const Profile = () => {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
-        },
+        }
       });
 
       showAlert("Actualizacion de perfil correctamente.", "green");
@@ -42,7 +42,7 @@ const Profile = () => {
       setValidated(false);
     } catch (error) {
       console.log(error);
-      showAlert("No se pudo crear la noticia, intente de nuevo.", "red");
+      showAlert("Error al actualizar la informacion que le corresponde, intentelo de nuevo.", "red");
     }
   };
 
@@ -170,7 +170,7 @@ const Profile = () => {
                     id="country"
                     class="form-control"
                     placeholder="Argentina"
-                    value="country"
+                    value="Argentina"
                     disabled
                   />
                 </div>
@@ -178,29 +178,29 @@ const Profile = () => {
                   <label class="labels">Provincia</label>
                   <select class="form-control">
                     <option value="">Selecciona la Provincia</option>
-                    <option value="">Buenos Aires</option>
-                    <option value="">Catamarca</option>
-                    <option value="">Chaco</option>
-                    <option value="">Chubut</option>
-                    <option value="">Córdoba</option>
-                    <option value="">Corrientes</option>
-                    <option value="">Entre Ríos</option>
-                    <option value="">Formosa</option>
-                    <option value="">Jujuy</option>
-                    <option value="">La Pampa</option>
-                    <option value="">La Rioja</option>
-                    <option value="">Mendoza</option>
-                    <option value="">Misiones</option>
-                    <option value="">Neuquén</option>
-                    <option value="">Río Negro</option>
-                    <option value="">Salta</option>
-                    <option value="">San Juan</option>
-                    <option value="">San Luis</option>
-                    <option value="">Santa Cruz</option>
-                    <option value="">Santa Fe</option>
-                    <option value="">Santiago del Estero</option>
-                    <option value="">Tierra del Fuego</option>
-                    <option value="">Tucumán</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Catamarca">Catamarca</option>
+                    <option value="Chaco">Chaco</option>
+                    <option value="Chubut">Chubut</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Corrientes">Corrientes</option>
+                    <option value="Entre Ríos">Entre Ríos</option>
+                    <option value="Formosa">Formosa</option>
+                    <option value="Jujuy">Jujuy</option>
+                    <option value="La Pampa">La Pampa</option>
+                    <option value="La Rioja">La Rioja</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Neuquén">Neuquén</option>
+                    <option value="Río Negro">Río Negro</option>
+                    <option value="Salta">Salta</option>
+                    <option value="San Juan">San Juan</option>
+                    <option value="San Luis">San Luis</option>
+                    <option value="Santa Cruz">Santa Cruz</option>
+                    <option value="Santa Fe">Santa Fe</option>
+                    <option value="Santiago del Estero">Santiago del Estero</option>
+                    <option value="Tierra del Fuego">Tierra del Fuego</option>
+                    <option value="Tucumán">Tucumán</option>
                   </select>
                   <div class="invalid-feedback">
                     Por favor, seleccione su provincia
@@ -213,27 +213,12 @@ const Profile = () => {
           </article>
           <article class="row g-3 col-12 col-md-12 col-lg-4">
             <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center experience">
-                <span>Edit Experience</span>
-                <span class="border px-3 p-1 add-experience">
-                  <i class="fa fa-plus"></i>&nbsp;Experience
-                </span>
-              </div>
-              <br />
+
               <div class="col-md-12">
-                <label class="labels">Experience in Designing</label>
+                <label class="form-label" for="customFile">Additional Details</label>
                 <input
-                  type="text"
-                  class="form-control"
-                  placeholder="experience"
-                  value=""
-                />
-              </div>{" "}
-              <br />
-              <div class="col-md-12">
-                <label class="labels">Additional Details</label>
-                <input
-                  type="text"
+                  type="file"
+                  id="customFile"
                   class="form-control"
                   placeholder="additional details"
                   value=""
