@@ -10,11 +10,10 @@ const LandingPage = () => {
         <NavBarB />
       </div>
       <div className={s.information}>
-        <h1 >Aqui debemos poner <span>una frase</span> que los describa</h1>
-        <h2 >
-          En Grooming Argentina consideramos que la prevención es fundamental para evitar este flagelo y trabajamos en consecuencia de ello. No existe vacuna contra el grooming, por lo que las charlas y talleres de concientización, tanto para adultos como para niños,
-          son de fundamental importancia para erradicar este delito.
-        </h2>
+        <h1 >Somos <span>Grooming </span>Argentina</h1>
+        <h3 >
+        "No dejes que el grooming te deje sin voz. Únete a nosotros para proteger a los niños y jóvenes en nuestro país."
+        </h3>
         <button className="button">
           <a
             className="text-button"
@@ -22,7 +21,7 @@ const LandingPage = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Dona Ahora
+            ¡Dona Ahora!
           </a>
         </button>
       </div >

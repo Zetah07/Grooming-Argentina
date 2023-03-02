@@ -36,15 +36,14 @@ const NavBarB = () => {
             <Nav.Link as={Link} to="/contactanos" className={s.lashes}  style={{color:"white"}}>
               contactanos
             </Nav.Link>
+            <div className={s.lashes} style={{marginTop:7, marginRight:2}}>Descarga La APP</div>
             <NavDropdown
-              title="Descargá GAPP"
               id="basic-nav-dropdown"
-              className={s.lashes}
             >
               <NavDropdown.Item
                 as={Link}
                 to="https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2"
-                className={s.lashes}
+                
                 target="_blank"
                 
               >
@@ -53,7 +52,7 @@ const NavBarB = () => {
               <NavDropdown.Item
                 as={Link}
                 to="https://apps.apple.com/us/app/gapp/id1407275821"
-                className={s.lashes}
+                c
                 target="_blank"
               >
                 IOS
