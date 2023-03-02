@@ -19,9 +19,9 @@ const getPosts = async (req, res) => {
 
     let blogTitle;
     if (sort === 'oldest') {
-      blogTitle = await blog.paginate(query, {options, sort:{createdAt: 1}});
+      blogTitle = await blog.paginate(query,{options, sort:{createdAt: 1}});
     } else if (sort === 'newest') {
-      blogTitle = await blog.paginate(query, {options, sort:{createdAt: -1}});
+      blogTitle = await blog.paginate(query,{options, sort:{createdAt: -1}});
     } else {
       blogTitle = await blog.paginate(query, options);
     }
