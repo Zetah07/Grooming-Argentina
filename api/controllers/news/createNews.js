@@ -1,19 +1,35 @@
 const news = require("../../models/news");
+const cloudinary = require("../../config/cloudinary");
 
 const handleNews = async (req, res) => {
-  const { title, description, img, link, category, provinceOrLocation } = req.body;
-  if (!title || !description || !img || !category) return res.status(400).json({ "message": "Hay campos que hacen falta" });
+  const { title, description, link, category, provinceOrLocation } = req.body;
+  
+  if(!req.file) {
+    return res.send("Por favor seleccione una imagen para subir");
+  };
+
+  if (!title || !description || !category) return res.status(400).json({ "message": "Hace falta rellenar algunos campos para crear la noticia" });
+
 
   try {
 
-    if (!req.user) {
-      return res.status(401).json({ error: "debe iniciar sesión para crear una publicación" });
-    }
+    // if (!req.user) {
+    //   return res.status(401).json({ error: "debe iniciar sesión para crear una publicación" });
+    // }
+
+    const cloudinary_image = await cloudinary.uploader.upload(req.file.path, {
+      folder: "NewsImages",
+    });
+
+
 
     const newNews = new news({
       title: title,
       description: description,
-      img: img,
+      img: {
+        public_id: cloudinary_image.public_id,
+        url: cloudinary_image.secure_url
+      },
       link: link,
       category: category,
       provinceOrLocation: provinceOrLocation

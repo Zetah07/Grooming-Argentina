@@ -12,8 +12,12 @@ const newsSchema = new mongoose.Schema(
             required: true
         },
         img: {
-            type: String,
-            required: true
+            public_id: {
+                type: String
+            },
+            url:{
+                type:String
+            }
         },
         category: {
             type: Array,
