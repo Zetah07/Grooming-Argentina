@@ -4,11 +4,12 @@ const { handleNews } = require("../../controllers/news/createNews");
 const { modifyNews } = require("../../controllers/news/updateNews");
 const veryfyJWT = require("../../middleware/verifyJWT");
 const verifyRoles = require("../../middleware/verifyRoles");
+const upload = require("../../config/multer");
 
 const router = express.Router();
 
 router.get("/", getNews);
-router.post("/", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), handleNews);
+router.post("/", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), upload.single("imagen"), handleNews);
 router.put("/:id", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), modifyNews);
 
 module.exports = router
