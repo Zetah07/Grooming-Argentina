@@ -88,7 +88,7 @@ const userStatusSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "pending"
+      default: "pendiente"
     },
     howManyHours: {
       type: String,

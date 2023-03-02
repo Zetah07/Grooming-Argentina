@@ -21,6 +21,7 @@ import CreateNew from "./components/CreateNew/CreateNew";
 import StudentsPlayer from "./components/Students/StudentsPlayer/StudentsPlayer";
 import PasswordRecovery from "./components/pages/passwordRecovery/PasswordRecovery";
 import PasswordReset from "./components/pages/passwordReset/PasswordReset";
+import PreStudents from "./components/Students/PreStudents/PreStudents";
 
 const noNav = ["/","/unauthorized","/recuperar","/recuperar/:token"]
 function App() {
@@ -66,6 +67,7 @@ function App() {
             element={<RequireAuth allowedRoles={["admin", "volunteer"]} />}
           >
             <Route path="/panel/cursos" element={<Students />} />
+            <Route path="/panel/cursos2" element={<PreStudents />} />
             <Route path="/panel/cursos/:id" element={<StudentsPlayer />} />
           </Route>
         </Route>
