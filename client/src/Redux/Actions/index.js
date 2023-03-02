@@ -11,10 +11,12 @@ export const ERROR = "ERROR";
 export const RESET_FILTER = "RESET_FILTER";
 export const GET_BLOGS_BY_TITLE = "GET_BLOGS_BY_TITLE";
 export const GET_BLOGS_SORT_BY_DATE = "GET_BLOGS_SORT_BY_DATE";
+export const ACTIVE_FILTER = "ACTIVE_FILTER";
+export const RESET_PAGINATION = "RESET_PAGINATION";
 
-export const getAllNews = () => {
+export const getAllNews = (page,newsPerPage) => {
   return async function (dispatch) {
-    const news = await axios.get("http://localhost:3500/news/");
+    const news = await axios.get(`http://localhost:3500/news?page=${page}&limit=${newsPerPage}`);
     if (news.data) {
       dispatch({ type: GET_ALL_NEWS, payload: news.data });
     } else {
@@ -139,8 +141,23 @@ export const setError = () => {
   return { type: ERROR };
 };
 
+export const activeFilter = () => {
+  return function (dispatch) {
+    dispatch({ type: ACTIVE_FILTER });
+  };
+};
+
 export const resetFilter = () => {
   return function (dispatch) {
     dispatch({ type: RESET_FILTER });
   };
 };
+
+export const resetPagination = () => {
+  return function (dispatch) {
+    dispatch({ type: RESET_PAGINATION });
+  };
+};
+
+
+
