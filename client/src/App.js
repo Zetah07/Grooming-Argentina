@@ -24,16 +24,16 @@ function App() {
     <div className="App">
       {usl === "/" /*|| usl === "/login"*/ ? null : <NavBarA />}
       <Routes>
-        
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/contactanos" element={<Contact />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/noticias" element={<News />} />
-          <Route exact path="/noticias/:id" element={<NewsDetail />} />
-          <Route exact path="/nosotros" element={<About />} />
-          <Route exact path="/voluntariado" element={<VolunteerForm />} />
-          <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/blog/:id" element={<BlogDetail />} />
+
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/contactanos" element={<Contact />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/noticias" element={<News />} />
+        <Route exact path="/noticias/:id" element={<NewsDetail />} />
+        <Route exact path="/nosotros" element={<About />} />
+        <Route exact path="/voluntariado" element={<VolunteerForm />} />
+        <Route exact path="/blog" element={<Blog />} />
+        <Route exact path="/blog/:id" element={<BlogDetail />} />
       </Routes>
       {usl !== "/" ? <Footerx /> : null}
     </div>
