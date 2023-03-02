@@ -7,7 +7,7 @@ const userStatus = require("../models/userStatus");
 const approvedUser = async (id) => {
   try {
     const approvedStatus = await userStatus.findById(id);
-    if (!approvedStatus || approvedStatus.status !== 'approved') {
+    if (!approvedStatus || approvedStatus.status !== 'aprobado') {
       throw new Error('Invalid or unapproved registration ID');
     }
 

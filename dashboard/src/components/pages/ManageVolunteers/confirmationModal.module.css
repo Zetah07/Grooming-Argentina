@@ -1,0 +1,36 @@
+.title {
+  align-items: center;
+  font-size: 30px;
+  font-weight: 200;
+  color: #fdfdfd;
+  font-family: "Gotham Rounded Bold";
+  text-align: center;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #0464a9;
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 20px 0;
+  font-family: "Gotham Rounded Book";
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.close {
+  color: #fff;
+  opacity: 1;
+}

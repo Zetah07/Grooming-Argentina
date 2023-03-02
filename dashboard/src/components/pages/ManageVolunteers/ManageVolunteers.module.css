@@ -14,12 +14,55 @@ td {
   text-align: left;
 }
 
+tbody tr:hover td,
+tbody tr:hover th {
+  background-color: #ffffff9a;
+}
+
 .expandContent {
   display: flex;
   flex-direction: column;
   align-items: left;
   padding: 10px;
   font-size: 20px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.input {
+  width: 25%;
+  text-align: center;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.searchBar {
+  width: 15%;
+  text-align: center;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.searchbtn {
+  display: flex;
+  flex-direction: row;
+  margin: 0 5px;
+}
+
+.filterbtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 5px;
 }
 
 .btn {
@@ -68,14 +111,15 @@ td {
 
 table {
   border-collapse: collapse;
+  border: solid 1px #a9acb1;
 }
 
 table td,
 table th {
   border: 1px solid #ccc;
   padding: 8px;
-  /* font-family: "Helvetica Neue Regular"; */
   font-size: 25px;
+  color: #38568F;
 }
 
 
@@ -89,5 +133,64 @@ table th {
   font-weight: bold;
   font-size: 30px;
   text-align: center;
-  /* font-family: "Helvetica Neue Medium"; */
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -10px;
+}
+
+.pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.searchInput {
+  width: 25%;
+  text-align: center;
+  padding: 0 5px;
+  border: solid 1px #38568F;
+  border-radius: 5px;
+}
+
+.paginationContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.selectEntries {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px #dfdfdf;
+  color: #2478e7;
+  border-radius: 7px;
+}
+
+.selectEntriesContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  margin-left: 17px;
 }
