@@ -1,6 +1,6 @@
 .player-wrapper {
   position: relative;
-  padding-top: 56.25%;
+  padding-top: 42.25%;
   display: flex;
   justify-content: center;
 }
@@ -10,6 +10,8 @@
   top: 0;
 }
 .title{
-  font-size: 3rem;
+  font-size: 35px;
   font-family: "Gotham Rounded Bold";
+  text-align: center;
+  color: var(--secondary-color);
 }
