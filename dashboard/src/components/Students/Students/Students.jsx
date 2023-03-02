@@ -75,6 +75,7 @@ export default function Students(){
                     <h2 className={s.title}>Orden</h2>
                     <div>
                       <Form.Check
+                        disabled={search!==''?true:false}
                         inline
                         type='checkbox'
                         id='asc'

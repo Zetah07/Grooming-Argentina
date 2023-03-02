@@ -1,0 +1,19 @@
+.videos{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    padding-left: 0;
+    margin-left: 0;
+    justify-content: center;
+    gap: 15px;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 15px;
+    font-family: "Helvetica";
+}
+.title{
+    color: var(--secondary-color);
+}
