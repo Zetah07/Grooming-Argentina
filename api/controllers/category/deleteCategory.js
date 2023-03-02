@@ -6,20 +6,24 @@ const deleteCategory = async (req, res) => {
 
     if (!ObjectID.isValid(id)) return res.status(400).json({ message: "ID no válida" });
 
-    category.deleteOne(
-        {_id: id},
-        (err, docs) => {
-            if(err) {
-                res.status(400).json({"error": err});
-            } else {
-                if(docs.deletedCount === 1) {
-                    res.status(200).json({"message": "Categoria eliminada correctamente"});
+    try {
+        category.deleteOne(
+            {_id: id},
+            (err, docs) => {
+                if(err) {
+                    res.status(400).json({"error": err});
                 } else {
-                    res.status(400).json({"message": "No se pudo eliminar la categoria"});
+                    if(docs.deletedCount === 1) {
+                        res.status(200).json({"message": "Categoria eliminada correctamente"});
+                    } else {
+                        res.status(400).json({"message": "No se pudo eliminar la categoria"});
+                    }
                 }
             }
-        }
-    );
+        );    
+    } catch (error) {
+        res.status(500).json({"error": error})
+    }
 };
 
 module.exports = { deleteCategory };
