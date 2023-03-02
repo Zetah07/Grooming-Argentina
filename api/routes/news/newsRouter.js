@@ -10,7 +10,7 @@ const upload = require('../../config/multer');
 const router = express.Router();
 
 router.get("/", getNews);
-router.post("/", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), upload.single("img"), handleNews); //
+router.post("/", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), upload.single("img"), handleNews);
 router.put("/:id", veryfyJWT, verifyRoles(["admin", "hr", "editor"]), modifyNews);
 
 module.exports = router
