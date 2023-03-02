@@ -2,7 +2,7 @@ const news = require("../../models/news");
 
 const getNews = async (req, res) => {
     //http://localhost:3500/news?categoria=test&provinciaOLocacion=Paraiso+raro
-    const { categoria, provinciaOLocacion, id, name, page, limit } = req.query;
+    const { categoria, provinciaOLocacion, id, name, page=1, limit=6 } = req.query;
     let filteredNews;
 
     const options = {
