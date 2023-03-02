@@ -54,23 +54,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-family: "Gotham Rounded Bold";
-}
-
-h2 {
-  font-family: "HelveticaNeue Medium", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-a,
-h3 {
-  font-family: "HelveticaNeue Regular";
-}
-
-h4 {
-  font-family: "HelveticaNeue Thin";
-}
 
 .text-button {
   /* Donate Now */
