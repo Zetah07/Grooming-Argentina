@@ -159,7 +159,7 @@ const VolunteerForm = () => {
         // formData.append('expectations', data.expectations);
         formData.append('adjDocument', data.adjDocument[0]);
         formData.append('CV', data.CV[0]);
-        formData.set("userRegister", JSON.stringify(data));
+        formData.append("userRegister", JSON.stringify(data));
 
         console.log([...formData])
 
