@@ -13,7 +13,7 @@ const FilterProvince = () => {
     }
     return (<>
         <div className="vr" />
-        <h5 class="card-title">Provincia</h5>
+        <h5 className="card-title">Provincia</h5>
         <div className="vr" />
         <Form.Select aria-label="Default select example" onChange={selectHandler}>
             <option disabled selected>Seleccione una provincia</option>

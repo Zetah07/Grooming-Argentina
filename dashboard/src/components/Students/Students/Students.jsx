@@ -21,7 +21,7 @@ export default function Students(){
             setMaxPage(res.data.maxPage);
         });
     };
-    const firstHandler = ()=>setPage(1);
+    const firstHandler = (firstPage)=>setPage(firstPage+1);
 
     const prevHandler = ()=>{
         if(page<=1) return;
@@ -33,7 +33,7 @@ export default function Students(){
         setPage(page+1);
     }
 
-    const lastHandler = ()=>setPage(maxPage);
+    const lastHandler = (lastPage)=>setPage(lastPage+1);
 
     const changeOrder = ({target})=>{
         if(!target.checked) return;
@@ -53,6 +53,10 @@ export default function Students(){
 
     const clearHandler = ()=>setSearch('');
 
+    const pages = (numberPage) => {
+        setPage(numberPage+1);
+      };
+
     useEffect(()=>{
         getVideos();
     },[page, asc, search]);
@@ -71,6 +75,7 @@ export default function Students(){
                     <h2 className={s.title}>Orden</h2>
                     <div>
                       <Form.Check
+                        disabled={search!==''?true:false}
                         inline
                         type='checkbox'
                         id='asc'
@@ -107,12 +112,12 @@ export default function Students(){
             prevHandler={prevHandler}
             nextHandler={nextHandler}
             lastHandler={lastHandler}
-            pages={maxPage}
+            pages={pages}
             itemsPerPage={6}
-            currentPage={page}
-            pageNumberLimit={maxPage}
+            currentPage={page-1}
+            pageNumberLimit={6}
             maxPageNumberLimit={maxPage}
-            minPageNumberLimit={1}
+            minPageNumberLimit={0}
           />
         </div>
         </>
