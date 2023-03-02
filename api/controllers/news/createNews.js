@@ -10,18 +10,15 @@ const handleNews = async (req, res) => {
 
   if (!title || !description || !category) return res.status(400).json({ "message": "Hace falta rellenar algunos campos para crear la noticia" });
 
-
   try {
 
-    // if (!req.user) {
-    //   return res.status(401).json({ error: "debe iniciar sesión para crear una publicación" });
-    // }
+    if (!req.user) {
+      return res.status(401).json({ error: "debe iniciar sesión para crear una publicación" });
+    }
 
     const cloudinary_image = await cloudinary.uploader.upload(req.file.path, {
       folder: "NewsImages",
     });
-
-
 
     const newNews = new news({
       title: title,
