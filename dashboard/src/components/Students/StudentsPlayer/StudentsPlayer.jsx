@@ -25,17 +25,17 @@ export default function StudentsPlayer(){
 
     return(
         <>
+        <h1 className="title">{title}</h1> 
         {video!==undefined?<>
           <div className='player-wrapper'>
             <ReactPlayer className='react-player'
                 url={`${video.link}?access_token=`}
                 controls 
-                width='98%'
+                width='70%'
                 height='100%'
                 onReady={handleReady}
             />
-            </div>
-            <h1 className="title">{title}</h1>  
+            </div> 
             </>:''}
         </>
         

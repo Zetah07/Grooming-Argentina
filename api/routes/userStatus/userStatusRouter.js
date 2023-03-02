@@ -10,9 +10,9 @@ const fileUpload = require("express-fileupload");
 const veryfyJWT = require("../../middleware/verifyJWT");
 const verifyRoles = require("../../middleware/verifyRoles");
 
-router.get("/", veryfyJWT, verifyRoles(["admin", "hr"]), handleUserStatus);
-router.get("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), getUserStatusByid);
-router.put("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
+router.get("/", /*veryfyJWT, verifyRoles(["admin", "hr"]),*/ handleUserStatus);
+router.get("/:id"/*, veryfyJWT, verifyRoles(["admin", "hr"])*/, getUserStatusByid);
+router.put("/:id",/* veryfyJWT, verifyRoles(["admin", "hr"])*/updateUserStatus);
 router.post(
   "/",
   fileUpload({
