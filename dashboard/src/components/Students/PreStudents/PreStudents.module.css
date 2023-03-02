@@ -15,5 +15,5 @@
     font-family: "Helvetica";
 }
 .title{
-    font-family: "Gotham Rounded Bold";
+    color: var(--secondary-color);
 }

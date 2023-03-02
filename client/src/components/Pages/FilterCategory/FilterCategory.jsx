@@ -13,7 +13,7 @@ const FilterCategory = () => {
     }
     return (<>
         <div className="vr" />
-        <h5 class="card-title">Categoria</h5>
+        <h5 className="card-title">Categoria</h5>
         <div className="vr" />
         <Form.Select aria-label="Default select example" onChange={selectHandler}>
             <option disabled selected>Seleccione una categoria</option>

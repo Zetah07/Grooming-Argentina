@@ -19,29 +19,12 @@ const Bienvenidos = () => {
     }
   }, [auth]);
 
-  const goToLogin = () => {
-    window.location.href = "http://localhost:4000/";
-  };
-
-  
-
   return (
     <div className={style.container}>
-      {user ? (
         <div>
           <h1>Bienvenido {user.name}</h1>
           <h2>Estas en la pagina de Bienvenidos</h2>
         </div>
-      ) : (
-        <div className="containerAlter">
-          <button className={style.button} onClick={goToLogin}>
-            <h2>
-              Lo siento, <br />
-              no puedo dejarte entrar aqui 🙄
-            </h2>
-          </button>
-        </div>
-      )}
     </div>
   );
 };

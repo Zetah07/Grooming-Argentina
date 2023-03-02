@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 export default function VideoCard({title, description, thumbnail, id}){
     return(
         <Card style={{ width: '397px' }}>
-        <Link to={`/panel/cursos/${id}`}>
+        {id?<Link to={`/panel/cursos/${id}`}>
             <Card.Img variant="top" src={thumbnail} />  
-        </Link>
+        </Link>:<Card.Img variant="top" src={thumbnail} />}
         <Card.Body>
-            <Card.Title style={{fontFamily: 'Gotham Rounded'}}>{title}</Card.Title>
+            <Card.Title style={{fontFamily: 'Gotham Rounded Bold', color: '#004b82'}}>{title}</Card.Title>
             <Card.Text>
                 {description}
             </Card.Text>

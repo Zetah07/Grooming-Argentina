@@ -7,9 +7,14 @@ const Unauthorized = () => {
   const goBack = () => navigate(-1)
   return (
     <div>
-      <h1 className={style.title}>Contenido no autorizado</h1>
-      <p className={style.text}>No tienes acceso a la pagina solicitada</p>
-      <Button type="button" variant="primary" onClick={goBack}>Volver</Button>
+        <div className="containerAlter">
+          <button className={style.button} onClick={goBack}>
+            <h2>
+              Lo siento, <br />
+              no puedo dejarte entrar aqui 🙄
+            </h2>
+          </button>
+        </div>
     </div>
   )
 }
