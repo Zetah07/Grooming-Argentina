@@ -48,7 +48,10 @@ const VolunteerForm = () => {
         CV: ""
     }
 
-    const regExpFacebook = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/;
+    const regExpFacebook = /^https?:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9.]{1,}\/?$/;
+    const regExpTwitter = /^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]+(\/)?$/;
+    const regExpInstagram = /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_\\.]+(\/)?$/;
+    const regExpLinkedIn = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub|company)\/[a-zA-Z0-9_-]+(\/)?$/;
 
     const schema = object().shape({
         email: string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
@@ -61,7 +64,9 @@ const VolunteerForm = () => {
             .max(8, "Debe tener hasta  8 caracteres").matches(/^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/, 'El formato de número de documento no es válido'),
         nationality: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 20 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
-        birthDate: date().required('El campo no puede estar vacío'),
+        // birthDate: date().required('El campo no puede estar vacío'),
+        birthDate: date().max(new Date(Date.now() - 18 * 365 * 24 * 60 * 60 * 1000), 'Debes ser mayor de edad para registrarte')
+            .required('La fecha de nacimiento es requerida'),
         province: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
         location: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
@@ -78,17 +83,16 @@ const VolunteerForm = () => {
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
         facebook: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(regExpFacebook, 'La url debe pertenecer al formato https://www.facebook.com/pages/'),
+            .matches(regExpFacebook, 'La url debe pertenecer al formato https://www.facebook.com/'),
         twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(/(?:https?:\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.twitter.com/pages/'),
+            .matches(regExpTwitter, 'La url debe pertenecer al formato https://www.twitter.com/'),
         instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(/(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.instagram.com/pages/'),
+            .matches(regExpInstagram, 'La url debe pertenecer al formato https://www.instagram.com/'),
         linkedIn: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
-            .matches(/(?:https?:\/\/)?(?:www\.)?linkedIn\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w-]*\/)*?(\/)?([^/?]*)/, 'La url debe pertenecer al formato https://www.linkedIn.com/pages/'),
+            .matches(regExpLinkedIn, 'La url debe pertenecer al formato https://www.linkedIn.com/in/usuario'),
         opinion: string().min(3, "Debe tener al menos 3 caracteres").max(255, "Debe tener hasta 255 caracteres"),
         knowGroominPerson: string().required('El campo no puede estar vacío'),
-        whoGroominPerson: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(50, "Debe tener menos de 50 caracteres"),
+        whoGroominPerson: string().optional('Si la respuesta anterior fue si rellene este campo').max(50, "Debe tener menos de 50 caracteres"),
         whyGroomin: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
         theme: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
@@ -129,34 +133,13 @@ const VolunteerForm = () => {
     // console.log(errors)
 
 
-    //const { REACT_APP_REST_API } = process.env;
+    // const { REACT_APP_REST_API } = process.env; `${REACT_APP_REST_API}/userstatus`
+
 
     const sendFormData = async (data) => {
         console.log(data.CV)
         const formData = new FormData();
-        // formData.append('email', data.email);
-        // formData.append('lastName', data.lastName);
-        // formData.append('birthDate', data.birthDate);
-        // formData.append('genre', data.genre);
-        // formData.append('nationality', data.nationality);
-        // formData.append('province', data.province);
-        // formData.append('location', data.location);
-        // formData.append('address', data.address);
-        // formData.append('document', data.document);
-        // formData.append('schooling', data.schooling);
-        // formData.append('profession', data.profession);
-        // formData.append('howKnowGrooming', data.howKnowGrooming);
-        // formData.append('facebook', data.facebook);
-        // formData.append('twitter', data.twitter);
-        // formData.append('instagram', data.instagram);
-        // formData.append('linkedIn', data.linkedIn);
-        // formData.append('howManyHours', data.howManyHours);
-        // formData.append('opinion', data.opinion);
-        // formData.append('knowGroominPerson', data.knowGroominPerson);
-        // formData.append('whoGroominPerson', data.whoGroominPerson);
-        // formData.append('whyGroomin', data.whyGroomin);
-        // formData.append('theme', data.theme);
-        // formData.append('expectations', data.expectations);
+
         formData.append('adjDocument', data.adjDocument[0]);
         formData.append('CV', data.CV[0]);
         formData.append("userRegister", JSON.stringify(data));
@@ -371,7 +354,7 @@ const VolunteerForm = () => {
                 {/* Facebook ---> facebook */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Facebook</Form.Label>
-                    <Form.Control type="text" placeholder="https://www.facebook.com/tu_usuario"
+                    <Form.Control type="text" placeholder="https://www.facebook.com/"
                         isInvalid={!!errors.facebook} isValid={touchedFields.facebook && !errors.facebook}
                         {...register('facebook')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
@@ -380,7 +363,7 @@ const VolunteerForm = () => {
                 {/* Twitter ---> twitter */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Twitter</Form.Label>
-                    <Form.Control type="text" placeholder=" https://www.twitter.com/tu_usuario" isInvalid={!!errors.twitter} isValid={touchedFields.twitter && !errors.twitter}
+                    <Form.Control type="text" placeholder=" https://www.twitter.com/" isInvalid={!!errors.twitter} isValid={touchedFields.twitter && !errors.twitter}
                         {...register('twitter')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.twitter?.message}</Form.Control.Feedback>
@@ -388,7 +371,7 @@ const VolunteerForm = () => {
                 {/* Instagram ---> instagram */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de Instagram</Form.Label>
-                    <Form.Control type="text" placeholder=" https://www.instagram.com/tu_usuario" isInvalid={!!errors.instagram} isValid={touchedFields.instagram && !errors.instagram}
+                    <Form.Control type="text" placeholder=" https://www.instagram.com/" isInvalid={!!errors.instagram} isValid={touchedFields.instagram && !errors.instagram}
                         {...register('instagram')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.instagram?.message}</Form.Control.Feedback>
@@ -396,7 +379,7 @@ const VolunteerForm = () => {
                 {/* LinkedIn ---> linkedIn */}
                 <Form.Group className='d-flex flex-column align-items-start pb-3 col-lg-8'>
                     <Form.Label className={s.label_volunt}>Perfil de LinkedIn</Form.Label>
-                    <Form.Control type="text" placeholder=" https://www.linkedIn.com/tu_usuario" isInvalid={!!errors.linkedIn} isValid={touchedFields.linkedIn && !errors.linkedIn}
+                    <Form.Control type="text" placeholder=" https://www.linkedIn.com/in/" isInvalid={!!errors.linkedIn} isValid={touchedFields.linkedIn && !errors.linkedIn}
                         {...register('linkedIn')} />
                     <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">{errors?.linkedIn?.message}</Form.Control.Feedback>
