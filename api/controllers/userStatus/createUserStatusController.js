@@ -24,22 +24,7 @@ const handleUserStatusCreation = async (req, res) => {
         }
       }
     }
-
-    const repeatables = [
-      "name",
-      "lastName",
-      "birthDate",
-      "genre",
-      "nationality",
-      "province",
-      "location",
-      "address",
-      "schooling",
-      "profession",
-      "howKnowGrooming",
-      "howManyHours",
-    ];
-
+    
     const noRepeatables = [
       "document",
       "phone",
@@ -50,9 +35,7 @@ const handleUserStatusCreation = async (req, res) => {
       "linkedIn",
     ];
 
-    const promises = Object.keys(userRegister)
-      .filter((key) => !repeatables.includes(key))
-      .map((key) => userStatus.findOne({ [key]: userRegister[key] }).exec());
+    let promises = Object.keys(userRegister).filter((key) => noRepeatables.includes(key)).map((key) => userStatus.findOne({ [key]: userRegister[key] }).exec());
     const results = await Promise.all(promises);
 
     for (let i = 0; i < results.length; i++) {
@@ -64,9 +47,13 @@ const handleUserStatusCreation = async (req, res) => {
       }
     }
 
-    const pathCV = __dirname + "../../../files/CVs/" + userRegister["document"] + ".pdf";
+    const pathCV =
+      __dirname + "../../../files/CVs/" + userRegister["document"] + ".pdf";
     const pathDcoument =
-      __dirname + "../../../files/copyDocument/" + userRegister["document"] +  ".pdf";
+      __dirname +
+      "../../../files/copyDocument/" +
+      userRegister["document"] +
+      ".pdf";
 
     CV.mv(pathCV, (err) => {
       if (err) {
