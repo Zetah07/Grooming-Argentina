@@ -79,9 +79,11 @@
 }
 
 .textContainer span{
-    font-family: "Gotham Rounded Bold";
-    font-style: normal;
-    font-size: 70px;
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 
     background-color:var(--bs-info);
     -webkit-background-clip: text;
@@ -90,7 +92,7 @@
 }
 .textContainer p {
     text-align: left;
-    font-family: Helvetica;
+    font-family: "HelveticaNeue Thin";
     font-style: normal;
     font-size: 20px;
 }
@@ -115,7 +117,7 @@
 }
 
 .globo h3, .globo2 h3{
-    font-family: "Gotham Rounded Bold";
+    font-family: "HelveticaNeue Medium";
     font-size: 17px;
     font-weight: bold;
 }
@@ -143,7 +145,7 @@
 }
 .textContainer2 p{
     text-align: left;
-    font-family: Helvetica;
+    font-family: "HelveticaNeue Thin";
     font-style: normal;
     font-size: 20px;
 }
@@ -188,16 +190,16 @@
 }
 
 .visionDiv h3 {
-    font-family: "Gotham Rounded Bold";
+    font-family: "HelveticaNeue Regular";
     font-style: normal;
     font-size: 25px;
-    font-weight: bold;
+    font-weight:200;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
 }
 .visionDiv p{
-    font-family: Helvetica;
+    font-family: "HelveticaNeue Thin";
     font-style: normal;
     font-size: 20px;
     padding-bottom: 30px;
