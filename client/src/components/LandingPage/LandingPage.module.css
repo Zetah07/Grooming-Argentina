@@ -34,7 +34,7 @@
 
 .information h1 {
   max-width: 90%;
-  height: 25vh;
+  height: 10vh;
   font-family: "Gotham Rounded Bold";
   font-style: normal;
   font-size: 68px;
@@ -84,8 +84,8 @@
 
 @media (max-width: 664px) {
   .information h1 {
-    margin-top: 12px;
-    height: 20vh;
+    margin-top: 20px;
+    height: 10vh;
     font-size: 40px;
   }
 
@@ -93,6 +93,7 @@
     font-size: 11px;
     margin-top: 35px;
   }
-
-
+.buttonContainer{
+  margin-bottom: 1rem;
+}
 }
