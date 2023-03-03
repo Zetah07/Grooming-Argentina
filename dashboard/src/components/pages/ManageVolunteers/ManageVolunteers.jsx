@@ -7,7 +7,6 @@ import useAuth from "../../../hooks/useAuth";
 import DownloadPDFButton from "../../downloadAdjDocuments/DownloadAdjDocuments";
 import ConfirmationModal from "./confirmationModal";
 import Paginations from "./Pagination";
-import SearchBar from "./Search";
 
 const ManageVolunteers = () => {
   const [userStatusList, setUserStatusList] = useState([]);
@@ -20,7 +19,6 @@ const ManageVolunteers = () => {
   const [limit, setLimit] = useState(10);
   const [filteredList, setFilteredList] = useState([]);
   const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
 
   const { auth } = useAuth();
 
@@ -28,9 +26,7 @@ const ManageVolunteers = () => {
     const fetchUserStatusList = async () => {
       try {
         const response = await axios.get(
-          `/userstatus?name=${name}&lastName=${lastName}&page=${
-            page + 1
-          }&limit=${limit}`,
+          `/userstatus?name=${name}&page=${page + 1}&limit=${limit}`,
           {
             withCredentials: true,
             headers: {
@@ -39,19 +35,19 @@ const ManageVolunteers = () => {
           }
         );
 
-        const updatedList = response.data.docs.map((userStatus) => ({
-          ...userStatus,
-          fullName: `${userStatus.name} ${userStatus.lastName}`,
-        }));
-        setUserStatusList(updatedList);
-        setFilteredList(updatedList);
+        // const updatedList = response.data.docs.map((userStatus) => ({
+        //   ...userStatus,
+        //   fullName: `${userStatus.name} ${userStatus.lastName}`,
+        // }));
+        setUserStatusList(response.data.docs);
+        setFilteredList(response.data.docs);
         setPageCount(response.data.totalPages);
       } catch (error) {
         console.log(error);
       }
     };
     fetchUserStatusList();
-  }, [auth?.accessToken, page, limit, name, lastName]);
+  }, [auth?.accessToken, page, limit, name]);
 
   const handleStatusChange = async (id, newStatus) => {
     if (newStatus === "denegado") {
@@ -73,12 +69,7 @@ const ManageVolunteers = () => {
     const searchValue = event.target.value
       ? event.target.value.toLowerCase()
       : "";
-    const filtered = userStatusList.filter(
-      (userStatus) =>
-        userStatus.fullName.toLowerCase().includes(searchValue) ||
-        userStatus.lastName.toLowerCase().includes(searchValue)
-    );
-    setFilteredList(filtered);
+    setName(searchValue);
   };
 
   const updateStatus = async (id, newStatus) => {
@@ -114,12 +105,10 @@ const ManageVolunteers = () => {
   };
 
   return (
-    <div className="container" style={{ textAlign: "center" }}>
-      <br />
-
-      <SearchBar value={name} onChange={(e) => handleSearch(e.target.value)} />
-      <br />
-
+    <div
+      className={`container ${style.container}`}
+      style={{ textAlign: "center" }}
+    >
       <ConfirmationModal
         show={denyModal}
         title="Denegar usuario"
@@ -167,12 +156,30 @@ const ManageVolunteers = () => {
         Estado de postulados para progama de voluntarios
       </h1>
       <br />
+      <div className={style.searchBarContainer}>
+        <Form className={style.searchBar}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label
+              className={style.searchBarLabel}
+              style={{ color: "#38568F" }}
+            >
+              Buscar por nombre y/o apellido:
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Buscar..."
+              onChange={handleSearch}
+              className={style.searchBarinput}
+            />
+          </Form.Group>
+        </Form>
+      </div>
 
       <br />
-      <p className={style.text}>Descargar reporte complete en excel:</p>
+      {/* <p className={style.text}>Descargar reporte complete en excel:</p>
       <DownloadReportButton className={style.report} />
       <br />
-      <br />
+      <br /> */}
       <br />
       <Table bordered hover responsive>
         <thead>
@@ -442,31 +449,47 @@ const ManageVolunteers = () => {
           ))}
         </tbody>
       </Table>
+      <div className={style.bottomItems}>
+        <div className={style.paginationContainer}>
+          {filteredList.length > 0 && (
+            <Paginations
+              page={page}
+              pageCount={pageCount}
+              handlePageChange={handlePageChange}
+              className={style.pagination}
+            />
+          )}
+        </div>
 
-      <div className={style.selectEntriesContainer} style={{ width: "12%" }}>
-        <Form.Select
-          value={limit}
-          onChange={(e) => handleLimitChange(parseInt(e.target.value))}
-          className={style.selectEntries}
+        <div
+          className={
+            style.selectEntriesContainer
+          } /* style={{ width: "12%" }} */
         >
-          <option value={10}>10 por página</option>
-          <option value={20}>20 por página</option>
-          <option value={30}>30 por página</option>
-          <option value={50}>50 por página</option>
-          <option value={100}>100 por página</option>
-          <option value={99999999}>Mostrar todos</option>
-        </Form.Select>
-      </div>
+          <Form.Select
+            value={limit}
+            onChange={(e) => handleLimitChange(parseInt(e.target.value))}
+            className={style.selectEntries}
+          >
+            <option value={10}>10 por página</option>
+            <option value={20}>20 por página</option>
+            <option value={30}>30 por página</option>
+            <option value={50}>50 por página</option>
+            <option value={100}>100 por página</option>
+            <option value={99999999}>Mostrar todos</option>
+          </Form.Select>
+        </div>
 
-      <div className={style.paginationContainer}>
-        {filteredList.length > 0 && (
-          <Paginations
-            page={page}
-            pageCount={pageCount}
-            handlePageChange={handlePageChange}
-            className={style.pagination}
-          />
-        )}
+        <div className={style.reportDownloadContainer}>
+          <div className={style.reportText}>
+            <p className={style.textReport}>
+              Descargar reporte complete en excel:
+            </p>
+          </div>
+          <div className={style.reportButtonContainer}>
+            <DownloadReportButton className={style.reportButton} />
+          </div>
+        </div>
       </div>
     </div>
   );
