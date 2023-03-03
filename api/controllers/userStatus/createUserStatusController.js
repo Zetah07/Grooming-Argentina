@@ -15,7 +15,7 @@ const handleUserStatusCreation = async (req, res) => {
         .json({ message: `Los archivos deben ser tipo PDF` });
 
     for (const key in userRegister) {
-      if (key !== "howManyHours") {
+      if (key !== "howManyHours" && key !=="whoGroominPerson") {
         const element = userRegister[key];
         if (!element) {
           return res
