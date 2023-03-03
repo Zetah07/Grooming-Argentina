@@ -1,0 +1,31 @@
+.img{
+    width: 100%;
+    min-height: 15rem;
+    max-height: 15rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+.titleContainer{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 62px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.title{
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'HelveticaNeue Regular';
+    padding: 1rem;
+}
+.information p{
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: 'HelveticaNeue thin';
+    margin-top: 1rem;
+}
+.moreButton{
+    margin-top: auto;
+}
