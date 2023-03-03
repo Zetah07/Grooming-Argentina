@@ -27,7 +27,7 @@
   max-width: 100%;
 }
 .container1 h1, .container3 h1, .container4 h1 {
-    font-family: "Gotham Rounded";
+    font-family: "Gotham Rounded Bold";
     font-style: normal;
     font-size: 68px;
     line-height: 97px;
@@ -41,7 +41,7 @@
     background-clip: text;
   }
   .container1 p, .container3 p, .container4 p {
-    font-family: "Helvetica";
+    font-family: "Helvetica Medium";
     font-style: normal;
     font-size: 28px;
     color: #ffffff;
@@ -49,12 +49,12 @@
   }
   .link{
     color:#ffffff;
-    font-family: "Helvetica";
+    font-family: "Helvetica Medium";
     font-size: 25px;
     margin-top: 0;
   }
   .btn{
-    font-family: "Helvetica";
+    font-family: "Helvetica Thin";
     padding: 0;
   }
   .divBecome{
@@ -77,17 +77,19 @@
     justify-content: center;
   }
   .container2 h1{
-    font-family: "Gotham Rounded";
+    font-family: "Gotham Rounded Bold";
     font-weight: bold;
   }
   .container2 p{
-    font-family: "Helvetica";
+    font-family: "Helvetica Medium";
   }
 .container3 h1, .container4 h1{
+  font-family: "Gotham Rounded Bold";
   color: var(--secondary-color);
 }
 .container3 p, .container4 p{
-  color: black;;
+  color: black;
+  font-family: "Helvetica Medium";
   padding: 15px 20% 15px 20%;
   text-align: justify;
 }
@@ -110,7 +112,7 @@
   padding-right: 10%;
 }
 .container6 h1, .container7 h1 {
-  font-family: "Gotham Rounded";
+  font-family: "Gotham Rounded Bold";
   font-style: normal;
   font-size: 68px;
   line-height: 97px;
