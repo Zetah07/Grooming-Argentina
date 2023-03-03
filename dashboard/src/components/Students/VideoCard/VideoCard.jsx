@@ -8,7 +8,7 @@ export default function VideoCard({title, description, thumbnail, id}){
             <Card.Img variant="top" src={thumbnail} />  
         </Link>:<Card.Img variant="top" src={thumbnail} />}
         <Card.Body>
-            <Card.Title style={{fontFamily: 'Gotham Rounded Bold', color: '#004b82'}}>{title}</Card.Title>
+            <Card.Title style={{fontFamily: 'Titulo Gotham Bold', color: '#004b82'}}>{title}</Card.Title>
             <Card.Text>
                 {description}
             </Card.Text>
