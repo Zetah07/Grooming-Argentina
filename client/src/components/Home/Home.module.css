@@ -27,6 +27,7 @@
   max-width: 100%;
 }
 .container1 h1, .container3 h1, .container4 h1 {
+
     font-family: "Titulo Gotham";
     font-style: normal;
     font-size: 68px;
@@ -41,6 +42,7 @@
     background-clip: text;
   }
   .container1 p, .container3 p, .container4 p {
+
     font-family: "Titulo Helvetica";
     font-style: normal;
     font-size: 28px;
@@ -49,6 +51,7 @@
   }
   .link{
     color:#ffffff;
+
     font-family: "Titulo Helvetica";
     font-size: 25px;
     margin-top: 0;
@@ -81,6 +84,7 @@
     font-weight: bold;
   }
   .container2 p{
+
     font-family: "Titulo Helvetica";
   }
 .container3 h1, .container4 h1{
@@ -88,8 +92,10 @@
   color: var(--secondary-color);
 }
 .container3 p, .container4 p{
+
   color: black;
-  font-family: "Titulo Helvetica";
+  font-family: "Helvetica Medium";
+
   padding: 15px 20% 15px 20%;
   text-align: justify;
 }
