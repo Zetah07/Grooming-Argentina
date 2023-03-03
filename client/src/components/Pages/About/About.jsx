@@ -158,7 +158,7 @@ const About = () => {
                   }
               </div>
             </div>
-            <div className={s.divButton}>
+            <div class="ro" className={s.divButton}>
               <button className="button">Se voluntario</button>
             </div>
           </div>

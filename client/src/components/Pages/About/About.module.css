@@ -65,17 +65,21 @@
     padding-top: 0px;
     padding-left: 20px;
     padding-bottom: 20px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .textContainer h4{
     font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 70px;
+    font-size: 50px;
 
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .textContainer span{
@@ -235,7 +239,7 @@
 .teamContainer{
     background-color: #e7edf1;
     border-top-right-radius: 70px;
-    width: 95%;
+    width: 98%;
     display: flex;
     flex-direction: column;
     align-items: center;
