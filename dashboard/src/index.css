@@ -15,17 +15,17 @@
 
 @font-face {
   font-family: "Titulo Helvetica";
-  src: url("./assets/font/HelveticaNeueMedium.ttf") format('opentype');
+  src: url("./assets/font/HelveticaNeue\ Medium.ttf") format('opentype');
 }
 
 @font-face {
   font-family: "Texto Helvetica";
-  src: url("./assets/font/HelveticaNeueRegular.ttf") format('opentype');
+  src: url("./assets/font/HelveticaNeue\ Regular.ttf") format('opentype');
 }
 
 @font-face {
   font-family: "Texto Thin";
-  src: url("./assets/font/HelveticaNeueThin.ttf") format('opentype');
+  src: url("./assets/font/HelveticaNeue\ Thin.ttf") format('opentype');
 }
 
 :root {
