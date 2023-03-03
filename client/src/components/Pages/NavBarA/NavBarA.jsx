@@ -33,7 +33,7 @@ const NavBarA = () => {
             <Nav.Link as={Link} to="/contactanos">
               Contactanos
             </Nav.Link>
-            <NavDropdown title="Descargá GAPP" id="basic-nav-dropdown">
+            <NavDropdown title="Descarga la APP" id="basic-nav-dropdown">
               <NavDropdown.Item
                 as={Link}
                 to="https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2"

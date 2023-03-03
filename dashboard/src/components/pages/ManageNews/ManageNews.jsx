@@ -1,21 +1,88 @@
 import Table from "react-bootstrap/Table";
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
-import { getAllNews } from "../../../Redux/Actions/index";
+import { useEffect, useState } from "react";
+import { getAllNews, resetFilter, resetPagination } from "../../../Redux/Actions/index";
+import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs"
 
 const ManageNews = () => {
   const dispatch = useDispatch();
-  const news = useSelector(state => state.news);
+  const newspaper = useSelector((state) => state.news);
+  const filter = useSelector((state) => state.filter);
+  const pagination = useSelector((state) => state.pagination);
+  const newsPerPage = 6;
+  const pageNumberLimit = 5;
+  const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+  if (newspaper.docs && newspaper.docs.length > 0 && items && items.length === 0) setItems([...newspaper.docs]);
+
+  console.log(pagination)
   useEffect(() => {
-    dispatch(getAllNews());
+    dispatch(getAllNews(currentPage + 1, newsPerPage));
+    dispatch(resetPagination());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (pagination === true) {
+      setItems([...newspaper.docs]);
+      dispatch(resetPagination());
+    }
+  }, [dispatch, pagination])
+
+  useEffect(() => {
+    if (filter === true) {
+      setCurrentPage(0);
+      setmaxPageNumberLimit(5);
+      setminPageNumberLimit(0);
+      setItems([...newspaper.docs]);
+      dispatch(resetFilter());
+    }
+  }, [dispatch, filter, newspaper]);
+
+  const firstHandler = (firstPage) => {
+    setCurrentPage(firstPage);
+    setminPageNumberLimit(0);
+    setmaxPageNumberLimit(5);
+  };
+
+  const prevHandler = () => {
+    const prevPage = currentPage - 1;
+    if (prevPage < 0) return;
+    setCurrentPage(prevPage);
+    if (currentPage % pageNumberLimit === 0) {
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
+  const nextHandler = () => {
+    const nextPage = currentPage + 1;
+    const firstIndex = nextPage * newsPerPage;
+    if (firstIndex > newspaper.totalDocs) return;
+    setCurrentPage(nextPage);
+    if (currentPage + 2 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const lastHandler = (lastPage) => {
+    setCurrentPage(lastPage);
+    setmaxPageNumberLimit(5 * Math.ceil(lastPage / 5));
+    setminPageNumberLimit(5 * Math.floor(lastPage / 5));
+  };
+
+  const pages = (numberPage) => {
+    setCurrentPage(numberPage);
+  };
+
   return (
     <div className="container">
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Titulo</th>
             <th>Categoria</th>
             <th>Provincia</th>
@@ -25,10 +92,9 @@ const ManageNews = () => {
           </tr>
         </thead>
         <tbody>
-          {news.map((paper) => {
+          {items.map((paper) => {
             return (
               <tr key={paper._id}>
-                <td>{paper._id}</td>
                 <td>{paper.title}</td>
                 <td>{paper.category}</td>
                 <td>{paper.provinceOrLocation}</td>
@@ -40,11 +106,26 @@ const ManageNews = () => {
           })}
         </tbody>
       </Table>
+      <div>
+        <PaginationNewsBlogs
+          totalItems={newspaper.totalDocs}
+          totalPages={newspaper.totalPages}
+          firstHandler={firstHandler}
+          prevHandler={prevHandler}
+          nextHandler={nextHandler}
+          lastHandler={lastHandler}
+          pages={pages}
+          itemsPerPage={newsPerPage}
+          currentPage={currentPage}
+          pageNumberLimit={pageNumberLimit}
+          maxPageNumberLimit={maxPageNumberLimit}
+          minPageNumberLimit={minPageNumberLimit}
+        />
+      </div>
       <Button variant="primary" href="/panel/crearnoticia">
         Crear Noticia
       </Button>
     </div>
   );
-
 };
 export default ManageNews;
