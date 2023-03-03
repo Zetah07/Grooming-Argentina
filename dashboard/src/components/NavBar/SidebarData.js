@@ -54,6 +54,13 @@ const cursos = {
   cName: "nav-text",
 }
 
+const newUser = {
+  title: "Crear nuevo usuario",
+  path: "/panel/nuevousuario",
+  icon: <AiIcons.AiOutlineUserAdd />,
+  cName: "nav-text",
+};
+
 export const SidebarData = {
   admin: [
     bienvenidos,
@@ -62,7 +69,8 @@ export const SidebarData = {
     panelBlogs,
     suscriptores,
     reports,
-    cursos
+    cursos,
+    newUser
   ],
   user: [bienvenidos],
   hr: [bienvenidos, estatusVoluntarios, reports, suscriptores],
