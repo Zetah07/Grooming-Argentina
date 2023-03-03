@@ -15,7 +15,7 @@ const handleUserStatusCreation = async (req, res) => {
         .json({ message: `Los archivos deben ser tipo PDF` });
 
     for (const key in userRegister) {
-      if (key !== "howManyHours") {
+      if (key !== "howManyHours" && key !=="whoGroominPerson") {
         const element = userRegister[key];
         if (!element) {
           return res
@@ -24,7 +24,7 @@ const handleUserStatusCreation = async (req, res) => {
         }
       }
     }
-    
+
     const noRepeatables = [
       "document",
       "phone",
@@ -35,7 +35,9 @@ const handleUserStatusCreation = async (req, res) => {
       "linkedIn",
     ];
 
-    let promises = Object.keys(userRegister).filter((key) => noRepeatables.includes(key)).map((key) => userStatus.findOne({ [key]: userRegister[key] }).exec());
+    let promises = Object.keys(userRegister)
+      .filter((key) => noRepeatables.includes(key))
+      .map((key) => userStatus.findOne({ [key]: userRegister[key] }).exec());
     const results = await Promise.all(promises);
 
     for (let i = 0; i < results.length; i++) {
@@ -69,7 +71,7 @@ const handleUserStatusCreation = async (req, res) => {
     const brithDate = new Date(userRegister["birthDate"]);
     const userStatusCorrection = {
       ...userRegister,
-      status: "pending",
+      status: "pendiente",
       adjDocument: pathDcoument,
       CV: pathCV,
     };
