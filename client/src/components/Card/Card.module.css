@@ -1,3 +1,8 @@
-.body{
-    font-size: 5px;
+.title{
+    font-family: "Titulo Gotham";
+    color: var(--secondary-color);
+    font-size: 30px;
+}
+.img{
+    height: 50%;
 }
