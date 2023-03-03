@@ -18,18 +18,18 @@ const ManageNews = () => {
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   if (newspaper.docs && newspaper.docs.length > 0 && items && items.length === 0) setItems([...newspaper.docs]);
 
-  console.log(pagination)
+  console.log(newspaper.docs)
   useEffect(() => {
     dispatch(getAllNews(currentPage + 1, newsPerPage));
     dispatch(resetPagination());
-  }, [dispatch]);
+  }, [dispatch, currentPage, newsPerPage]);
 
   useEffect(() => {
     if (pagination === true) {
       setItems([...newspaper.docs]);
       dispatch(resetPagination());
     }
-  }, [dispatch, pagination])
+  }, [dispatch, pagination, newspaper.docs])
 
   useEffect(() => {
     if (filter === true) {
