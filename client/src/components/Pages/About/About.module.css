@@ -8,7 +8,7 @@
 }
 
 .banner h1 {
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 90px;
     line-height: 97px;
@@ -19,7 +19,7 @@
 }
 
 .banner span {
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 100px;
     line-height: 97px;
@@ -70,7 +70,7 @@
 }
 
 .textContainer h4{
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 40px;
 
@@ -96,7 +96,7 @@
 }
 .textContainer p {
     text-align: left;
-    font-family: "HelveticaNeue Thin";
+    font-family: "Texto Thin";
     font-style: normal;
     font-size: 18px;
 }
@@ -140,7 +140,7 @@
 }
 .textContainer2 h4{
     text-align: left;
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-weight: bold;
     font-size: 50px;
@@ -149,7 +149,7 @@
 }
 .textContainer2 p{
     text-align: left;
-    font-family: "HelveticaNeue Thin";
+    font-family: "Texto Thin";
     font-style: normal;
     font-size: 18px;
 }
@@ -182,7 +182,7 @@
     width: 70%;
 }
 .visionTitle{
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 68px;
     font-weight: bold;
@@ -194,7 +194,7 @@
 }
 
 .visionDiv h3 {
-    font-family: "HelveticaNeue Regular";
+    font-family: "Texto Helvetica";
     font-style: normal;
     font-size: 25px;
     font-weight:200;
@@ -203,7 +203,7 @@
     -webkit-background-clip: text;
 }
 .visionDiv p{
-    font-family: "HelveticaNeue Thin";
+    font-family: "Texto Thin";
     font-style: normal;
     font-size: 18px;
     padding-bottom: 30px;
@@ -226,7 +226,7 @@
     padding-top: 20px;
 }
 .title h4{
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 55px;
     background-color: black;
@@ -236,7 +236,7 @@
 }
 
 .titler2 h4 {
-    font-family: "Gotham Rounded Bold";
+    font-family: "Titulo Gotham Bold";
     font-style: normal;
     font-size: 50px;
     background-color: black;
