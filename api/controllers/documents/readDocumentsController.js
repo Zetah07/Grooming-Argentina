@@ -8,7 +8,6 @@ const handleReadDocuments = (req, res) => {
   }else{
     return res.status(400).send("Debe proporcionar numero de documento")
   }
-
   return res.download(path, {}, function (error) {
     if (error) {
       res.status(400).json({message: "documento no encontrado o no disponible"});
