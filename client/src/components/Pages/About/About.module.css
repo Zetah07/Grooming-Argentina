@@ -98,7 +98,7 @@
     text-align: left;
     font-family: "HelveticaNeue Thin";
     font-style: normal;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .title{
@@ -122,7 +122,7 @@
 
 .globo h3, .globo2 h3{
     font-family: "HelveticaNeue Medium";
-    font-size: 17px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -151,7 +151,7 @@
     text-align: left;
     font-family: "HelveticaNeue Thin";
     font-style: normal;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .videoContainer{
@@ -184,7 +184,7 @@
 .visionTitle{
     font-family: "Gotham Rounded Bold";
     font-style: normal;
-    font-size: 70px;
+    font-size: 68px;
     font-weight: bold;
     background-color: black;
     -webkit-background-clip: text;
@@ -205,7 +205,7 @@
 .visionDiv p{
     font-family: "HelveticaNeue Thin";
     font-style: normal;
-    font-size: 20px;
+    font-size: 18px;
     padding-bottom: 30px;
 }
 

@@ -20,12 +20,12 @@ const updateUserStatus = async (req, res) => {
     userStatusToUpdate.status = status;
     await userStatusToUpdate.save();
 
-    if (status === "approved") {
+    if (status === "aprobado") {
       const newUser = await approvedUser(userStatusToUpdate._id);
       return res.json({ message: "User successfully created", created: newUser });
     }
 
-    if (currentStatus === "approved" && (status === "pending" || status === "denied")) {
+    if (currentStatus === "aprobado" && (status === "pendiente" || status === "denegado")) {
       try {
         const deleteResult = await user.findOneAndDelete({ username: userStatusToUpdate.document });
         return res.status(200).json({ message: "User successfully deleted", deleted: deleteResult });
