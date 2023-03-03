@@ -30,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_NEWS:
       return { ...state, news: action.payload, pagination: true };
     case GET_ALL_BLOGS:
-      return { ...state, blogs: action.payload };
+      return { ...state, blogs: action.payload, pagination: true };
     case GET_NEW_BY_ID:
       return { ...state, newID: action.payload };
     case GET_BLOG_BY_ID:
