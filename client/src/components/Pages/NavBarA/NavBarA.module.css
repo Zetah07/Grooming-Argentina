@@ -4,15 +4,13 @@
     justify-content: space-between;
     padding: 0 10px;
     background-color: transparent;
-    color: #c75a5a;
-    letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: Helvetica;
-
+    font-family: 'HelveticaNeue Regular';
+    font-size: 16px;
 }
 
 .span {
-    font-family: "Gotham Rounded";
+    font-family: "Gotham Rounded Bold";
     font-size: larger;
     color: #7dc8ec;
     ;
