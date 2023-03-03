@@ -33,7 +33,7 @@
   border: none;
 }
 .button h2{
-  font-family: 'Titulo Gotham Bold';
+  font-family: 'Titulo Gotham';
   font-size: 24px;
   color: var(--terciary-color);
   text-decoration: none;
