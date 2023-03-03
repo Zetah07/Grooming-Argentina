@@ -14,18 +14,18 @@
 }
 
 @font-face {
-  font-family: "Helvetica Medium";
-  src: url("../src/assets/font/HelveticaNeueMedium.ttf") format('ttf');
+  font-family: "fuente subtitulo";
+  src: url("../src/assets/font/HelveticaNeueMedium.ttf") format('opentype');
 }
 
 @font-face {
-  font-family: "Helvetica Regular";
-  src: url("../src/assets/font/HelveticaNeueRegular.ttf") format('ttf');
+  font-family: "Helvetica Regular pato";
+  src: url("../src/assets/font/HelveticaNeueRegular.ttf") format('opentype');
 }
 
 @font-face {
-  font-family: "Helvetica Thin";
-  src: url("../src/assets/font/HelveticaNeueThin.ttf") format('ttf');
+  font-family: "Helvetica Thin pato";
+  src: url("../src/assets/font/HelveticaNeueThin.ttf") format('opentype');
 }
 
 :root {

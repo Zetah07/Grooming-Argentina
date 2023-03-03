@@ -92,14 +92,7 @@ const About = () => {
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 container-fluid d-flex justify-content-start align-items-center p-3">
-              <img
-                class="img-fluid"
-                className={s.image2}
-                width="550px"
-                height="400px"
-                src={imgMission}
-                alt="mission"
-              />
+              <img class="img-fluid" className={s.image2} width="600px" height="400px" src={imgMission} alt="mission"/>
             </div>
           </div>
         </div>
@@ -240,7 +233,7 @@ const About = () => {
                 })}
               </div>
             </div>
-            <div className={s.divButton}>
+            <div class="ro" className={s.divButton}>
               <button className="button">Se voluntario</button>
             </div>
           </div>
