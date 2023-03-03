@@ -14,9 +14,11 @@ export const GET_BLOGS_SORT_BY_DATE = "GET_BLOGS_SORT_BY_DATE";
 export const ACTIVE_FILTER = "ACTIVE_FILTER";
 export const RESET_PAGINATION = "RESET_PAGINATION";
 
-export const getAllNews = (page,newsPerPage) => {
+export const getAllNews = (page, newsPerPage) => {
   return async function (dispatch) {
-    const news = await axios.get(`http://localhost:3500/news?page=${page}&limit=${newsPerPage}`);
+    const news = await axios.get(
+      `http://localhost:3500/news?page=${page}&limit=${newsPerPage}`
+    );
     if (news.data) {
       dispatch({ type: GET_ALL_NEWS, payload: news.data });
     } else {
@@ -25,9 +27,11 @@ export const getAllNews = (page,newsPerPage) => {
   };
 };
 
-export const getAllBlogs = () => {
+export const getAllBlogs = (page, blogsPerPage) => {
   return async function (dispatch) {
-    const blogs = await axios.get("http://localhost:3500/blog/");
+    const blogs = await axios.get(
+      `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}`
+    );
     if (blogs.data) {
       dispatch({ type: GET_ALL_BLOGS, payload: blogs.data });
     } else {
@@ -110,14 +114,9 @@ export const getNewsByProvince = (province) => {
   };
 };
 
-
-
-
 export const getBlogsSortByDate = (sort) => {
   return async function (dispatch) {
-    const blogSort = await axios.get(
-      `http://localhost:3500/blog?sort=${sort}`
-    );
+    const blogSort = await axios.get(`http://localhost:3500/blog?sort=${sort}`);
     if (blogSort.data) {
       dispatch({ type: GET_BLOGS_SORT_BY_DATE, payload: blogSort.data });
     } else {
@@ -158,6 +157,3 @@ export const resetPagination = () => {
     dispatch({ type: RESET_PAGINATION });
   };
 };
-
-
-

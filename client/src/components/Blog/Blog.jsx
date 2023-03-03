@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllBlogs, resetFilter } from '../../Redux/Actions';
+import { getAllBlogs, resetFilter, resetPagination } from '../../Redux/Actions';
 import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
 import s from "./Blog.Module.css";
 import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
@@ -11,33 +11,39 @@ import { BlogCard } from '../BlogCard/BlogCard';
 const Blog = () => {
   const dispatch = useDispatch();
   const blogs = useSelector(state => state.blogs);
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector((state) => state.filter);
+  const pagination = useSelector((state) => state.pagination);
   const blogsPerPage = 10;
   const pageNumberLimit = 5;
-  const totalBlogs = blogs.length;
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (blogs.length > 0 && items.length === 0) setItems([...blogs].splice(0, blogsPerPage));
+  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) setItems([...blogs.docs]);
 
   useEffect(() => {
-    dispatch(getAllBlogs());
-  }, [dispatch]);
+    dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
+    dispatch(resetPagination());
+  }, [dispatch, currentPage, blogsPerPage]);
+
+  useEffect(() => {
+    if (pagination === true) {
+      setItems([...blogs.docs]);
+      dispatch(resetPagination());
+    }
+  }, [dispatch, pagination, blogs.docs])
 
   useEffect(() => {
     if (filter === true) {
       setCurrentPage(0);
       setmaxPageNumberLimit(5);
       setminPageNumberLimit(0);
-      setItems([...blogs].splice(0, blogsPerPage));
+      setItems([...blogs.docs]);
       dispatch(resetFilter());
     }
   }, [dispatch, filter, blogs]);
 
   const firstHandler = (firstPage) => {
-    const firstIndex = firstPage * blogsPerPage;
-    setItems([...blogs].splice(firstIndex, blogsPerPage));
     setCurrentPage(firstPage);
     setminPageNumberLimit(0);
     setmaxPageNumberLimit(5);
@@ -45,9 +51,7 @@ const Blog = () => {
 
   const prevHandler = () => {
     const prevPage = currentPage - 1;
-    const firstIndex = prevPage * blogsPerPage;
     if (prevPage < 0) return;
-    setItems([...blogs].splice(firstIndex, blogsPerPage));
     setCurrentPage(prevPage);
     if (currentPage % pageNumberLimit === 0) {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
@@ -57,9 +61,8 @@ const Blog = () => {
 
   const nextHandler = () => {
     const nextPage = currentPage + 1;
-    const firstIndex = nextPage * blogsPerPage;
-    if (firstIndex > totalBlogs) return;
-    setItems([...blogs].splice(firstIndex, blogsPerPage));
+    const firstIndex = nextPage * blogs;
+    if (firstIndex > blogs.totalDocs) return;
     setCurrentPage(nextPage);
     if (currentPage + 2 > maxPageNumberLimit) {
       setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
@@ -68,16 +71,12 @@ const Blog = () => {
   };
 
   const lastHandler = (lastPage) => {
-    const firstIndex = lastPage * blogsPerPage;
-    setItems([...blogs].splice(firstIndex, blogsPerPage));
     setCurrentPage(lastPage);
     setmaxPageNumberLimit(5 * Math.ceil(lastPage / 5));
     setminPageNumberLimit(5 * Math.floor(lastPage / 5));
   };
 
   const pages = (numberPage) => {
-    const firstIndex = numberPage * blogsPerPage;
-    setItems([...blogs].splice(firstIndex, blogsPerPage));
     setCurrentPage(numberPage);
   };
 
@@ -108,7 +107,8 @@ const Blog = () => {
       </section>
       <div className="row offset-2">
         <PaginationComp
-          totalItems={totalBlogs}
+          totalItems={blogs.totalDocs}
+          totalPages={blogs.totalPages}
           firstHandler={firstHandler}
           prevHandler={prevHandler}
           nextHandler={nextHandler}

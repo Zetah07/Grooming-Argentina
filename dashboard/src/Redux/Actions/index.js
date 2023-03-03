@@ -26,9 +26,9 @@ export const getAllNews = (page, newsPerPage) => {
   };
 };
 
-export const getAllBlogs = () => {
+export const getAllBlogs = (page, blogsPerPage) => {
   return async function (dispatch) {
-    const blogs = await axios.get("http://localhost:3500/blog/");
+    const blogs = await axios.get(`http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}`);
     if (blogs.data) {
       dispatch({ type: GET_ALL_BLOGS, payload: blogs.data });
     } else {
