@@ -1,8 +1,5 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 3rem;
 }
 
 th {
@@ -36,24 +33,41 @@ tbody tr:hover th {
   margin-top: 5px;
 }
 
-.input {
-  width: 25%;
+.inputandDownloadContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
   text-align: center;
   padding: 0 5px;
   border-radius: 5px;
+}
+
+
+.searchBarLabel {
+  font-size: 21px;
+  text-align: center;
 }
 
 .searchBar {
-  width: 15%;
+  margin: 0 auto;
   text-align: center;
   padding: 0 5px;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
-.searchbtn {
-  display: flex;
-  flex-direction: row;
-  margin: 0 5px;
+.searchBarinput::placeholder {
+  color: #2167c2;
 }
 
 .filterbtn {
@@ -79,14 +93,7 @@ tbody tr:hover th {
   font-family: "Titulo Gotham Bold";
 }
 
-.text {
-  text-align: center;
-  font-family: "Helvetica Neue Regular";
-  font-size: 20px;
-  line-height: 25px;
-  color: #414042;
-  margin-top: 5px;
-}
+
 
 .selected {
   background-color: #edf9ff;
@@ -162,10 +169,7 @@ table th {
 .paginationContainer {
   display: flex;
   flex-direction: row;
-  align-items: left;
-  justify-content: left;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: auto;
 }
 
 .pagination {
@@ -179,18 +183,74 @@ table th {
 .selectEntries {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   border: solid 1px #dfdfdf;
-  color: #2478e7;
+  color: #2167c2;
+  ;
   border-radius: 7px;
 }
 
 .selectEntriesContainer {
   display: flex;
   flex-direction: row;
-  align-items: left;
-  justify-content: left;
-  margin-left: 17px;
+  margin-bottom: auto;
+}
+
+.reportDownloadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reportText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 5px;
+  text-align: center;
+  color: #38568F;
+}
+
+.textReport {
+  text-align: center;
+  font-size: 15px;
+  line-height: 25px;
+  color: #38568F;
+  margin-top: 5px;
+}
+
+.reportButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px #dfdfdf;
+  color: #2167c2;
+  ;
+  border-radius: 7px;
+}
+
+.reportButton {
+  width: 250px !important;
+}
+
+.bottomItems {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
+  text-align: center;
+  margin: auto 20px auto auto
+}
+
+@media only screen and (max-width: 770px) {
+  .bottomItems {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    margin: 10px 0;
+  }
 }
