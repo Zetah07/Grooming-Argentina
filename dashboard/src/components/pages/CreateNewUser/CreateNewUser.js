@@ -6,7 +6,10 @@ import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
+import useAuth from "../../../hooks/useAuth";
+
 const CreateNewUser = () => {
+  const { auth } = useAuth();
   const defaultValues = {
     name: "",
     username: "",
@@ -61,15 +64,17 @@ const CreateNewUser = () => {
   };
 
   const sendData = async (data) => {
-    console.log(data);
     if (data.password.length === 0){
       data.password = data.username
     }
     data.rol = rol
-    console.log(data);
 
     await axios
-      .post("http://localhost:3500/users", data)
+      .post("http://localhost:3500/users", data,{
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      })
       .then(function (response) {
         showAlert("El ususario fue creado correctamente", "green");
       })
