@@ -61,6 +61,13 @@ const newUser = {
   cName: "nav-text",
 };
 
+const delUser = {
+  title: "Eliminar usuario",
+  path: "/panel/BorrarUsuario",
+  icon: <AiIcons.AiOutlineUserDelete />,
+  cName: "nav-text",
+};
+
 export const SidebarData = {
   admin: [
     bienvenidos,
@@ -70,7 +77,8 @@ export const SidebarData = {
     suscriptores,
     reports,
     cursos,
-    newUser
+    newUser,
+    delUser
   ],
   user: [bienvenidos],
   hr: [bienvenidos, estatusVoluntarios, reports, suscriptores],
