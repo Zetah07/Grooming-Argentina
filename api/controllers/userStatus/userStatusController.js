@@ -9,12 +9,18 @@ const handleUserStatus = async (req, res) => {
 
   try {
     let userName;
-    const { name, lastName } = req.query;
+    const name = req.query.name;
 
-    if (name || lastName) {
-      const regex = new RegExp(`(${name}|${lastName})`, "i");
-      userName = await userStatus.paginate({ $or: [{ name: { $regex: regex } }, { lastName: { $regex: regex } }] }, options);
+    if (name) {
+
+      const [firstName, ...lastNames] = name.split(" ");
+      const lastName = lastNames.join(" ");
+
+      const regex = new RegExp(`(${firstName})`, "i");
+      const lastNameRegex = new RegExp(`(${lastName})`, "i");
+      userName = await userStatus.paginate({ $and: [{ name: { $regex: regex } }, { lastName: { $regex: lastNameRegex } }] }, options);
     } else {
+
       userName = await userStatus.paginate({}, options);
     }
 
