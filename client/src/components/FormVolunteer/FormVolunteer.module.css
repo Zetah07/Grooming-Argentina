@@ -21,7 +21,7 @@
 }
 
 .p1_volunt h2 {
-    font-family: "HelveticaNeue Medium";
+    font-family: "Helvetica Medium";
     text-align: center;
     padding: 10px 0 10px 0;
 }
@@ -31,7 +31,7 @@
 }
 
 .label_volunt {
-    font-family: "HelveticaNeue Medium";
+    font-family: "Helvetica Medium";
     font-size: 18px;
     padding: 3px;
     color: var(--primary-color);

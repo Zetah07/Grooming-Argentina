@@ -16,7 +16,7 @@
   flex-direction: row;
   justify-content: center;
   color: #38568f;
-  font-family: "HelveticaNeue Medium";
+  font-family: "Helvetica Medium";
 }
 
 .icon {
@@ -64,12 +64,12 @@
 .form_label {
   color: #38568f;
   font-size: 20px;
-  font-family: "HelveticaNeue Medium";
+  font-family: "Helvetica Medium";
 }
 
 .submitButton {
   font-size: 20px;
-  font-family: "HelveticaNeue Medium";
+  font-family: "Helvetica Medium";
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
