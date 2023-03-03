@@ -21,7 +21,9 @@
 }
 
 .p1_volunt h2 {
+
     font-family: "Titulo Helvetica";
+
     text-align: center;
     padding: 10px 0 10px 0;
 }
@@ -31,7 +33,9 @@
 }
 
 .label_volunt {
+
     font-family: "Titulo Helvetica";
+
     font-size: 18px;
     padding: 3px;
     color: var(--primary-color);
