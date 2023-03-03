@@ -12,6 +12,7 @@ import {
   ERROR,
   RESET_FILTER,
   GET_BLOGS_SORT_BY_DATE,
+  RESET_PAGINATION
 } from "../Actions";
 
 const initialState = {
@@ -20,12 +21,13 @@ const initialState = {
   blogs: [],
   blogId: [],
   filter: false,
+  pagination: false,
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_NEWS:
-      return { ...state, news: action.payload, filter: true };
+      return { ...state, news: action.payload, pagination: true };
     case GET_ALL_BLOGS:
       return { ...state, blogs: action.payload, filter: true };
     case GET_NEW_BY_ID:
@@ -48,6 +50,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, filter: false };
     case GET_BLOGS_SORT_BY_DATE:
       return { ...state, blogs: action.payload, filter: true };
+    case RESET_PAGINATION:
+      return { ...state, pagination: false };
     default:
       return { ...state };
   }
