@@ -30,7 +30,7 @@ const NavBarB = () => {
             <Nav.Link as={Link} to="/noticias" className={s.lashes}  style={{color:"white"}}>
               Noticias
             </Nav.Link>
-            <Nav.Link as={Link} to="/blog"  style={{color:"white"}}>
+            <Nav.Link as={Link} to="/blog" className={s.lashes} style={{color:"white"}}>
               Blog
             </Nav.Link>
             <Nav.Link as={Link} to="/contactanos" className={s.lashes}  style={{color:"white"}}>
