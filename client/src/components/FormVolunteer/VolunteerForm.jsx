@@ -8,8 +8,6 @@ import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import Logo from '../../assets/Grooming_Logo.png';
 import axios from 'axios';
-
-
 // import * as yup from 'yup';
 
 
@@ -58,49 +56,74 @@ const VolunteerForm = () => {
     const schema = object().shape({
         email: string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
             .matches(/[^@ \t\r\n]+@gmail\.com/, "El correo debe ser de tipo email"),
+
         name: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(30, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
+
         lastName: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
+
         document: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(8, "Debe tener hasta  8 caracteres").matches(/^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/, 'El formato de número de documento no es válido'),
+
         nationality: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 20 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
+
         // birthDate: date().required('El campo no puede estar vacío'),
         birthDate: date().max(new Date(Date.now() - 18 * 365 * 24 * 60 * 60 * 1000), 'Debes ser mayor de edad para registrarte')
             .required('La fecha de nacimiento es requerida'),
+
         province: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
+
         location: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
+
         address: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
+
         genre: mixed().oneOf(['masculino', 'femenino', 'otro']).defined(),
+
         phone: string().required('El campo no puede estar vacío').min(5, "Debe tener al menos 5 caracteres")
             .max(20, "Debe tener menos de 20 caracteres"),
+
         schooling: mixed().oneOf(['secundario', 'tecnico', 'universitario']).defined(),
+
         profession: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
+
         howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'twitter', 'radio', 'televisión', 'charla', 'conocido', 'otros']).defined(),
+
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
+
         facebook: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(regExpFacebook, 'La url debe pertenecer al formato https://www.facebook.com/'),
+
         twitter: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(regExpTwitter, 'La url debe pertenecer al formato https://www.twitter.com/'),
+
         instagram: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(regExpInstagram, 'La url debe pertenecer al formato https://www.instagram.com/'),
+
         linkedIn: string().required('El campo no puede estar vacío').url('Ingrese una URL válida')
             .matches(regExpLinkedIn, 'La url debe pertenecer al formato https://www.linkedIn.com/in/usuario'),
+
         opinion: string().min(3, "Debe tener al menos 3 caracteres").max(255, "Debe tener hasta 255 caracteres"),
+
         knowGroominPerson: string().required('El campo no puede estar vacío'),
+
         whoGroominPerson: string().optional('Si la respuesta anterior fue si rellene este campo').max(50, "Debe tener menos de 50 caracteres"),
+
         whyGroomin: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
+
         theme: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
+
         expectations: string().min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
+
         adjDocument: mixed().required('Debe adjuntar la imgen de su DNI en formato pdf.')
             .test('fileType', 'Solo se permiten archivos PDF', (value) => {
                 return value && value[0].type === 'application/pdf';
@@ -108,6 +131,7 @@ const VolunteerForm = () => {
             .test('fileSize', 'El tamaño del archivo no debe exceder 1 MB', (value) => {
                 return value && value[0].size <= 1048576; // es  1MB
             }),
+
         CV: mixed().required('Debe adjuntar la imgen de su CV en formato pdf.')
             .test('fileType', 'Solo se permiten archivos PDF', (value) => {
                 return value && value[0].type === 'application/pdf';
@@ -119,7 +143,7 @@ const VolunteerForm = () => {
 
 
 
-    const { register, formState: { errors, touchedFields }, handleSubmit } = useForm(
+    const { register, formState: { errors, touchedFields }, handleSubmit, reset } = useForm(
 
         {
             mode: 'onTouched',
@@ -155,19 +179,18 @@ const VolunteerForm = () => {
             setTimeout(() => {
                 document.body.removeChild(alertDiv);
             }, 600);
-        }, 3000);
+        }, 4000);
     };
 
 
     const sendFormData = async (data) => {
-        console.log(data.CV)
         const formData = new FormData();
 
         formData.append('adjDocument', data.adjDocument[0]);
         formData.append('CV', data.CV[0]);
         formData.append("userRegister", JSON.stringify(data));
 
-        console.log([...formData])
+        // console.log([...formData])
 
 
         await axios.post('http://localhost:3500/userstatus', formData, {
@@ -177,7 +200,7 @@ const VolunteerForm = () => {
         }).then((res) => {
             console.log(res)
             showAlert('El Formulario fue enviado exitosamente', "green");
-            //res.data.message
+            //res.data.message **
         })
             .catch((error) => {
                 if (
@@ -190,7 +213,7 @@ const VolunteerForm = () => {
                     showAlert(error.message, "red");
                 }
             });
-        // reset(defaultValues);
+        reset(defaultValues);
     };
 
 
