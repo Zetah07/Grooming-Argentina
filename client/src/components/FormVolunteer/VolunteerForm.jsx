@@ -52,23 +52,25 @@ const VolunteerForm = () => {
     const regExpTwitter = /^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]+(\/)?$/;
     const regExpInstagram = /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_\\.]+(\/)?$/;
     const regExpLinkedIn = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub|company)\/[a-zA-Z0-9_-]+(\/)?$/;
+    const regExOnlyLetters = /^[a-zA-Z\s]*$/;
+
 
     const schema = object().shape({
         email: string().email('Ingrese un formato de correo Gmail').required('El campo no puede estar vacío')
             .matches(/[^@ \t\r\n]+@gmail\.com/, "El correo debe ser de tipo email"),
         name: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(30, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+            .max(30, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
         lastName: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+            .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
         document: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(8, "Debe tener hasta  8 caracteres").matches(/^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/, 'El formato de número de documento no es válido'),
         nationality: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(50, "Debe tener menos de 20 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+            .max(50, "Debe tener menos de 20 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
         // birthDate: date().required('El campo no puede estar vacío'),
         birthDate: date().max(new Date(Date.now() - 18 * 365 * 24 * 60 * 60 * 1000), 'Debes ser mayor de edad para registrarte')
             .required('La fecha de nacimiento es requerida'),
         province: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+            .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
         location: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
             .max(255, "Debe tener menos de 255 caracteres"),
         address: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
@@ -78,7 +80,7 @@ const VolunteerForm = () => {
             .max(20, "Debe tener menos de 20 caracteres"),
         schooling: mixed().oneOf(['secundario', 'tecnico', 'universitario']).defined(),
         profession: string().required('El campo no puede estar vacío').min(3, "Debe tener al menos 3 caracteres")
-            .max(50, "Debe tener menos de 30 caracteres").matches(/^[A-Za-z\s]+$/, 'El campo solo puede contener letras y espacios'),
+            .max(50, "Debe tener menos de 30 caracteres").matches(regExOnlyLetters, 'El campo solo puede contener (No ñ ni caracteres especiales)'),
         howKnowGrooming: mixed().oneOf(['facebook', 'instagram', 'twitter', 'radio', 'televisión', 'charla', 'conocido', 'otros']).defined(),
         howManyHours: number().required('El campo no puede estar vacío').moreThan(1, 'Debe disponer al menos 1 hora').lessThan(40, 'Debe disponer 40 horas como máximo')
             .positive('El número de horas no puede ser negativo o cero').integer('El número de horas debe ser un número entero'),
@@ -135,6 +137,27 @@ const VolunteerForm = () => {
 
     // const { REACT_APP_REST_API } = process.env; `${REACT_APP_REST_API}/userstatus`
 
+    const showAlert = (message, color) => {
+        const alertDiv = document.createElement("div");
+        alertDiv.classList.add("alert", "text-center");
+
+        if (color === "green") {
+            alertDiv.classList.add("alert-success");
+        } else if (color === "red") {
+            alertDiv.classList.add("alert-danger");
+        }
+
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+            alertDiv.classList.add("hide");
+            setTimeout(() => {
+                document.body.removeChild(alertDiv);
+            }, 600);
+        }, 3000);
+    };
+
 
     const sendFormData = async (data) => {
         console.log(data.CV)
@@ -153,9 +176,19 @@ const VolunteerForm = () => {
             },
         }).then((res) => {
             console.log(res)
+            showAlert('El Formulario fue enviado exitosamente', "green");
+            //res.data.message
         })
-            .catch((err) => {
-                //console.log(err)
+            .catch((error) => {
+                if (
+                    error.response &&
+                    error.response.data &&
+                    error.response.data.message
+                ) {
+                    showAlert(error.response.data.message, "red");
+                } else {
+                    showAlert(error.message, "red");
+                }
             });
         // reset(defaultValues);
     };
