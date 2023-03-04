@@ -5,8 +5,7 @@ import axios from "../../../api/axios";
 import { FormControl, Button } from "react-bootstrap";
 import Style from "./Login.module.css";
 import { BiUserCircle } from "react-icons/bi";
-
-
+import showAlert from "../../ShowAlert/ShowAlert";
 
 const LOGIN_URL = "/auth/login";
 const Login = () => {
@@ -50,29 +49,16 @@ const Login = () => {
       navigate(from, { replace: true });
     } catch (error) {
       if (!error?.response) {
-        showAlert("Sin respuesta del servidor");
+        showAlert("Sin respuesta del servidor", "red");
       } else if (error.response?.status === 400) {
-        showAlert("Nombre de usuario o contraseña incorrecta");
+        showAlert("Nombre de usuario o contraseña incorrecta", "red");
       } else if (error.response?.status === 402) {
-        showAlert("No autorizado");
+        showAlert("No autorizado", "red");
       } else {
         setinput({ ...input, password: "" });
-        showAlert("Error al iniciar sesión");
+        showAlert("Error al iniciar sesión", "red");
       }
     }
-  };
-
-  const showAlert = (message) => {
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "alert-danger", "text-center");
-    alertDiv.textContent = message;
-    document.body.appendChild(alertDiv);
-    setTimeout(() => {
-      alertDiv.classList.add("hide");
-      setTimeout(() => {
-        document.body.removeChild(alertDiv);
-      }, 600);
-    }, 3000);
   };
 
   const handleClick = (event) => {
@@ -133,13 +119,17 @@ const Login = () => {
           </div>
           <br />
           <div className={Style.buttonContainer}>
-          <Button type="submit" className={Style.button} onClick={handleClick}>
-            Ingresar
-          </Button>
-          <br />
-          <a href="/recuperar" className={Style.forgot}>
-            Olvidaste tu contraseña
-          </a>
+            <Button
+              type="submit"
+              className={Style.button}
+              onClick={handleClick}
+            >
+              Ingresar
+            </Button>
+            <br />
+            <a href="/recuperar" className={Style.forgot}>
+              Olvidaste tu contraseña
+            </a>
           </div>
         </form>
       </div>
