@@ -1,14 +1,17 @@
 .hide {
   display: none;
 }
+.container{
+  max-height: 90vh;
+}
 
 .title {
   font-size: 50px;
-  font-family: "Titulo Gotham Bold";
+  font-family: "Titulo Gotham";
   color: #38568f;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .contact_link {
@@ -16,12 +19,12 @@
   flex-direction: row;
   justify-content: center;
   color: #38568f;
+  font-size: 20px;
   font-family: "Titulo Helvetica";
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  font-size: 1.5rem;
   margin: 0 10px;
   color: #69696c;
 }
@@ -69,7 +72,7 @@
 
 .submitButton {
   font-size: 20px;
-  font-family: "Titulo Helvetica";
+  font-family: "Texto Thin";
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
