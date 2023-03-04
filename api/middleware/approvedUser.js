@@ -8,7 +8,7 @@ const approvedUser = async (id) => {
   try {
     const approvedStatus = await userStatus.findById(id);
     if (!approvedStatus || approvedStatus.status !== 'aprobado') {
-      throw new Error('Invalid or unapproved registration ID');
+      throw new Error('Identificación de usuario no valida');
     }
 
     const documentString = JSON.stringify(approvedStatus.document);
@@ -16,7 +16,7 @@ const approvedUser = async (id) => {
 
     const duplicate = await user.findOne({ username: approvedStatus.document }).exec();
     if (duplicate) {
-      throw new Error('User with this document already exists');
+      throw new Error('El usuario cono ese número de documento ya existe.');
     }
 
     const newUser = new user({
@@ -55,7 +55,7 @@ const approvedUser = async (id) => {
     return newUser;
   } catch (error) {
     console.error(error);
-    throw new Error('Could not create user');
+    throw new Error('No se pudo crear el usuario');
   }
 };
 

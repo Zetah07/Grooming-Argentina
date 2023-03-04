@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import axios from "../../../api/axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import style from "./PasswordRecovery.module.css";
+import showAlert from "../../ShowAlert/ShowAlert";
 
 const PasswordRecovery = () => {
   const [email, setEmail] = useState("");
@@ -37,27 +38,6 @@ const PasswordRecovery = () => {
         showAlert(error.message, "red");
       }
     }
-  };
-
-  const showAlert = (message, color) => {
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "text-center");
-
-    if (color === "green") {
-      alertDiv.classList.add("alert-success");
-    } else if (color === "red") {
-      alertDiv.classList.add("alert-danger");
-    }
-
-    alertDiv.textContent = message;
-    document.body.appendChild(alertDiv);
-
-    setTimeout(() => {
-      alertDiv.classList.add("hide");
-      setTimeout(() => {
-        document.body.removeChild(alertDiv);
-      }, 600);
-    }, 3000);
   };
 
   const handleChange = (event) => {
