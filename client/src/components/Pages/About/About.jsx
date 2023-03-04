@@ -9,7 +9,7 @@ const About = () => {
   return (
     <>
       {/* Baner about */}
-      <div className={s.banner}>
+      <div class="container-fluid" className={s.banner}>
         <h1>
           Acerca de <span>nosotros</span>
         </h1>
@@ -101,7 +101,7 @@ const About = () => {
       <div class="container-fluid" className={s.videoContainer}>
         
           <iframe
-            
+            className={s.video}
             width="560"
             height="315"
             src="https://www.youtube.com/embed/GsY1kb5LgHU"
@@ -163,7 +163,8 @@ const About = () => {
               Geriatría, Desfavorecidos y Pacientes Crónicos
               (VIH/SIDA/Cáncer/T.B.etc.)
             </h3>
-            <p>To promote and organize self help groups for Men and Women.</p>
+            <p>
+              Promover y organizar grupos de autoayuda de Hombres y Mujeres.</p>
             <h3>
               Abolición del trabajo infantil y Establecimiento de los derechos
               del niño.
@@ -221,7 +222,7 @@ const About = () => {
               <h4>Conoce nuestro equipo</h4>
             </div>
             <div class="container">
-              <div class="row g-3">
+              <div  class="row g-3">
                 {team.map((member) => {
                   return (
                     <TeamCard
@@ -234,7 +235,9 @@ const About = () => {
               </div>
             </div>
             <div class="ro" className={s.divButton}>
-              <button className="button">Se voluntario</button>
+              <button className="button">
+                <a className={s.link} style={{ textDecoration: 'none'}} href="/voluntariado">Ser voluntario</a>
+              </button>
             </div>
           </div>
         </div>
