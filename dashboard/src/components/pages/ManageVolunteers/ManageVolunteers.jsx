@@ -7,6 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 import DownloadPDFButton from "../../downloadAdjDocuments/DownloadAdjDocuments";
 import ConfirmationModal from "./confirmationModal";
 import Paginations from "./Pagination";
+import showAlert from "../../ShowAlert/ShowAlert";
 
 const ManageVolunteers = () => {
   const [userStatusList, setUserStatusList] = useState([]);
@@ -34,11 +35,6 @@ const ManageVolunteers = () => {
             },
           }
         );
-
-        // const updatedList = response.data.docs.map((userStatus) => ({
-        //   ...userStatus,
-        //   fullName: `${userStatus.name} ${userStatus.lastName}`,
-        // }));
         setUserStatusList(response.data.docs);
         setFilteredList(response.data.docs);
         setPageCount(response.data.totalPages);
@@ -50,26 +46,23 @@ const ManageVolunteers = () => {
   }, [auth?.accessToken, page, limit, name]);
 
   const handleStatusChange = async (id, newStatus) => {
-    if (newStatus === "denegado") {
-      setSelectedUserId(id);
-      setdenyModal(true);
-    } else if (newStatus === "aprobado") {
-      setSelectedUserId(id);
-      setApproveModal(true);
-    } else if (newStatus === "pendiente") {
-      setSelectedUserId(id);
-      setpendingModal(true);
-    } else {
-      await updateStatus(id, newStatus);
-      setSelectedUserId(null);
+    try {
+      if (newStatus === "denegado") {
+        setSelectedUserId(id);
+        setdenyModal(true);
+      } else if (newStatus === "aprobado") {
+        setSelectedUserId(id);
+        setApproveModal(true);
+      } else if (newStatus === "pendiente") {
+        setSelectedUserId(id);
+        setpendingModal(true);
+      } else {
+        await updateStatus(id, newStatus);
+        setSelectedUserId(null);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  };
-
-  const handleSearch = (event) => {
-    const searchValue = event.target.value
-      ? event.target.value.toLowerCase()
-      : "";
-    setName(searchValue);
   };
 
   const updateStatus = async (id, newStatus) => {
@@ -84,8 +77,18 @@ const ManageVolunteers = () => {
           },
         }
       );
+
+      showAlert("El estado del voluntario ha sido actualizado", "green");
     } catch (error) {
-      console.log(error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        showAlert(error.response.data.message, "red");
+      } else {
+        showAlert(error.message, "red");
+      }
     }
 
     const updatedList = userStatusList.map((userStatus) =>
@@ -103,6 +106,15 @@ const ManageVolunteers = () => {
     setLimit(newLimit);
     setPage(0);
   };
+
+  const handleSearch = (event) => {
+    const searchValue = event.target.value
+      ? event.target.value.toLowerCase()
+      : "";
+    setName(searchValue);
+  };
+
+  console.log(selectedUserId);
 
   return (
     <div
@@ -176,10 +188,6 @@ const ManageVolunteers = () => {
       </div>
 
       <br />
-      {/* <p className={style.text}>Descargar reporte complete en excel:</p>
-      <DownloadReportButton className={style.report} />
-      <br />
-      <br /> */}
       <br />
       <Table bordered hover responsive>
         <thead>
@@ -204,11 +212,15 @@ const ManageVolunteers = () => {
                     ? style.selected
                     : ""
                 }`}
-                onClick={() =>
+                onClick={(event) => {
+                  if (event.target.tagName.toLowerCase() === "button") {
+                    return;
+                  }
+                  event.stopPropagation();
                   setSelectedUserId(
                     selectedUserId === userStatus._id ? null : userStatus._id
-                  )
-                }
+                  );
+                }}
               >
                 <td>{index + 1}</td>
                 <td>{userStatus.name}</td>
@@ -394,7 +406,7 @@ const ManageVolunteers = () => {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                {userStatus.twitter}
+                                {userStatus.linkedIn}
                               </a>
                             </td>
                           </tr>
@@ -461,11 +473,7 @@ const ManageVolunteers = () => {
           )}
         </div>
 
-        <div
-          className={
-            style.selectEntriesContainer
-          } /* style={{ width: "12%" }} */
-        >
+        <div className={style.selectEntriesContainer}>
           <Form.Select
             value={limit}
             onChange={(e) => handleLimitChange(parseInt(e.target.value))}

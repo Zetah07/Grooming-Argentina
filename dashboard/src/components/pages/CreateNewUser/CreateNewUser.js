@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
+import showAlert from "../../ShowAlert/ShowAlert";
 
 
 const CreateNewUser = () => {
@@ -38,12 +39,12 @@ const CreateNewUser = () => {
         /^([0-9])*$/,
         "El documento solo admite caracters numericos"
       ),
-      password: string()
-      // .min(6, "La contraseña debe tener al menos 6 caracteres")
-      // .matches(
-      //   /[A-Z]/,
-      //   "La contraseña debe contener al menos una letra mayúscula"
-      // ),
+    password: string()
+    // .min(6, "La contraseña debe tener al menos 6 caracteres")
+    // .matches(
+    //   /[A-Z]/,
+    //   "La contraseña debe contener al menos una letra mayúscula"
+    // ),
   });
 
   const {
@@ -65,13 +66,13 @@ const CreateNewUser = () => {
   };
 
   const sendData = async (data) => {
-    if (data.password.length === 0){
+    if (data.password.length === 0) {
       data.password = data.username
     }
     data.rol = rol
 
     await axios
-      .post("http://localhost:3500/users", data,{
+      .post("http://localhost:3500/users", data, {
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
         },
@@ -88,24 +89,6 @@ const CreateNewUser = () => {
       });
   };
 
-  const showAlert = (message, color) => {
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "text-center");
-
-    if (color === "green") {
-      alertDiv.classList.add("alert-success");
-    } else if (color === "red") {
-      alertDiv.classList.add("alert-danger");
-    }
-
-    alertDiv.textContent = message;
-    document.body.appendChild(alertDiv);
-
-    setTimeout(() => {
-      alertDiv.classList.add("hide");
-      document.body.removeChild(alertDiv);
-    }, 3000);
-  };
   return (
     <div className="container" style={{ textAlign: "center" }}>
       <h1 style={{ color: "#06204f" }}>Crear Nuevo usuario</h1>
@@ -179,7 +162,7 @@ const CreateNewUser = () => {
         </Form.Group>
         {/* ROl */}
         <Form.Group className="d-flex flex-column align-items-start pb-3 col-lg-8">
-        <Form.Label className={styles.label_volunt}>Rol:</Form.Label>
+          <Form.Label className={styles.label_volunt}>Rol:</Form.Label>
           <Form.Select id="rol" name="rol" onChange={handelRolChange}>
             <option value="user">Usuario estandar</option>
             <option value="admin">Administrador</option>
