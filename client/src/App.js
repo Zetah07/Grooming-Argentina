@@ -15,6 +15,7 @@ import Footerx from "../src/components/Footerx/Footerx";
 import Blog from "./components/Blog/Blog";
 import BlogDetail from "./components/BlogDetail/BlogDetail";
 import VolunteerForm from "./components/FormVolunteer/VolunteerForm";
+import WhatsApp from "./components/Whatsapp/Whatsapp";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+
       {usl === "/" /*|| usl === "/login"*/ ? null : <NavBarA />}
       <Routes>
 
@@ -35,7 +37,12 @@ function App() {
         <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/blog/:id" element={<BlogDetail />} />
       </Routes>
-      {usl !== "/" ? <Footerx /> : null}
+      {usl !== "/" && (
+        <>
+          <Footerx />
+          <WhatsApp phoneNumber="+5491124811722" />
+        </>
+      )}
     </div>
   );
 }
