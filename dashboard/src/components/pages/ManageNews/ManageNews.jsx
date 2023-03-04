@@ -4,15 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { getAllNews, resetFilter, resetPagination } from "../../../Redux/Actions/index";
 import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs"
+import axios from "../../../api/axios";
+import useAuth from "../../../hooks/useAuth";
+import showAlert from "../../ShowAlert/ShowAlert";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 const ManageNews = () => {
   const dispatch = useDispatch();
+  const { auth } = useAuth();
   const newspaper = useSelector((state) => state.news);
   const filter = useSelector((state) => state.filter);
   const pagination = useSelector((state) => state.pagination);
   const newsPerPage = 6;
   const pageNumberLimit = 5;
+  const [deleteModal, setDeleteModal] = useState(false);
   const [items, setItems] = useState([]);
+  const [selectedBlogId, setSelectedBlogId] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -77,8 +84,51 @@ const ManageNews = () => {
     setCurrentPage(numberPage);
   };
 
+  const deleteHandler = async (id) => {
+    await axios.delete(`http://localhost:3500/news/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${auth?.accessToken}`,
+      },
+    })
+      .then(res => {
+        if (res.status === 200) {
+          showAlert("Se eliminó la noticia", "green");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        showAlert("No se pudo eliminar la noticia", "red");
+      });
+  }
+
+  const handleStatusDelete = async (id) => {
+    try {
+      setSelectedBlogId(id);
+      setDeleteModal(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
+      <ConfirmationModal
+        show={deleteModal}
+        title="Eliminar"
+        message="¿Está seguro que desea eliminar la noticia?"
+        onConfirm={async () => {
+          await deleteHandler(selectedBlogId);
+          dispatch(getAllNews(currentPage + 1, newsPerPage));
+          setDeleteModal(false);
+        }}
+        onCancel={() => {
+          setDeleteModal(false);
+        }}
+      />
+      <Button variant="primary" href="/panel/crearnoticia">
+        Crear Noticia
+      </Button>
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
@@ -88,6 +138,7 @@ const ManageNews = () => {
             <th>Creado</th>
             <th>Actualizado</th>
             <th>Modificar noticia</th>
+            <th>Eliminar noticia</th>
           </tr>
         </thead>
         <tbody>
@@ -100,6 +151,7 @@ const ManageNews = () => {
                 <td>{paper.createdAt}</td>
                 <td>{paper.updatedAt}</td>
                 <td><Button href={`noticias/${paper._id}`} variant="primary">Modificar</Button></td>
+                <td><Button onClick={() => handleStatusDelete(paper._id)} variant="danger">Eliminar</Button></td>
               </tr>
             )
           })}
@@ -121,9 +173,6 @@ const ManageNews = () => {
           minPageNumberLimit={minPageNumberLimit}
         />
       </div>
-      <Button variant="primary" href="/panel/crearnoticia">
-        Crear Noticia
-      </Button>
     </div>
   );
 };
