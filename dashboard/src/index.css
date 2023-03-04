@@ -8,6 +8,26 @@
 
 }
 
+@font-face {
+  font-family: "Titulo Gotham";
+  src: url("./assets/font/GothamRoundedBold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: "Titulo Helvetica";
+  src: url("./assets/font/HelveticaNeue\ Medium.ttf") format('opentype');
+}
+
+@font-face {
+  font-family: "Texto Helvetica";
+  src: url("./assets/font/HelveticaNeue\ Regular.ttf") format('opentype');
+}
+
+@font-face {
+  font-family: "Texto Thin";
+  src: url("./assets/font/HelveticaNeue\ Thin.ttf") format('opentype');
+}
+
 :root {
   --primary-color: #7dc8ec;
   --secondary-color: #004b82;
@@ -17,13 +37,4 @@
   --white-color: #ffff;
   --black-color: #000;
   --light-gray-color: #f5f5f5;
-}
-
-@font-face {
-  font-family: "Titulo Gotham Bold";
-  src: url("./assets/font/GothamRoundedBold.otf") format('opentype');
-}
-
-h1, h2 {
-  font-family: "Titulo Gotham Bold";
 }

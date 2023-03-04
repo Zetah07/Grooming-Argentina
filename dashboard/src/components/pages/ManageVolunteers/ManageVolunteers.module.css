@@ -90,10 +90,17 @@ tbody tr:hover th {
   font-weight: 600;
   margin-bottom: 10px;
   color: #38568F;
-  font-family: "Titulo Gotham Bold";
+  font-family: "Titulo Gotham";
 }
 
-
+.text {
+  text-align: center;
+  font-family: "Texto Helvetica";
+  font-size: 20px;
+  line-height: 25px;
+  color: #414042;
+  margin-top: 5px;
+}
 
 .selected {
   background-color: #edf9ff;

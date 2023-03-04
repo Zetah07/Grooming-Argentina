@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 
+
 const CreateNewUser = () => {
   const { auth } = useAuth();
   const defaultValues = {
@@ -32,7 +33,7 @@ const CreateNewUser = () => {
     username: string()
       .required("El campo no puede estar vacío")
       .min(6, "Debe tener al menos 6 numeros")
-      .max(8, "Debe tener hasta 10 numeros")
+      .max(10, "Debe tener hasta 10 numeros")
       .matches(
         /^([0-9])*$/,
         "El documento solo admite caracters numericos"

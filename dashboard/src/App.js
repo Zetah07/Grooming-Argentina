@@ -23,6 +23,7 @@ import PasswordRecovery from "./components/pages/passwordRecovery/PasswordRecove
 import PasswordReset from "./components/pages/passwordReset/PasswordReset";
 import PreStudents from "./components/Students/PreStudents/PreStudents";
 import CreateNewUser from "./components/pages/CreateNewUser/CreateNewUser";
+import DeleteUser from "./components/pages/DeleteUser/DeleteUser";
 
 const noNav = ["/", "/unauthorized", "/recuperar", "/recuperar/:token"];
 function App() {
@@ -74,6 +75,7 @@ function App() {
 
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
             <Route path="/panel/nuevousuario" element={<CreateNewUser />} />
+            <Route path="/panel/BorrarUsuario" element={<DeleteUser/>} />
           </Route>
         </Route>
       </Routes>

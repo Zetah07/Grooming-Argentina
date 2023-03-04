@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #8CACBA;
+  background: #f2f2f2;
 }
 .desing {
   display: flex;
@@ -22,11 +22,6 @@
   left: 0;
   transform: translateY(-50%);
   position: absolute;
-
-  
-
-
-  background: rgba(54, 105, 134, 0.42);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -43,7 +38,7 @@
   border: none;
 }
 .button h2{
-  font-family: 'Titulo Gotham Bold';
+  font-family: 'Titulo Gotham';
   font-size: 24px;
   color: var(--terciary-color);
   text-decoration: none;
