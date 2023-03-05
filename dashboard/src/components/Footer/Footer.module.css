@@ -1,22 +1,5 @@
-.a_social {
-  color: white;
-  font-size: 30px;
-}
-
-.Logos {
-  width: 80%;
-  height: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
-
-}
-
 .copy {
   width: 100%;
-  margin-top: 20px;
   margin-left: 0;
   margin-right: 0;
   color: white;
@@ -25,8 +8,13 @@
 
 
 .footer {
-  width: 100%;
-  position: absolute;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  padding-top: 10px;
   background-color: #004b82;
-  padding-top: -150px;
+
 }

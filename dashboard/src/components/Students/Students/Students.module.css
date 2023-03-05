@@ -1,19 +1,32 @@
-.videos{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 30px;
-    padding-left: 0;
-    margin-left: 0;
-    justify-content: center;
-    gap: 15px;
+.container1 {
+  padding-top: 65px;
 }
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 15px;
-    font-family: "Texto Helvetica";
+
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-left: 0;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }
-.title{
-    font-family: "Titulo Gotham Bold";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 15px;
+  font-family: "Texto Helvetica";
+}
+
+.title {
+  font-family: "Titulo Gotham Bold";
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-right: 640px;
+  margin-top: 15px;
 }
