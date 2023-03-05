@@ -129,7 +129,7 @@ const CreateCourse = () => {
                 </Form.Group>
                 <br />
                 <Form.Group className="d-flex flex-column align-items-center pb-3">
-                    <Button type="submit">Crear Curso</Button>
+                    <Button className={s.btnZ} type="submit">Crear Curso</Button>
                 </Form.Group>
             </Form>
         </Container>
