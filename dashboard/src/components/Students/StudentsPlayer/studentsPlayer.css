@@ -9,9 +9,14 @@
   position: absolute;
   top: 0;
 }
-.title{
+
+.title {
   font-size: 35px;
   font-family: "Titulo Gotham";
   text-align: center;
   color: var(--secondary-color);
+}
+
+.container1 {
+  padding-top: 65px;
 }
