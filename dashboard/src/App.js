@@ -25,6 +25,7 @@ import PreStudents from "./components/Students/PreStudents/PreStudents";
 import CreateNewUser from "./components/pages/CreateNewUser/CreateNewUser";
 import DeleteUser from "./components/pages/DeleteUser/DeleteUser";
 import CreateCourse from "./components/Students/CreateCourse/CreateCourse";
+import Footer from "./components/Footer/Footer"
 
 const noNav = ["/", "/unauthorized", "/recuperar", "/recuperar/:token"];
 function App() {
@@ -37,7 +38,6 @@ function App() {
         <Route exact path="/unauthorized" element={<Unauthorized />} />
         <Route exact path="/recuperar" element={<PasswordRecovery />} />
         <Route exact path="/recuperar/:token" element={<PasswordReset />} />
-
         <Route element={<PersistLogin />}>
           <Route
             element={
@@ -81,6 +81,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      <Footer />
     </div>
   );
 }
