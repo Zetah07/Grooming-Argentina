@@ -1,0 +1,32 @@
+.a_social {
+  color: white;
+  font-size: 30px;
+}
+
+.Logos {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.copy {
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  color: white;
+  text-align: center;
+}
+
+
+.footer {
+  width: 100%;
+  position: absolute;
+  background-color: #004b82;
+  padding-top: -150px;
+}
