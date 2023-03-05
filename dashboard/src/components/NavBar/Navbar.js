@@ -22,7 +22,7 @@ function Navbar() {
     <div className="containerNavbar">
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
-          <FaIcons.FaBars onClick={showSidebar} />
+          <FaIcons.FaBars onClick={showSidebar} style={{ cursor: "pointer", width: "35px", height: "35px" }} />
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
@@ -33,7 +33,7 @@ function Navbar() {
               </Link>
             </li>
             <div>
-              {SidebarData[ auth.rol || "user"].map((item, index) => {
+              {SidebarData[auth.rol || "user"].map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>
@@ -70,13 +70,13 @@ function Navbar() {
                   height: "1.5rem"
                 }}
               >
-                <p style={{margin: 0}}>Perfil</p>
+                <p style={{ margin: 0 }}>Perfil</p>
                 <BiUser />
               </button>
             </Link>
             <div type="button" className="links">
               <button className="button_drop"
-              onClick={(logout)}
+                onClick={(logout)}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -85,7 +85,7 @@ function Navbar() {
                   height: "1.5rem"
                 }}
               >
-                <p style={{margin: 0}}>Logout</p>
+                <p style={{ margin: 0 }}>Logout</p>
                 <IoIosLogOut />
               </button>
             </div>
