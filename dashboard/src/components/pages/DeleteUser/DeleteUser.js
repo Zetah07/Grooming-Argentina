@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
+import { Table, Container } from "react-bootstrap";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import RemoveUserButton from "../../RemoveUserButton/RemoveUserButton";
 import showAlert from "../../ShowAlert/ShowAlert"
+import style from "./DeleteUser.module.css";
 
 const DeleteUser = () => {
   const { auth } = useAuth();
@@ -37,7 +38,7 @@ const DeleteUser = () => {
   users.sort((a, b) => a.rol.localeCompare(b.rol));
 
   return (
-    <div className="container">
+    <Container className={style.container}>
       <h1>Eliminar usuario</h1>
       <Table responsive>
         <thead>
@@ -153,7 +154,7 @@ const DeleteUser = () => {
           </select>
         </ul>
       </div>
-    </div>
+    </Container>
   );
 };
 export default DeleteUser;
