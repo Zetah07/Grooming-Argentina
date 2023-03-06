@@ -4,11 +4,16 @@ import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import logo from "../../../assets/LogoB.png";
-// import showAlert from "../ShowAlert/ShowAlert";
 import s from './CreateCourse.module.css';
+import axios from "../../../api/axios";
+import useAuth from "../../../hooks/useAuth";
+import showAlert from "../../ShowAlert/ShowAlert";
+
 
 
 const CreateCourse = () => {
+
+    const { auth } = useAuth();
 
     const defaultValues = {
         title: "",
@@ -48,9 +53,26 @@ const CreateCourse = () => {
     });
 
 
-    const upVideoCourse = (data) => {
+
+    const upVideoCourse = async (data) => {
         console.log(data)
+        // try {
+        //     await axios.post("http://localhost:3500/courses", data, {
+        //         withCredentials: true,
+        //         headers: {
+        //             Authorization: `Bearer ${auth?.accessToken}`,
+        //         },
+        //     });
+        //     showAlert("Video curso creado correctamente.", "green");
+        //     // form.reset();
+        //     // setFormBlog({ title: "", subtitle: "", content: "" });
+        //     // setValidated(false);
+        // } catch (error) {
+        //     console.log(error.message);
+        //     showAlert("No se pudo crear el video curso , intente de nuevo", "red");
+        // }
     };
+
 
     return (
         <Container>
@@ -129,7 +151,7 @@ const CreateCourse = () => {
                 </Form.Group>
                 <br />
                 <Form.Group className="d-flex flex-column align-items-center pb-3">
-                    <Button type="submit">Crear Curso</Button>
+                    <Button className={s.btnZ} type="submit">Crear Curso</Button>
                 </Form.Group>
             </Form>
         </Container>
