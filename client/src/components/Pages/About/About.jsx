@@ -7,16 +7,18 @@ import TeamCard from "../About/TeamCards/Card";
 
 const About = () => {
   return (
-    <>
+    <div class="container-fluid">
       {/* Baner about */}
-      <div class="container-fluid" className={s.banner}>
-        <h1>
-          Acerca de <span>nosotros</span>
-        </h1>
+      <div class="row" className={s.bannerContainer}>
+          <div className={s.banner}>
+            <h1>
+              Acerca de <span>nosotros</span>
+            </h1>
+          </div>
       </div>
       {/* mission*/}
-      <div class="container-fluid" className={s.mainContainer0}>
-        <div class="container-fluid" className={s.container1}>
+      <div class="row" className={s.mainContainer0}>
+        <div className={s.container1}>
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 container-fluid d-flex justify-content-end align-items-end p-3">
               <img
@@ -71,7 +73,7 @@ const About = () => {
       <div class="container-fluid" className={s.mainContainer0}>
         <div class="container-fluid" className={s.container2}>
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 container-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 container-fluid">
               <div className={s.textContainer2}>
                 <h4>
                   Trabajamos en todo el mundo para salvar vidas, vencer la
@@ -91,31 +93,29 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 container-fluid d-flex justify-content-start align-items-center p-3">
-              <img class="img-fluid" className={s.image2} width="600px" height="400px" src={imgMission} alt="mission"/>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-6 container-fluid d-flex justify-content-start align-items-center p-3">
+              <img class="img-fluid" className={s.image2} width="500px" height="300px" src={imgMission} alt="mission"/>
             </div>
           </div>
         </div>
       </div>
       {/*Video*/}
       <div class="container-fluid" className={s.videoContainer}>
-        
-          <iframe
-            className={s.video}
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/GsY1kb5LgHU"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-      
+        <iframe
+          className={s.video}
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/GsY1kb5LgHU"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
       {/*Vision*/}
       <div class="container-fluid" className={s.videoContainer}>
         <div class="row" className={s.visionDiv}>
-          <div class="col">
+          
             <h4 className={s.visionTitle}>Nuestra visión</h4>
             <h3>
               Trabajar y ayudar a las personas en áreas y tiempos de calamidades
@@ -160,8 +160,7 @@ const About = () => {
             </p>
             <h3>
               Rehabilitación de Minusválidos, Indigentes, Viudas, Huérfanos,
-              Geriatría, Desfavorecidos y Pacientes Crónicos
-              (VIH/SIDA/Cáncer/T.B.etc.)
+              Geriatría, Desfavorecidos y Pacientes Crónicos (VIH/ SIDA/ Cáncer/ T.B.etc.)
             </h3>
             <p>
               Promover y organizar grupos de autoayuda de Hombres y Mujeres.</p>
@@ -186,7 +185,7 @@ const About = () => {
               del niño que es un paraguas más amplio y busca poner la infancia
               al alcance de los niños desfavorecidos.
             </p>
-          </div>
+          
         </div>
       </div>
       {/*Statistics*/}
@@ -212,8 +211,8 @@ const About = () => {
         </div>
       </div>
       {/*The team*/}
-      <div class="container-fluid" className={s.videoContainer}>
-        <div class="row" className={s.teamContainer}>
+      <div class="row" className={s.videoContainer}>
+        <div class="container-fluid" className={s.teamContainer}>
           <div className={s.bodyContainer}>
             <div className={s.textContainer}>
               <div className={s.globo2}>
@@ -242,7 +241,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
