@@ -1,13 +1,18 @@
 import Table from "react-bootstrap/Table";
-import { Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux';
+import { Button, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllNews, resetFilter, resetPagination } from "../../../Redux/Actions/index";
-import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs"
+import {
+  getAllNews,
+  resetFilter,
+  resetPagination,
+} from "../../../Redux/Actions/index";
+import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import showAlert from "../../ShowAlert/ShowAlert";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import style from "./ManageNews.module.css";
 
 const ManageNews = () => {
   const dispatch = useDispatch();
@@ -23,7 +28,13 @@ const ManageNews = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (newspaper.docs && newspaper.docs.length > 0 && items && items.length === 0) setItems([...newspaper.docs]);
+  if (
+    newspaper.docs &&
+    newspaper.docs.length > 0 &&
+    items &&
+    items.length === 0
+  )
+    setItems([...newspaper.docs]);
 
   useEffect(() => {
     dispatch(getAllNews(currentPage + 1, newsPerPage));
@@ -35,7 +46,7 @@ const ManageNews = () => {
       setItems([...newspaper.docs]);
       dispatch(resetPagination());
     }
-  }, [dispatch, pagination, newspaper.docs])
+  }, [dispatch, pagination, newspaper.docs]);
 
   useEffect(() => {
     if (filter === true) {
@@ -85,13 +96,14 @@ const ManageNews = () => {
   };
 
   const deleteHandler = async (id) => {
-    await axios.delete(`http://localhost:3500/news/${id}`, {
-      withCredentials: true,
-      headers: {
-        Authorization: `Bearer ${auth?.accessToken}`,
-      },
-    })
-      .then(res => {
+    await axios
+      .delete(`http://localhost:3500/news/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      })
+      .then((res) => {
         if (res.status === 200) {
           showAlert("Se eliminó la noticia", "green");
         }
@@ -100,7 +112,7 @@ const ManageNews = () => {
         console.log(error);
         showAlert("No se pudo eliminar la noticia", "red");
       });
-  }
+  };
 
   const handleStatusDelete = async (id) => {
     try {
@@ -112,7 +124,7 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="container">
+    <Container className={style.container}>
       <ConfirmationModal
         show={deleteModal}
         title="Eliminar"
@@ -150,10 +162,21 @@ const ManageNews = () => {
                 <td>{paper.provinceOrLocation}</td>
                 <td>{paper.createdAt}</td>
                 <td>{paper.updatedAt}</td>
-                <td><Button href={`noticias/${paper._id}`} variant="primary">Modificar</Button></td>
-                <td><Button onClick={() => handleStatusDelete(paper._id)} variant="danger">Eliminar</Button></td>
+                <td>
+                  <Button href={`noticias/${paper._id}`} variant="primary">
+                    Modificar
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    onClick={() => handleStatusDelete(paper._id)}
+                    variant="danger"
+                  >
+                    Eliminar
+                  </Button>
+                </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </Table>
@@ -173,7 +196,7 @@ const ManageNews = () => {
           minPageNumberLimit={minPageNumberLimit}
         />
       </div>
-    </div>
+    </Container>
   );
 };
 export default ManageNews;
