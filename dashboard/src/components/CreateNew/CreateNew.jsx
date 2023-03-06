@@ -1,5 +1,5 @@
 import axios from "../../api/axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -8,24 +8,46 @@ import Row from "react-bootstrap/Row";
 import s from "./CreateNew.module.css";
 import useAuth from "../../hooks/useAuth";
 import showAlert from "../ShowAlert/ShowAlert";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../Redux/Actions"
 
 const CreateNew = () => {
   const { auth } = useAuth();
   const [validated, setValidated] = useState(false);
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const [formNew, setFormNew] = useState({
     title: "",
     img: "",
     description: "",
     link: "",
-    category: "",
+    category: [],
     provinceOrLocation: "",
   });
+
+  console.log(formNew)
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setFormNew({ ...formNew, [name]: value });
   };
+
+  function selectHandler(event) {
+    setFormNew({
+      ...formNew, category: [...formNew.category, event.target.value],
+    });
+  }
+
+  function deleteHandler(el) {
+    setFormNew({
+      ...formNew, category: formNew.category.filter((cat) => cat !== el),
+    });
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,7 +75,7 @@ const CreateNew = () => {
         img: "",
         description: "",
         link: "",
-        category: "",
+        category: [],
         provinceOrLocation: "",
       });
       setValidated(false);
@@ -82,16 +104,12 @@ const CreateNew = () => {
               />
               <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
-              <Form.Label>Imagen URL:</Form.Label>
-              <Form.Control
-                required
-                type="Url"
-                placeholder="Ingresar el enlace de la Imagen"
-                value={formNew.img}
-                name="img"
-                onChange={changeHandler}
-              />
+            <Form.Group as={Col} md="4" controlId="formFile">
+              <Form.Label>Imagen en formato JPG, JPEG o PNG</Form.Label>
+              <Form.Control type="file" value={formNew.img} name="img" onChange={changeHandler} />
+              <Form.Control.Feedback type="invalid">
+                Por favor subir un archivo en JPG, JPEG o PNG
+              </Form.Control.Feedback>
               <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationCustomUsername">
@@ -124,16 +142,23 @@ const CreateNew = () => {
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationCustom04">
               <Form.Label>Categoria</Form.Label>
-              <Form.Control
-                type="text"
-                required
-                value={formNew.category}
+              <Form.Select required
                 name="category"
-                onChange={changeHandler}
-              />
+                onChange={selectHandler}>
+                <option disabled defaultValue selected>Seleccione al menos una categoria</option>
+                {categories ? categories.map(cat => {
+                  return (<option key={cat._id} value={cat.name}>{cat.name}</option>)
+                }) : null}
+              </Form.Select>
               <Form.Control.Feedback type="invalid">
                 Por favor ingrese al menos una categoria.
               </Form.Control.Feedback>
+              <p>Categorias seleccionadas: </p>
+              <div>
+                {formNew.category.map((el) => (
+                  <><span key={el} className="card-subtitle mb-2 text-muted">{el} </span><Button onClick={() => deleteHandler(el)}>x</Button></>
+                ))}
+              </div>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom05">
               <Form.Label className={s.label}>
