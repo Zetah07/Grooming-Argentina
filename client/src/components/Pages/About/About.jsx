@@ -30,7 +30,7 @@ const About = () => {
                 alt="img_us"
               />
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid p-0">
               <div className={s.textContainer}>
                 <div className={s.title}>
                   <div className={s.globo}>
@@ -116,7 +116,7 @@ const About = () => {
       <div class="container-fluid" className={s.videoContainer}>
         <div class="row" className={s.visionDiv}>
           
-            <h4 className={s.visionTitle}>Nuestra visión</h4>
+            <h4 className={s.visionTitle}>Nuestra <span>visión</span></h4> 
             <h3>
               Trabajar y ayudar a las personas en áreas y tiempos de calamidades
               nacionales.
@@ -196,14 +196,12 @@ const About = () => {
               <div className={s.globo2}>
                 <h3>Lo que hacemos</h3>
               </div>
-              <h4>Nuestras estadísticas</h4>
+              <h4>Nuestras <span>estadísticas</span></h4> 
             </div>
           </div>
           <div class="col">
             <img
               class="img-fluid"
-              width="1700px"
-              height="400px"
               src={staticsimg}
               alt="statitics"
             />
@@ -218,7 +216,7 @@ const About = () => {
               <div className={s.globo2}>
                 <h3>Lo que hacemos</h3>
               </div>
-              <h4>Conoce nuestro equipo</h4>
+              <h4>Conoce nuestro <span>equipo</span></h4> 
             </div>
             <div class="container">
               <div  class="row g-3">
@@ -233,7 +231,7 @@ const About = () => {
                 })}
               </div>
             </div>
-            <div class="ro" className={s.divButton}>
+            <div class="row" className={s.divButton}>
               <button className="button">
                 <a className={s.link} style={{ textDecoration: 'none'}} href="/voluntariado">Ser voluntario</a>
               </button>

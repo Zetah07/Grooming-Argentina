@@ -9,9 +9,9 @@
 .banner h1 {
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 78px;
+    font-size: 68px;
     line-height: 97px;
-    background-color: var(--bs-info);
+    background-color: var(--bs-white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -19,13 +19,11 @@
 .banner span {
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 78px;
-    line-height: 97px;
-    background-color: var(--bs-white);
+    font-size: 68px;
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    background-clip: text;
     text-align: center;
 }
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
@@ -63,7 +61,6 @@
     font-family: "Titulo Gotham";
     font-style: normal;
     font-size: 50px;
-
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -152,6 +149,7 @@
     flex-direction: column;
     align-items: center;
     padding: 40px;
+    padding-top: 20px;
 }
 .video{
     max-width: 100%;
@@ -179,6 +177,19 @@
     background-clip: text;
     max-width: 100%;
     max-height: 100%;
+    padding-bottom: 20px;
+}
+.visionTitle span{
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: "Titulo Gotham";
+    background-color:var(--bs-info);
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 .visionDiv h3 {
     font-family: "Texto Helvetica";
@@ -198,7 +209,7 @@
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*Statistics*/
 .statiticsDiv{
-    width: 80%;
+    width: 90%;
 }
 .globo2{
     background: url(../../../assets/About/globo.png);
@@ -217,7 +228,7 @@
 .teamContainer{
     background-color: #e7edf1;
     border-top-right-radius: 70px;
-    width: 90%;
+    width: 98%;
     display: flex;
     flex-direction: column;
     align-items: center;
