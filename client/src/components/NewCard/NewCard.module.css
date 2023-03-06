@@ -5,6 +5,7 @@
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
+    overflow: hidden;
 }
 .titleContainer{
     display: -webkit-box;
@@ -17,13 +18,13 @@
 .title{
     font-size: 1.2rem;
     font-weight: bold;
-    font-family: 'Texto Helvetica';
+    font-family: 'Titulo Helvetica';
     padding: 1rem;
 }
 .information p{
     font-size: 1rem;
     font-weight: normal;
-    font-family: 'HelveticaNeue thin';
+    font-family: 'Texto Thin';
     margin-top: 1rem;
 }
 .moreButton{

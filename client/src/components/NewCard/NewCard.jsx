@@ -50,7 +50,7 @@ const NewCard = ({ id, image, title, createdAt, category, provinceOrLocation }) 
                             <WhatsappShareButton url={`http://localhost:3000/noticias/${id}`} title={title}>
                                 <WhatsappIcon size={40} round={true} />
                             </WhatsappShareButton>
-                            <Button href={`/noticias/${id}`} variant="primary">Leer más</Button>
+                            <Button href={`/noticias/${id}`} style={{backgroundColor:'#004b82', borderColor:'#004b82'}}>Leer más</Button>
                         </div>
                     </div>
                 </div>
