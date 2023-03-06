@@ -59,7 +59,7 @@ const NavBarB = () => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Button>
+          <Button style={{backgroundColor:'#004b82', borderColor:'#004b82'}}>
             <Nav.Link as={Link} to="/voluntariado">
               Ser Voluntario
             </Nav.Link>
