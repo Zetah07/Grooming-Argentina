@@ -5,24 +5,30 @@ import { getAllBlogs, resetFilter, resetPagination } from '../../Redux/Actions';
 import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
 import s from "./Blog.Module.css";
 import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
-import Button from "react-bootstrap/Button";
 import { BlogCard } from '../BlogCard/BlogCard';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
 
 const Blog = () => {
   const dispatch = useDispatch();
   const blogs = useSelector(state => state.blogs);
   const filter = useSelector((state) => state.filter);
   const pagination = useSelector((state) => state.pagination);
-  const blogsPerPage = 10;
+  const blogsPerPage = 6;
   const pageNumberLimit = 5;
+  const firstPage = 1;
   const [items, setItems] = useState([]);
+  const [search, setSearch] = useState({
+    title: ""
+  })
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) setItems([...blogs.docs]);
 
   useEffect(() => {
-    dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
+    dispatch(getAllBlogs(currentPage + 1, blogsPerPage, search.title));
     dispatch(resetPagination());
   }, [dispatch, currentPage, blogsPerPage]);
 
@@ -80,6 +86,21 @@ const Blog = () => {
     setCurrentPage(numberPage);
   };
 
+  const searchHandler = (event) => {
+    setSearch({ title: event.target.value });
+  }
+  const submitHandler = () => {
+    const title = search.title
+    if (title.length > 0) {
+      dispatch(getAllBlogs(firstPage, blogsPerPage, title));
+    }
+  }
+
+  const clearHandler = () => {
+    setSearch({ title: "" });
+    dispatch(getAllBlogs(firstPage, blogsPerPage));
+  }
+
   return (<>
     <div className={s.container1}>
       <span>Blogs</span>
@@ -88,7 +109,13 @@ const Blog = () => {
     <div class="container">
       <section class="row pb-3">
         <article class="row g-3 col-12 col-md-12 col-lg-4 order-lg-1">
-          <SearchBar />
+          <Stack>
+            <Form.Control id="search" onChange={searchHandler} value={search.title} className="me-auto" placeholder="Buscar..." />
+            <Button variant="secondary" onClick={submitHandler} value={search.title}>Buscar</Button>
+            <div className="vr" />
+            <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
+            <div className="vr" />
+          </Stack>
         </article>
         <article class="row g-3 col-12 col-md-12 col-lg-8 ">
           {items.map((blog) => {

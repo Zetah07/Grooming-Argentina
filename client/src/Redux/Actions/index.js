@@ -13,12 +13,20 @@ export const GET_BLOGS_BY_TITLE = "GET_BLOGS_BY_TITLE";
 export const GET_BLOGS_SORT_BY_DATE = "GET_BLOGS_SORT_BY_DATE";
 export const ACTIVE_FILTER = "ACTIVE_FILTER";
 export const RESET_PAGINATION = "RESET_PAGINATION";
+export const GET_CATEGORIES = "GET_CATEGORIES";
 
-export const getAllNews = (page, newsPerPage) => {
+export const getAllNews = (page, newsPerPage, name) => {
   return async function (dispatch) {
-    const news = await axios.get(
-      `http://localhost:3500/news?page=${page}&limit=${newsPerPage}`
-    );
+    let news = {};
+    if (!name) {
+      news = await axios.get(
+        `http://localhost:3500/news?page=${page}&limit=${newsPerPage}`
+      );
+    } else {
+      news = await axios.get(
+        `http://localhost:3500/news?page=${page}&limit=${newsPerPage}&name=${name}`
+      );
+    }
     if (news.data) {
       dispatch({ type: GET_ALL_NEWS, payload: news.data });
     } else {
@@ -27,11 +35,18 @@ export const getAllNews = (page, newsPerPage) => {
   };
 };
 
-export const getAllBlogs = (page, blogsPerPage) => {
+export const getAllBlogs = (page, blogsPerPage, title) => {
   return async function (dispatch) {
-    const blogs = await axios.get(
-      `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}`
-    );
+    let blogs = {};
+    if (!title) {
+      blogs = await axios.get(
+        `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}`
+      );
+    } else {
+      blogs = await axios.get(
+        `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
+      );
+    }
     if (blogs.data) {
       dispatch({ type: GET_ALL_BLOGS, payload: blogs.data });
     } else {
@@ -62,31 +77,31 @@ export const getBlogByID = (id) => {
   };
 };
 
-export const getNewsByTitle = (name) => {
-  return async function (dispatch) {
-    const newsByTitle = await axios.get(
-      `http://localhost:3500/news/?name=${name}`
-    );
-    if (newsByTitle.data) {
-      dispatch({ type: GET_NEWS_BY_TITLE, payload: newsByTitle.data });
-    } else {
-      dispatch({ type: ERROR });
-    }
-  };
-};
+// export const getNewsByTitle = (page, newsPerPage, name) => {
+//   return async function (dispatch) {
+//     const newsByTitle = await axios.get(
+//       `http://localhost:3500/news?page=${page}&limit=${newsPerPage}&name=${name}`
+//     );
+//     if (newsByTitle.data) {
+//       dispatch({ type: GET_NEWS_BY_TITLE, payload: newsByTitle.data });
+//     } else {
+//       dispatch({ type: ERROR });
+//     }
+//   };
+// };
 
-export const getBlogByTitle = (name) => {
-  return async function (dispatch) {
-    const blogByTitle = await axios.get(
-      `http://localhost:3500/blog/?title=${name}`
-    );
-    if (blogByTitle.data) {
-      dispatch({ type: GET_BLOGS_BY_TITLE, payload: blogByTitle.data });
-    } else {
-      dispatch({ type: ERROR });
-    }
-  };
-};
+// export const getBlogByTitle = (page, blogsPerPage, title) => {
+//   return async function (dispatch) {
+//     const blogByTitle = await axios.get(
+//       `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
+//     );
+//     if (blogByTitle.data) {
+//       dispatch({ type: GET_BLOGS_BY_TITLE, payload: blogByTitle.data });
+//     } else {
+//       dispatch({ type: ERROR });
+//     }
+//   };
+// };
 
 export const getNewsByCategory = (name) => {
   return async function (dispatch) {
@@ -114,9 +129,11 @@ export const getNewsByProvince = (province) => {
   };
 };
 
-export const getBlogsSortByDate = (sort) => {
+export const getBlogsSortByDate = (page, blogsPerPage, sort) => {
   return async function (dispatch) {
-    const blogSort = await axios.get(`http://localhost:3500/blog?sort=${sort}`);
+    const blogSort = await axios.get(
+      `http://localhost:3500/blog/?page=${page}&limit=${blogsPerPage}&sort=${sort}`
+    );
     if (blogSort.data) {
       dispatch({ type: GET_BLOGS_SORT_BY_DATE, payload: blogSort.data });
     } else {
@@ -155,5 +172,16 @@ export const resetFilter = () => {
 export const resetPagination = () => {
   return function (dispatch) {
     dispatch({ type: RESET_PAGINATION });
+  };
+};
+
+export const getCategories = () => {
+  return async function (dispatch) {
+    const categories = await axios.get(`http://localhost:3500/category`);
+    if (categories.data) {
+      dispatch({ type: GET_CATEGORIES, payload: categories.data.categories });
+    } else {
+      dispatch({ type: ERROR });
+    }
   };
 };
