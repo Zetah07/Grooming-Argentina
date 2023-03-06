@@ -1,8 +1,10 @@
 .hide {
   display: none;
 }
-.container{
+
+.container {
   max-height: 90vh;
+  overflow: auto;
 }
 
 .title {
