@@ -1,4 +1,5 @@
 .container1 {
+  padding-top: 65px;
   background: url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
   background-size: cover;
   min-height: 40vh;

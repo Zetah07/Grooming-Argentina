@@ -479,6 +479,7 @@ const ManageVolunteers = () => {
             onChange={(e) => handleLimitChange(parseInt(e.target.value))}
             className={style.selectEntries}
           >
+            <option disabled>Registros por página</option>
             <option value={10}>10 por página</option>
             <option value={20}>20 por página</option>
             <option value={30}>30 por página</option>

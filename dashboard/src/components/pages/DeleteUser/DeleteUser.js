@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
+import { Table, Container } from "react-bootstrap";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import RemoveUserButton from "../../RemoveUserButton/RemoveUserButton";
+import showAlert from "../../ShowAlert/ShowAlert"
+import style from "./DeleteUser.module.css";
 
 const DeleteUser = () => {
   const { auth } = useAuth();
@@ -25,35 +27,18 @@ const DeleteUser = () => {
   };
 
   useEffect(() => {
-    if (succesDelete === true && page > Math.ceil((users.length-1) / perPage)) {
-        console.log("ejecucion del Use effect");
-      setPage(page-1);
+    if (succesDelete === true && page > Math.ceil((users.length - 1) / perPage)) {
+      console.log("ejecucion del Use effect");
+      setPage(page - 1);
     }
     getSuscriptors();
     setSuccesDelete(false);
   }, [succesDelete]);
 
-  const showAlert = (message, color) => {
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "text-center");
+  users.sort((a, b) => a.rol.localeCompare(b.rol));
 
-    if (color === "green") {
-      alertDiv.classList.add("alert-success");
-    } else if (color === "red") {
-      alertDiv.classList.add("alert-danger");
-    }
-
-    alertDiv.textContent = message;
-    document.body.appendChild(alertDiv);
-
-    setTimeout(() => {
-      alertDiv.classList.add("hide");
-      document.body.removeChild(alertDiv);
-    }, 3000);
-  }
-  
   return (
-    <div className="container">
+    <Container className={style.container}>
       <h1>Eliminar usuario</h1>
       <Table responsive>
         <thead>
@@ -70,26 +55,26 @@ const DeleteUser = () => {
           {errors
             ? ((<tr>Error {errors}</tr>), console.log(errors))
             : users
-                .slice(perPage * (page - 1), perPage * page)
-                .map((user, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{perPage * (page - 1) + index + 1}</td>
-                      <td>{user["username"]}</td>
-                      <td>{user.email}</td>
-                      <td>{user["name"]}</td>
-                      <td>{user["rol"]}</td>
-                      <td>
-                        <RemoveUserButton
-                          document={user["username"]}
-                          succesFn={setSuccesDelete}
-                          alert={showAlert}
-                          
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
+              .slice(perPage * (page - 1), perPage * page)
+              .map((user, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{perPage * (page - 1) + index + 1}</td>
+                    <td>{user["username"]}</td>
+                    <td>{user.email}</td>
+                    <td>{user["name"]}</td>
+                    <td>{user["rol"]}</td>
+                    <td>
+                      <RemoveUserButton
+                        document={user["username"]}
+                        succesFn={setSuccesDelete}
+                        alert={showAlert}
+
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
         </tbody>
       </Table>
       {/* Pagination */}
@@ -169,7 +154,7 @@ const DeleteUser = () => {
           </select>
         </ul>
       </div>
-    </div>
+    </Container>
   );
 };
 export default DeleteUser;
