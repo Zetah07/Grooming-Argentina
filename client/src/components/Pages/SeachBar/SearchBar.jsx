@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
-import { getAllNews, getNewsByTitle, getBlogByTitle, getAllBlogs } from '../../../Redux/Actions/index.js';
+import { getAllNews, /* getNewsByTitle */ /* getBlogByTitle */ getAllBlogs } from '../../../Redux/Actions/index.js';
 import { useLocation } from "react-router-dom";
 import FilterCategory from "../FilterCategory/FilterCategory.jsx";
 import FilterProvince from "../FilterProvince/FilterProvince.jsx";
@@ -13,6 +13,8 @@ import SortByDate from "../SortByDate/SortByDate.jsx";
 const SearchBar = () => {
     const dispatch = useDispatch();
     const usl = useLocation().pathname;
+    const page = 1;
+    const [perPage, setperPage] = useState(6);
     const [search, setSearch] = useState({
         title: ""
     })
@@ -23,10 +25,10 @@ const SearchBar = () => {
         const title = search.title
         if (title.length > 0) {
             if (usl === "/noticias") {
-                dispatch(getNewsByTitle(title));
+                dispatch(getAllNews(page, perPage, title));
             }
             else if (usl === "/blog") {
-                dispatch(getBlogByTitle(title));
+                dispatch(getAllBlogs(page, perPage, title));
             }
         }
     }
@@ -34,13 +36,14 @@ const SearchBar = () => {
     const clearHandler = () => {
         if (usl === "/noticias") {
             setSearch({ title: "" });
-            dispatch(getAllNews());
+            setperPage(6);
+            dispatch(getAllNews(page, perPage));
         }
         else if (usl === "/blog") {
             setSearch({ title: "" });
-            dispatch(getAllBlogs());
+            setperPage(5);
+            dispatch(getAllBlogs(page, perPage));
         }
-
     }
     return (<Stack>
         <Form.Control id="search" onChange={searchHandler} value={search.title} className="me-auto" placeholder="Buscar..." />
@@ -48,7 +51,7 @@ const SearchBar = () => {
         <div className="vr" />
         <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
         <div className="vr" />
-        <SortByDate />
+        {usl === "/blog" ? <SortByDate /> : null}
         {usl === "/noticias" ? <FilterCategory /> : null}
         {usl === "/noticias" ? <FilterProvince /> : null}
     </Stack>
