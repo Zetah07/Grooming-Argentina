@@ -81,7 +81,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      <Footer />
+      {location === "/" ? null : <Footer />}
     </div>
   );
 }
