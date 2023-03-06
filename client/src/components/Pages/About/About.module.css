@@ -3,16 +3,15 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
     background-size: cover;
     min-height: 40vh;
-    display: grid;
-    padding: 50px;
-    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    min-width: 100%;
 }
 .banner h1 {
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 78px;
+    font-size: 68px;
     line-height: 97px;
-    background-color: var(--bs-info);
+    background-color: var(--bs-white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -20,13 +19,11 @@
 .banner span {
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 78px;
-    line-height: 97px;
-    background-color: var(--bs-white);
+    font-size: 68px;
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    background-clip: text;
     text-align: center;
 }
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
@@ -39,6 +36,7 @@
     background-color: #e7edf1;
     width: 95%;
     padding: 0px;
+    margin: 0px;
 }
 .image{
     max-width: 100%;
@@ -63,7 +61,6 @@
     font-family: "Titulo Gotham";
     font-style: normal;
     font-size: 50px;
-
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -152,6 +149,7 @@
     flex-direction: column;
     align-items: center;
     padding: 40px;
+    padding-top: 20px;
 }
 .video{
     max-width: 100%;
@@ -171,19 +169,33 @@
 .visionTitle{
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 68px;
+    font-size: 56px;
     font-weight: bold;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
-    padding: 30px;
+    max-width: 100%;
+    max-height: 100%;
+    padding-bottom: 20px;
+}
+.visionTitle span{
+    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: "Titulo Gotham";
+    background-color:var(--bs-info);
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 .visionDiv h3 {
-    font-family: "Texto Helvetica bold";
+    font-family: "Texto Helvetica";
     font-style: normal;
     font-size: 30px;
-    font-weight:300;
+    font-weight:600;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -197,7 +209,7 @@
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*Statistics*/
 .statiticsDiv{
-    width: 80%;
+    width: 90%;
 }
 .globo2{
     background: url(../../../assets/About/globo.png);
@@ -216,7 +228,7 @@
 .teamContainer{
     background-color: #e7edf1;
     border-top-right-radius: 70px;
-    width: 90%;
+    width: 98%;
     display: flex;
     flex-direction: column;
     align-items: center;
