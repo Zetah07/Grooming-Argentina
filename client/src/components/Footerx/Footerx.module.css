@@ -16,7 +16,7 @@
     text-align: start;
     padding-bottom: 15px;
     margin-left: 25px;
-    font-family: Helvetica;
+    font-family: 'Texto Helvetica';
 }
 
 .footer {
@@ -34,7 +34,7 @@
 .h2_ft {
     text-decoration: underline;
     color: var(--light-gray-color);
-    font-family: "Titulo Gotham Bold";
+    font-family: "Titulo Gotham";
     font-size: 25px;
     text-align: start;
     margin-left: 20px;
@@ -55,7 +55,7 @@
 
 .lashes {
     text-decoration: none !important;
-    font-family: Helvetica;
+    font-family: 'Texto Thin';
     font-size: 18px;
     padding: 15px;
     color: var(--light-gray-color)
@@ -65,5 +65,5 @@
     padding-left: 15px;
     text-align: start;
     color: var(--light-gray-color);
-    font-family: Helvetica;
+    font-family: 'Texto Thin';
 }

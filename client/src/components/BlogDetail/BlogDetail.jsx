@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import style from './BlogDetail.module.css';
 import { getBlogByID } from '../../Redux/Actions';
 import {
     FacebookShareButton,
@@ -26,16 +27,17 @@ const NewDetails = () => {
         dispatch(getBlogByID(id));
     }, [dispatch, id]);
     return (
-        <div class="container">
-            <div class="card" >
+        <div class="container" style={{display:'flex', minHeight:'90vh'}}>
+            <div class="card" style={{display:'flex',justifyContent:'space-between', minHeight:'90vh'}}>
+                <div class="card-body" style={{display:'flex', flexDirection:'column'}}>
                 <h2 class="card-title">{blogId.title}</h2>
-                <div class="card-body">
                     <p class="card-subtitle mb-2 text-muted">Author: {blogId.author}</p>
                     <p class="card-subtitle mb-2 text-muted">Subtitulo: {blogId.subtitle}</p>
                     <p class="card-subtitle mb-2 text-muted">Publicado: {blogId.createdAt}</p>
                     <p class="card-text">Contenido: {blogId.content}</p>
-                    <div class="card-body">
+                    <div class="card-body" className={style.shareContainer} >
                         <h5 class="card-text">Compartir en:</h5>
+                        <div className={style.buttons}>
                         <FacebookShareButton url={`http://localhost:3000/blog/${blogId._id}`} quote={blogId.title}>
                             <FacebookIcon size={40} round={true} />
                         </FacebookShareButton>
@@ -54,6 +56,7 @@ const NewDetails = () => {
                         <WhatsappShareButton url={`http://localhost:3000/blog/${blogId._id}`} title={blogId.title}>
                             <WhatsappIcon size={40} round={true} />
                         </WhatsappShareButton>
+                        </div>
                     </div>
                 </div>
             </div>

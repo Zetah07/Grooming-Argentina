@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-size:x-large;
+    font-family: 'Titulo Gotham';
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+}
+.img{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100vw;
+    max-height: 50rem;
+}
+.text{
+    font-family: 'Titulo Helvetica';
+    font-size: 18px;
+    font-weight: 100;
+}
