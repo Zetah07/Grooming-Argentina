@@ -12,6 +12,7 @@ export const RESET_FILTER = "RESET_FILTER";
 export const GET_BLOGS_BY_TITLE = "GET_BLOGS_BY_TITLE";
 export const GET_BLOGS_SORT_BY_DATE = "GET_BLOGS_SORT_BY_DATE";
 export const RESET_PAGINATION = "RESET_PAGINATION";
+export const GET_CATEGORIES = "GET_CATEGORIES";
 
 export const getAllNews = (page, newsPerPage) => {
   return async function (dispatch) {
@@ -146,5 +147,18 @@ export const resetFilter = () => {
 export const resetPagination = () => {
   return function (dispatch) {
     dispatch({ type: RESET_PAGINATION });
+  };
+};
+
+export const getCategories = () => {
+  return async function (dispatch) {
+    const categories = await axios.get(
+      `http://localhost:3500/category`
+    );
+    if (categories.data) {
+      dispatch({ type: GET_CATEGORIES, payload: categories.data.categories });
+    } else {
+      dispatch({ type: ERROR });
+    }
   };
 };
