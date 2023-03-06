@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "react-bootstrap/Form";
+import { Form, Container } from "react-bootstrap";
 import styles from "./CreateNewUser.module.css";
 import axios from "../../../api/axios";
 import { object, string } from "yup";
@@ -90,7 +90,7 @@ const CreateNewUser = () => {
   };
 
   return (
-    <div className="container" style={{ textAlign: "center" }}>
+    <Container className={styles.container} style={{ textAlign: "center" }}>
       <h1 style={{ color: "#06204f" }}>Crear Nuevo usuario</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit(sendData)}>
         {/* Correo electronico */}
@@ -180,7 +180,7 @@ const CreateNewUser = () => {
           </Button>
         </Form.Group>
       </Form>
-    </div>
+    </Container>
   );
 };
 export default CreateNewUser;
