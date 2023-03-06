@@ -8,7 +8,7 @@
 }
 
 .head_volunt h1 {
-    font-family: "Titulo Gotham Bold";
+    font-family: "Titulo Gotham";
     color: var(--primary-color);
 
 }
@@ -22,10 +22,11 @@
 
 .p1_volunt h2 {
 
-    font-family: "Titulo Helvetica";
+    font-family: "Titulo Gotham";
 
     text-align: center;
     padding: 10px 0 10px 0;
+    color: #004b82;
 }
 
 .p1_volunt li {
