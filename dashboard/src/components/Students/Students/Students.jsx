@@ -51,17 +51,13 @@ export default function Students() {
                 setMaxPage(1);
             });
     };
-
     const clearHandler = () => setSearch('');
-
     const pages = (numberPage) => {
         setPage(numberPage + 1);
     };
-
     useEffect(() => {
         getVideos();
     }, [page, asc, search]);
-
     return (
         <>
             <div className={s.container}>
@@ -94,7 +90,6 @@ export default function Students() {
                             checked={!asc}
                             onChange={changeOrder}
                         />
-
                         <div className='row d-flex justify-content-evenly'>
                             <Button variant="secondary mt-5 col-10 ">
                                 <Nav.Link as={Link} to="/panel/crearcurso">
@@ -103,7 +98,6 @@ export default function Students() {
                             </Button>
                         </div>
                     </div>
-
                 </article>
                 <article class="row g-3 col-12 col-md-12 col-lg-8 ">
                     <div className={s.videos}>
@@ -131,6 +125,5 @@ export default function Students() {
                 />
             </div>
         </>
-
     )
 };

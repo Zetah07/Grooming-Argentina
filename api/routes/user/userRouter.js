@@ -6,9 +6,15 @@ const handelReadUsers = require("../../controllers/user/readUserController");
 const handleDeleteUser = require("../../controllers/user/deleteUserController");
 const veryfyJWT = require("../../middleware/verifyJWT");
 const verifyRoles = require("../../middleware/verifyRoles");
+const handelReadUsersById =require("../../controllers/user/readUserIdController");
+const handleUpdateUserInfo = require("../../controllers/user/updateUserInfoController");
+
+
 
 router.post("/",veryfyJWT, verifyRoles(["admin"]), handleNewUser);
-router.put("/", handleUpdateuser)//pending roles
+router.put("/:username",veryfyJWT,handleUpdateUserInfo)//only verify user
+router.put("/",veryfyJWT ,handleUpdateuser)
+router.get("/:username",veryfyJWT,handelReadUsersById )//only verify user
 router.get("/",veryfyJWT, verifyRoles(["admin"]), handelReadUsers)
 router.delete("/",veryfyJWT, verifyRoles(["admin"]), handleDeleteUser)
 

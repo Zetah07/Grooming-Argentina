@@ -1,18 +1,23 @@
 import Table from "react-bootstrap/Table";
-import { Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux';
+import { Button, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllBlogs, resetFilter, resetPagination } from "../../../Redux/Actions/index";
-import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs"
+import {
+  getAllBlogs,
+  resetFilter,
+  resetPagination,
+} from "../../../Redux/Actions/index";
+import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import showAlert from "../../ShowAlert/ShowAlert";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import style from "./ManageBlogs.module.css";
 
 const ManageBlogs = () => {
   const dispatch = useDispatch();
   const { auth } = useAuth();
-  const blogs = useSelector(state => state.blogs);
+  const blogs = useSelector((state) => state.blogs);
   const filter = useSelector((state) => state.filter);
   const pagination = useSelector((state) => state.pagination);
   const blogsPerPage = 5;
@@ -23,7 +28,8 @@ const ManageBlogs = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) setItems([...blogs.docs]);
+  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0)
+    setItems([...blogs.docs]);
 
   useEffect(() => {
     dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
@@ -35,7 +41,7 @@ const ManageBlogs = () => {
       setItems([...blogs.docs]);
       dispatch(resetPagination());
     }
-  }, [dispatch, pagination, blogs.docs])
+  }, [dispatch, pagination, blogs.docs]);
 
   useEffect(() => {
     if (filter === true) {
@@ -85,13 +91,14 @@ const ManageBlogs = () => {
   };
 
   const deleteHandler = async (id) => {
-    await axios.delete(`http://localhost:3500/blog/${id}`, {
-      withCredentials: true,
-      headers: {
-        Authorization: `Bearer ${auth?.accessToken}`,
-      },
-    })
-      .then(res => {
+    await axios
+      .delete(`http://localhost:3500/blog/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      })
+      .then((res) => {
         if (res.status === 200) {
           showAlert("Se eliminó el blog", "green");
         }
@@ -100,7 +107,7 @@ const ManageBlogs = () => {
         console.log(error);
         showAlert("No se pudo eliminar el blog", "red");
       });
-  }
+  };
 
   const handleStatusDelete = async (id) => {
     try {
@@ -112,7 +119,7 @@ const ManageBlogs = () => {
   };
 
   return (
-    <div className="container">
+    <Container className={style.container}>
       <ConfirmationModal
         show={deleteModal}
         title="Eliminar"
@@ -150,10 +157,21 @@ const ManageBlogs = () => {
                 <td>{blog.author}</td>
                 <td>{blog.createdAt}</td>
                 <td>{blog.updatedAt}</td>
-                <td><Button href={`blogs/${blog._id}`} variant="primary">Modificar</Button></td>
-                <td><Button onClick={() => handleStatusDelete(blog._id)} variant="danger">Eliminar</Button></td>
+                <td>
+                  <Button href={`blogs/${blog._id}`} variant="primary">
+                    Modificar
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    onClick={() => handleStatusDelete(blog._id)}
+                    variant="danger"
+                  >
+                    Eliminar
+                  </Button>
+                </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </Table>
@@ -173,8 +191,7 @@ const ManageBlogs = () => {
           minPageNumberLimit={minPageNumberLimit}
         />
       </div>
-    </div>
+    </Container>
   );
-
 };
 export default ManageBlogs;
