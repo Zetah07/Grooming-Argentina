@@ -14,6 +14,7 @@ import {
   GET_BLOGS_SORT_BY_DATE,
   ACTIVE_FILTER,
   RESET_PAGINATION,
+  GET_CATEGORIES
 } from "../Actions";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   newID: [],
   blogs: [],
   blogId: [],
+  categories: [],
   filter: false,
   pagination: false,
 };
@@ -55,6 +57,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, filter: true };
     case RESET_PAGINATION:
       return { ...state, pagination: false };
+    case GET_CATEGORIES:
+        return { ...state, categories: action.payload };
     default:
       return { ...state };
   }
