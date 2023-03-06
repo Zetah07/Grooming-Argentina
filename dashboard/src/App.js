@@ -24,6 +24,8 @@ import PasswordReset from "./components/pages/passwordReset/PasswordReset";
 import PreStudents from "./components/Students/PreStudents/PreStudents";
 import CreateNewUser from "./components/pages/CreateNewUser/CreateNewUser";
 import DeleteUser from "./components/pages/DeleteUser/DeleteUser";
+import CreateCourse from "./components/Students/CreateCourse/CreateCourse";
+import Footer from "./components/Footer/Footer"
 
 const noNav = ["/", "/unauthorized", "/recuperar", "/recuperar/:token"];
 function App() {
@@ -36,7 +38,6 @@ function App() {
         <Route exact path="/unauthorized" element={<Unauthorized />} />
         <Route exact path="/recuperar" element={<PasswordRecovery />} />
         <Route exact path="/recuperar/:token" element={<PasswordReset />} />
-
         <Route element={<PersistLogin />}>
           <Route
             element={
@@ -69,16 +70,18 @@ function App() {
             element={<RequireAuth allowedRoles={["admin", "volunteer"]} />}
           >
             <Route path="/panel/cursos" element={<Students />} />
+            <Route path="/panel/crearcurso" element={<CreateCourse />} />
             <Route path="/panel/cursos2" element={<PreStudents />} />
             <Route path="/panel/cursos/:id" element={<StudentsPlayer />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
             <Route path="/panel/nuevousuario" element={<CreateNewUser />} />
-            <Route path="/panel/BorrarUsuario" element={<DeleteUser/>} />
+            <Route path="/panel/BorrarUsuario" element={<DeleteUser />} />
           </Route>
         </Route>
       </Routes>
+      {location === "/" ? null : <Footer />}
     </div>
   );
 }

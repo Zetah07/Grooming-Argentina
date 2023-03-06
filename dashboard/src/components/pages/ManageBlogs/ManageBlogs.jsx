@@ -1,22 +1,35 @@
 import Table from "react-bootstrap/Table";
-import { Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux';
+import { Button, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllBlogs, resetFilter, resetPagination } from "../../../Redux/Actions/index";
-import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs"
+import {
+  getAllBlogs,
+  resetFilter,
+  resetPagination,
+} from "../../../Redux/Actions/index";
+import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs";
+import axios from "../../../api/axios";
+import useAuth from "../../../hooks/useAuth";
+import showAlert from "../../ShowAlert/ShowAlert";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import style from "./ManageBlogs.module.css";
 
 const ManageBlogs = () => {
   const dispatch = useDispatch();
-  const blogs = useSelector(state => state.blogs);
+  const { auth } = useAuth();
+  const blogs = useSelector((state) => state.blogs);
   const filter = useSelector((state) => state.filter);
   const pagination = useSelector((state) => state.pagination);
   const blogsPerPage = 5;
   const pageNumberLimit = 5;
+  const [deleteModal, setDeleteModal] = useState(false);
   const [items, setItems] = useState([]);
+  const [selectedBlogId, setSelectedBlogId] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) setItems([...blogs.docs]);
+  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0)
+    setItems([...blogs.docs]);
 
   useEffect(() => {
     dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
@@ -28,7 +41,7 @@ const ManageBlogs = () => {
       setItems([...blogs.docs]);
       dispatch(resetPagination());
     }
-  }, [dispatch, pagination, blogs.docs])
+  }, [dispatch, pagination, blogs.docs]);
 
   useEffect(() => {
     if (filter === true) {
@@ -76,11 +89,53 @@ const ManageBlogs = () => {
   const pages = (numberPage) => {
     setCurrentPage(numberPage);
   };
-  useEffect(() => {
-    dispatch(getAllBlogs());
-  }, [dispatch]);
+
+  const deleteHandler = async (id) => {
+    await axios
+      .delete(`http://localhost:3500/blog/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          showAlert("Se eliminó el blog", "green");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        showAlert("No se pudo eliminar el blog", "red");
+      });
+  };
+
+  const handleStatusDelete = async (id) => {
+    try {
+      setSelectedBlogId(id);
+      setDeleteModal(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div >
+    <Container className={style.container}>
+      <ConfirmationModal
+        show={deleteModal}
+        title="Eliminar"
+        message="¿Está seguro que desea eliminar el blog del usuario?"
+        onConfirm={async () => {
+          await deleteHandler(selectedBlogId);
+          dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
+          setDeleteModal(false);
+        }}
+        onCancel={() => {
+          setDeleteModal(false);
+        }}
+      />
+      <Button variant="primary" href="/panel/crearblog">
+        Crear Blog
+      </Button>
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
@@ -90,6 +145,7 @@ const ManageBlogs = () => {
             <th>Creado</th>
             <th>Actualizado</th>
             <th>Modificar Blog</th>
+            <th>Eliminar Blog</th>
           </tr>
         </thead>
         <tbody>
@@ -101,9 +157,21 @@ const ManageBlogs = () => {
                 <td>{blog.author}</td>
                 <td>{blog.createdAt}</td>
                 <td>{blog.updatedAt}</td>
-                <td><Button href={`blogs/${blog._id}`} variant="primary">Modificar</Button></td>
+                <td>
+                  <Button href={`blogs/${blog._id}`} variant="primary">
+                    Modificar
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    onClick={() => handleStatusDelete(blog._id)}
+                    variant="danger"
+                  >
+                    Eliminar
+                  </Button>
+                </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </Table>
@@ -123,11 +191,7 @@ const ManageBlogs = () => {
           minPageNumberLimit={minPageNumberLimit}
         />
       </div>
-      <Button variant="primary" href="/panel/crearblog">
-        Crear Blog
-      </Button>
-    </div>
+    </Container>
   );
-
 };
 export default ManageBlogs;

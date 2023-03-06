@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
+import { Table, Container } from "react-bootstrap";
 import axios from "../../../api/axios";
 import DownloadSuscriptorsButton from "../../DownloadSuscriptorsButton/DownloadSuscriptorsButton";
+import style from "./Suscriptors.module.css";
 
 const Suscriptores = () => {
   const [perPage, setPerPage] = useState(5);
@@ -22,7 +23,7 @@ const Suscriptores = () => {
   }, []);
 
   return (
-    <div className="container">
+    <Container className={style.container}>
       <h1>Suscriptores a News Letter</h1>
       <Table responsive>
         <thead>
@@ -36,20 +37,20 @@ const Suscriptores = () => {
           {errors
             ? ((<tr>Error {errors}</tr>), console.log(errors))
             : suscriptors
-                .slice(perPage * (page - 1), perPage * page)
-                .map((suscriber, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{perPage * (page - 1) + index + 1}</td>
-                      <td>{suscriber["fullName"]}</td>
-                      <td>{suscriber.email}</td>
-                    </tr>
-                  );
-                })}
+              .slice(perPage * (page - 1), perPage * page)
+              .map((suscriber, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{perPage * (page - 1) + index + 1}</td>
+                    <td>{suscriber["fullName"]}</td>
+                    <td>{suscriber.email}</td>
+                  </tr>
+                );
+              })}
         </tbody>
-     
+
       </Table>
-      <div aria-label="..." style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap"}}>
+      <div aria-label="..." style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
         <ul class="pagination">
           <li class={page > 1 ? "page-item" : "page-item disabled"}>
             <button class="page-link" onClick={() => setPage(page - 1)}>
@@ -119,9 +120,9 @@ const Suscriptores = () => {
             <option value="50">50</option>
           </select>
         </ul>
-      <DownloadSuscriptorsButton />
+        <DownloadSuscriptorsButton />
       </div>
-    </div>
+    </Container>
   );
 };
 export default Suscriptores;

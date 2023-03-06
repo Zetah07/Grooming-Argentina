@@ -1,14 +1,15 @@
-
 .container {
+  padding-top: 65px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background: #f2f2f2;
+  min-height: 94.4vh;
 }
+
 .desing {
   display: flex;
   flex-direction: column;
@@ -33,11 +34,13 @@
   min-height: 100vh;
   z-index: 2;
 }
-.button{
+
+.button {
   background-color: transparent !important;
   border: none;
 }
-.button h2{
+
+.button h2 {
   font-family: 'Titulo Gotham';
   font-size: 24px;
   color: var(--terciary-color);
