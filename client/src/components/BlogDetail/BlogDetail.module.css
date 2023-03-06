@@ -1,0 +1,28 @@
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shareContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+    margin-top: 20px;
+}
+h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Titulo Gotham';
+}
+p{
+    font-family: 'Titulo Helvetica';
+    font-size: 1rem;
+}
+h5{
+    font-family: 'Texto Helvetica';
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}

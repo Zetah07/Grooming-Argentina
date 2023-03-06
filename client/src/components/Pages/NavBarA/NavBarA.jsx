@@ -12,8 +12,7 @@ const NavBarA = () => {
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={LogoB} alt="Logo" className="w-50  h-50" />
-          <span className={s.span}>Grooming</span>
+          <img src={LogoB} alt="Logo" className="w-50 h-50" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
@@ -50,7 +49,7 @@ const NavBarA = () => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Button>
+          <Button style={{backgroundColor:'#004b82', borderColor:'#004b82'}}>
             <Nav.Link as={Link} to="/voluntariado">
               Ser Voluntario
             </Nav.Link>
