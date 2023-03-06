@@ -257,7 +257,6 @@ const VolunteerForm = () => {
     validationSchema: schema,
   });
 
-  // console.log(errors.adjDocument)
   // console.log(errors.email)
   // console.log(errors)
 
