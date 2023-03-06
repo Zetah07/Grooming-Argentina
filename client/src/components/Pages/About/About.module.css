@@ -3,9 +3,8 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
     background-size: cover;
     min-height: 40vh;
-    display: grid;
-    padding: 50px;
-    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    min-width: 100%;
 }
 .banner h1 {
     font-family: "Titulo Gotham";
@@ -39,6 +38,7 @@
     background-color: #e7edf1;
     width: 95%;
     padding: 0px;
+    margin: 0px;
 }
 .image{
     max-width: 100%;
@@ -171,19 +171,20 @@
 .visionTitle{
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 68px;
+    font-size: 56px;
     font-weight: bold;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
-    padding: 30px;
+    max-width: 100%;
+    max-height: 100%;
 }
 .visionDiv h3 {
-    font-family: "Texto Helvetica bold";
+    font-family: "Texto Helvetica";
     font-style: normal;
     font-size: 30px;
-    font-weight:300;
+    font-weight:600;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
