@@ -1,8 +1,10 @@
-.formPd {
-    padding: 0;
-
+.btnZ {
+    background-color: #004b82 !important;
 }
 
+.formPd {
+    padding: 0;
+}
 
 .head_ccourse {
     display: flex;
