@@ -20,11 +20,11 @@ export const getAllNews = (page, newsPerPage, name) => {
     let news = {};
     if (!name) {
       news = await axios.get(
-        `http://localhost:3500/news?page=${page}&limit=${newsPerPage}`
+        `/news?page=${page}&limit=${newsPerPage}`
       );
     } else {
       news = await axios.get(
-        `http://localhost:3500/news?page=${page}&limit=${newsPerPage}&name=${name}`
+        `/news?page=${page}&limit=${newsPerPage}&name=${name}`
       );
     }
     if (news.data) {
@@ -40,11 +40,11 @@ export const getAllBlogs = (page, blogsPerPage, title) => {
     let blogs = {};
     if (!title) {
       blogs = await axios.get(
-        `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}`
+        `/blog?page=${page}&limit=${blogsPerPage}`
       );
     } else {
       blogs = await axios.get(
-        `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
+        `/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
       );
     }
     if (blogs.data) {
@@ -57,7 +57,7 @@ export const getAllBlogs = (page, blogsPerPage, title) => {
 
 export const getNewByID = (id) => {
   return async function (dispatch) {
-    const newID = await axios.get(`http://localhost:3500/news/?id=${id}`);
+    const newID = await axios.get(`/news/?id=${id}`);
     if (newID.data) {
       dispatch({ type: GET_NEW_BY_ID, payload: newID.data });
     } else {
@@ -68,7 +68,7 @@ export const getNewByID = (id) => {
 
 export const getBlogByID = (id) => {
   return async function (dispatch) {
-    const blogId = await axios.get(`http://localhost:3500/blog/${id}`);
+    const blogId = await axios.get(`/blog/${id}`);
     if (blogId.data) {
       dispatch({ type: GET_BLOG_BY_ID, payload: blogId.data });
     } else {
@@ -106,7 +106,7 @@ export const getBlogByID = (id) => {
 export const getNewsByCategory = (name) => {
   return async function (dispatch) {
     const newsByCategory = await axios.get(
-      `http://localhost:3500/news?categoria=${name}`
+      `/news?categoria=${name}`
     );
     if (newsByCategory.data) {
       dispatch({ type: GET_NEWS_BY_CATEGORY, payload: newsByCategory.data });
@@ -119,7 +119,7 @@ export const getNewsByCategory = (name) => {
 export const getNewsByProvince = (province) => {
   return async function (dispatch) {
     const newsByProvince = await axios.get(
-      `http://localhost:3500/news?provinciaOLocacion=${province}`
+      `/news?provinciaOLocacion=${province}`
     );
     if (newsByProvince.data) {
       dispatch({ type: GET_NEWS_BY_PROVINCE, payload: newsByProvince.data });
@@ -131,9 +131,7 @@ export const getNewsByProvince = (province) => {
 
 export const getBlogsSortByDate = (page, blogsPerPage, sort) => {
   return async function (dispatch) {
-    const blogSort = await axios.get(
-      `http://localhost:3500/blog/?page=${page}&limit=${blogsPerPage}&sort=${sort}`
-    );
+    const blogSort = await axios.get(`/blog?sort=${sort}`);
     if (blogSort.data) {
       dispatch({ type: GET_BLOGS_SORT_BY_DATE, payload: blogSort.data });
     } else {
@@ -144,7 +142,7 @@ export const getBlogsSortByDate = (page, blogsPerPage, sort) => {
 
 export const getLogin = () => {
   return async function (dispatch) {
-    const user = await axios.post("http://localhost:3500/auth/login");
+    const user = await axios.post("/auth/login");
     if (user.data) {
       dispatch({ type: GET_LOGIN, payload: user.data });
     } else {
@@ -177,7 +175,7 @@ export const resetPagination = () => {
 
 export const getCategories = () => {
   return async function (dispatch) {
-    const categories = await axios.get(`http://localhost:3500/category`);
+    const categories = await axios.get(`/category`);
     if (categories.data) {
       dispatch({ type: GET_CATEGORIES, payload: categories.data.categories });
     } else {

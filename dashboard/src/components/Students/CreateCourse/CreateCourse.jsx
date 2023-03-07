@@ -16,10 +16,12 @@ const CreateCourse = () => {
     const { auth } = useAuth();
 
     const defaultValues = {
-        title: "",
-        description: "",
-        thumbnail: "",
-        link: "",
+        courseSent: {
+            title: "",
+            description: "",
+            thumbnail: "",
+            link: "",
+        }
     }
 
     const schema = object().shape({
@@ -56,21 +58,21 @@ const CreateCourse = () => {
 
     const upVideoCourse = async (data) => {
         console.log(data)
-        // try {
-        //     await axios.post("http://localhost:3500/courses", data, {
-        //         withCredentials: true,
-        //         headers: {
-        //             Authorization: `Bearer ${auth?.accessToken}`,
-        //         },
-        //     });
-        //     showAlert("Video curso creado correctamente.", "green");
-        //     // form.reset();
-        //     // setFormBlog({ title: "", subtitle: "", content: "" });
-        //     // setValidated(false);
-        // } catch (error) {
-        //     console.log(error.message);
-        //     showAlert("No se pudo crear el video curso , intente de nuevo", "red");
-        // }
+        try {
+            await axios.post("/courses", data, {
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${auth?.accessToken}`,
+                },
+            });
+            showAlert("Video curso creado correctamente.", "green");
+            // form.reset();
+            // setFormBlog({ title: "", subtitle: "", content: "" });
+            // setValidated(false);
+        } catch (error) {
+            console.log(error.message);
+            showAlert("No se pudo crear el video curso , intente de nuevo", "red");
+        }
     };
 
 

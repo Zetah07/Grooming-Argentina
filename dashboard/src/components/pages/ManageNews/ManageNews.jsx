@@ -97,7 +97,7 @@ const ManageNews = () => {
 
   const deleteHandler = async (id) => {
     await axios
-      .delete(`http://localhost:3500/news/${id}`, {
+      .delete(`/news/${id}`, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
