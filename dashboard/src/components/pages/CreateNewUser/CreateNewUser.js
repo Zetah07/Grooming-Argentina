@@ -9,7 +9,6 @@ import { Button } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 import showAlert from "../../ShowAlert/ShowAlert";
 
-
 const CreateNewUser = () => {
   const { auth } = useAuth();
   const defaultValues = {
@@ -35,11 +34,8 @@ const CreateNewUser = () => {
       .required("El campo no puede estar vacío")
       .min(6, "Debe tener al menos 6 numeros")
       .max(10, "Debe tener hasta 10 numeros")
-      .matches(
-        /^([0-9])*$/,
-        "El documento solo admite caracters numericos"
-      ),
-    password: string()
+      .matches(/^([0-9])*$/, "El documento solo admite caracters numericos"),
+    password: string(),
     // .min(6, "La contraseña debe tener al menos 6 caracteres")
     // .matches(
     //   /[A-Z]/,
@@ -51,6 +47,7 @@ const CreateNewUser = () => {
     register,
     formState: { errors, touchedFields },
     handleSubmit,
+    reset,
   } = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
@@ -67,9 +64,9 @@ const CreateNewUser = () => {
 
   const sendData = async (data) => {
     if (data.password.length === 0) {
-      data.password = data.username
+      data.password = data.username;
     }
-    data.rol = rol
+    data.rol = rol;
 
     await axios
       .post("/users", data, {
@@ -79,6 +76,8 @@ const CreateNewUser = () => {
       })
       .then(function (response) {
         showAlert("El ususario fue creado correctamente", "green");
+        reset(defaultValues);
+        setRol("user")
       })
       .catch(function (error) {
         if (error?.response?.data?.message) {

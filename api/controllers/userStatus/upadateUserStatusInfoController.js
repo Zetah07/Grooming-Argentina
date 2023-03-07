@@ -2,7 +2,6 @@ const userStatus = require("../../models/userStatus");
 const handleUpdateUserStatusInfo = async(req, res)=>{
     const trueUser = req.user
     const updateInfo = req.body
-    console.log(updateInfo);
     try {
         const  updatedUser = await userStatus.findOneAndUpdate({document:trueUser},updateInfo)
         if(updatedUser){

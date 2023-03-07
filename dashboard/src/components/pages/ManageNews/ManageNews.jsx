@@ -138,9 +138,6 @@ const ManageNews = () => {
           setDeleteModal(false);
         }}
       />
-      <Button variant="primary" href="/panel/crearnoticia">
-        Crear Noticia
-      </Button>
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>

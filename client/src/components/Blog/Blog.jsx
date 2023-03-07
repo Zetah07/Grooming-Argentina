@@ -19,16 +19,14 @@ const Blog = () => {
   const pageNumberLimit = 5;
   const firstPage = 1;
   const [items, setItems] = useState([]);
-  const [search, setSearch] = useState({
-    title: ""
-  })
+  const [search, setSearch] = useState({ title: "", sort: "" })
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) setItems([...blogs.docs]);
 
   useEffect(() => {
-    dispatch(getAllBlogs(currentPage + 1, blogsPerPage, search.title));
+    dispatch(getAllBlogs(currentPage + 1, blogsPerPage, search.title, search.sort));
     dispatch(resetPagination());
   }, [dispatch, currentPage, blogsPerPage]);
 
@@ -89,6 +87,7 @@ const Blog = () => {
   const searchHandler = (event) => {
     setSearch({ title: event.target.value });
   }
+
   const submitHandler = () => {
     const title = search.title
     if (title.length > 0) {
@@ -97,8 +96,15 @@ const Blog = () => {
   }
 
   const clearHandler = () => {
-    setSearch({ title: "" });
+    setSearch({ title: "", sort: "" });
     dispatch(getAllBlogs(firstPage, blogsPerPage));
+  }
+
+  const selectHandler = (event) => {
+    search.sort = event.target.value;
+    if (search.sort.length > 0) {
+      dispatch(getAllBlogs(firstPage, blogsPerPage, search.title, search.sort));
+    }
   }
 
   return (<>
@@ -115,6 +121,14 @@ const Blog = () => {
             <div className="vr" />
             <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
             <div className="vr" />
+            <div className="vr" />
+            <h5 className="card-title">Ordenar</h5>
+            <div className="vr" />
+            <Form.Select aria-label="Default select example" onChange={selectHandler}>
+              <option disabled selected>Seleccione el orden</option>
+              <option value="newest">Más reciente</option>
+              <option value="oldest">Más antiguo</option>
+            </Form.Select>
           </Stack>
         </article>
         <article class="row g-3 col-12 col-md-12 col-lg-8 ">

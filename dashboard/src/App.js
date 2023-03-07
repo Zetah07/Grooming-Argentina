@@ -70,12 +70,12 @@ function App() {
             element={<RequireAuth allowedRoles={["admin", "volunteer"]} />}
           >
             <Route path="/panel/cursos" element={<Students />} />
-            <Route path="/panel/crearcurso" element={<CreateCourse />} />
             <Route path="/panel/cursos2" element={<PreStudents />} />
             <Route path="/panel/cursos/:id" element={<StudentsPlayer />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+            <Route path="/panel/crearcurso" element={<CreateCourse />} />
             <Route path="/panel/nuevousuario" element={<CreateNewUser />} />
             <Route path="/panel/BorrarUsuario" element={<DeleteUser />} />
           </Route>
