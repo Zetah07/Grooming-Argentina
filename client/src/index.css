@@ -77,7 +77,7 @@ body {
   font-size: 1.3rem;
   border-radius: 60px;
   color: #ffffff;
-  width: 20rem;
+  width: 12rem;
   background: linear-gradient(90deg, #7dc8ec 0%, #004b82 100%);
 }
 
@@ -104,4 +104,7 @@ body {
 
 .nav-link{
   font-family:"Texto Thin";
+}
+.navbar-toggler-icon{
+  color:var(--primary-color)
 }

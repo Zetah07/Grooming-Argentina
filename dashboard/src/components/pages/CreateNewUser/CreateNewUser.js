@@ -72,7 +72,7 @@ const CreateNewUser = () => {
     data.rol = rol
 
     await axios
-      .post("http://localhost:3500/users", data, {
+      .post("/users", data, {
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
         },

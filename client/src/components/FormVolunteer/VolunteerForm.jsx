@@ -272,7 +272,7 @@ const VolunteerForm = () => {
     // console.log([...formData])
 
     await axios
-      .post("http://localhost:3500/userstatus", formData, {
+      .post("/userstatus", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

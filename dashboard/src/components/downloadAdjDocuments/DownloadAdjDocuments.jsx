@@ -6,7 +6,7 @@ const DownloadPDFButton = ({ userId, documentType }) => {
   const handleDownload = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3500/documents",
+        "/documents",
         { [documentType]: userId },
         {
           responseType: "blob",
