@@ -19,6 +19,7 @@ import Row from "react-bootstrap/Row";
 import axios from 'axios';
 import NewCard from "../NewCardHome/NewCard";
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -47,8 +48,10 @@ const Home = () => {
           src={paper.img}
         />
         <Carousel.Caption>
-          <h3 className={s.caroTitle}>{paper.title}</h3>
-          <p className={s.caroText}>{paper.description}</p>
+          <Link style={{textDecoration: 'none', color: 'white'}} to={`/noticias/${paper._id}`} >
+           <h3 className={s.caroTitle}>{paper.title}</h3>
+            <p className={s.caroText}>{paper.description}</p> 
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>)}
     </Carousel>
@@ -95,9 +98,9 @@ const Home = () => {
         <div className={s.divHalf}>
           <h1 className={s.title}>Varias causas</h1>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the when an unknown was popularised.
+            En Argentina, el grooming es un problema que afecta a muchas empresas, especialmente aquellas que trabajan con niños y jóvenes. Existen varias causas que pueden llevar a una empresa a tomar medidas para prevenir y combatir el grooming.<br/>
+
+            Una de las principales causas es la responsabilidad social corporativa. Las empresas tienen un deber moral y ético de proteger a los más vulnerables de la sociedad, y esto incluye a los niños y jóvenes.
           </p>
           <button className="button">Aprender más</button>
         </div>
@@ -148,26 +151,24 @@ const Home = () => {
               Últimos eventos de <span>GROOMING ARGENTINA</span>
             </h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the when an unknown was popularised. It is a long
-              established fact that reader distracted by the the readable
-              content off page looking at its layout point.
+              En los últimos años, el grooming ha sido un tema muy presente en Argentina, y han ocurrido varios eventos importantes relacionados con este tema.<br/>
+
+              Uno de los eventos más significativos fue la sanción de la Ley de Grooming en 2013, que estableció como delito la acción de acosar o molestar a un menor de edad a través de medios electrónicos o tecnológicos. Esta ley fue un paso importante para combatir el grooming y proteger a los niños y jóvenes en Argentina.
             </p>
             <div className={s.divCards}>
               <Cards
                 tittle="Registro a eventos"
-                body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                body="Puedes registrarte a eventos y apoyarnos de paso "
                 imgUrl="https://images.pexels.com/photos/1212805/pexels-photo-1212805.jpeg?auto=compress&cs=tinysrgb&w=1600"
               />
               <Cards
                 tittle="Donación mensual"
-                body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                body="Puedes apoyarnos con la cantidad que desees mensualmente. "
                 imgUrl="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&w=1600"
               />
               <Cards
                 tittle="Donar ahora"
-                body="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                body="Si no puedes comprometerte tan de lleno podrías colaborar justo ahora. "
                 imgUrl="https://images.pexels.com/photos/939702/pexels-photo-939702.jpeg?auto=compress&cs=tinysrgb&w=1600"
               />
             </div>
@@ -178,11 +179,8 @@ const Home = () => {
             <Container>
               <h1 className={s.title}>Eventos</h1>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the when an unknown was popularised. It is a
-                long established fact that reader distracted by the the readable
-                content off page looking at its layout point.
+                Realizamos eventos de manera presencial dando capacitaciones
+                de como ayudar a combatir este flagelo dentro de nuestra sociedad, además también damos información sobre todo lo necesario para ser uno de nuestros voluntarios.
               </p>
             </Container>
           </div>
