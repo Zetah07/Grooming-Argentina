@@ -8,7 +8,7 @@ const handleUserStatusCreation = async (req, res) => {
     if (!CV || !adjDocument)
       return res
         .status(400)
-        .json({ message: `No se resivio CV y/o Documento` });
+        .json({ message: `No se resibió CV y/o Documento` });
     if (!CV.name.includes(".pdf") || !adjDocument.name.includes(".pdf"))
       return res
         .status(400)
@@ -44,7 +44,7 @@ const handleUserStatusCreation = async (req, res) => {
       const duplicate = results[i];
       if (duplicate) {
         return res.status(400).json({
-          message: `El campo ${noRepeatables[i]} Ya se encuentra regisrtado`,
+          message: `El campo ${noRepeatables[i]} Ya se encuentra registrado`,
         });
       }
     }
