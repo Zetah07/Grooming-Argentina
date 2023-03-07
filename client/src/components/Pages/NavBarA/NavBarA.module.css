@@ -9,6 +9,11 @@
     font-size: 17px;
     font-weight: bold;
 }
+.image{
+    padding: auto;
+    margin: auto;
+    width: 14rem;
+}
 
 .span {
     font-family: "Titulo Gotham Bold";
