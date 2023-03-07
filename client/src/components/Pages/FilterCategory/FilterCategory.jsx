@@ -1,7 +1,7 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from "react-redux";
-import { getNewsByCategory, getCategories } from "../../../Redux/Actions";
+import { /* getNewsByCategory */ getCategories } from "../../../Redux/Actions";
 import { useEffect } from "react";
 
 const FilterCategory = () => {
@@ -15,7 +15,7 @@ const FilterCategory = () => {
     const selectHandler = (event) => {
         const value = event.target.value;
         if (value.length > 0) {
-            dispatch(getNewsByCategory(value));
+            // dispatch(getNewsByCategory(value));
         }
     }
     return (<>
