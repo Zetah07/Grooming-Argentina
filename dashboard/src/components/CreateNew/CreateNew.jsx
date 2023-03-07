@@ -9,7 +9,7 @@ import s from "./CreateNew.module.css";
 import useAuth from "../../hooks/useAuth";
 import showAlert from "../ShowAlert/ShowAlert";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../Redux/Actions"
+import { getCategories } from "../../Redux/Actions";
 
 const CreateNew = () => {
   const { auth } = useAuth();
@@ -30,7 +30,7 @@ const CreateNew = () => {
     provinceOrLocation: "",
   });
 
-  console.log(formNew)
+  console.log(formNew);
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -39,13 +39,15 @@ const CreateNew = () => {
 
   function selectHandler(event) {
     setFormNew({
-      ...formNew, category: [...formNew.category, event.target.value],
+      ...formNew,
+      category: [...formNew.category, event.target.value],
     });
   }
 
   function deleteHandler(el) {
     setFormNew({
-      ...formNew, category: formNew.category.filter((cat) => cat !== el),
+      ...formNew,
+      category: formNew.category.filter((cat) => cat !== el),
     });
   }
 
@@ -87,9 +89,9 @@ const CreateNew = () => {
 
   return (
     <>
-      <div className={s.container1}>
-        <span>Crear Noticia</span>
-      </div>
+      <br />
+      <h1 className={s.title}>Crear Noticia</h1>
+      <br />
       <div className="container">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
@@ -106,7 +108,12 @@ const CreateNew = () => {
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formFile">
               <Form.Label>Imagen en formato JPG, JPEG o PNG</Form.Label>
-              <Form.Control type="file" value={formNew.img} name="img" onChange={changeHandler} />
+              <Form.Control
+                type="file"
+                value={formNew.img}
+                name="img"
+                onChange={changeHandler}
+              />
               <Form.Control.Feedback type="invalid">
                 Por favor subir un archivo en JPG, JPEG o PNG
               </Form.Control.Feedback>
@@ -142,13 +149,19 @@ const CreateNew = () => {
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationCustom04">
               <Form.Label>Categoria</Form.Label>
-              <Form.Select required
-                name="category"
-                onChange={selectHandler}>
-                <option disabled defaultValue selected>Seleccione al menos una categoria</option>
-                {categories ? categories.map(cat => {
-                  return (<option key={cat._id} value={cat.name}>{cat.name}</option>)
-                }) : null}
+              <Form.Select required name="category" onChange={selectHandler}>
+                <option disabled defaultValue selected>
+                  Seleccione al menos una categoria
+                </option>
+                {categories
+                  ? categories.map((cat) => {
+                      return (
+                        <option key={cat._id} value={cat.name}>
+                          {cat.name}
+                        </option>
+                      );
+                    })
+                  : null}
               </Form.Select>
               <Form.Control.Feedback type="invalid">
                 Por favor ingrese al menos una categoria.
@@ -156,7 +169,12 @@ const CreateNew = () => {
               <p>Categorias seleccionadas: </p>
               <div>
                 {formNew.category.map((el) => (
-                  <><span key={el} className="card-subtitle mb-2 text-muted">{el} </span><Button onClick={() => deleteHandler(el)}>x</Button></>
+                  <>
+                    <span key={el} className="card-subtitle mb-2 text-muted">
+                      {el}{" "}
+                    </span>
+                    <Button onClick={() => deleteHandler(el)}>x</Button>
+                  </>
                 ))}
               </div>
             </Form.Group>

@@ -133,6 +133,9 @@ const ManageBlogs = () => {
           setDeleteModal(false);
         }}
       />
+      <br />
+      <h1 className={style.title}>Mis Blogs</h1>
+      <br />
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
@@ -155,7 +158,10 @@ const ManageBlogs = () => {
                 <td>{blog.createdAt}</td>
                 <td>{blog.updatedAt}</td>
                 <td>
-                  <Button href={`blogs/${blog._id}`} variant="primary">
+                  <Button
+                    href={`blogs/${blog._id}`}
+                    style={{ backgroundColor: "#004b82" }}
+                  >
                     Modificar
                   </Button>
                 </td>

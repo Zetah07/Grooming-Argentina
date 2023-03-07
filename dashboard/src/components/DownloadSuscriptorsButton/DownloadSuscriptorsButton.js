@@ -21,7 +21,7 @@ const DownloadSuscriptorsButton = () => {
     }
   };
 
-  return <Button onClick={handleDownload} style={{height:"2rem", paddingTop:"0",paddingBottom:"0"}}>Descargar reporte</Button>;
+  return <Button onClick={handleDownload} style={{ height: "2rem", paddingTop: "0", paddingBottom: "0", backgroundColor: "#004b82" }}>Descargar reporte</Button>;
 };
 
 export default DownloadSuscriptorsButton;

@@ -1,3 +1,21 @@
 .container {
-  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38568F;
+  font-family: "Titulo Gotham";
+  text-align: center;
+}
+
+.btn {
+  background-color: #004b82;
 }

@@ -138,6 +138,9 @@ const ManageNews = () => {
           setDeleteModal(false);
         }}
       />
+      <br />
+      <h1 className={style.title}>Panel de Noticias</h1>
+      <br />
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>
@@ -160,7 +163,11 @@ const ManageNews = () => {
                 <td>{paper.createdAt}</td>
                 <td>{paper.updatedAt}</td>
                 <td>
-                  <Button href={`noticias/${paper._id}`} variant="primary">
+                  <Button
+                    href={`noticias/${paper._id}`}
+                    className={style.btn}
+                    style={{ backgroundColor: "#004b82" }}
+                  >
                     Modificar
                   </Button>
                 </td>

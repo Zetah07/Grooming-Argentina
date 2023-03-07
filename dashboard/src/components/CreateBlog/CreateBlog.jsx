@@ -54,10 +54,10 @@ const CreateNew = () => {
 
   return (
     <>
-      <div className={s.container1}>
-        <span>Crear Blog</span>
-      </div>
-      <div className={s.formContainer}>
+      <br />
+      <h1 className={s.title}>Crear Blog</h1>
+      <br />
+      <div className="container">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">

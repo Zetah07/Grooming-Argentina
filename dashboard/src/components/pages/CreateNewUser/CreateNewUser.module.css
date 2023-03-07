@@ -1,23 +1,32 @@
-.container {
-  padding-top: 65px;
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38568F;
+  font-family: "Titulo Gotham";
+  text-align: center;
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(10px);
-  background-color: rgba(91, 91, 94, 0.192);
+  background-color: rgba(241, 241, 241, 0.294);
   margin: 0 auto;
   width: 40rem;
   height: fit-content;
   margin-top: 1rem;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 3px 5px rgba(29, 29, 29, 0.2);
   padding: 10px;
   border-radius: 1rem;
   color: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .label_volunt {

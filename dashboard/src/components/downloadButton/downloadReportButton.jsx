@@ -21,7 +21,11 @@ const DownloadReportButton = () => {
     }
   };
 
-  return <Button onClick={handleDownload}>Descargar reporte</Button>;
+  return (
+    <Button onClick={handleDownload} style={{ backgroundColor: "#004b82" }}>
+      Descargar reporte
+    </Button>
+  );
 };
 
 export default DownloadReportButton;

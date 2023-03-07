@@ -165,7 +165,7 @@ const ManageVolunteers = () => {
       />
       <br />
       <h1 className={style.title}>
-        Estado de postulados para progama de voluntarios
+        Estado de postulados para programa de voluntarios
       </h1>
       <br />
       <div className={style.searchBarContainer}>
@@ -175,7 +175,7 @@ const ManageVolunteers = () => {
               className={style.searchBarLabel}
               style={{ color: "#38568F" }}
             >
-              Buscar por nombre y/o apellido:
+              Buscar por nombre y apellido:
             </Form.Label>
             <Form.Control
               type="text"
@@ -193,6 +193,7 @@ const ManageVolunteers = () => {
         <thead>
           <tr>
             <th className={style.firstRow}>#</th>
+            <th className={style.firstRow}>Fecha</th>
             <th className={style.firstRow}>Nombre/s</th>
             <th className={style.firstRow}>Apellido/s</th>
             <th className={style.firstRow}>Estado del proceso</th>
@@ -223,6 +224,9 @@ const ManageVolunteers = () => {
                 }}
               >
                 <td>{index + 1}</td>
+                <td className={style.action}>
+                  {new Date(userStatus.createdAt).toLocaleDateString("en-US")}
+                </td>
                 <td>{userStatus.name}</td>
                 <td>{userStatus.lastName}</td>
                 <td className={style.action}>{userStatus.status}</td>
@@ -496,7 +500,10 @@ const ManageVolunteers = () => {
             </p>
           </div>
           <div className={style.reportButtonContainer}>
-            <DownloadReportButton className={style.reportButton} />
+            <DownloadReportButton
+              className={style.reportButton}
+              style={{ backgroundColor: "#004b82" }}
+            />
           </div>
         </div>
       </div>
