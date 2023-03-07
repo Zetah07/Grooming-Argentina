@@ -11,6 +11,7 @@ const Profile = () => {
   const [user, setUser] = useState({});
   const [userStatus, setUserStatus] = useState({});
   const [resgisterUser, setRegisterUser] = useState(false);
+  const [errors, setError] = useState({password:"", email:"", phone: ""})
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,36 +34,43 @@ const Profile = () => {
           sendUserStatus = { ...sendUserStatus, [key]: userStatus[key] };
         }
       }
-      let responseUser = false
-      let responseUserStatus = false
-      if (Object.keys(sendUser).length !== 0) {
-        responseUser = await axios.put(`/users/${auth.user}`, sendUser, {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${auth?.accessToken}`,
-          },
-        });
-      }
-      if (Object.keys(sendUserStatus).length !== 0) {
-        if (resgisterUser === true) {
-         responseUserStatus= await axios.put(`/userstatus/specificInfo`, sendUserStatus, {
+      let responseUser = false;
+      let responseUserStatus = false;
+      if (validatePhone() && validateEmail() && validatePassword){
+
+        if (Object.keys(sendUser).length !== 0) {
+          responseUser = await axios.put(`/users/${auth.user}`, sendUser, {
             withCredentials: true,
             headers: {
               Authorization: `Bearer ${auth?.accessToken}`,
             },
           });
         }
-      }
-      if (!responseUser && !responseUserStatus ){
-        showAlert("No se cambiaron datos", "green");
+        if (Object.keys(sendUserStatus).length !== 0) {
+          if (resgisterUser === true) {
+            responseUserStatus = await axios.put(
+              `/userstatus/specificInfo`,
+              sendUserStatus,
+              {
+                withCredentials: true,
+                headers: {
+                  Authorization: `Bearer ${auth?.accessToken}`,
+                },
+              }
+            );
+          }
+        }
+        if (!responseUser && !responseUserStatus) {
+          showAlert("No se cambiaron datos", "green");
+        } else {
+          showAlert("Actualizado correctamente", "green");
+          setTimeout(() => {
+            window.location.reload(true);
+          }, 2000);
+        }
       }else{
-        showAlert("Actualizado correctamente", "green");
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 2000);
-        
+        alert(`debe corregir los errores: ${errors.email} ${errors.phone} ${errors.password}`)
       }
-
     } catch (error) {
       showAlert(
         "Error al actualizar la informacion que le corresponde, intentelo de nuevo.",
@@ -101,6 +109,71 @@ const Profile = () => {
     }
   };
 
+  const validatePassword = () => {
+    console.log("validate password");
+    if (user.password.length > 0 && user.password.length < 6) {
+      showAlert("La contraseña debe tener al menos 6 caracteres", "red");
+      setError({...errors, password: "La contraseña debe tener al menos 6 caracteres"})
+      return false
+    }else if (user.password.length > 0 && !user.password.match(/[A-Z]/)) {
+      showAlert(
+        "La contraseña debe contener al menos una letra mayúscula",
+        "red"
+      );
+      setError({...errors, password: "La contraseña debe contener al menos una letra mayúscula"})
+      return false
+    }else{
+      setError({...errors, password: ""})
+      return true
+    }
+  };
+
+  const validateEmail = () =>{
+    if (!user.email){
+      showAlert(
+        "El email no puede estar vacio",
+        "red"
+      );
+      setError({...errors, email: "El email no puede estar vacio"})
+      return false
+    }else if(!(/^\S+@\S+\.\S+$/.test(user.email))){
+      showAlert(
+        "Proporcione un email valido",
+        "red"
+      );
+      setError({...errors, email: "Proporcione un email valido"})
+      return false
+    }else {
+      setError({...errors, email: ""})
+      return true
+    }
+  }
+
+  const validatePhone = ()=>{
+    if (userStatus.phone !== undefined){
+      if (!userStatus.phone){
+        showAlert(
+          "El telefono no puede estar vacio",
+          "red"
+        );
+        setError({...errors, phone: "El telefono no puede estar vacio"})
+        return false
+      }else if(!(/^([0-9+ ])*$/.test(userStatus.phone))){
+        showAlert(
+          "Proporcione un numero valido",
+          "red"
+        );
+        setError({...errors, phone: "Proporcione un numero valido"})
+        return false
+      }else {
+        setError({...errors, phone: ""})
+        return true
+      }
+    }else{
+      return true
+    }
+  }
+  
   const handleRegisterChange = (event) => {
     const key = event.target.id;
     const value = event.target.value;
@@ -157,11 +230,9 @@ const Profile = () => {
                       className="form-control"
                       placeholder="Ingresa email a cambiar"
                       onChange={handleProfileChange}
-                      value={user.email ? user.email : "email"}
+                      value={user.email ? user.email : ""}
+                      onBlur={validateEmail}
                     />
-                    <div className="invalid-feedback">
-                      Por favor, ingrese su email
-                    </div>
                   </div>
 
                   <div className="col-md-12">
@@ -172,10 +243,8 @@ const Profile = () => {
                       className="form-control"
                       placeholder="Dejar en blanco si NO desea cambiar su contraseña"
                       onChange={handleProfileChange}
+                      onBlur={validatePassword}
                     />
-                    <div className="invalid-feedback">
-                      Por favor, ingrese su codigo postal
-                    </div>
                   </div>
                 </div>
               </div>
@@ -197,11 +266,9 @@ const Profile = () => {
                     className="form-control"
                     placeholder="Ingresa numero movil"
                     onChange={handleRegisterChange}
-                    value={userStatus.phone ? userStatus.phone : "Telefono"}
+                    value={userStatus.phone ? userStatus.phone : ""}
+                    onBlur={validatePhone}
                   />
-                  <div className="invalid-feedback">
-                    Por favor, ingrese su numero movil
-                  </div>
                 </div>
 
                 <div className="row mt-3">
@@ -214,7 +281,7 @@ const Profile = () => {
                       placeholder="Argentina"
                       onChange={handleRegisterChange}
                       value={
-                        userStatus.location ? userStatus.location : "localidad"
+                        userStatus.location ? userStatus.location : ""
                       }
                     />
                   </div>
@@ -224,7 +291,7 @@ const Profile = () => {
                       id="province"
                       className="form-control"
                       value={
-                        userStatus.province ? userStatus.province : "Provincia"
+                        userStatus.province ? userStatus.province : ""
                       }
                       onChange={handleRegisterChange}
                     >
@@ -269,7 +336,7 @@ const Profile = () => {
                     placeholder="Ingresa direccion"
                     onChange={handleRegisterChange}
                     value={
-                      userStatus.address ? userStatus.address : "Direccion"
+                      userStatus.address ? userStatus.address : ""
                     }
                   />
                   <div className="invalid-feedback">

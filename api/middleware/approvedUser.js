@@ -11,7 +11,7 @@ const approvedUser = async (id) => {
       throw new Error('Identificación de usuario no valida');
     }
 
-    const documentString = JSON.stringify(approvedStatus.document);
+    const documentString = (approvedStatus.document);
     const hashedPassword = await bcrypt.hash(documentString, 10);
 
     const duplicate = await user.findOne({ username: approvedStatus.document }).exec();
