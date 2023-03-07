@@ -3,7 +3,10 @@ import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from "../NewCard/NewCard";
-import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
+// import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
 import { getAllNews, resetFilter, resetPagination } from "../../Redux/Actions/index.js";
 import s from "./News.module.css";
 
@@ -14,14 +17,18 @@ const News = () => {
   const pagination = useSelector((state) => state.pagination);
   const newsPerPage = 6;
   const pageNumberLimit = 5;
+  const firstPage = 1;
   const [items, setItems] = useState([]);
+  const [search, setSearch] = useState({
+    title: ""
+  })
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   if (newspaper.docs && newspaper.docs.length > 0 && items && items.length === 0) setItems([...newspaper.docs]);
 
   useEffect(() => {
-    dispatch(getAllNews(currentPage + 1, newsPerPage));
+    dispatch(getAllNews(currentPage + 1, newsPerPage, search.title));
     dispatch(resetPagination());
   }, [dispatch, currentPage, newsPerPage]);
 
@@ -38,7 +45,6 @@ const News = () => {
       setmaxPageNumberLimit(5);
       setminPageNumberLimit(0);
       setItems([...newspaper.docs]);
-      dispatch(resetFilter());
     }
   }, [dispatch, filter, newspaper]);
 
@@ -79,6 +85,21 @@ const News = () => {
     setCurrentPage(numberPage);
   };
 
+  const searchHandler = (event) => {
+    setSearch({ title: event.target.value });
+  }
+  const submitHandler = () => {
+    const title = search.title
+    if (title.length > 0) {
+      dispatch(getAllNews(firstPage, newsPerPage, title));
+    }
+  }
+
+  const clearHandler = () => {
+    setSearch({ title: "" });
+    dispatch(getAllNews(firstPage, newsPerPage));
+  }
+
   return (
     <>
       <div className={s.container1}>
@@ -88,7 +109,14 @@ const News = () => {
       <div className="container">
         <section className="row pb-3">
           <article className="row g-3 col-12 col-md-12 col-lg-4 order-lg-1">
-            <SearchBar />
+            {/* <SearchBar /> */}
+            <Stack>
+              <Form.Control id="search" onChange={searchHandler} value={search.title} className="me-auto" placeholder="Buscar..." />
+              <Button variant="secondary" onClick={submitHandler} value={search.title}>Buscar</Button>
+              <div className="vr" />
+              <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
+              <div className="vr" />
+            </Stack>
           </article>
           <article className="row g-3 col-12 col-md-12 col-lg-8 ">
             {items.map((paper) => {

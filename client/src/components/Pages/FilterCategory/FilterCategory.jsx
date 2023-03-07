@@ -1,10 +1,17 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
-import { useDispatch } from "react-redux";
-import { getNewsByCategory } from "../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getNewsByCategory, getCategories } from "../../../Redux/Actions";
+import { useEffect } from "react";
 
 const FilterCategory = () => {
     const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories);
+
+    useEffect(() => {
+        dispatch(getCategories());
+    }, [dispatch,]);
+
     const selectHandler = (event) => {
         const value = event.target.value;
         if (value.length > 0) {
@@ -17,10 +24,9 @@ const FilterCategory = () => {
         <div className="vr" />
         <Form.Select aria-label="Default select example" onChange={selectHandler}>
             <option disabled selected>Seleccione una categoria</option>
-            <option value="Convenio">Convenio</option>
-            <option value="Destacadas">Destacadas</option>
-            <option value="test">test</option>
-            <option value="Efemérides">Efemérides</option>
+            {categories ? categories.map(cat => {
+                return <option key={cat._id} value={cat.name}>{cat.name}</option>
+            }) : null}
         </Form.Select>
     </>)
 }

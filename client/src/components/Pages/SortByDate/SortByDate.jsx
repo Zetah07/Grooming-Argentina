@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 
 const SortByDate = () => {
     const dispatch = useDispatch();
+    const page = 1;
+    const blogsPerPage = 10;
     const usl = useLocation().pathname;
     const selectHandler = (event) => {
         const value = event.target.value;
@@ -14,7 +16,7 @@ const SortByDate = () => {
             //     dispatch(getNewsByTitle(title));
             // }
             if (usl === "/blog") {
-                dispatch(getBlogsSortByDate(value));
+                dispatch(getBlogsSortByDate(page, blogsPerPage, value));
             }
         }
     }
