@@ -195,7 +195,11 @@ const ManageBlogsById = () => {
               feedbackType="invalid"
             />
           </Form.Group>
-          <Button type="submit" className={style.button}>
+          <Button
+            type="submit"
+            className={style.button}
+            style={{ backgroundColor: "#004b82" }}
+          >
             Modificar
           </Button>
         </Form>

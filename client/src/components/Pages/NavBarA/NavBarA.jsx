@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import LogoB from "../../../assets/LogoB.png";
 import s from "./NavBarA.module.css";
 import Button from "react-bootstrap/Button";
+import NewsLetter from "../../NewsLetter/NewsLetter";
 
 const NavBarA = () => {
   return (
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={LogoB} alt="Logo" className={s.image}/>
+          <img src={LogoB} alt="Logo" className={s.image} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
@@ -48,8 +49,11 @@ const NavBarA = () => {
                 IOS
               </NavDropdown.Item>
             </NavDropdown>
+            <NewsLetter />
           </Nav>
-          <Button style={{backgroundColor:'#004b82', borderColor:'#004b82'}}>
+          <Button
+            style={{ backgroundColor: "#004b82", borderColor: "#004b82" }}
+          >
             <Nav.Link as={Link} to="/voluntariado">
               Ser Voluntario
             </Nav.Link>

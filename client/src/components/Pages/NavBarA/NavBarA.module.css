@@ -1,23 +1,24 @@
 .containex {
-    display: flex;
-    flex-direction: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    background-color: transparent;
-    text-transform: uppercase;
-    font-family: 'Texto Helvetica';
-    font-size: 17px;
-    font-weight: bold;
+  display: flex;
+  flex-direction: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: 'Texto Helvetica';
+  font-size: 17px;
+  font-weight: bold;
 }
-.image{
-    padding: auto;
-    margin: auto;
-    width: 14rem;
+
+.image {
+  padding: auto;
+  margin: auto;
+  width: 14rem;
 }
 
 .span {
-    font-family: "Titulo Gotham Bold";
-    font-size: larger;
-    color: #7dc8ec;
-    ;
+  font-family: "Titulo Gotham Bold";
+  font-size: larger;
+  color: #7dc8ec;
+  ;
 }
