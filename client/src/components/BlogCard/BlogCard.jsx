@@ -2,13 +2,11 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import {
     FacebookShareButton,
-    FacebookMessengerShareButton,
     LinkedinShareButton,
     TelegramShareButton,
     TwitterShareButton,
     WhatsappShareButton,
     FacebookIcon,
-    FacebookMessengerIcon,
     LinkedinIcon,
     TelegramIcon,
     TwitterIcon,
@@ -28,9 +26,6 @@ export const BlogCard = ({ key, id, author, title, content, createdAt }) => {
                         <FacebookShareButton url={`http://localhost:3000/blog/${id}`} quote={title}>
                             <FacebookIcon size={40} round={true} />
                         </FacebookShareButton>
-                        {/* <FacebookMessengerShareButton url={`http://localhost:3000/blog/${id}`}>
-                            <FacebookMessengerIcon size={40} round={true} />
-                        </FacebookMessengerShareButton> */}
                         <LinkedinShareButton url={`http://localhost:3000/blog/${id}`} title={title}>
                             <LinkedinIcon size={40} round={true} />
                         </LinkedinShareButton>
