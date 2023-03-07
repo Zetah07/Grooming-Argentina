@@ -25,9 +25,11 @@
   font-family: "Titulo Helvetica";
   font-size: 21px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: justify;
 }
   .container1 span, .container3 span {
     background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
@@ -113,4 +115,24 @@
   font-family: "Titulo Gotham";
   color: var(--secondary-color);
   font-size: 55px;
+}
+.socialMedia{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  margin: 7px;
+  margin-top: 0;
+}
+.socialIcon{
+  height: 65%;
+  width: 65%;
+  color: white;
+}
+.socialMedia:hover{
+  -webkit-transform:scale(1.3);
+  transform:scale(1.3);
+}
+.divSocialMedia{
+  justify-content: center;
 }
