@@ -58,7 +58,7 @@ const ManageBlogsById = () => {
     }
 
     try {
-      await axios.put(`http://localhost:3500/blog/${id}`, formBlog, {
+      await axios.put(`/blog/${id}`, formBlog, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,

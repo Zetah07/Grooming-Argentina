@@ -92,7 +92,7 @@ const ManageBlogs = () => {
 
   const deleteHandler = async (id) => {
     await axios
-      .delete(`http://localhost:3500/blog/${id}`, {
+      .delete(`/blog/${id}`, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
