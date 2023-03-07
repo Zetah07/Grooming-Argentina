@@ -205,7 +205,11 @@ const CreateNew = () => {
               className={s.feedback}
             />
           </Form.Group>
-          <Button type="submit" className={s.button}>
+          <Button
+            type="submit"
+            className={s.button}
+            style={{ backgroundColor: "#004b82" }}
+          >
             Crear
           </Button>
         </Form>
