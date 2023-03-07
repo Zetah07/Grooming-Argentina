@@ -1,7 +1,7 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { getBlogsSortByDate } from "../../../Redux/Actions";
+// import { getBlogsSortByDate } from "../../../Redux/Actions";
 import { useLocation } from "react-router-dom";
 
 const SortByDate = () => {
@@ -16,7 +16,7 @@ const SortByDate = () => {
             //     dispatch(getNewsByTitle(title));
             // }
             if (usl === "/blog") {
-                dispatch(getBlogsSortByDate(page, blogsPerPage, value));
+                // dispatch(getBlogsSortByDate(page, blogsPerPage, value));
             }
         }
     }

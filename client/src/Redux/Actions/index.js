@@ -15,16 +15,22 @@ export const ACTIVE_FILTER = "ACTIVE_FILTER";
 export const RESET_PAGINATION = "RESET_PAGINATION";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 
-export const getAllNews = (page, newsPerPage, name) => {
+export const getAllNews = (page, newsPerPage, name, category, province) => {
   return async function (dispatch) {
     let news = {};
-    if (!name) {
-      news = await axios.get(
-        `/news?page=${page}&limit=${newsPerPage}`
-      );
-    } else {
+    if (!name && !category && !province) {
+      news = await axios.get(`/news?page=${page}&limit=${newsPerPage}`);
+    } else if (name) {
       news = await axios.get(
         `/news?page=${page}&limit=${newsPerPage}&name=${name}`
+      );
+    } else if (category) {
+      news = await axios.get(
+        `/news?page=${page}&limit=${newsPerPage}&categoria=${category}`
+      );
+    } else if (province) {
+      news = await axios.get(
+        `/news?page=${page}&limit=${newsPerPage}&provinciaOLocacion=${province}`
       );
     }
     if (news.data) {
@@ -35,16 +41,18 @@ export const getAllNews = (page, newsPerPage, name) => {
   };
 };
 
-export const getAllBlogs = (page, blogsPerPage, title) => {
+export const getAllBlogs = (page, blogsPerPage, title, sort) => {
   return async function (dispatch) {
     let blogs = {};
-    if (!title) {
-      blogs = await axios.get(
-        `/blog?page=${page}&limit=${blogsPerPage}`
-      );
-    } else {
+    if (!title && !sort) {
+      blogs = await axios.get(`/blog?page=${page}&limit=${blogsPerPage}`);
+    } else if (title) {
       blogs = await axios.get(
         `/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
+      );
+    } else if (sort) {
+      blogs = await axios.get(
+        `/blog?page=${page}&limit=${blogsPerPage}&sort=${sort}`
       );
     }
     if (blogs.data) {
@@ -71,69 +79,6 @@ export const getBlogByID = (id) => {
     const blogId = await axios.get(`/blog/${id}`);
     if (blogId.data) {
       dispatch({ type: GET_BLOG_BY_ID, payload: blogId.data });
-    } else {
-      dispatch({ type: ERROR });
-    }
-  };
-};
-
-// export const getNewsByTitle = (page, newsPerPage, name) => {
-//   return async function (dispatch) {
-//     const newsByTitle = await axios.get(
-//       `http://localhost:3500/news?page=${page}&limit=${newsPerPage}&name=${name}`
-//     );
-//     if (newsByTitle.data) {
-//       dispatch({ type: GET_NEWS_BY_TITLE, payload: newsByTitle.data });
-//     } else {
-//       dispatch({ type: ERROR });
-//     }
-//   };
-// };
-
-// export const getBlogByTitle = (page, blogsPerPage, title) => {
-//   return async function (dispatch) {
-//     const blogByTitle = await axios.get(
-//       `http://localhost:3500/blog?page=${page}&limit=${blogsPerPage}&title=${title}`
-//     );
-//     if (blogByTitle.data) {
-//       dispatch({ type: GET_BLOGS_BY_TITLE, payload: blogByTitle.data });
-//     } else {
-//       dispatch({ type: ERROR });
-//     }
-//   };
-// };
-
-export const getNewsByCategory = (name) => {
-  return async function (dispatch) {
-    const newsByCategory = await axios.get(
-      `/news?categoria=${name}`
-    );
-    if (newsByCategory.data) {
-      dispatch({ type: GET_NEWS_BY_CATEGORY, payload: newsByCategory.data });
-    } else {
-      dispatch({ type: ERROR });
-    }
-  };
-};
-
-export const getNewsByProvince = (province) => {
-  return async function (dispatch) {
-    const newsByProvince = await axios.get(
-      `/news?provinciaOLocacion=${province}`
-    );
-    if (newsByProvince.data) {
-      dispatch({ type: GET_NEWS_BY_PROVINCE, payload: newsByProvince.data });
-    } else {
-      dispatch({ type: ERROR });
-    }
-  };
-};
-
-export const getBlogsSortByDate = (page, blogsPerPage, sort) => {
-  return async function (dispatch) {
-    const blogSort = await axios.get(`/blog?sort=${sort}`);
-    if (blogSort.data) {
-      dispatch({ type: GET_BLOGS_SORT_BY_DATE, payload: blogSort.data });
     } else {
       dispatch({ type: ERROR });
     }
