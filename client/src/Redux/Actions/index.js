@@ -175,7 +175,7 @@ export const resetPagination = () => {
 
 export const getCategories = () => {
   return async function (dispatch) {
-    const categories = await axios.get(`http://localhost:3500/category`);
+    const categories = await axios.get(`/category`);
     if (categories.data) {
       dispatch({ type: GET_CATEGORIES, payload: categories.data.categories });
     } else {
