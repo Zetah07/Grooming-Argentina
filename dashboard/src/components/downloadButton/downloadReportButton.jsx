@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const DownloadReportButton = () => {
   const handleDownload = async () => {
     try {
-      const response = await axios.get("http://localhost:3500/reports", {
+      const response = await axios.get("/reports", {
         responseType: "blob",
       });
 
