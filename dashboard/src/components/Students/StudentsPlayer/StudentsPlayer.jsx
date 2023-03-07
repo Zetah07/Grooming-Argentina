@@ -23,7 +23,7 @@ export default function StudentsPlayer() {
   }, [video]);
 
   return (
-    <div className="container1">
+    <div className="container">
       <h1 className="title">{title}</h1>
       {video !== undefined ? (
         <>

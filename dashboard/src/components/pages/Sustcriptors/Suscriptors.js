@@ -24,7 +24,9 @@ const Suscriptores = () => {
 
   return (
     <Container className={style.container}>
-      <h1>Suscriptores a News Letter</h1>
+      <br />
+      <h1 className={style.title}>Suscriptores a News Letter</h1>
+      <br />
       <Table responsive>
         <thead>
           <tr>

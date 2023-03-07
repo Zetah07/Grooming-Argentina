@@ -27,10 +27,39 @@ const Bienvenidos = () => {
   }, []);
 
   return (
-    <div className="container" style={{display:"flex", justifyContent:"center",height:"90vh",alignItems:"center",flexDirection:"column"}}>
-        <img src={logo} alt="Logo grooming Argentina" style={{width:"20rem"}}/>
-        <h1 style={{fontFamily:"Titulo Gotham", fontSize:"3rem",color:"#004b82"}}>Bienvenido:</h1>
-        <h1 style={{fontFamily:"Titulo Gotham", fontSize:"3rem",color:"#004b82"}}>{name}</h1>
+    <div
+      className="container"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        height: "87vh",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <img
+        src={logo}
+        alt="Logo grooming Argentina"
+        style={{ width: "17rem" }}
+      />
+      <h1
+        style={{
+          fontFamily: "Titulo Gotham",
+          fontSize: "3rem",
+          color: "#004b82",
+        }}
+      >
+        Bienvenido:
+      </h1>
+      <h1
+        style={{
+          fontFamily: "Titulo Gotham",
+          fontSize: "3rem",
+          color: "#004b82",
+        }}
+      >
+        {name}
+      </h1>
     </div>
   );
 };

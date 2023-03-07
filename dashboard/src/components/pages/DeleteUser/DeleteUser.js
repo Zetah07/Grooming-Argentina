@@ -39,7 +39,9 @@ const DeleteUser = () => {
 
   return (
     <Container className={style.container}>
-      <h1>Eliminar usuario</h1>
+      <br />
+      <h1 className={style.title}>Crear Nuevo usuario</h1>
+      <br />
       <Table responsive>
         <thead>
           <tr>

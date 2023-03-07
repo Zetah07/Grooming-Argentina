@@ -90,7 +90,9 @@ const CreateNewUser = () => {
 
   return (
     <Container className={styles.container} style={{ textAlign: "center" }}>
-      <h1 style={{ color: "#06204f" }}>Crear Nuevo usuario</h1>
+      <br />
+      <h1 className={styles.title}>Crear Nuevo usuario</h1>
+      <br />
       <Form className={styles.formContainer} onSubmit={handleSubmit(sendData)}>
         {/* Correo electronico */}
         <Form.Group className="d-flex flex-column align-items-start pb-3 col-lg-8">

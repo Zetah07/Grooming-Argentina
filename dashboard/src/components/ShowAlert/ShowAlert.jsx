@@ -1,13 +1,8 @@
 const showAlert = (message, color) => {
   const alertDiv = document.createElement("div");
-  alertDiv.classList.add(
-    "alert",
-    "text-center",
-    "position-fixed",
-    "top-50",
-    "w-100"
-  );
+  alertDiv.classList.add("alert", "text-center", "position-fixed", "w-100");
   alertDiv.style.zIndex = "9999";
+  alertDiv.style.top = "65px";
 
   if (color === "green") {
     alertDiv.classList.add("alert-success");

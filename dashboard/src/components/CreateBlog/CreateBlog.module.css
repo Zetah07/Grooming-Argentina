@@ -1,20 +1,13 @@
-.container1 {
-  padding-top: 65px;
-  background: url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
-  background-size: cover;
-  min-height: 40vh;
-}
-
-.container1 span {
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38568F;
   font-family: "Titulo Gotham";
-  font-style: normal;
-  font-size: 68px;
-  line-height: 97px;
-  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+  margin-bottom: 20px;
 }
 
 .formContainer {
@@ -29,6 +22,7 @@
   width: 90%;
   margin: auto;
   padding-top: 30px;
+
 }
 
 .button {
@@ -36,6 +30,9 @@
   height: 45px;
   font-size: 22px;
   line-height: 33px;
+  background-color: #004b82;
+  background-color: #004b82;
+  margin-bottom: 30px;
 }
 
 .feedback {
