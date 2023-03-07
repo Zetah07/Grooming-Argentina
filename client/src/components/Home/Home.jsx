@@ -22,7 +22,7 @@ const Home = () => {
 
   const getNews = ()=>{
     if(news!==undefined) return;
-    axios.get(`http://localhost:3500/news?limit=3&page=1`)
+    axios.get(`/news?limit=3&page=1`)
         .then(res=>{
             const arr = res.data.docs;
             setNews(arr);
