@@ -1,14 +1,14 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { getNewsByProvince } from "../../../Redux/Actions";
+// import { getNewsByProvince } from "../../../Redux/Actions";
 
 const FilterProvince = () => {
     const dispatch = useDispatch();
     const selectHandler = (event) => {
         const value = event.target.value;
         if (value.length > 0) {
-            dispatch(getNewsByProvince(value));
+            // dispatch(getNewsByProvince(value));
         }
     }
     return (<>

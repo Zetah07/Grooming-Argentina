@@ -17,6 +17,7 @@ router.put("/specificInfo",veryfyJWT,handleUpdateUserStatusInfo)//only user itse
 router.get("/", veryfyJWT, verifyRoles(["admin", "hr"]), handleUserStatus);
 router.get("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), getUserStatusByid); 
 router.put("/:id",veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
+router.put("/",veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
 router.post(
   "/",
   fileUpload({
