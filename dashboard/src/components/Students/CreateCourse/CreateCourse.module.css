@@ -1,52 +1,54 @@
+.container {
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: 500;
+  color: #38568F;
+  font-family: "Titulo Gotham";
+  text-align: center;
+}
+
 .btnZ {
-    background-color: #004b82 !important;
+  background-color: #004b82 !important;
 }
 
 .formPd {
-    padding: 0;
-}
-
-.head_ccourse {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    background-image: url(../../../assets/nodos.jpg);
-    border-radius: 10px;
-}
-
-.head_ccourse h1 {
-    font-family: "Titulo Gotham Bold";
-    color: var(--primary-color);
-
+  padding: 0;
 }
 
 .label_ccourse {
 
-    font-family: "Titulo Helvetica";
+  font-family: "Titulo Helvetica";
 
-    font-size: 18px;
-    padding: 3px;
-    color: var(--primary-color);
+  font-size: 18px;
+  padding: 3px;
+  color: var(--primary-color);
 }
 
 
 
 @media (width <=876px) {
 
-    .formPd {
-        padding: 5rem 2rem 2rem 2rem;
-    }
+  .formPd {
+    padding: 5rem 2rem 2rem 2rem;
+
+  }
 }
 
 .logo_ccourse {
-    width: 150px;
-    height: 75px;
+  width: 150px;
+  height: 75px;
 }
 
 @media(width >=876px) {
 
-    .formPd {
-        padding: 5rem 15rem 2rem 15rem;
-    }
+  .formPd {
+    padding: 5rem 15rem 2rem 15rem;
+  }
 }

@@ -76,9 +76,9 @@ const ManageBlogsById = () => {
 
   return (
     <Container className={style.container}>
-      <div>
-        <h3>Modificar Blog</h3>
-      </div>
+      <br />
+      <h1 className={style.title}>Editar Blog</h1>
+      <br />
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} md="6" controlId="validationCustom01">
@@ -129,7 +129,9 @@ const ManageBlogsById = () => {
             feedbackType="invalid"
           />
         </Form.Group>
-        <Button type="submit">Modificar</Button>
+        <Button type="submit" className={style.button}>
+          Modificar
+        </Button>
       </Form>
     </Container>
   );

@@ -3,19 +3,16 @@ import { Button } from "react-bootstrap";
 import style from "./Unauthorized.module.css";
 
 const Unauthorized = () => {
-  const navigate = useNavigate()
-  const goBack = () => navigate(-1)
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
   return (
-    <div>
-        <div className="containerAlter">
-          <button className={style.button} onClick={goBack}>
-            <h2>
-              Lo siento, <br />
-              no puedo dejarte entrar aqui 🙄
-            </h2>
-          </button>
-        </div>
+    <div className={style.container}>
+      <h1 className={style.title}>Lo siento, no puedo dejarte entrar aqui</h1>
+
+      <Button className={style.button} onClick={goBack}>
+        Volver
+      </Button>
     </div>
-  )
-}
-export default Unauthorized
+  );
+};
+export default Unauthorized;

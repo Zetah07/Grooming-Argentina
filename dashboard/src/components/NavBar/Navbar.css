@@ -115,7 +115,7 @@ span {
   display: flex;
   justify-content: space-between;
   background-color: #004b82;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%
 }

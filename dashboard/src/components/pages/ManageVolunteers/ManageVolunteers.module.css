@@ -1,5 +1,4 @@
 .container {
-  padding-top: 65px;
   margin-bottom: 3rem;
 }
 
@@ -208,6 +207,7 @@ table th {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .reportText {
@@ -241,6 +241,7 @@ table th {
 }
 
 .reportButton {
+  background-color: #004b82;
   width: 250px !important;
 }
 
