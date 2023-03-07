@@ -14,15 +14,14 @@ const NavBarB = () => {
   return (
     <Navbar expand="lg" >
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/home">
           <img src={Logo} alt="Logo" />
-          <span className={s.span}>Grooming</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" style={{color:'#7dc8ec'}} />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
           <Nav /*"me-auto"*/>
             <Nav.Link as={Link} to="/home" className={s.lashes}  style={{color:"white"}}>
-              Home
+              Inicio
             </Nav.Link>
             <Nav.Link as={Link} to="/nosotros" className={s.lashes}  style={{color:"white"}}>
               Nosotros
@@ -36,16 +35,14 @@ const NavBarB = () => {
             <Nav.Link as={Link} to="/contactanos" className={s.lashes}  style={{color:"white"}}>
               contactanos
             </Nav.Link>
-            <div className={s.lashes} style={{marginTop:7, marginRight:2}}>Descarga La APP</div>
+            <div className={s.lashes} style={{marginTop:7, marginRight:2, zIndex:'1000'}}>Descarga La APP</div>
             <NavDropdown
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item
                 as={Link}
                 to="https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2"
-                
                 target="_blank"
-                
               >
                 Android
               </NavDropdown.Item>

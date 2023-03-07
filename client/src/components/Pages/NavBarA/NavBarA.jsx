@@ -12,13 +12,13 @@ const NavBarA = () => {
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={LogoB} alt="Logo" className="w-50 h-50" />
+          <img src={LogoB} alt="Logo" className={s.image}/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
           <Nav /*"me-auto"*/>
             <Nav.Link as={Link} to="/home">
-              Home
+              Inicio
             </Nav.Link>
             <Nav.Link as={Link} to="/nosotros">
               Nosotros

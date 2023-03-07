@@ -16,10 +16,12 @@ const CreateCourse = () => {
     const { auth } = useAuth();
 
     const defaultValues = {
-        title: "",
-        description: "",
-        thumbnail: "",
-        link: "",
+        courseSent: {
+            title: "",
+            description: "",
+            thumbnail: "",
+            link: "",
+        }
     }
 
     const schema = object().shape({

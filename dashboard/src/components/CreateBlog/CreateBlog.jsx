@@ -35,7 +35,7 @@ const CreateNew = () => {
     }
 
     try {
-      await axios.post("http://localhost:3500/blog", formBlog, {
+      await axios.post("/blog", formBlog, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
