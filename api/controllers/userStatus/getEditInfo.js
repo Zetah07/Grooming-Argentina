@@ -23,7 +23,6 @@ const handleGetEditInfo = async (req, res) => {
       .status(400)
       .json({ message: "no se encontro el usuario solicitado" });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({ message: error });
   }
 };

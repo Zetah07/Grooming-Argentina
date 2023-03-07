@@ -4,11 +4,14 @@ const approvedUser = require("../../middleware/approvedUser");
 
 const updateUserStatus = async (req, res) => {
   const { id } = req.params;
-  const { status } = req.body;
-
+  const { status, userDocument } = req.body;
   try {
-    const userStatusToUpdate = await userStatus.findById(id);
-
+    let userStatusToUpdate 
+    if (userDocument) {
+      userStatusToUpdate = await userStatus.findOne({document:userDocument});
+    }else if(id){
+      userStatusToUpdate = await userStatus.findById(id);
+    }
     if (!userStatusToUpdate) {
       return res.status(404).json({ message: "User status not found" });
     }
@@ -26,6 +29,7 @@ const updateUserStatus = async (req, res) => {
     }
 
     if (currentStatus === "aprobado" && (status === "pendiente" || status === "denegado")) {
+      console.log("entro");
       try {
         const deleteResult = await user.findOneAndDelete({ username: userStatusToUpdate.document });
         return res.status(200).json({ message: "User successfully deleted", deleted: deleteResult });
