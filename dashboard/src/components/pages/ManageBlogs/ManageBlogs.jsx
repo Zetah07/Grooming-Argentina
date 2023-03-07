@@ -133,9 +133,6 @@ const ManageBlogs = () => {
           setDeleteModal(false);
         }}
       />
-      <Button variant="primary" href="/panel/crearblog">
-        Crear Blog
-      </Button>
       <Table striped bordered hover responsive="xl">
         <thead>
           <tr>

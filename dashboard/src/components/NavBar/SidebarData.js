@@ -4,6 +4,8 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as HiIcons from "react-icons/hi";
 import * as BiIcons from "react-icons/bi";
+import * as MdIcons from "react-icons/md"
+import * as RiIcons from "react-icons/ri"
 
 const bienvenidos = {
   title: "Bienvenidos",
@@ -50,9 +52,9 @@ const reports = {
 const cursos = {
   title: "Cursos",
   path: "/panel/cursos",
-  icon: <BiIcons.BiBookBookmark/>,
+  icon: <BiIcons.BiBookBookmark />,
   cName: "nav-text",
-}
+};
 
 const newUser = {
   title: "Crear nuevo usuario",
@@ -68,20 +70,44 @@ const delUser = {
   cName: "nav-text",
 };
 
+const createNew = {
+  title: "Crear Noticia",
+  path: "/panel/crearNoticia",
+  icon: <MdIcons.MdPostAdd/>,
+  cName: "nav-text",
+};
+
+const createBlog = {
+  title: "Crear Blog",
+  path: "/panel/crearblog",
+  icon:  <MdIcons.MdPostAdd/>,
+  cName: "nav-text",
+}
+
+const createCourse = {
+  title: "Crear Curso",
+  path: "/panel/crearcurso",
+  icon: <RiIcons.RiVideoUploadLine/>,
+  cName: "nav-text",
+}
+
 export const SidebarData = {
   admin: [
     bienvenidos,
+    newUser,
+    delUser,
     estatusVoluntarios,
     panelNoticias,
+    createNew,
     panelBlogs,
+    createBlog,
     suscriptores,
-    reports,
     cursos,
-    newUser,
-    delUser
+    createCourse,
+    reports,
   ],
-  user: [bienvenidos],
-  hr: [bienvenidos, estatusVoluntarios, reports, suscriptores],
-  volunteer: [bienvenidos,cursos],
-  editor:[bienvenidos,panelBlogs, panelNoticias]
+  user: [bienvenidos,createBlog],
+  hr: [bienvenidos, estatusVoluntarios, reports, suscriptores,createBlog],
+  volunteer: [bienvenidos, cursos,createBlog],
+  editor: [bienvenidos, panelBlogs, panelNoticias, createNew,createBlog],
 };
