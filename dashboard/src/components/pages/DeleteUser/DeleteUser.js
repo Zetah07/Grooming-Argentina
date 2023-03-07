@@ -71,7 +71,7 @@ const DeleteUser = () => {
                         document={user["username"]}
                         succesFn={setSuccesDelete}
                         alert={showAlert}
-
+                        style={{ backgroundColor: "#004b82" }}
                       />
                     </td>
                   </tr>
