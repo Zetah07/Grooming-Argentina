@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../assets/Grooming_Logo.png";
 import s from "./NavBarB.module.css";
 import Button from "react-bootstrap/Button";
-import NewsLetter from "../../NewsLetter/NewsLetter";
+import NewsLetterB from "../../NewsLetterB/NewsLetterB";
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -65,7 +65,7 @@ const NavBarB = () => {
             </Nav.Link>
             <div
               className={s.lashes}
-              style={{ marginTop: 7, marginRight: 2, zIndex: "1000" }}
+              style={{ marginTop: 8, marginRight: 2, zIndex: "1000" }}
             >
               Descarga La APP
             </div>
@@ -86,7 +86,7 @@ const NavBarB = () => {
                 IOS
               </NavDropdown.Item>
             </NavDropdown>
-            <NewsLetter className={s.lashes} style={{ color: "black" }} />
+            <NewsLetterB />
           </Nav>
           <Button
             style={{ backgroundColor: "#004b82", borderColor: "#004b82" }}
