@@ -17,7 +17,7 @@
 }
 
 .modal {
-  top: 21%;
+  top: 21% !important;
 }
 
 .modalHeader {
@@ -66,11 +66,11 @@
   padding: 5px;
   font-size: 15px;
   color: #494848;
-  width: 300px;
+  width: 300px !important;
 }
 
 .button {
-  background-color: #004b82;
+  background-color: #004b82 !important;
   color: white;
   text-align: center;
   font-size: 19px;
