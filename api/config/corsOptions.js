@@ -2,6 +2,7 @@ const  allowOrigins = require("./allowOrigins")
 console.log("cors ,cors options");
 const corsOptions = {
     origin: (origin, callback) =>{
+        console.log(origin);
         if (!origin || allowOrigins.indexOf(origin)!== -1){
             console.log("true ,cors options");
             callback(null, true)
