@@ -143,7 +143,8 @@ const ManageNews = () => {
       <br />
       <Table striped bordered hover responsive="xl">
         <thead>
-          <tr>
+          <tr className={style.rowTitle}>
+            <th>Imagen</th>
             <th>Titulo</th>
             <th>Categoria</th>
             <th>Provincia</th>
@@ -156,12 +157,27 @@ const ManageNews = () => {
         <tbody>
           {items.map((paper) => {
             return (
-              <tr key={paper._id}>
-                <td>{paper.title}</td>
-                <td>{paper.category}</td>
-                <td>{paper.provinceOrLocation}</td>
-                <td>{paper.createdAt}</td>
-                <td>{paper.updatedAt}</td>
+              <tr key={paper._id} className={style.table}>
+                <td>
+                  <img src={paper.img} alt="newsImage" className={style.img} />
+                </td>
+                <td>
+                  <p className={style.text}>{paper.title.toLowerCase()}</p>
+                </td>
+                <td style={{ fontSize: "20px" }}>{paper.category}</td>
+                <td style={{ fontSize: "20px" }}>{paper.provinceOrLocation}</td>
+                <td
+                  style={{
+                    fontSize: "20px",
+                    textAlign: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {new Date(paper.createdAt).toLocaleDateString("en-US")}
+                </td>
+                <td style={{ fontSize: "20px" }}>
+                  {new Date(paper.createdAt).toLocaleDateString("en-US")}
+                </td>
                 <td>
                   <Button
                     href={`noticias/${paper._id}`}
@@ -184,7 +200,7 @@ const ManageNews = () => {
           })}
         </tbody>
       </Table>
-      <div>
+      <div className={style.pagination}>
         <PaginationNewsBlogs
           totalItems={newspaper.totalDocs}
           totalPages={newspaper.totalPages}
