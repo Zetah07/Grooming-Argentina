@@ -159,12 +159,9 @@
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*Vision*/
 .visionDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 70%;
+    width: 80%;
 }
 .visionTitle{
     font-family: "Titulo Gotham";
