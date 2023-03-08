@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import LogoB from "../../../assets/LogoB.png";
 import s from "./NavBarA.module.css";
 import Button from "react-bootstrap/Button";
-import NewsLetter from "../../NewsLetter/NewsLetter";
+import NewsLetterA from "../../NewsLetterA/NewsLetterA";
 
 const NavBarA = () => {
   return (
@@ -49,7 +49,7 @@ const NavBarA = () => {
                 IOS
               </NavDropdown.Item>
             </NavDropdown>
-            <NewsLetter />
+            <NewsLetterA />
           </Nav>
           <Button
             style={{ backgroundColor: "#004b82", borderColor: "#004b82" }}
