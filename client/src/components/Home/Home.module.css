@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 .caroImg{
-  min-width: 100%;
+  min-width: 80%;
   height: 600px;
   background-attachment: fixed;
 }
@@ -20,6 +20,10 @@
   font-family: "Titulo Gotham";
   font-size: 35px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 .caroText{
   font-family: "Titulo Helvetica";
@@ -38,13 +42,7 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
-  .container3 p, .container4 p {
-    font-family: "Titulo Helvetica";
-    font-style: normal;
-    font-size: 28px;
-    color: #ffffff;
-    padding: 15% 1% 0 1%;
-  }
+
   .link{
     color:#ffffff;
     font-family: "Titulo Helvetica";
@@ -84,6 +82,7 @@
   font-family: "Titulo Helvetica";
   padding: 15px 20% 15px 20%;
   text-align: justify;
+  font-size: 28px;
 }
 .divCards{
   display: flex;
@@ -94,7 +93,7 @@
 .container5{
   display: flex;
   flex-wrap: wrap;
-  padding: 10%;
+  padding: 5%;
   justify-content: center;
 }
 .container7{
@@ -107,9 +106,13 @@
 @media (max-width: 1013px) {
   .divHalf {
     width: 100%;
+    padding: 0;
   }
   .container2{
     display: block;
+  }
+  .container3 p, .container4 p{
+    padding: 25px;
   }
 }
 .title{
