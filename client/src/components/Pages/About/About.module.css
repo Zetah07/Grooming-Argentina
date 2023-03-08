@@ -60,7 +60,7 @@
 .textContainer h4{
     font-family: "Titulo Gotham";
     font-style: normal;
-    font-size: 50px;
+    font-size: 45px;
     background-color: black;
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -120,15 +120,19 @@
     flex-direction: column;
     padding: 30px;
     float: right;
+    max-width: 100%;
+    max-height: 100%;
 }
 .textContainer2 h4{
     text-align: left;
     font-family: "Titulo Gotham";
     font-style: normal;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 45px;
     padding: 30px;
     padding-left: 0px;
+    max-width: 100%;
+    max-height: 100%;
 }
 .textContainer2 p{
     text-align: left;
@@ -142,9 +146,6 @@
     padding: 10px;
     padding-left: 0px;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/*Vision*/
-
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*Video*/
 .videoContainer{
@@ -209,7 +210,7 @@
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*Statistics*/
 .statiticsDiv{
-    width: 90%;
+    width: 95%;
 }
 .globo2{
     background: url(../../../assets/About/globo.png);
@@ -222,6 +223,9 @@
 }
 .globo2 h3{
     font-size: 18px;
+}
+.projectsdiv{
+    margin-top: 0px;
 }
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*The team */

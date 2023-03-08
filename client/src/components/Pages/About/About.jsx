@@ -1,8 +1,11 @@
 import imgUs from "../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg";
 import imgMission from "../../../assets/About/NuestraMision.png";
 import imgVision from "../../../assets/About/NuestraVision.png";
+import projects from "../../../assets/About/Statistics/Projects1.png";
+import volunteers from "../../../assets/About/Statistics/voluntarios.png";
+import statistics from "../../../assets/About/Statistics/StadisticContainer.png";
+import provinces from "../../../assets/About/Statistics/provincias.png";
 import s from "./About.module.css";
-import staticsimg from "../../../assets/About/StadisticContainer.png";
 // import team from "../About/AboutPractice";
 // import TeamCard from "../About/TeamCards/Card";
 
@@ -118,16 +121,14 @@ const About = () => {
                 <div className={s.textContainer2}>
                     <h4>Velamos por los derechos de las infancias y adolescencias</h4>
                     <p>
-                    GROOMING ARGENTINA es una organización responsable y 
-                    comprometida caracterizada por la defensa de los derechos 
-                    de las infancias y las adolescencias.
+                    GROOMING ARGENTINA es una organización responsable y comprometida caracterizada por la defensa de 
+                    los derechos de las infancias y las adolescencias.
                     <br />
                     <br />
-                    Una organización social dinámica y participativa, de ámbito de 
-                    actuación tanto local como internacional, integrada por personas 
-                    calificadas e identificadas con la misión y valores institucionales 
-                    que nos representan, con capacidad de adaptación permanente al cambio y abierta a
-                    la coordinación de esfuerzos y recursos con otras organizaciones públicas y privadas.
+                    Una organización social dinámica y participativa, de ámbito de actuación tanto local como internacional, 
+                    integrada por personas calificadas e identificadas con la misión y valores institucionales que nos representan, 
+                    con capacidad de adaptación permanente al cambio y abierta a la coordinación de esfuerzos y recursos con otras 
+                    organizaciones públicas y privadas.
                     </p>
                 </div>
               </div>
@@ -227,12 +228,19 @@ const About = () => {
               <h4>Nuestras <span>estadísticas</span></h4> 
             </div>
           </div>
-          <div class="col">
-            <img
-              class="img-fluid"
-              src={staticsimg}
-              alt="statitics"
-            />
+          <div class="row g-3">
+            <div className={s.projectsdiv} class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+              <img class="img-fluid" src={projects} alt="project" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+              <img class="img-fluid" src={volunteers} alt="volunteers" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+              <img class="img-fluid" src={statistics} alt="statitics" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+              <img class="img-fluid" height="263px" src={provinces} alt="provinces" />
+            </div>
           </div>
         </div>
       </div>
