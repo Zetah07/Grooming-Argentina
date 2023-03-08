@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
-import style from "./NewsLetter.module.css";
+import style from "./NewsLetterA.module.css";
 import showAlert from "../ShowAlert/ShowAlert";
 
-function NewsletterModal() {
+function NewsletterModalA() {
   const [show, setShow] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -117,4 +117,4 @@ function NewsletterModal() {
   );
 }
 
-export default NewsletterModal;
+export default NewsletterModalA;

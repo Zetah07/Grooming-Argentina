@@ -10,7 +10,7 @@
   z-index: -1;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
-    url('../../assets/LandingPage.jpeg');
+    url('../../assets/LandingPage-min.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -92,7 +92,8 @@
     font-size: 11px;
     margin-top: 35px;
   }
-.buttonContainer{
-  margin-bottom: 1rem;
-}
+
+  .buttonContainer {
+    margin-bottom: 1rem;
+  }
 }
