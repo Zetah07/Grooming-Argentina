@@ -5,7 +5,7 @@ const corsOptions = {
         if (!origin || allowOrigins.indexOf(origin)!== -1){
             callback(null, true)
         }else {
-            callback(new Error("Not allawoed by CORS"))
+            callback(new Error("test"))
         }     
     },
     optionsSuccessStatus: 200
