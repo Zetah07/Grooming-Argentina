@@ -2,6 +2,7 @@ const allowOrigins = require("../config/allowOrigins");
 
 const credentials = (req, res, next) => {
   const origin = req.headers.origin;
+  console.log(origin);
   if (allowOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Credentials", true);
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
