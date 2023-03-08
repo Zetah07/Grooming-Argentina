@@ -10,7 +10,7 @@
   z-index: -1;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, rgba(0, 75, 130, 0.45), rgba(0, 75, 130, 0.45)),
-    url(https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    url('../../assets/Landing3.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -45,12 +45,12 @@
 }
 
 
-
 .information span {
-  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  background: linear-gradient(180deg, #7dc8ec 0%, #04115b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  -webkit-text-stroke: 0.7px #7dc8ec;
   background-clip: text;
 }
 
@@ -92,7 +92,8 @@
     font-size: 11px;
     margin-top: 35px;
   }
-.buttonContainer{
-  margin-bottom: 1rem;
-}
+
+  .buttonContainer {
+    margin-bottom: 1rem;
+  }
 }
