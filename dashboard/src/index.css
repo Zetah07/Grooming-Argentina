@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   border: 0;
   outline: 0;
@@ -37,4 +37,13 @@
   --white-color: #ffff;
   --black-color: #000;
   --light-gray-color: #f5f5f5;
+}
+
+
+/***********************Styles Boostrap Changed*******************/
+
+.pagination {
+  --bs-pagination-color: #004b82 !important;
+  --bs-pagination-active-bg: #004b82 !important;
+  --bs-pagination-active-border-color: #004b82 !important;
 }
