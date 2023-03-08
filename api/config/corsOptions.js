@@ -1,11 +1,14 @@
 const  allowOrigins = require("./allowOrigins")
-
+console.log("cors ,cors options");
 const corsOptions = {
     origin: (origin, callback) =>{
+        console.log(origin);
         if (!origin || allowOrigins.indexOf(origin)!== -1){
+            console.log("true ,cors options");
             callback(null, true)
         }else {
-            callback(new Error("Not allawoed by CORS"))
+            console.log("false ,cors options");
+            callback(new Error("test"))
         }     
     },
     optionsSuccessStatus: 200
