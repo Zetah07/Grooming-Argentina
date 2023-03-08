@@ -65,7 +65,7 @@ const NavBarB = () => {
             </Nav.Link>
             <div
               className={s.lashes}
-              style={{ marginTop: 7, marginRight: 2, zIndex: "1000" }}
+              style={{ marginTop: 8, marginRight: 2, zIndex: "1000" }}
             >
               Descarga La APP
             </div>
