@@ -73,27 +73,36 @@ const About = () => {
       <div class="container-fluid" className={s.mainContainer0}>
         <div class="container-fluid" className={s.container2}>
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 container-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3">
+              <img class="img-fluid" className={s.image2} width="500px" height="300px" src={imgMission} alt="mission"/>
+            </div>
+            <div class="col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid">
               <div className={s.textContainer2}>
                 <h4>
                   Trabajamos para combatir el Grooming
                 </h4>
                 <p>
-                  Nuestra misión es ayudar a los niños y adultos jóvenes
-                  desfavorecidos a escapar de un entorno de pobreza, vida en
-                  barrios marginales, analfabetismo e ignorancia, creando así
-                  oportunidades para su integración en la sociedad en general.
+                  GROOMING ARGENTINA es una organización no gubernamental 
+                  que vela por la promoción, protección y defensa de los 
+                  derechos de niños, niñas y adolescentes en el Ecosistema 
+                  de Internet. Nos dedicamos íntegramente a ejecutar medidas 
+                  del orden de la promoción y prevención relacionadas a evitar 
+                  la vulneración de derechos en niños, niñas y adolescentes a 
+                  través de las distintas plataformas tecnológicas.
                   <br />
-                  <br /> El objetivo final de Maatram es proporcionar a todos
-                  sus participantes los conocimientos y habilidades para una
-                  vida digna y sostenible. La visión final de Matram es hacer
-                  una contribución significativa hacia la eliminación de los
-                  barrios marginales urbanos y la pobreza rural.
+                  <br /> 
+                  Las políticas de nuestra Institución están direccionadas y
+                  orientadas a proteger el colectivo de niños, niñas y adolescentes 
+                  así como también el de dinamizar y promover acciones tendientes 
+                  correspondientes a la formación y capacitación de distintos actores 
+                  del sistema pertenecientes al mundo adulto.
+                  <br />
+                  <br />
+                  Dichas políticas son ejecutadas de un modo federal en
+                  todo el territorio de la República. A su vez, nos encontramos ejecutando 
+                  dichas políticas en países de la región.
                 </p>
               </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-6 container-fluid d-flex justify-content-start align-items-center p-3">
-              <img class="img-fluid" className={s.image2} width="500px" height="300px" src={imgMission} alt="mission"/>
             </div>
           </div>
         </div>
@@ -102,11 +111,25 @@ const About = () => {
       <div class="container-fluid" className={s.mainContainer0}>
         <div class="container-fluid" className={s.container2}>
             <div class="row">
-              <div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3">
                 <img class="img-fluid" className={s.image3} width="500px" height="300px" src={imgVision} alt="vision" />
               </div>
-              <div>
-
+              <div class="col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid">
+                <div className={s.textContainer2}>
+                    <h4>Velamos por los derechos de las infancias y adolescencias</h4>
+                    <p>
+                    GROOMING ARGENTINA es una organización responsable y 
+                    comprometida caracterizada por la defensa de los derechos 
+                    de las infancias y las adolescencias.
+                    <br />
+                    <br />
+                    Una organización social dinámica y participativa, de ámbito de 
+                    actuación tanto local como internacional, integrada por personas 
+                    calificadas e identificadas con la misión y valores institucionales 
+                    que nos representan, con capacidad de adaptación permanente al cambio y abierta a
+                    la coordinación de esfuerzos y recursos con otras organizaciones públicas y privadas.
+                    </p>
+                </div>
               </div>
             </div>
         </div>
@@ -175,14 +198,14 @@ const About = () => {
                   internacional para aunar esfuerzos en el logro de los objetivos.
                 </p>
               </div>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-6">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <h3>Convicción</h3>
                 <p>
                   Trabajamos junto a organizaciones públicas, privadas y organismos de cooperación 
                   internacional para aunar esfuerzos en el logro de los objetivos.
                 </p>
               </div>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-6">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <h3>Voluntariado Social</h3>
                 <p>
                   Contamos con el cuerpo de voluntarios/as en todo el país que aportan el recurso 
