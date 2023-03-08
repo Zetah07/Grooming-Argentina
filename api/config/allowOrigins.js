@@ -6,7 +6,8 @@ const allowOrigins = [
 "https://celadon-sprite-8d4f64.netlify.app",
 "http://localhost:3000",
 "http://localhost:3001",
-"http://localhost:3002"
+"http://localhost:3002",
+"https://grooming-backend.up.railway.app"
 ]
 
 module.exports = allowOrigins
