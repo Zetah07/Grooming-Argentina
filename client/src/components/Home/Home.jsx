@@ -16,7 +16,7 @@ import { GrFacebookOption } from "react-icons/gr";
 import { SiRoblox } from "react-icons/si";
 import Cards from "../Card/Card";
 import Row from "react-bootstrap/Row";
-import axios from 'axios';
+import axios from "axios";
 import NewCard from "../NewCardHome/NewCard";
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from "react-router-dom";
@@ -24,6 +24,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [news, setNews] = useState();
+
 
   const getNews = ()=>{
     if(news!==undefined) return;
