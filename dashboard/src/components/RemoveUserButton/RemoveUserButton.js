@@ -18,12 +18,12 @@ const RemoveUserButton = (props) => {
           Authorization: `Bearer ${auth?.accessToken}`,
         },
       });
-      await axios.put("/userStatus",{userDocument:document,status:"denegado" }, {
+      await axios.put("/userStatus", { userDocument: document, status: "denegado" }, {
         headers: {
           Authorization: `Bearer ${auth?.accessToken}`,
         },
-      }).catch((error)=>{
-        if (!error.response.status === 404){
+      }).catch((error) => {
+        if (!error.response.status === 404) {
           console.log(error);
           throw Error(error)
         }
@@ -39,7 +39,7 @@ const RemoveUserButton = (props) => {
   return (
     <>
       <div onClick={() => setShowModal(true)}>
-        <Button>Borrar usuario</Button>
+        <Button style={{ backgroundColor: "#004b82" }}>Borrar usuario</Button>
       </div>
       {showModal && (
         <ConfirmationModal
