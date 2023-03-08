@@ -16,6 +16,13 @@ app.use(credentials)
 //Cross Origin Resource Service
 app.use(cookieParser())
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
+
 app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
@@ -30,5 +37,6 @@ mongoose.connection.once("open", () => {
   console.log("Connected to database")
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 })
+
 
 
