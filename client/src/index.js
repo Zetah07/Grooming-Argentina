@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_REST_API
+axios.defaults.baseURL = process.env.REACT_APP_REST_API;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
