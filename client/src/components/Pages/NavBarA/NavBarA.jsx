@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import LogoB from "../../../assets/LogoB.png";
 import s from "./NavBarA.module.css";
 import Button from "react-bootstrap/Button";
-import NewsLetter from "../../NewsLetter/NewsLetter";
+import NewsLetterA from "../../NewsLetterA/NewsLetterA";
 
 const NavBarA = () => {
   return (
@@ -18,22 +18,28 @@ const NavBarA = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={s.containex}>
           <Nav /*"me-auto"*/>
-            <Nav.Link as={Link} to="/home">
+            <Nav.Link as={Link} to="/home" className={s.lashes}>
               Inicio
             </Nav.Link>
-            <Nav.Link as={Link} to="/nosotros">
+            <Nav.Link as={Link} to="/nosotros" className={s.lashes}>
               Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/noticias">
+            <Nav.Link as={Link} to="/noticias" className={s.lashes}>
               Noticias
             </Nav.Link>
-            <Nav.Link as={Link} to="/blog">
+            <Nav.Link as={Link} to="/blog" className={s.lashes}>
               Blog
             </Nav.Link>
-            <Nav.Link as={Link} to="/contactanos">
+            <Nav.Link as={Link} to="/contactanos" className={s.lashes}>
               Contactanos
             </Nav.Link>
-            <NavDropdown title="Descarga la APP" id="basic-nav-dropdown">
+            <div
+              className={s.lashes}
+              style={{ marginTop: 7, marginRight: 2, zIndex: "1000" }}
+            >
+              Descarga La APP
+            </div>
+            <NavDropdown id="basic-nav-dropdown">
               <NavDropdown.Item
                 as={Link}
                 to="https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2"
@@ -49,7 +55,7 @@ const NavBarA = () => {
                 IOS
               </NavDropdown.Item>
             </NavDropdown>
-            <NewsLetter />
+            <NewsLetterA />
           </Nav>
           <Button
             style={{ backgroundColor: "#004b82", borderColor: "#004b82" }}
