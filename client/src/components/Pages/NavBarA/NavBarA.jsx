@@ -24,7 +24,7 @@ const NavBarA = () => {
             <Nav.Link as={Link} to="/nosotros" className={s.lashes}>
               Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/noticias className={s.lashes}">
+            <Nav.Link as={Link} to="/noticias" className={s.lashes}>
               Noticias
             </Nav.Link>
             <Nav.Link as={Link} to="/blog" className={s.lashes}>
