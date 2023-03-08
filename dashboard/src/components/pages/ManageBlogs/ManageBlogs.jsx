@@ -155,8 +155,8 @@ const ManageBlogs = () => {
                 <td>{blog.title}</td>
                 <td>{blog.subtitle}</td>
                 <td>{blog.author}</td>
-                <td>{blog.createdAt}</td>
-                <td>{blog.updatedAt}</td>
+                <td>{new Date(blog.createdAt).toLocaleDateString("en-US")}</td>
+                <td>{new Date(blog.createdAt).toLocaleDateString("en-US")}</td>
                 <td>
                   <Button
                     href={`blogs/${blog._id}`}
