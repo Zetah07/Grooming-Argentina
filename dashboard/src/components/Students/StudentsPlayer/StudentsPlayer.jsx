@@ -8,6 +8,7 @@ export default function StudentsPlayer() {
   const { id } = useParams();
   const [video, setVideo] = useState();
   const [title, setTitle] = useState("");
+  const { REACT_APP_ACCESS_TOKEN } = process.env;
 
   const handleReady = (player) => {
     setTitle(player.getInternalPlayer().element.title);
@@ -30,7 +31,7 @@ export default function StudentsPlayer() {
           <div className="player-wrapper">
             <ReactPlayer
               className="react-player"
-              url={`${video.link}?access_token=`}
+              url={`${video.link}?access_token=${REACT_APP_ACCESS_TOKEN}`}
               controls
               width="70%"
               height="100%"
