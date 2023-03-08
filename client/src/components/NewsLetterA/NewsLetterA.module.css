@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: 'Texto Helvetica';
+  font-size: 16px;
+  font-weight: 200;
+  padding-top: 7.5px;
+}
+
+.link {
+  text-decoration: none;
+  color: #000000A6;
+}
+
+.modal {
+  top: 21%;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #004b82;
+  color: white;
+}
+
+
+.modalTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Titulo Gotham";
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  text-align: center;
+  padding: 5px;
+}
+
+.label {
+  font-family: "Titulo Gotham";
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  color: #004b82;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.input {
+  height: 40px;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 15px;
+  color: #494848;
+  width: 300px;
+}
+
+.button {
+  background-color: #004b82;
+  color: white;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 5px;
+  width: 300px;
+  height: 40px;
+  margin-top: 20px;
+}
