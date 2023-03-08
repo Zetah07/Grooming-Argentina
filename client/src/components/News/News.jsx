@@ -158,7 +158,7 @@ const News = () => {
                   key={paper._id}
                   id={paper._id}
                   title={paper.title}
-                  image={paper.img}
+                  image={paper.img.url}
                   description={paper.description}
                   provinceOrLocation={paper.provinceOrLocation}
                   createdAt={paper.createdAt}
