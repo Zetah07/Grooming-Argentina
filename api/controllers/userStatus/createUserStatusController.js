@@ -1,5 +1,16 @@
 const userStatus = require("../../models/userStatus");
 const user = require("../../models/user");
+const cloudinary = require("../../config/cloudinary");
+const firebase = require("firebase/app");
+const firebaseConfig = require("../../config/firebaseConfig");
+const {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} = require("firebase/storage");
+firebase.initializeApp(firebaseConfig);
+const storage = getStorage();
 
 const handleUserStatusCreation = async (req, res) => {
   try {
@@ -15,7 +26,7 @@ const handleUserStatusCreation = async (req, res) => {
         .json({ message: `Los archivos deben ser tipo PDF` });
 
     for (const key in userRegister) {
-      if (key !== "howManyHours" && key !=="whoGroominPerson") {
+      if (key !== "howManyHours" && key !== "whoGroominPerson") {
         const element = userRegister[key];
         if (!element) {
           return res
@@ -48,32 +59,32 @@ const handleUserStatusCreation = async (req, res) => {
         });
       }
     }
-
-    const pathCV =
-      __dirname + "../../../files/CVs/" + userRegister["document"] + ".pdf";
-    const pathDcoument =
-      __dirname +
-      "../../../files/copyDocument/" +
-      userRegister["document"] +
-      ".pdf";
-
-    CV.mv(pathCV, (err) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-    });
-    adjDocument.mv(pathDcoument, (err) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    let cvURL;
+    let dniURL;
+    const storageRef = ref(
+      storage,
+      "/CV/" + `${userRegister.document}` + ".pdf"
+    );
+    await uploadBytes(storageRef, CV.data).then(async (snapshot) => {
+      await getDownloadURL(storageRef).then((url) => {
+        cvURL = url;
+      });
     });
 
-    const brithDate = new Date(userRegister["birthDate"]);
+    const storageRef2 = ref(
+      storage,
+      "/DNI/" + `${userRegister.document}` + ".pdf"
+    );
+    await uploadBytes(storageRef2, adjDocument.data).then(async (snapshot) => {
+      await getDownloadURL(storageRef2).then((url) => {
+        dniURL = url;
+      });
+    });
     const userStatusCorrection = {
       ...userRegister,
       status: "pendiente",
-      adjDocument: pathDcoument,
-      CV: pathCV,
+      adjDocument: dniURL,
+      CV: cvURL,
     };
 
     const newUserStatus = new userStatus(userStatusCorrection);
