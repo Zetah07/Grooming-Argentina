@@ -1,254 +1,389 @@
 /*Banner*/
 .banner {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
-    background-size: cover;
-    min-height: 40vh;
-    max-width: 100%;
-    min-width: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
+  background-size: cover;
+  min-height: 40vh;
+  max-width: 100%;
+  min-width: 100%;
+  margin-bottom: 30px;
 }
+
 .banner h1 {
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-size: 68px;
-    line-height: 97px;
-    background-color: var(--bs-white);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-size: 68px;
+  line-height: 97px;
+  background-color: var(--bs-white);
+  padding-top: 30px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
+
 .banner span {
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-size: 68px;
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    text-align: center;
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-size: 68px;
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*Mission*/
-.mainContainer0{
-    display: flex;
-    justify-content: flex-end;
+.mainContainer0 {
+  display: flex;
+  justify-content: flex-end;
 }
-.container1{
-    background-color: #e7edf1;
-    width: 95%;
-    padding: 0px;
-    margin: 0px;
+
+.container1 {
+  width: 95%;
+  padding: 0px;
+  margin: 0px;
 }
-.image{
-    max-width: 100%;
-    max-height: 100%;
-    margin: 50px;
-    margin-right: 0px;
-    border-radius: 30px;
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 50px;
+  margin-right: 0px;
+  border-radius: 30px;
 }
-.textContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 50px;
-    padding-top: 0px;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    max-width: 100%;
-    max-height: 100%;
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  padding-top: 0px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  max-width: 100%;
+  max-height: 100%;
+
 }
-.textContainer h4{
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-size: 45px;
-    background-color: black;
-    -webkit-background-clip: text;
-    -webkit-background-clip: text;
-    background-clip: text;
-    max-width: 100%;
-    max-height: 100%;
+
+.textContainer h4 {
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-size: 40px;
+  background-color: black;
+  -webkit-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  max-width: 100%;
+  max-height: 100%;
+
 }
-.textContainer span{
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-family: "Titulo Gotham";
-    background-color:var(--bs-info);
-    -webkit-background-clip: text;
-    -webkit-background-clip: text;
-    background-clip: text;
+
+.spanstatistics {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
+
+.textContainer span {
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: "Titulo Gotham";
+  background-color: var(--bs-info);
+  -webkit-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+}
+
 .textContainer p {
-    text-align: left;
-    font-family: "Texto Thin";
-    font-style: normal;
-    font-size: 20px;
+  text-align: left;
+  font-family: "Texto Thin";
+  font-style: normal;
+  font-size: 20px;
+  text-align: center;
 }
-.title{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 30px;
-    padding-left: 0;
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 30px;
+  padding-left: 0;
 }
-.globo{
-    background: url(../../../assets/About/globo.png);
-    background-size: 100% 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 180px;
-    height: 80px;
+
+.globo {
+  background: url(../../../assets/About/globo.png);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 180px;
+  height: 80px;
 }
-.globo h3, .globo2 h3{
-    font-family: "Titulo Helvetica";
-    font-size: 16px;
-    font-weight: bold;
+
+.globo h3,
+.globo2 h3 {
+  font-family: "Titulo Helvetica";
+  font-size: 16px;
+  font-weight: bold;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*Global mission*/
-.container2{
-    width: 100%;
-    padding: 0px;
+.container2 {
+  width: 100%;
+  padding: 0px;
 }
-.textContainer2{
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    padding: 30px;
-    float: right;
-    max-width: 100%;
-    max-height: 100%;
+
+.textContainer2 {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 30px;
+  float: right;
+  max-width: 100%;
+  max-height: 100%;
 }
-.textContainer2 h4{
-    text-align: left;
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 45px;
-    padding: 30px;
-    padding-left: 0px;
-    max-width: 100%;
-    max-height: 100%;
+
+.textContainer2 h4 {
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  padding: auto;
+  text-align: center;
+
 }
-.textContainer2 p{
-    text-align: left;
-    font-family: "Texto Thin";
-    font-style: normal;
-    font-size: 22px;
+
+.textContainerinfant {
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-.image2{
-    max-width: 100%;
-    max-height: 100%;
-    padding: 10px;
-    padding-left: 0px;
+
+.textContainer2 p {
+  text-align: left;
+  font-family: "Texto Thin";
+  font-style: normal;
+  font-size: 22px;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.image2 {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*Video*/
-.videoContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    padding-top: 20px;
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  padding-top: 20px;
 }
-.video{
-    max-width: 100%;
-    max-width: 100%;
-    border-radius: 20px;
+
+.video {
+  max-width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*Vision*/
-.visionDiv{
-    padding-top: 0px;
-    padding-bottom: 0px;
-    width: 80%;
+.visionDiv {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 80%;
 }
-.visionTitle{
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-size: 56px;
-    font-weight: bold;
-    background-color: black;
-    -webkit-background-clip: text;
-    -webkit-background-clip: text;
-    background-clip: text;
-    max-width: 100%;
-    max-height: 100%;
-    padding-bottom: 20px;
+
+.visionTitle {
+  font-family: "Titulo Gotham";
+  font-style: normal;
+  font-size: 45px;
+  font-weight: bold;
+  background-color: black;
+  -webkit-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  max-width: 100%;
+  max-height: 100%;
+  padding-bottom: 20px;
 }
-.visionTitle span{
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-family: "Titulo Gotham";
-    background-color:var(--bs-info);
-    -webkit-background-clip: text;
-    -webkit-background-clip: text;
-    background-clip: text;
+
+.visionTitle span {
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: "Titulo Gotham";
+  background-color: var(--bs-info);
+  -webkit-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
+
 .visionDiv h3 {
-    font-family: "Texto Helvetica";
-    font-style: normal;
-    font-size: 30px;
-    font-weight:600;
-    background-color: black;
-    -webkit-background-clip: text;
-    -webkit-background-clip: text;
+  font-family: "Texto Helvetica";
+  font-style: normal;
+  font-size: 30px;
+  font-weight: 600;
+  background-color: black;
+  -webkit-background-clip: text;
+  -webkit-background-clip: text;
 }
-.visionDiv p{
-    font-family: "Texto Thin";
-    font-style: normal;
-    font-size: 22px;
-    padding-bottom: 30px;
+
+.visionDiv p {
+  font-family: "Texto Thin";
+  font-style: normal;
+  font-size: 22px;
+  padding-bottom: 30px;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*Statistics*/
-.statiticsDiv{
-    width: 95%;
+.statiticsDiv {
+  width: 95%;
 }
-.globo2{
-    background: url(../../../assets/About/globo.png);
-    background-size: 100% 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 180px;
-    height: 80px;
+
+.globo2 {
+  background: url(../../../assets/About/globo.png);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 180px;
+  height: 80px;
 }
-.globo2 h3{
-    font-size: 18px;
+
+.globo2 h3 {
+  font-size: 18px;
 }
-.projectsdiv{
-    margin-top: 0px;
+
+.projectsdiv {
+  margin-top: 0px;
 }
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*The team */
-.teamContainer{
-    background-color: #e7edf1;
-    border-top-right-radius: 70px;
-    width: 98%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.teamContainer {
+  background-color: #e7edf1;
+  border-top-right-radius: 70px;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.bodyContainer{
-    padding-top: 80px;
-    width: 90%;
+
+.bodyContainer {
+  padding-top: 80px;
+  width: 90%;
 }
-.divButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 0px;
-    padding: 20px;
+
+.divButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0px;
+  padding: 20px;
 }
-.link{
-    color: white;
+
+.link {
+  color: white;
 }
