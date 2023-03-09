@@ -8,7 +8,7 @@ const getNews = async (req, res) => {
     const options = {
         page: page,
         limit: limit,
-        sort: { _id: 1, createdAt: -1 },
+        sort: { createdAt: -1 },
     };
 
     try {
