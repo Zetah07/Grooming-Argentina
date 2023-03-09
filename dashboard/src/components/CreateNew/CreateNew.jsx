@@ -35,7 +35,7 @@ const CreateNew = () => {
         title: string()
             .required("El campo no puede estar vacío")
             .min(3, "Debe tener al menos 3 caracteres")
-            .max(40, "Debe tener menos de 40 caracteres"),
+            .max(100, "Debe tener menos de 100 caracteres"),
         description: string()
             .required("El campo no puede estar vacío")
             .min(3, "Debe tener al menos 3 caracteres"),
