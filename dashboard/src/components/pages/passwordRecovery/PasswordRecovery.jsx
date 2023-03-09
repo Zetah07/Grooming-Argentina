@@ -24,6 +24,7 @@ const PasswordRecovery = () => {
 
       if (response.status === 200) {
         showAlert(response.data.message, "green");
+        setEmail("")
       } else {
         throw new Error("Correo no registrado");
       }
