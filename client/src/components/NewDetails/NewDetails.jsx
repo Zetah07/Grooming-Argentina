@@ -7,13 +7,11 @@ import { getNewByID } from "../../Redux/Actions";
 import style from "./NewDetails.module.css";
 import {
   FacebookShareButton,
-  FacebookMessengerShareButton,
   LinkedinShareButton,
   TelegramShareButton,
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
-  FacebookMessengerIcon,
   LinkedinIcon,
   TelegramIcon,
   TwitterIcon,
@@ -32,16 +30,20 @@ const NewDetails = () => {
       <div class="card">
         <h2 class={`card-title ${style.title}`}>{newID.title}</h2>
         <div className={style.img}>
-          <img
-            src={newID.img}
-            alt={newID.title}
-            class="card-img-top"
-            style={{ width: "50%" }}
-          />
+          {newID.img ?
+            <img
+              src={newID.img.url}
+              alt={newID.title}
+              class="card-img-top"
+              style={{ width: "50%" }}
+            /> :
+            null}
         </div>
         <div class="card-body">
           <p class="card-subtitle mb-2 text-muted" className={style.text}>
-            Categoria: {newID.category}
+            Categorias: {newID.category.map(cat => {
+              return <span class="card-subtitle mb-2 text-muted" className={style.text}>|{cat}| </span>
+            })}
           </p>
           <p class="card-subtitle mb-2 text-muted" className={style.text}>
             Provincia: {newID.provinceOrLocation}
@@ -62,9 +64,6 @@ const NewDetails = () => {
             >
               <FacebookIcon size={40} round={true} />
             </FacebookShareButton>
-            {/* <FacebookMessengerShareButton url={`http://localhost:3000/noticias/${newID._id}`}>
-                            <FacebookMessengerIcon size={40} round={true} />
-                        </FacebookMessengerShareButton> */}
             <LinkedinShareButton
               url={`http://localhost:3000/noticias/${newID._id}`}
               title={newID.title}

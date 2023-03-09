@@ -54,7 +54,7 @@ function Navbar() {
         </div>
         <div className="dropDown">
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images.png"
             className="user"
             alt="Black and White Portrait of a Man"
             loading="lazy"
