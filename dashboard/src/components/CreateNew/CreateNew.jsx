@@ -31,20 +31,6 @@ const CreateNew = () => {
         provinceOrLocation: "",
     });
 
-    function selectHandler(event) {
-        setDefaultValues({
-            ...defaultValues,
-            category: [...defaultValues.category, event.target.value],
-        });
-    }
-
-    function deleteHandler(el) {
-        setDefaultValues({
-            ...defaultValues,
-            category: defaultValues.category.filter((cat) => cat !== el),
-        });
-    }
-
     const schema = object().shape({
         title: string()
             .required("El campo no puede estar vacío")
@@ -54,7 +40,7 @@ const CreateNew = () => {
             .required("El campo no puede estar vacío")
             .min(3, "Debe tener al menos 3 caracteres"),
         link: string()
-            .required("El campo no puede estar vacío"),
+            .url("Ingrese una URL válida"),
         provinceOrLocation: string()
             .required("El campo no puede estar vacío"),
         category: array()
@@ -160,7 +146,7 @@ const CreateNew = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="4">
-                            <Form.Label>Link adicional</Form.Label>
+                            <Form.Label>Link adicional (opcional)</Form.Label>
                             <InputGroup hasValidation>
                                 <Form.Control
                                     type="Url"
@@ -220,7 +206,6 @@ const CreateNew = () => {
                                                 type="checkbox"
                                                 id={cat._id}
                                                 value={cat.name}
-                                                required
                                                 isInvalid={!!errors.category}
                                                 isValid={touchedFields.category && !errors.category}
                                                 {...register("category")}

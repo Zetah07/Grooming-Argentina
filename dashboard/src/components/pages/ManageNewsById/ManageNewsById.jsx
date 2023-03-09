@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getNewByID, resetFilter } from "../../../Redux/Actions/index";
+import { getNewByID, resetFilter, getCategories } from "../../../Redux/Actions/index";
 import { useParams } from "react-router-dom";
 import axios from "../../../api/axios";
 import Button from "react-bootstrap/Button";
@@ -17,9 +17,12 @@ const ManageBlogsById = () => {
   const newId = useSelector((state) => state.newID);
   const filter = useSelector((state) => state.filter);
   const { id } = useParams();
+  const categories = useSelector((state) => state.categories);
+  const pronvinces = ["Buenos Aires", "Ciudad Autónoma de Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego, Antártida e Islas del Atlántico Sur", "Tucumán"]
 
   useEffect(() => {
     dispatch(getNewByID(id));
+    dispatch(getCategories());
   }, [dispatch, id]);
 
   const [formNew, setFormNew] = useState({
@@ -28,7 +31,7 @@ const ManageBlogsById = () => {
     img: "",
     description: "",
     link: "",
-    category: "",
+    category: [],
     provinceOrLocation: "",
   });
 
@@ -37,7 +40,7 @@ const ManageBlogsById = () => {
       setFormNew({
         id: newId._id,
         title: newId.title,
-        img: newId.img,
+        img: newId.img.url,
         description: newId.description,
         link: newId.link,
         category: newId.category,
@@ -48,6 +51,7 @@ const ManageBlogsById = () => {
   }, [
     dispatch,
     filter,
+    newId._id,
     newId.title,
     newId.img,
     newId.description,
@@ -90,7 +94,7 @@ const ManageBlogsById = () => {
         img: "",
         description: "",
         link: "",
-        category: "",
+        category: [],
         provinceOrLocation: "",
       });
       setValidated(false);
@@ -98,6 +102,18 @@ const ManageBlogsById = () => {
       showAlert("No se pudo modificar la noticia, intente de nuevo.", "red");
     }
   };
+
+  function selectHandler(event) {
+    setFormNew({
+      ...formNew, category: [...formNew.category, event.target.value],
+    });
+  }
+
+  function deleteHandler(el) {
+    setFormNew({
+      ...formNew, category: formNew.category.filter((temp) => temp !== el),
+    });
+  }
 
   return (
     <>
@@ -107,7 +123,7 @@ const ManageBlogsById = () => {
         <br />
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
-            <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Group as={Col} md="6" controlId="validationCustom01">
               <Form.Label>Titulo:</Form.Label>
               <Form.Control
                 required
@@ -118,19 +134,7 @@ const ManageBlogsById = () => {
               />
               <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
-              <Form.Label>Imagen URL:</Form.Label>
-              <Form.Control
-                required
-                type="Url"
-                placeholder="Ingresar el enlace de la Imagen"
-                value={formNew.img}
-                name="img"
-                onChange={changeHandler}
-              />
-              <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+            <Form.Group as={Col} md="6" controlId="validationCustomUsername">
               <Form.Label>Link adicional</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
@@ -147,26 +151,56 @@ const ManageBlogsById = () => {
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom03">
               <Form.Label>Provincia o Localización:</Form.Label>
-              <Form.Control
-                type="text"
+              <Form.Select
                 required
-                value={formNew.provinceOrLocation}
+                type="text"
                 name="provinceOrLocation"
+                value={formNew.provinceOrLocation}
                 onChange={changeHandler}
-              />
+              >
+                <option disabled defaultValue selected>
+                  Seleccione al menos una categoria
+                </option>
+                {pronvinces
+                  ? pronvinces.map((prov) => {
+                    return (
+                      <option key={prov} value={prov}>
+                        {prov}
+                      </option>
+                    );
+                  })
+                  : null}
+              </Form.Select>
+              <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Por favor ingrese la provincia o Localización de la noticia.
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationCustom04">
               <Form.Label>Categoria</Form.Label>
-              <Form.Control
-                type="text"
+              <Form.Select
                 required
-                value={formNew.category}
                 name="category"
-                onChange={changeHandler}
-              />
+                value={formNew.category}
+                onChange={selectHandler}
+              >
+                <option disabled defaultValue> Selecciona al menos una categoria: </option>
+                {categories.map((cat) => {
+                  return (
+                    <option key={cat.name} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  );
+                })}
+              </Form.Select>
+              <br />
+              <h4>Categorias seleccionadas: </h4>
+              <div>
+                {formNew.category.map((el) => (
+                  <><span key={el}>{el} </span><Button onClick={() => deleteHandler(el)}>x</Button></>
+                ))}
+              </div>
+              <Form.Control.Feedback>Correcto!!!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Por favor ingrese al menos una categoria.
               </Form.Control.Feedback>
