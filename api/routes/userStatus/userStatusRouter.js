@@ -12,12 +12,13 @@ const veryfyJWT = require("../../middleware/verifyJWT");
 const verifyRoles = require("../../middleware/verifyRoles");
 const handleUpdateUserStatusInfo = require("../../controllers/userStatus/upadateUserStatusInfoController");
 
-router.get("/specificInfo/:user",veryfyJWT, handleGetEditInfo)//only user itself
-router.put("/specificInfo",veryfyJWT,handleUpdateUserStatusInfo)//only user itself
+router.get("/specificInfo/:user", veryfyJWT, handleGetEditInfo); //only user itself
+router.put("/specificInfo", veryfyJWT, handleUpdateUserStatusInfo); //only user itself
 router.get("/", veryfyJWT, verifyRoles(["admin", "hr"]), handleUserStatus);
-router.get("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), getUserStatusByid); 
-router.put("/:id",veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
-router.put("/",veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
+router.get("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), getUserStatusByid);
+router.put("/:id", veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
+router.put("/", veryfyJWT, verifyRoles(["admin", "hr"]), updateUserStatus);
+
 router.post(
   "/",
   fileUpload({
