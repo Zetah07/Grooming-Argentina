@@ -9,7 +9,6 @@ const coursesRouter = require("./courses/coursesRouter")
 const newsLetterRouter = require("./newsLetter/newsLetterRoter")
 const blogs = require("./blogs/blogsRouter")
 const reports = require("./reports/reportsRout")
-const documentsRouter = require("./documents/documentsRouter")
 const passwordResetRoute = require("./passwordReset/passwordResetRoute")
 const categoryRouter = require("./category/categoryRouter")
 
@@ -21,7 +20,6 @@ router.use("/courses", coursesRouter);
 router.use("/newsletter", newsLetterRouter);
 router.use("/blog", blogs);
 router.use("/reports", reports);
-router.use("/documents", documentsRouter);
 router.use("/reset", passwordResetRoute);
 router.use("/category", categoryRouter);
 
