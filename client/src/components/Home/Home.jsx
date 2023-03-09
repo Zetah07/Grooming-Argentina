@@ -37,10 +37,10 @@ const Home = () => {
   };
   const getFeaturedNews = ()=>{
     if(featuredNews!==undefined) return;
-    axios.get(`/news?categoria=Noticia destacada&limit=5`)
+    axios.get(`/news?categoria=Noticia destacada`)
         .then(res=>{
             const arr = res.data.docs;
-            setFeatured(arr);
+            setFeatured(arr.slice(0,5));
         });
   };
 
