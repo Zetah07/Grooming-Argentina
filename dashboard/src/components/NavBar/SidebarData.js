@@ -42,12 +42,6 @@ const suscriptores = {
   cName: "nav-text",
 };
 
-const reports = {
-  title: "Reportes",
-  path: "/panel/reportes",
-  icon: <BiIcons.BiNotification />,
-  cName: "nav-text",
-};
 
 const cursos = {
   title: "Cursos",
@@ -64,7 +58,7 @@ const newUser = {
 };
 
 const delUser = {
-  title: "Eliminar usuario",
+  title: "Usuarios",
   path: "/panel/BorrarUsuario",
   icon: <AiIcons.AiOutlineUserDelete />,
   cName: "nav-text",
@@ -104,10 +98,9 @@ export const SidebarData = {
     suscriptores,
     cursos,
     createCourse,
-    reports,
   ],
   user: [bienvenidos,createBlog],
-  hr: [bienvenidos, estatusVoluntarios, reports, suscriptores,createBlog],
+  hr: [bienvenidos, estatusVoluntarios, suscriptores,createBlog],
   volunteer: [bienvenidos, cursos,createBlog],
   editor: [bienvenidos, panelBlogs, panelNoticias, createNew,createBlog],
 };
