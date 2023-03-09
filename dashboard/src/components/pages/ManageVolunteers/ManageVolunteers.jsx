@@ -8,6 +8,7 @@ import DownloadPDFButton from "../../downloadAdjDocuments/DownloadAdjDocuments";
 import ConfirmationModal from "./confirmationModal";
 import Paginations from "./Pagination";
 import showAlert from "../../ShowAlert/ShowAlert";
+import { Link } from "react-router-dom";
 
 const ManageVolunteers = () => {
   const [userStatusList, setUserStatusList] = useState([]);
@@ -331,19 +332,21 @@ const ManageVolunteers = () => {
                           <tr>
                             <td>Documento adjunto:</td>
                             <td>
+                              <Link to={userStatus.adjDocument}>
                               <DownloadPDFButton
                                 documentType="adjDocument"
-                                userId={userStatus.document}
                               />
+                              </Link>
                             </td>
                           </tr>
                           <tr>
                             <td>CV adjunto:</td>
                             <td>
+                              <Link to={userStatus.CV}>
                               <DownloadPDFButton
                                 documentType="CV"
-                                userId={userStatus.document}
                               />
+                              </Link>
                             </td>
                           </tr>
                           <tr>
