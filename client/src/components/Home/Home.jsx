@@ -40,7 +40,7 @@ const Home = () => {
     axios.get(`/news?categoria=Noticia destacada`)
         .then(res=>{
             const arr = res.data.docs;
-            setFeatured(arr.slice(0,5));
+            setFeatured(arr.slice(0,4));
         });
   };
 
@@ -53,10 +53,10 @@ const Home = () => {
     <>
       <div className={s.container1} >
       <Carousel className={s.carousel}>
-      {featuredNews?.map(paper=><Carousel.Item className={s.item}>
+      {featuredNews?.map(paper=><Carousel.Item key={paper._id} className={s.item}>
         <img
           className={s.caroImg}
-          src={paper.img}
+          src={paper.img.url}
         />
         <Carousel.Caption>
           <Link style={{textDecoration: 'none', color: 'white'}} to={`/noticias/${paper._id}`} >
@@ -242,7 +242,7 @@ const Home = () => {
                   key={paper._id}
                   id={paper._id}
                   title={paper.title}
-                  image={paper.img}
+                  image={paper.img.url}
                   description={paper.description}
                   provinceOrLocation={paper.provinceOrLocation}
                   createdAt={paper.createdAt}
