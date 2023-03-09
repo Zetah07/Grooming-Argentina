@@ -97,14 +97,10 @@ const Home = () => {
             {<FaTiktok className={s.socialIcon} />}
           </button>
         </a>
-        {/* <a href="#" target="_blank"> */}
-          <button className={s.socialMedia}
-            style={{backgroundColor: 'black'}}
-          >
-            {<SiRoblox className={s.socialIcon} />}
-          </button>
-        {/* </a> */}
       </div>
+      <a href="https://servicios.paypertic.com/formularios/comercios/1466">
+            <button className="button">Donar ahora</button>
+          </a>
       <div className={s.container2}>
         <div className={s.divHalf}>
           <h1 className={s.title}>Varias causas</h1>
