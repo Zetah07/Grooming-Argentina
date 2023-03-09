@@ -41,9 +41,11 @@ const NewDetails = () => {
         </div>
         <div class="card-body">
           <p class="card-subtitle mb-2 text-muted" className={style.text}>
-            Categorias: {newID.category.map(cat => {
-              return <span class="card-subtitle mb-2 text-muted" className={style.text}>|{cat}| </span>
-            })}
+            Categorias: {newID.category ?
+              newID.category.map(cat => {
+                return <span class="card-subtitle mb-2 text-muted" className={style.text}>|{cat}| </span>
+              })
+              : null}
           </p>
           <p class="card-subtitle mb-2 text-muted" className={style.text}>
             Provincia: {newID.provinceOrLocation}
