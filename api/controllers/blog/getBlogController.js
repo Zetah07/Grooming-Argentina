@@ -7,7 +7,7 @@ const getPosts = async (req, res) => {
     const options = {
       page,
       limit,
-      sort: { _id: 1, createdAt: -1 },
+      sort: { createdAt: -1 },
     };
 
     const query = {};
