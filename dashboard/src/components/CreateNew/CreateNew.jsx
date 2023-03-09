@@ -71,9 +71,9 @@ const CreateNew = () => {
             })
             .test(
                 "fileSize",
-                "El tamaño del archivo no debe exceder 1 MB",
+                "El tamaño del archivo no debe exceder 10 MB",
                 (value) => {
-                    return value && value[0].size <= 1048576; // es  1MB
+                    return value && value[0].size <= 10485760; // es  1MB
                 }
             ),
     });
