@@ -6,7 +6,8 @@ const getPosts = async (req, res) => {
 
     const options = {
       page,
-      limit
+      limit,
+      sort: { _id: 1, createdAt: -1 },
     };
 
     const query = {};
@@ -19,9 +20,14 @@ const getPosts = async (req, res) => {
 
     let blogTitle;
     if (sort === 'oldest') {
-      blogTitle = await blog.paginate(query,{options, sort:{createdAt: 1}});
+      options = {
+        page: page,
+        limit: limit,
+        sort: { _id: 1, createdAt: 1 },
+      }
+      blogTitle = await blog.paginate(query, options);
     } else if (sort === 'newest') {
-      blogTitle = await blog.paginate(query,{options, sort:{createdAt: -1}});
+      blogTitle = await blog.paginate(query, options);
     } else {
       blogTitle = await blog.paginate(query, options);
     }
