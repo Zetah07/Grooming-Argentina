@@ -3,7 +3,7 @@
     background-size: cover;
     min-height: 40vh;
 }
-
+ 
 .container1 span {
     font-family: "Titulo Gotham";
     font-style: normal;
@@ -14,4 +14,6 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-}
+} 
+
+/* => <= */
