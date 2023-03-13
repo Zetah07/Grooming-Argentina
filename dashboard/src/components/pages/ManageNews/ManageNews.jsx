@@ -159,7 +159,7 @@ const ManageNews = () => {
             return (
               <tr key={paper._id} className={style.table}>
                 <td>
-                  <img src={paper.img} alt="newsImage" className={style.img} />
+                  <img src={paper.img.url} alt="newsImage" className={style.img} />
                 </td>
                 <td>
                   <p className={style.text}>{paper.title.toLowerCase()}</p>
