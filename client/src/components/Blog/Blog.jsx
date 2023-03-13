@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBlogs, resetFilter, resetPagination } from '../../Redux/Actions';
 import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
-import s from "./Blog.Module.css";
+import s from "./Blog.module.css";
 import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
 import { BlogCard } from '../BlogCard/BlogCard';
 import Button from 'react-bootstrap/Button';
