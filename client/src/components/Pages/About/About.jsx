@@ -5,7 +5,14 @@ import projects from "../../../assets/About/Statistics/Projects1.png";
 import volunteers from "../../../assets/About/Statistics/voluntarios.png";
 import statistics from "../../../assets/About/Statistics/StadisticContainer.png";
 import provinces from "../../../assets/About/Statistics/provincias.png";
+import imgVision from "../../../assets/About/NuestraVision.png";
+import projects from "../../../assets/About/Statistics/Projects1.png";
+import volunteers from "../../../assets/About/Statistics/voluntarios.png";
+import statistics from "../../../assets/About/Statistics/StadisticContainer.png";
+import provinces from "../../../assets/About/Statistics/provincias.png";
 import s from "./About.module.css";
+// import team from "../About/AboutPractice";
+// import TeamCard from "../About/TeamCards/Card";
 // import team from "../About/AboutPractice";
 // import TeamCard from "../About/TeamCards/Card";
 

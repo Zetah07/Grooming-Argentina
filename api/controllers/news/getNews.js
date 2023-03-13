@@ -33,7 +33,7 @@ const getNews = async (req, res) => {
             filteredNews = await news.paginate({ title: { $regex: regex } }, options);
             res.status(200).json(filteredNews);
         } else {
-            filteredNews = await news.paginate({}, options);
+            filteredNews = await news.paginate({}, {options, sort:{createdAt: -1}});
             res.status(200).json(filteredNews);
         }
     } catch (error) {
