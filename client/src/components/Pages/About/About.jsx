@@ -9,6 +9,8 @@ import s from "./About.module.css";
 // import banner from '../../../assets/18.png'
 // import team from "../About/AboutPractice";
 // import TeamCard from "../About/TeamCards/Card";
+// import team from "../About/AboutPractice";
+// import TeamCard from "../About/TeamCards/Card";
 
 const About = () => {
   return (
