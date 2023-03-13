@@ -5,10 +5,6 @@ import folder from "../../../assets/About/BsFolderCheck.png";
 import volunteer from "../../../assets/About/MdPeopleAlt.png";
 import followers from "../../../assets/About/IoShareSocialOutline.png";
 import provincies from "../../../assets/About/FiMapPin.png";
-import folder from "../../../assets/About/BsFolderCheck.png";
-import volunteer from "../../../assets/About/MdPeopleAlt.png";
-import followers from "../../../assets/About/IoShareSocialOutline.png";
-import provincies from "../../../assets/About/FiMapPin.png";
 import s from "./About.module.css";
 // import banner from '../../../assets/18.png'
 // import team from "../About/AboutPractice";
