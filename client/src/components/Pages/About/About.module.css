@@ -1,11 +1,15 @@
 /*Banner*/
 .banner {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/About/c387.jpg);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/18.png);
+  background-position: center;
   background-size: cover;
   min-height: 40vh;
   max-width: 100%;
   min-width: 100%;
   margin-bottom: 30px;
+}
+.img{
+  clip-path: inset(40% 0 0 0);
 }
 
 .banner h1 {
@@ -31,20 +35,6 @@
   text-align: center;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*Mission*/
 .mainContainer0 {
   display: flex;
@@ -58,11 +48,11 @@
 }
 
 .image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 110%;
+  max-height: 70%;
   margin: 50px;
-  margin-right: 0px;
-  border-radius: 30px;
+  margin-right: 1rem;
+  border-radius: 35px;
 }
 
 .textContainer {
@@ -146,20 +136,6 @@
   font-weight: bold;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*Global mission*/
 .container2 {
   width: 100%;
@@ -215,20 +191,6 @@
   padding-left: 0px;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*Video*/
 .videoContainer {
   display: flex;
@@ -244,20 +206,6 @@
   border-radius: 20px;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*Vision*/
 .visionDiv {
   padding-top: 0px;
@@ -309,20 +257,6 @@
   padding-bottom: 30px;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*Statistics*/
 .statiticsDiv {
   width: 95%;
@@ -343,23 +277,13 @@
 }
 
 .projectsdiv {
-  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 /*The team */
 .teamContainer {
   background-color: #e7edf1;
@@ -386,4 +310,32 @@
 
 .link {
   color: white;
+}
+.stadistiContainer{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  gap: 1.5rem;
+  background-color: #eaeff3;
+  border-radius: 4rem;
+  width: auto;
+  padding: 1rem;
+}
+.stadistiContainer h3{
+  font-family: "Titulo Gotham";
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+.valueStadistic{
+  font-family: "Titulo Gotham";
+  font-weight: bold;
+  color:var(--secondary-color)
+}
+.stadisticItem {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -3,11 +3,16 @@ import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from "../NewCard/NewCard";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Stack from 'react-bootstrap/Stack';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Stack from "react-bootstrap/Stack";
 // import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
-import { getAllNews, resetFilter, resetPagination, getCategories } from "../../Redux/Actions/index.js";
+import {
+  getAllNews,
+  resetFilter,
+  resetPagination,
+  getCategories,
+} from "../../Redux/Actions/index.js";
 import s from "./News.module.css";
 
 const News = () => {
@@ -20,14 +25,32 @@ const News = () => {
   const pageNumberLimit = 5;
   const firstPage = 1;
   const [items, setItems] = useState([]);
-  const [search, setSearch] = useState({ title: "", category: "", province: "" });
+  const [search, setSearch] = useState({
+    title: "",
+    category: "",
+    province: "",
+  });
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (newspaper.docs && newspaper.docs.length > 0 && items && items.length === 0) setItems([...newspaper.docs]);
+  if (
+    newspaper.docs &&
+    newspaper.docs.length > 0 &&
+    items &&
+    items.length === 0
+  )
+    setItems([...newspaper.docs]);
 
   useEffect(() => {
-    dispatch(getAllNews(currentPage + 1, newsPerPage, search.title, search.category, search.province));
+    dispatch(
+      getAllNews(
+        currentPage + 1,
+        newsPerPage,
+        search.title,
+        search.category,
+        search.province
+      )
+    );
     dispatch(getCategories());
     dispatch(resetPagination());
   }, [dispatch, currentPage, newsPerPage]);
@@ -37,7 +60,7 @@ const News = () => {
       setItems([...newspaper.docs]);
       dispatch(resetPagination());
     }
-  }, [dispatch, pagination, newspaper.docs])
+  }, [dispatch, pagination, newspaper.docs]);
 
   useEffect(() => {
     if (filter === true) {
@@ -88,33 +111,49 @@ const News = () => {
 
   const searchHandler = (event) => {
     setSearch({ title: event.target.value });
-  }
+  };
 
   const submitHandler = () => {
     const title = search.title;
     if (title.length > 0) {
       dispatch(getAllNews(firstPage, newsPerPage, title));
     }
-  }
+  };
 
   const clearHandler = () => {
     setSearch({ title: "", category: "", province: "" });
     dispatch(getAllNews(firstPage, newsPerPage));
-  }
+  };
 
   const selectHandler = (event) => {
     search.category = event.target.value;
     if (search.category.length > 0) {
-      dispatch(getAllNews(firstPage, newsPerPage, search.title, search.category, search.province));
+      dispatch(
+        getAllNews(
+          firstPage,
+          newsPerPage,
+          search.title,
+          search.category,
+          search.province
+        )
+      );
     }
-  }
+  };
 
   const selectHandlerProvince = (event) => {
     search.province = event.target.value;
     if (search.province.length > 0) {
-      dispatch(getAllNews(firstPage, newsPerPage, search.title, search.category, search.province));
+      dispatch(
+        getAllNews(
+          firstPage,
+          newsPerPage,
+          search.title,
+          search.category,
+          search.province
+        )
+      );
     }
-  }
+  };
 
   return (
     <>
@@ -127,26 +166,58 @@ const News = () => {
           <article className="row g-3 col-12 col-md-12 col-lg-4 order-lg-1">
             {/* <SearchBar /> */}
             <Stack>
-              <Form.Control id="search" onChange={searchHandler} value={search.title} className="me-auto" placeholder="Buscar..." />
-              <Button variant="secondary" onClick={submitHandler} value={search.title}>Buscar</Button>
+              <Form.Control
+                id="search"
+                onChange={searchHandler}
+                value={search.title}
+                className="me-auto"
+                placeholder="Buscar..."
+              />
+              <Button
+                variant="secondary"
+                onClick={submitHandler}
+                value={search.title}
+              >
+                Buscar
+              </Button>
               <div className="vr" />
-              <Button variant="outline-danger" onClick={clearHandler}>Limpiar</Button>
+              <Button variant="outline-danger" onClick={clearHandler}>
+                Limpiar
+              </Button>
               <div className="vr" />
               <div className="vr" />
               <h5 className="card-title">Categoria</h5>
               <div className="vr" />
-              <Form.Select aria-label="Default select example" onChange={selectHandler}>
-                <option disabled selected>Seleccione una categoria</option>
-                {categories ? categories.map(cat => {
-                  return <option key={cat._id} value={cat.name}>{cat.name}</option>
-                }) : null}
+              <Form.Select
+                aria-label="Default select example"
+                onChange={selectHandler}
+              >
+                <option disabled selected>
+                  Seleccione una categoria
+                </option>
+                {categories
+                  ? categories.map((cat) => {
+                      return (
+                        <option key={cat._id} value={cat.name}>
+                          {cat.name}
+                        </option>
+                      );
+                    })
+                  : null}
               </Form.Select>
               <div className="vr" />
               <h5 className="card-title">Provincia</h5>
               <div className="vr" />
-              <Form.Select aria-label="Default select example" onChange={selectHandlerProvince}>
-                <option disabled selected>Seleccione una provincia</option>
-                <option value="Pais de las maravillas">Pais de las maravillas</option>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={selectHandlerProvince}
+              >
+                <option disabled selected>
+                  Seleccione una provincia
+                </option>
+                <option value="Pais de las maravillas">
+                  Pais de las maravillas
+                </option>
                 <option value="Buenos Aires">Buenos Aires</option>
               </Form.Select>
             </Stack>
