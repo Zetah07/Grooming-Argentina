@@ -17,6 +17,7 @@ const About = () => {
       <div class="row" className={s.bannerContainer}>
         <div className={s.banner}>
           {/* <img scr={banner} alt='' className={s.img}/> */}
+          {/* <img scr={banner} alt='' className={s.img}/> */}
           <h1>
             Acerca de <span>nosotros</span>
           </h1>
@@ -284,44 +285,48 @@ const About = () => {
               <img src={provincies} alt="provincies" />
               <h1 className={s.valueStadistic}>23</h1>
               <h3>Provincias</h3>
+              <div className={s.stadisticItem}>
+                <img src={provincies} alt="provincies" />
+                <h1 className={s.valueStadistic}>23</h1>
+                <h3>Provincias</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/*Team*/}
-      {/*The team*/}
-      {/* <div class="row" className={s.videoContainer}>
+        {/*Team*/}
+        {/*The team*/}
+        {/* <div class="row" className={s.videoContainer}>
         <div class="container-fluid" className={s.teamContainer}>
-          <div className={s.bodyContainer}>
-            <div className={s.textContainer}>
-              <div className={s.globo2}>
-                <h3>Lo que hacemos</h3>
+        <div className={s.bodyContainer}>
+        <div className={s.textContainer}>
+        <div className={s.globo2}>
+        <h3>Lo que hacemos</h3>
               </div>
               <h4>Conoce nuestro <span>equipo</span></h4> 
-            </div>
-            <div class="container">
+              </div>
+              <div class="container">
               <div  class="row g-3">
-                {team.map((member) => {
-                  return (
-                    <TeamCard
-                      name={member.name}
-                      avatar={member.avatar}
-                      rol={member.rol}
-                    />
+              {team.map((member) => {
+                return (
+                  <TeamCard
+                  name={member.name}
+                  avatar={member.avatar}
+                  rol={member.rol}
+                  />
                   );
                 })}
-              </div>
-            </div>
-            <div class="row" className={s.divButton}>
-              <button className="button">
+                </div>
+                </div>
+                <div class="row" className={s.divButton}>
+                <button className="button">
                 <a className={s.link} style={{ textDecoration: 'none'}} href="/voluntariado">Ser voluntario</a>
               </button>
-            </div>
-          </div>
-        </div> 
-      </div>*/}
+              </div>
+              </div>
+              </div> 
+            </div>*/}
+      </div>
     </div>
-      
   );
 };
 
