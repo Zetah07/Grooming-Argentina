@@ -285,11 +285,6 @@ const About = () => {
               <img src={provincies} alt="provincies" />
               <h1 className={s.valueStadistic}>23</h1>
               <h3>Provincias</h3>
-              <div className={s.stadisticItem}>
-                <img src={provincies} alt="provincies" />
-                <h1 className={s.valueStadistic}>23</h1>
-                <h3>Provincias</h3>
-              </div>
             </div>
           </div>
         </div>
