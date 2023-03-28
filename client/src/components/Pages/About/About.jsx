@@ -1,11 +1,12 @@
 import imgUs from "../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg";
 import imgMission from "../../../assets/About/NuestraMision.png";
 import imgVision from "../../../assets/About/NuestraVision.png";
-import projects from "../../../assets/About/Statistics/Projects1.png";
-import volunteers from "../../../assets/About/Statistics/voluntarios.png";
-import statistics from "../../../assets/About/Statistics/StadisticContainer.png";
-import provinces from "../../../assets/About/Statistics/provincias.png";
+import folder from "../../../assets/About/BsFolderCheck.png";
+import volunteer from "../../../assets/About/MdPeopleAlt.png";
+import followers from "../../../assets/About/IoShareSocialOutline.png";
+import provincies from "../../../assets/About/FiMapPin.png";
 import s from "./About.module.css";
+// import banner from '../../../assets/18.png'
 // import team from "../About/AboutPractice";
 // import TeamCard from "../About/TeamCards/Card";
 
@@ -15,6 +16,8 @@ const About = () => {
       {/* Baner about */}
       <div class="row" className={s.bannerContainer}>
         <div className={s.banner}>
+          {/* <img scr={banner} alt='' className={s.img}/> */}
+          {/* <img scr={banner} alt='' className={s.img}/> */}
           <h1>
             Acerca de <span>nosotros</span>
           </h1>
@@ -28,8 +31,8 @@ const About = () => {
               <img
                 class="img-fluid"
                 className={s.image}
-                width="500px"
-                height="400px"
+                width="520px"
+                height="480px"
                 src={imgUs}
                 alt="img_us"
               />
@@ -167,8 +170,8 @@ const About = () => {
       <div class="container-fluid" className={s.videoContainer}>
         <iframe
           className={s.video}
-          width="560"
-          height="315"
+          width="660"
+          height="415"
           src="https://www.youtube.com/embed/GsY1kb5LgHU"
           title="YouTube video player"
           frameborder="0"
@@ -262,64 +265,62 @@ const About = () => {
               </h4>
             </div>
           </div>
-          <div
-            class="row g-3"
-            style={{ backgroundColor: "#eaeff3", borderRadius: "25px" }}
-          >
-            <div
-              className={s.projectsdiv}
-              class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3"
-            >
-              <img class="img-fluid" src={projects} alt="project" />
+          <div className={s.stadistiContainer}>
+            <div className={s.stadisticItem}>
+              <img src={folder} alt="folder" />
+              <h1 className={s.valueStadistic}>+ 100</h1>
+              <h3>Proyectos cerrados</h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-              <img class="img-fluid" src={volunteers} alt="volunteers" />
+            <div className={s.stadisticItem}>
+              <img src={volunteer} alt="volunteer" />
+              <h1 className={s.valueStadistic}>+ 800</h1>
+              <h3>Voluntarios</h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-              <img class="img-fluid" src={statistics} alt="statitics" />
+            <div className={s.stadisticItem}>
+              <img src={followers} alt="followers" />
+              <h1 className={s.valueStadistic}>+ 80000</h1>
+              <h3>Seguidores</h3>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-              <img
-                class="img-fluid"
-                height="263px"
-                src={provinces}
-                alt="provinces"
-              />
+            <div className={s.stadisticItem}>
+              <img src={provincies} alt="provincies" />
+              <h1 className={s.valueStadistic}>23</h1>
+              <h3>Provincias</h3>
             </div>
           </div>
         </div>
-      </div>
-      {/*The team*/}
-      {/* <div class="row" className={s.videoContainer}>
+        {/*Team*/}
+        {/*The team*/}
+        {/* <div class="row" className={s.videoContainer}>
         <div class="container-fluid" className={s.teamContainer}>
-          <div className={s.bodyContainer}>
-            <div className={s.textContainer}>
-              <div className={s.globo2}>
-                <h3>Lo que hacemos</h3>
+        <div className={s.bodyContainer}>
+        <div className={s.textContainer}>
+        <div className={s.globo2}>
+        <h3>Lo que hacemos</h3>
               </div>
               <h4>Conoce nuestro <span>equipo</span></h4> 
-            </div>
-            <div class="container">
+              </div>
+              <div class="container">
               <div  class="row g-3">
-                {team.map((member) => {
-                  return (
-                    <TeamCard
-                      name={member.name}
-                      avatar={member.avatar}
-                      rol={member.rol}
-                    />
+              {team.map((member) => {
+                return (
+                  <TeamCard
+                  name={member.name}
+                  avatar={member.avatar}
+                  rol={member.rol}
+                  />
                   );
                 })}
-              </div>
-            </div>
-            <div class="row" className={s.divButton}>
-              <button className="button">
+                </div>
+                </div>
+                <div class="row" className={s.divButton}>
+                <button className="button">
                 <a className={s.link} style={{ textDecoration: 'none'}} href="/voluntariado">Ser voluntario</a>
               </button>
-            </div>
-          </div>
-        </div> 
-      </div>*/}
+              </div>
+              </div>
+              </div> 
+            </div>*/}
+      </div>
     </div>
   );
 };
