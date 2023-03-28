@@ -1,6 +1,7 @@
 /*Banner*/
 .banner {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../../assets/18.png);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
+    url(../../../assets/18.png);
   background-position: center;
   background-size: cover;
   min-height: 40vh;
@@ -8,12 +9,12 @@
   min-width: 100%;
   margin-bottom: 30px;
 }
-.img{
+.img {
   clip-path: inset(40% 0 0 0);
 }
 
 .banner h1 {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-size: 68px;
   line-height: 97px;
@@ -25,7 +26,7 @@
 }
 
 .banner span {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-size: 68px;
   background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
@@ -66,11 +67,10 @@
   padding-bottom: 20px;
   max-width: 100%;
   max-height: 100%;
-
 }
 
 .textContainer h4 {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-size: 40px;
   background-color: black;
@@ -79,7 +79,6 @@
   background-clip: text;
   max-width: 100%;
   max-height: 100%;
-
 }
 
 .spanstatistics {
@@ -94,17 +93,16 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   background-color: var(--bs-info);
   -webkit-background-clip: text;
   -webkit-background-clip: text;
   background-clip: text;
-
 }
 
 .textContainer p {
   text-align: left;
-  font-family: "Texto Thin";
+  font-family: 'Texto Thin';
   font-style: normal;
   font-size: 20px;
   text-align: center;
@@ -131,7 +129,7 @@
 
 .globo h3,
 .globo2 h3 {
-  font-family: "Titulo Helvetica";
+  font-family: 'Titulo Helvetica';
   font-size: 16px;
   font-weight: bold;
 }
@@ -153,17 +151,16 @@
 }
 
 .textContainer2 h4 {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-weight: bold;
   font-size: 45px;
   padding: auto;
   text-align: center;
-
 }
 
 .textContainerinfant {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-weight: bold;
   display: flex;
@@ -179,7 +176,7 @@
 
 .textContainer2 p {
   text-align: left;
-  font-family: "Texto Thin";
+  font-family: 'Texto Thin';
   font-style: normal;
   font-size: 22px;
 }
@@ -214,7 +211,7 @@
 }
 
 .visionTitle {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-style: normal;
   font-size: 45px;
   font-weight: bold;
@@ -233,7 +230,7 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   background-color: var(--bs-info);
   -webkit-background-clip: text;
   -webkit-background-clip: text;
@@ -241,7 +238,7 @@
 }
 
 .visionDiv h3 {
-  font-family: "Texto Helvetica";
+  font-family: 'Texto Helvetica';
   font-style: normal;
   font-size: 30px;
   font-weight: 600;
@@ -251,7 +248,7 @@
 }
 
 .visionDiv p {
-  font-family: "Texto Thin";
+  font-family: 'Texto Thin';
   font-style: normal;
   font-size: 22px;
   padding-bottom: 30px;
@@ -284,6 +281,20 @@
   padding: 20px;
 }
 
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*The team */
 .teamContainer {
   background-color: #e7edf1;
@@ -311,31 +322,31 @@
 .link {
   color: white;
 }
-.stadistiContainer{
+.stadistiContainer {
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   gap: 1.5rem;
   background-color: #eaeff3;
   border-radius: 4rem;
   width: auto;
   padding: 1rem;
 }
-.stadistiContainer h3{
-  font-family: "Titulo Gotham";
+.stadistiContainer h3 {
+  font-family: 'Titulo Gotham';
   font-weight: bolder;
   font-size: 1.3rem;
 }
-.valueStadistic{
-  font-family: "Titulo Gotham";
+.valueStadistic {
+  font-family: 'Titulo Gotham';
   font-weight: bold;
-  color:var(--secondary-color)
+  color: var(--secondary-color);
 }
 .stadisticItem {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
