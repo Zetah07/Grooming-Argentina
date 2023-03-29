@@ -9,7 +9,7 @@
 
 .title {
   font-size: 50px;
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   color: #38568f;
   text-align: center;
   margin-top: 10px;
@@ -22,7 +22,7 @@
   justify-content: center;
   color: #38568f;
   font-size: 20px;
-  font-family: "Titulo Helvetica";
+  font-family: 'Titulo Helvetica';
 }
 
 .icon {
@@ -69,15 +69,61 @@
 .form_label {
   color: #38568f;
   font-size: 20px;
-  font-family: "Titulo Helvetica";
+  font-family: 'Titulo Helvetica';
 }
 
 .submitButton {
   font-size: 20px;
-  font-family: "Texto Thin";
+  font-family: 'Texto Thin';
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   width: 150px;
+}
+
+.captchaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.captchaTitle {
+  color: #004b82;
+  font-size: 20px;
+  margin-top: 10px;
+  font-family: 'Titulo Helvetica';
+}
+
+.captcha {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #004b82;
+  margin-right: 15px;
+  font-family: 'Titulo Helvetica';
+}
+
+.captchaInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+
+.reloadButton {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10%;
+  background-color: #004b82;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.reloadButton:hover {
+  color: #ffffff;
 }

@@ -1,43 +1,40 @@
-import imgUs from "../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg";
-import imgMission from "../../../assets/About/NuestraMision.png";
-import imgVision from "../../../assets/About/NuestraVision.png";
-import folder from "../../../assets/About/BsFolderCheck.png";
-import volunteer from "../../../assets/About/MdPeopleAlt.png";
-import followers from "../../../assets/About/IoShareSocialOutline.png";
-import provincies from "../../../assets/About/FiMapPin.png";
-import s from "./About.module.css";
-// import banner from '../../../assets/18.png'
+import imgUs from '../../../assets/About/CC42AH4J2RDO3JQ34RN6JDKOKA.jpg';
+import imgMission from '../../../assets/About/NuestraMision.png';
+import imgVision from '../../../assets/About/NuestraVision.png';
+import projects from '../../../assets/About/Statistics/Projects1.png';
+import volunteers from '../../../assets/About/Statistics/voluntarios.png';
+import statistics from '../../../assets/About/Statistics/StadisticContainer.png';
+import provinces from '../../../assets/About/Statistics/provincias.png';
+import s from './About.module.css';
 // import team from "../About/AboutPractice";
 // import TeamCard from "../About/TeamCards/Card";
 
 const About = () => {
   return (
-    <div class="container-fluid" style={{ width: "85%" }}>
+    <div class='container-fluid' style={{ width: '85%' }}>
       {/* Baner about */}
-      <div class="row" className={s.bannerContainer}>
+      <div class='row' className={s.bannerContainer}>
         <div className={s.banner}>
-          {/* <img scr={banner} alt='' className={s.img}/> */}
-          {/* <img scr={banner} alt='' className={s.img}/> */}
           <h1>
             Acerca de <span>nosotros</span>
           </h1>
         </div>
       </div>
       {/* mission*/}
-      <div class="row" className={s.mainContainer0}>
+      <div class='row' className={s.mainContainer0}>
         <div className={s.container1}>
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 container-fluid d-flex justify-content-end align-items-end p-3">
+          <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-4 col-xl-4 container-fluid d-flex justify-content-end align-items-end p-3'>
               <img
-                class="img-fluid"
+                class='img-fluid'
                 className={s.image}
-                width="520px"
-                height="480px"
+                width='500px'
+                height='400px'
                 src={imgUs}
-                alt="img_us"
+                alt='img_us'
               />
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid p-0">
+            <div class='col-sm-12 col-md-12 col-lg-8 col-xl-8 container-fluid p-0'>
               <div className={s.textContainer}>
                 <div className={s.title}>
                   <div className={s.globo}>
@@ -47,7 +44,7 @@ const About = () => {
                     Ayudar es nuestro <span>objetivo principal</span>
                   </h4>
                 </div>
-                <p text="end">
+                <p text='end'>
                   Grooming Argentina nació Institucionalmente en el año 2014 y
                   se convirtió en la primera Organización global creada para
                   combatir el delito de «grooming o child grooming». Fue
@@ -78,20 +75,20 @@ const About = () => {
         </div>
       </div>
       {/* mission*/}
-      <div class="container-fluid" className={s.mainContainer0}>
-        <div class="container-fluid" className={s.container2}>
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3">
+      <div class='container-fluid' className={s.mainContainer0}>
+        <div class='container-fluid' className={s.container2}>
+          <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3'>
               <img
-                class="img-fluid"
+                class='img-fluid'
                 className={s.image2}
-                width="500px"
-                height="300px"
+                width='500px'
+                height='300px'
                 src={imgMission}
-                alt="mission"
+                alt='mission'
               />
             </div>
-            <div class="col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid">
+            <div class='col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid'>
               <div className={s.textContainer2}>
                 <h4>Trabajamos para combatir el Grooming</h4>
                 <p>
@@ -122,27 +119,27 @@ const About = () => {
         </div>
       </div>
       {/* Vision*/}
-      <div class="container-fluid" className={s.mainContainer0}>
-        <div class="container-fluid" className={s.container2}>
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3">
+      <div class='container-fluid' className={s.mainContainer0}>
+        <div class='container-fluid' className={s.container2}>
+          <div class='row'>
+            <div class='col-sm-12 col-md-12 col-lg-4 col-xl-5 container-fluid d-flex justify-content-end align-items-center p-3'>
               <img
-                class="img-fluid"
+                class='img-fluid'
                 className={s.image3}
-                width="500px"
-                height="300px"
+                width='500px'
+                height='300px'
                 src={imgVision}
-                alt="vision"
+                alt='vision'
               />
             </div>
-            <div class="col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid">
+            <div class='col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid'>
               <div className={s.textContainer2}>
                 <h4
                   className={s.textContainerinfant}
                   style={{
-                    textAlign: "center",
-                    fontSize: "45px",
-                    margin: "auto",
+                    textAlign: 'center',
+                    fontSize: '45px',
+                    margin: 'auto',
                   }}
                 >
                   Velamos por los derechos de las infancias y adolescencias
@@ -167,33 +164,33 @@ const About = () => {
         </div>
       </div>
       {/*Video*/}
-      <div class="container-fluid" className={s.videoContainer}>
+      <div class='container-fluid' className={s.videoContainer}>
         <iframe
           className={s.video}
-          width="660"
-          height="415"
-          src="https://www.youtube.com/embed/GsY1kb5LgHU"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          width='560'
+          height='315'
+          src='https://www.youtube.com/embed/GsY1kb5LgHU'
+          title='YouTube video player'
+          frameborder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowfullscreen
         ></iframe>
       </div>
       {/*Values*/}
-      <div class="container-fluid" className={s.videoContainer}>
+      <div class='container-fluid' className={s.videoContainer}>
         <h4 className={s.visionTitle}>
           Nuestros <span>valores</span>
         </h4>
         <div className={s.visionDiv}>
-          <div class="row g-3">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class='row g-3'>
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Amplio sentido de la sensibilidad</h3>
               <p>
                 Frente a los acontecimientos que nos toca enfrentar, los cuales
                 vulneran los derechos de los niños, niñas y adolescentes.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Excelencia</h3>
               <p>
                 Nos esforzamos por llevar a cabo acciones de calidad, con fuerte
@@ -202,20 +199,20 @@ const About = () => {
                 en relación al padecimiento que sufren las familias.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Compromiso</h3>
               <p>
                 Profesional y ético para el adecuado desempeño de nuestra labor.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Solidaridad</h3>
               <p>
                 Acompañamos a las víctimas y sus familias en los procesos
                 penales y asistencia psicológica.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Exigencia</h3>
               <p>
                 Somos exigentes con nosotros mismos y con nuestros
@@ -224,7 +221,7 @@ const About = () => {
                 encauzamos
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Cooperación</h3>
               <p>
                 Trabajamos junto a organizaciones públicas, privadas y
@@ -232,7 +229,7 @@ const About = () => {
                 el logro de los objetivos.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Convicción</h3>
               <p>
                 Trabajamos junto a organizaciones públicas, privadas y
@@ -240,7 +237,7 @@ const About = () => {
                 el logro de los objetivos.
               </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
               <h3>Voluntariado Social</h3>
               <p>
                 Contamos con el cuerpo de voluntarios/as en todo el país que
@@ -253,9 +250,9 @@ const About = () => {
         </div>
       </div>
       {/*Statistics*/}
-      <div class="container-fluid" className={s.videoContainer}>
-        <div class="row" className={s.statiticsDiv}>
-          <div class="col">
+      <div class='container-fluid' className={s.videoContainer}>
+        <div class='row' className={s.statiticsDiv}>
+          <div class='col'>
             <div className={s.textContainer}>
               <div className={s.globo2}>
                 <h3>Lo que hacemos</h3>
@@ -265,62 +262,64 @@ const About = () => {
               </h4>
             </div>
           </div>
-          <div className={s.stadistiContainer}>
-            <div className={s.stadisticItem}>
-              <img src={folder} alt="folder" />
-              <h1 className={s.valueStadistic}>+ 100</h1>
-              <h3>Proyectos cerrados</h3>
+          <div
+            class='row g-3'
+            style={{ backgroundColor: '#eaeff3', borderRadius: '25px' }}
+          >
+            <div
+              className={s.projectsdiv}
+              class='col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'
+            >
+              <img class='img-fluid' src={projects} alt='project' />
             </div>
-            <div className={s.stadisticItem}>
-              <img src={volunteer} alt="volunteer" />
-              <h1 className={s.valueStadistic}>+ 800</h1>
-              <h3>Voluntarios</h3>
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'>
+              <img class='img-fluid' src={volunteers} alt='volunteers' />
             </div>
-            <div className={s.stadisticItem}>
-              <img src={followers} alt="followers" />
-              <h1 className={s.valueStadistic}>+ 80000</h1>
-              <h3>Seguidores</h3>
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'>
+              <img class='img-fluid' src={statistics} alt='statitics' />
             </div>
-            <div className={s.stadisticItem}>
-              <img src={provincies} alt="provincies" />
-              <h1 className={s.valueStadistic}>23</h1>
-              <h3>Provincias</h3>
+            <div class='col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'>
+              <img
+                class='img-fluid'
+                height='263px'
+                src={provinces}
+                alt='provinces'
+              />
             </div>
           </div>
         </div>
-        {/*Team*/}
-        {/*The team*/}
-        {/* <div class="row" className={s.videoContainer}>
+      </div>
+      {/*The team*/}
+      {/* <div class="row" className={s.videoContainer}>
         <div class="container-fluid" className={s.teamContainer}>
-        <div className={s.bodyContainer}>
-        <div className={s.textContainer}>
-        <div className={s.globo2}>
-        <h3>Lo que hacemos</h3>
+          <div className={s.bodyContainer}>
+            <div className={s.textContainer}>
+              <div className={s.globo2}>
+                <h3>Lo que hacemos</h3>
               </div>
               <h4>Conoce nuestro <span>equipo</span></h4> 
-              </div>
-              <div class="container">
+            </div>
+            <div class="container">
               <div  class="row g-3">
-              {team.map((member) => {
-                return (
-                  <TeamCard
-                  name={member.name}
-                  avatar={member.avatar}
-                  rol={member.rol}
-                  />
+                {team.map((member) => {
+                  return (
+                    <TeamCard
+                      name={member.name}
+                      avatar={member.avatar}
+                      rol={member.rol}
+                    />
                   );
                 })}
-                </div>
-                </div>
-                <div class="row" className={s.divButton}>
-                <button className="button">
+              </div>
+            </div>
+            <div class="row" className={s.divButton}>
+              <button className="button">
                 <a className={s.link} style={{ textDecoration: 'none'}} href="/voluntariado">Ser voluntario</a>
               </button>
-              </div>
-              </div>
-              </div> 
-            </div>*/}
-      </div>
+            </div>
+          </div>
+        </div> 
+      </div>*/}
     </div>
   );
 };

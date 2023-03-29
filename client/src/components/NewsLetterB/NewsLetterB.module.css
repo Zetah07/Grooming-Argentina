@@ -28,12 +28,11 @@
   color: white;
 }
 
-
 .modalTitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   text-align: center;
   font-size: 19px;
   font-weight: bold;
@@ -51,7 +50,7 @@
 }
 
 .label {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   text-align: center;
   font-size: 19px;
   font-weight: bold;
@@ -80,4 +79,32 @@
   width: 300px;
   height: 40px;
   margin-top: 20px;
+}
+
+.captchaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.captcha {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #004b82;
+  margin-right: 15px;
+}
+
+.reloadButton {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  color: #777;
+  transition: all 0.2s ease-in-out;
+}
+
+.reloadButton:hover {
+  color: #777;
 }
