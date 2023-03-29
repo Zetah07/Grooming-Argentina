@@ -1,0 +1,21 @@
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 2rem 0;
+  height: auto;
+}
+
+.logoGrooming {
+  width: 50%;
+  height: auto;
+  max-width: 300px;
+  margin: auto;
+}
+
+.logoIhope {
+  width: 50%;
+  height: auto;
+  max-width: 300px;
+  margin: auto;
+}
