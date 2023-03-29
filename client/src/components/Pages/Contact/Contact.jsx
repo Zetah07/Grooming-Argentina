@@ -52,6 +52,7 @@ const Contact = () => {
         'red'
       );
     }
+    setCaptchaInput('');
   };
 
   return (
