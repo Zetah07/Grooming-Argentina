@@ -8,11 +8,9 @@ import s from './NavBarB.module.css';
 import Button from 'react-bootstrap/Button';
 import NewsLetterB from '../../NewsLetterB/NewsLetterB';
 
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-
 const NavBarB = () => {
   return (
-    <Navbar expand='lg'>
+    <Navbar expand='xl'>
       <Container>
         <Navbar.Brand as={Link} to='/home'>
           <img src={Logo} alt='Logo' />
@@ -67,7 +65,7 @@ const NavBarB = () => {
               className={s.lashes}
               style={{ marginTop: 8, marginRight: 2, zIndex: '1000' }}
             >
-              Descarga La APP
+              APP
             </div>
             <NavDropdown id='basic-nav-dropdown'>
               <NavDropdown.Item
@@ -92,20 +90,32 @@ const NavBarB = () => {
               className={s.lashes}
               style={{
                 color: 'red',
-                fontWeight: 'bold',
+                fontWeight: '600',
               }}
             >
-              Denunciar Aquí
+              Denunciar
             </Nav.Link>
             <NewsLetterB />
+            <Nav.Link
+              as={Link}
+              to='/voluntariado'
+              className={s.lashes}
+              style={{ color: 'white', fontWeight: '600' }}
+            >
+              voluntariado
+            </Nav.Link>
           </Nav>
-          <Button
-            style={{ backgroundColor: '#004b82', borderColor: '#004b82' }}
+          {/* <Button
+            style={{
+              backgroundColor: '#004b82',
+              borderColor: '#004b82',
+              whiteSpace: 'nowrap',
+            }}
           >
             <Nav.Link as={Link} to='/voluntariado'>
               Ser Voluntario
             </Nav.Link>
-          </Button>
+          </Button> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
