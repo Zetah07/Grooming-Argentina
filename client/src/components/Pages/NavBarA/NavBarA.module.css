@@ -17,15 +17,18 @@
 }
 
 .span {
-  font-family: "Titulo Gotham Bold";
+  font-family: 'Titulo Gotham Bold';
   font-size: larger;
   color: #7dc8ec;
-  ;
 }
 
 .lashes {
-  font-family: "Texto Helvetica";
+  font-family: 'Texto Helvetica';
   font-size: 16px;
   font-weight: 200;
-  color: #000000A6;
+  color: #000000a6;
+}
+
+.newsLetter {
+  font-family: 'Texto Helvetica';
 }

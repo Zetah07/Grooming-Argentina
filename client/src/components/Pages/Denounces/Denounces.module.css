@@ -2,8 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 2rem 0;
-  height: auto;
+  margin: 1.5rem 0 2rem 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .logos {
+    flex-direction: column;
+    padding: 20px 0;
+    margin: 20px 0;
+  }
 }
 
 .logoGrooming {
@@ -14,8 +21,69 @@
 }
 
 .logoIhope {
-  width: 50%;
+  width: 75%;
   height: auto;
   max-width: 300px;
   margin: auto;
+  cursor: pointer;
+}
+
+.text {
+  font-family: 'Texto Helvetica';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 0 auto;
+  width: 65%;
+}
+
+li {
+  list-style-type: disc;
+}
+
+.dropDown {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-align: left;
+  margin: 30px auto;
+  width: 70%;
+}
+
+.toggle {
+  background-color: white;
+  color: black;
+  border: 2px solid #a7a7a7;
+}
+
+.label {
+  font-family: 'Titulo Gotham';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000000;
+  margin-top: 25px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 120px;
+}
+
+button {
+  max-width: 58vw;
 }

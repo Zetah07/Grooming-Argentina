@@ -10,7 +10,7 @@ import NewsLetterA from '../../NewsLetterA/NewsLetterA';
 
 const NavBarA = () => {
   return (
-    <Navbar bg='light' expand='lg' sticky='top'>
+    <Navbar bg='light' expand='xl' sticky='top'>
       <Container>
         <Navbar.Brand as={Link} to='/'>
           <img src={LogoB} alt='Logo' className={s.image} />
@@ -37,7 +37,7 @@ const NavBarA = () => {
               className={s.lashes}
               style={{ marginTop: 7, marginRight: 2, zIndex: '1000' }}
             >
-              Descarga La APP
+              APP
             </div>
             <NavDropdown id='basic-nav-dropdown'>
               <NavDropdown.Item
@@ -61,20 +61,33 @@ const NavBarA = () => {
               className={s.lashes}
               style={{
                 color: 'red',
-                fontWeight: 'bold',
+                fontWeight: '600',
               }}
             >
-              Denunciar Aquí
+              Denunciar
             </Nav.Link>
-            <NewsLetterA />
+
+            <NewsLetterA className={s.newsLetter} />
+            <Nav.Link
+              as={Link}
+              to='/voluntariado'
+              className={s.lashes}
+              style={{ fontWeight: '700', fontFamily: 'Texto Helvetica' }}
+            >
+              voluntariado
+            </Nav.Link>
           </Nav>
-          <Button
-            style={{ backgroundColor: '#004b82', borderColor: '#004b82' }}
+          {/* <Button
+            style={{
+              backgroundColor: '#004b82',
+              borderColor: '#004b82',
+              whiteSpace: 'nowrap',
+            }}
           >
             <Nav.Link as={Link} to='/voluntariado'>
               Ser Voluntario
             </Nav.Link>
-          </Button>
+          </Button> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
