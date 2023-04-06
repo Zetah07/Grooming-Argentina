@@ -300,7 +300,7 @@ const Home = () => {
         <Row>
           {news &&
             news
-              .slice(-3)
+              .slice(0, 3)
               .map((paper) => (
                 <NewCard
                   key={paper._id}

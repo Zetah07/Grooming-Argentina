@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import useAuth from "../../../hooks/useAuth.js";
-import { useState } from "react";
-import axios from "../../../api/axios";
-import logo from "../../../assets/Grooming_Logo.png";
+import React, { useEffect } from 'react';
+import useAuth from '../../../hooks/useAuth.js';
+import { useState } from 'react';
+import axios from '../../../api/axios';
+import logo from '../../../assets/Grooming_Logo.png';
 
 const Bienvenidos = () => {
   const { auth } = useAuth();
-  const [name, setName] = useState("Usuario");
+  const [name, setName] = useState('Usuario');
 
   const getUserName = async () => {
     try {
@@ -28,34 +28,34 @@ const Bienvenidos = () => {
 
   return (
     <div
-      className="container"
+      className='container'
       style={{
-        display: "flex",
-        justifyContent: "center",
-        height: "87vh",
-        alignItems: "center",
-        flexDirection: "column",
+        display: 'flex',
+        justifyContent: 'center',
+        height: '80vh',
+        alignItems: 'center',
+        flexDirection: 'column',
       }}
     >
       <img
         src={logo}
-        alt="Logo grooming Argentina"
-        style={{ width: "17rem" }}
+        alt='Logo grooming Argentina'
+        style={{ width: '13rem' }}
       />
       <h1
         style={{
-          fontFamily: "Titulo Gotham",
-          fontSize: "3rem",
-          color: "#004b82",
+          fontFamily: 'Titulo Gotham',
+          fontSize: '3rem',
+          color: '#004b82',
         }}
       >
         Bienvenido:
       </h1>
       <h1
         style={{
-          fontFamily: "Titulo Gotham",
-          fontSize: "3rem",
-          color: "#004b82",
+          fontFamily: 'Titulo Gotham',
+          fontSize: '3rem',
+          color: '#004b82',
         }}
       >
         {name}
