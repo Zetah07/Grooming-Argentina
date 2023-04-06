@@ -1,18 +1,18 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../../api/axios';
 import Button from 'react-bootstrap/Button';
 
-const DownloadReportButton = () => {
+const DownloadSuscriptorsButton = () => {
   const handleDownload = async () => {
     try {
-      const response = await axios.get('/reports', {
+      const response = await axios.get('/denounces/report', {
         responseType: 'blob',
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'ReporteVoluntarios.xlsx');
+      link.setAttribute('download', 'ReporteDenuncias.xlsx');
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -22,10 +22,18 @@ const DownloadReportButton = () => {
   };
 
   return (
-    <Button onClick={handleDownload} style={{ backgroundColor: '#004b82' }}>
+    <Button
+      onClick={handleDownload}
+      style={{
+        height: '2rem',
+        paddingTop: '0',
+        paddingBottom: '0',
+        backgroundColor: '#004b82',
+      }}
+    >
       Descargar reporte
     </Button>
   );
 };
 
-export default DownloadReportButton;
+export default DownloadSuscriptorsButton;

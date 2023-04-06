@@ -38,6 +38,10 @@
   width: 70%;
 }
 
+li {
+  font-family: 'Texto Helvetica';
+}
+
 .list {
   display: flex;
   justify-content: center;
@@ -71,8 +75,23 @@ li {
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
-  color: #000000;
+  color: #38568f;
   margin-top: 25px;
+}
+
+h2 {
+  color: #38568f;
+}
+
+.nameEmail {
+  border: solid 1px rgb(180, 179, 179);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.contactInfo {
+  font-size: 13px;
+  color: #6e6e6e;
 }
 
 .button {
@@ -82,6 +101,14 @@ li {
   text-align: center;
   margin: 0 auto;
   width: 120px;
+}
+
+.link {
+  text-decoration: rgba(248, 5, 5, 0.179);
+  font-family: 'Texto Helvetica';
+  font-weight: bold;
+  color: #e70909;
+  padding-top: 10px;
 }
 
 button {

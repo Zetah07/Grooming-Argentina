@@ -1,0 +1,205 @@
+.container {
+  margin-bottom: 3rem;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  vertical-align: middle;
+  text-align: left;
+}
+
+tbody tr:hover td,
+tbody tr:hover th {
+  background-color: #ffffff6d;
+}
+
+.btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 15px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 45px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38568f;
+  font-family: 'Titulo Gotham';
+}
+
+.text {
+  text-align: center;
+  font-family: 'Texto Helvetica';
+  font-size: 20px;
+  line-height: 25px;
+  color: #414042;
+  margin-top: 5px;
+}
+
+.content {
+  margin: 0;
+  margin-right: 10px;
+  padding: 0;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #edf9ff;
+}
+
+.approved {
+  background-color: #f8fff6;
+}
+
+.denied {
+  background-color: #ffe6e6;
+}
+
+.approvedRow {
+  background-color: #f8fff6;
+}
+
+.deniedRow {
+  background-color: #ffe6e6;
+}
+
+table {
+  border-collapse: collapse;
+  border: solid 1px #a9acb1;
+}
+
+table td,
+table th {
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 25px;
+  color: #38568f;
+}
+
+.action {
+  text-align: center;
+}
+
+.firstRow {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -10px;
+}
+
+.pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.paginationContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: auto;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectEntries {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  border: solid 1px #dfdfdf;
+  color: #2167c2;
+  border-radius: 7px;
+}
+
+.selectEntriesContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: auto;
+}
+
+.reportDownloadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reportText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 5px;
+  text-align: center;
+  color: #38568f;
+}
+
+.textReport {
+  text-align: center;
+  font-size: 15px;
+  line-height: 25px;
+  color: #38568f;
+  margin-top: 5px;
+}
+
+.reportButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px #dfdfdf;
+  color: #2167c2;
+  border-radius: 7px;
+}
+
+.reportButton {
+  background-color: #004b82;
+  width: 250px !important;
+}
+
+.bottomItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  margin: auto 20px auto auto;
+}
+
+@media only screen and (max-width: 770px) {
+  .bottomItems {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .bottomItems {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    margin: 10px 0;
+  }
+}

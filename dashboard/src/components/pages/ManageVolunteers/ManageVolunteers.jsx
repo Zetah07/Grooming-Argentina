@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Table, Button, Form } from "react-bootstrap";
-import axios from "../../../api/axios";
-import style from "./ManageVolunteers.module.css";
-import DownloadReportButton from "../../downloadButton/downloadReportButton";
-import useAuth from "../../../hooks/useAuth";
-import DownloadPDFButton from "../../downloadAdjDocuments/DownloadAdjDocuments";
-import ConfirmationModal from "./confirmationModal";
-import Paginations from "./Pagination";
-import showAlert from "../../ShowAlert/ShowAlert";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Table, Button, Form } from 'react-bootstrap';
+import axios from '../../../api/axios';
+import style from './ManageVolunteers.module.css';
+import DownloadReportButton from '../../downloadButton/downloadReportButton';
+import useAuth from '../../../hooks/useAuth';
+import DownloadPDFButton from '../../downloadAdjDocuments/DownloadAdjDocuments';
+import ConfirmationModal from './confirmationModal';
+import Paginations from './Pagination';
+import showAlert from '../../ShowAlert/ShowAlert';
+import { Link } from 'react-router-dom';
 
 const ManageVolunteers = () => {
   const [userStatusList, setUserStatusList] = useState([]);
@@ -20,8 +20,7 @@ const ManageVolunteers = () => {
   const [pageCount, setPageCount] = useState(1);
   const [limit, setLimit] = useState(10);
   const [filteredList, setFilteredList] = useState([]);
-  const [name, setName] = useState("");
-
+  const [name, setName] = useState('');
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -48,13 +47,13 @@ const ManageVolunteers = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      if (newStatus === "denegado") {
+      if (newStatus === 'denegado') {
         setSelectedUserId(id);
         setdenyModal(true);
-      } else if (newStatus === "aprobado") {
+      } else if (newStatus === 'aprobado') {
         setSelectedUserId(id);
         setApproveModal(true);
-      } else if (newStatus === "pendiente") {
+      } else if (newStatus === 'pendiente') {
         setSelectedUserId(id);
         setpendingModal(true);
       } else {
@@ -79,16 +78,16 @@ const ManageVolunteers = () => {
         }
       );
 
-      showAlert("El estado del voluntario ha sido actualizado", "green");
+      showAlert('El estado del voluntario ha sido actualizado', 'green');
     } catch (error) {
       if (
         error.response &&
         error.response.data &&
         error.response.data.message
       ) {
-        showAlert(error.response.data.message, "red");
+        showAlert(error.response.data.message, 'red');
       } else {
-        showAlert(error.message, "red");
+        showAlert(error.message, 'red');
       }
     }
 
@@ -111,23 +110,21 @@ const ManageVolunteers = () => {
   const handleSearch = (event) => {
     const searchValue = event.target.value
       ? event.target.value.toLowerCase()
-      : "";
+      : '';
     setName(searchValue);
   };
-
-  console.log(selectedUserId);
 
   return (
     <div
       className={`container ${style.container}`}
-      style={{ textAlign: "center" }}
+      style={{ textAlign: 'center' }}
     >
       <ConfirmationModal
         show={denyModal}
-        title="Denegar usuario"
-        message="está seguro que desea denegar el proceso del usuario?"
+        title='Denegar usuario'
+        message='está seguro que desea denegar el proceso del usuario?'
         onConfirm={async () => {
-          await updateStatus(selectedUserId, "denegado");
+          await updateStatus(selectedUserId, 'denegado');
           setSelectedUserId(null);
           setdenyModal(false);
         }}
@@ -138,10 +135,10 @@ const ManageVolunteers = () => {
       />
       <ConfirmationModal
         show={approvedModal}
-        title="Aprobación de usuario"
-        message="Está seguro que desea aprobar el proceso usuario?"
+        title='Aprobación de usuario'
+        message='Está seguro que desea aprobar el proceso usuario?'
         onConfirm={async () => {
-          await updateStatus(selectedUserId, "aprobado");
+          await updateStatus(selectedUserId, 'aprobado');
           setSelectedUserId(null);
           setApproveModal(false);
         }}
@@ -152,10 +149,10 @@ const ManageVolunteers = () => {
       />
       <ConfirmationModal
         show={pendingModal}
-        title="Volver a estado de proceso pendiente"
-        message="está seguro que desea retoranr el estado a pendiente?"
+        title='Volver a estado de proceso pendiente'
+        message='está seguro que desea retoranr el estado a pendiente?'
         onConfirm={async () => {
-          await updateStatus(selectedUserId, "pendiente");
+          await updateStatus(selectedUserId, 'pendiente');
           setSelectedUserId(null);
           setpendingModal(false);
         }}
@@ -171,16 +168,16 @@ const ManageVolunteers = () => {
       <br />
       <div className={style.searchBarContainer}>
         <Form className={style.searchBar}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group controlId='formBasicEmail'>
             <Form.Label
               className={style.searchBarLabel}
-              style={{ color: "#38568F" }}
+              style={{ color: '#38568F' }}
             >
               Buscar por nombre y apellido:
             </Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Buscar..."
+              type='text'
+              placeholder='Buscar...'
               onChange={handleSearch}
               className={style.searchBarinput}
             />
@@ -206,16 +203,16 @@ const ManageVolunteers = () => {
             <React.Fragment key={userStatus._id}>
               <tr
                 className={`${style.row} ${
-                  userStatus.status === "aprobado"
+                  userStatus.status === 'aprobado'
                     ? style.approved
-                    : userStatus.status === "denegado"
+                    : userStatus.status === 'denegado'
                     ? style.denied
                     : selectedUserId === userStatus._id
                     ? style.selected
-                    : ""
+                    : ''
                 }`}
                 onClick={(event) => {
-                  if (event.target.tagName.toLowerCase() === "button") {
+                  if (event.target.tagName.toLowerCase() === 'button') {
                     return;
                   }
                   event.stopPropagation();
@@ -226,36 +223,36 @@ const ManageVolunteers = () => {
               >
                 <td>{index + 1}</td>
                 <td className={style.action}>
-                  {new Date(userStatus.createdAt).toLocaleDateString("en-US")}
+                  {new Date(userStatus.createdAt).toLocaleDateString('en-US')}
                 </td>
                 <td>{userStatus.name}</td>
                 <td>{userStatus.lastName}</td>
                 <td className={style.action}>{userStatus.status}</td>
                 <td className={style.action}>
-                  {userStatus.status === "pendiente" && (
+                  {userStatus.status === 'pendiente' && (
                     <>
                       <Button
-                        variant="success"
+                        variant='success'
                         onClick={() =>
-                          handleStatusChange(userStatus._id, "aprobado")
+                          handleStatusChange(userStatus._id, 'aprobado')
                         }
                         className={style.btn}
                       >
                         Aprobar
-                      </Button>{" "}
+                      </Button>{' '}
                       <Button
-                        variant="warning"
+                        variant='warning'
                         onClick={() =>
-                          handleStatusChange(userStatus._id, "pendiente")
+                          handleStatusChange(userStatus._id, 'pendiente')
                         }
                         className={style.btn}
                       >
                         Pendiente
-                      </Button>{" "}
+                      </Button>{' '}
                       <Button
-                        variant="danger"
+                        variant='danger'
                         onClick={() =>
-                          handleStatusChange(userStatus._id, "denegado")
+                          handleStatusChange(userStatus._id, 'denegado')
                         }
                         className={style.btn}
                       >
@@ -263,22 +260,22 @@ const ManageVolunteers = () => {
                       </Button>
                     </>
                   )}
-                  {userStatus.status === "aprobado" && (
+                  {userStatus.status === 'aprobado' && (
                     <Button
-                      variant="warning"
+                      variant='warning'
                       onClick={() =>
-                        handleStatusChange(userStatus._id, "pendiente")
+                        handleStatusChange(userStatus._id, 'pendiente')
                       }
                       className={style.btn}
                     >
                       Pendiente
                     </Button>
                   )}
-                  {userStatus.status === "denegado" && (
+                  {userStatus.status === 'denegado' && (
                     <Button
-                      variant="warning"
+                      variant='warning'
                       onClick={() =>
-                        handleStatusChange(userStatus._id, "pendiente")
+                        handleStatusChange(userStatus._id, 'pendiente')
                       }
                       className={style.btn}
                     >
@@ -290,16 +287,16 @@ const ManageVolunteers = () => {
               {selectedUserId === userStatus._id && (
                 <tr
                   className={
-                    userStatus.status === "denegado"
+                    userStatus.status === 'denegado'
                       ? style.deniedRow
-                      : userStatus.status === "aprobado"
+                      : userStatus.status === 'aprobado'
                       ? style.approvedRow
                       : style.expandRow
                   }
                 >
-                  <td colSpan="4">
+                  <td colSpan='4'>
                     <div className={style.expandContent}>
-                      <table style={{ textAlign: "left" }}>
+                      <table style={{ textAlign: 'left' }}>
                         <tbody>
                           <tr>
                             <td>Fecha de nacimiento:</td>
@@ -333,9 +330,7 @@ const ManageVolunteers = () => {
                             <td>Documento adjunto:</td>
                             <td>
                               <Link to={userStatus.adjDocument}>
-                              <DownloadPDFButton
-                                documentType="adjDocument"
-                              />
+                                <DownloadPDFButton documentType='adjDocument' />
                               </Link>
                             </td>
                           </tr>
@@ -343,9 +338,7 @@ const ManageVolunteers = () => {
                             <td>CV adjunto:</td>
                             <td>
                               <Link to={userStatus.CV}>
-                              <DownloadPDFButton
-                                documentType="CV"
-                              />
+                                <DownloadPDFButton documentType='CV' />
                               </Link>
                             </td>
                           </tr>
@@ -374,8 +367,8 @@ const ManageVolunteers = () => {
                             <td>
                               <a
                                 href={userStatus.facebook}
-                                target="_blank"
-                                rel="noreferrer"
+                                target='_blank'
+                                rel='noreferrer'
                               >
                                 {userStatus.facebook}
                               </a>
@@ -386,8 +379,8 @@ const ManageVolunteers = () => {
                             <td>
                               <a
                                 href={userStatus.twitter}
-                                target="_blank"
-                                rel="noreferrer"
+                                target='_blank'
+                                rel='noreferrer'
                               >
                                 {userStatus.twitter}
                               </a>
@@ -398,8 +391,8 @@ const ManageVolunteers = () => {
                             <td>
                               <a
                                 href={userStatus.instagram}
-                                target="_blank"
-                                rel="noreferrer"
+                                target='_blank'
+                                rel='noreferrer'
                               >
                                 {userStatus.instagram}
                               </a>
@@ -410,8 +403,8 @@ const ManageVolunteers = () => {
                             <td>
                               <a
                                 href={userStatus.linkedIn}
-                                target="_blank"
-                                rel="noreferrer"
+                                target='_blank'
+                                rel='noreferrer'
                               >
                                 {userStatus.linkedIn}
                               </a>
@@ -505,7 +498,7 @@ const ManageVolunteers = () => {
           <div className={style.reportButtonContainer}>
             <DownloadReportButton
               className={style.reportButton}
-              style={{ backgroundColor: "#004b82" }}
+              style={{ backgroundColor: '#004b82' }}
             />
           </div>
         </div>
