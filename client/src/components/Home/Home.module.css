@@ -1,23 +1,24 @@
-.container1{
+.container1 {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 625px;
 }
-.carousel{
+.carousel {
   width: 100%;
   height: 600px;
   max-height: 600px;
   max-width: 100%;
   overflow: hidden;
 }
-.caroImg{
+.caroImg {
   min-width: 80%;
   height: 600px;
   background-attachment: fixed;
 }
-.caroTitle{
-  font-family: "Titulo Gotham";
+
+.caroTitle {
+  font-family: 'Titulo Gotham';
   font-size: 35px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   display: -webkit-box;
@@ -25,8 +26,8 @@
   -webkit-line-clamp: 5;
   overflow: hidden;
 }
-.caroText{
-  font-family: "Titulo Helvetica";
+.caroText {
+  font-family: 'Titulo Helvetica';
   font-size: 21px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   display: -webkit-box;
@@ -35,92 +36,110 @@
   overflow: hidden;
   text-align: justify;
 }
-  .container1 span, .container3 span {
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
 
-  .link{
-    color:#ffffff;
-    font-family: "Titulo Helvetica";
-    font-size: 25px;
-    margin-top: 0;
-  }
-  .btn{
-    font-family: "Texto Thin";
-    padding: 0;
-  }
-  .divBecome{
-    padding-bottom: 10%;
-  }
-  .divBoxes{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    gap: 5px;
-    justify-content: center;
-  }
-  .container2{
-    display: flex;
-    padding: 10px 10%;
-  }
-  .divHalf{
-    width: 50%;
-    padding: 10px;
-    justify-content: center;
-  }
-  .container2 p{
-    font-family: "Titulo Helvetica";
-    text-align: justify;
-    font-size: 24px;
-  }
-.container3 p, .container4 p{
+.container3 {
+  margin-top: 70px;
+}
+
+.container1 span,
+.container3 span {
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.link {
+  color: #ffffff;
+  font-family: 'Titulo Helvetica';
+  font-size: 25px;
+  margin-top: 0;
+}
+.btn {
+  font-family: 'Texto Thin';
+  padding: 0;
+}
+.divBecome {
+  padding-bottom: 10%;
+}
+.divBoxes {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 5px;
+  justify-content: center;
+}
+.container2 {
+  display: flex;
+  padding: 10px 10%;
+  margin-top: 70px;
+}
+.divHalf {
+  width: 50%;
+  padding: 10px;
+  justify-content: center;
+}
+.container2 p {
+  font-family: 'Titulo Helvetica';
+  text-align: justify;
+  font-size: 24px;
+}
+.container3 p,
+.container4 p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: black;
-  font-family: "Titulo Helvetica";
-  padding: 15px 20% 15px 20%;
+  font-family: 'Titulo Helvetica';
+  padding: 15px 15% 15px 15%;
   text-align: justify;
   font-size: 28px;
 }
-.divCards{
+
+.container4 {
+  margin-top: 70px;
+}
+
+.divCards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
-.container5{
+.container5 {
   display: flex;
   flex-wrap: wrap;
   padding: 5%;
+  padding-top: 20px;
   justify-content: center;
 }
-.container7{
+.container7 {
   padding: 10%;
 }
-.container6 div{
-  text-align: right;
-  padding-right: 10%;
+.container6 div {
+  text-align: center;
 }
+
 @media (max-width: 1013px) {
   .divHalf {
     width: 100%;
     padding: 0;
   }
-  .container2{
+  .container2 {
     display: block;
   }
-  .container3 p, .container4 p{
+  .container3 p,
+  .container4 p {
     padding: 25px;
   }
 }
-.title{
-  font-family: "Titulo Gotham";
+.title {
+  font-family: 'Titulo Gotham';
   color: var(--secondary-color);
   font-size: 55px;
 }
-.socialMedia{
+.socialMedia {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -128,15 +147,15 @@
   margin: 7px;
   margin-top: 0;
 }
-.socialIcon{
+.socialIcon {
   height: 65%;
   width: 65%;
   color: white;
 }
-.socialMedia:hover{
-  -webkit-transform:scale(1.3);
-  transform:scale(1.3);
+.socialMedia:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
 }
-.divSocialMedia{
+.divSocialMedia {
   justify-content: center;
 }
