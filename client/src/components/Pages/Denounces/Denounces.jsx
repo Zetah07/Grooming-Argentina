@@ -202,13 +202,13 @@ const Denounces = () => {
             title={denounceForm.where || 'Seleccionar'}
             onSelect={handleWhereSelect}
           >
-            <Dropdown.Item eventKey='juegos en Linea'>
+            <Dropdown.Item eventKey='Juegos en Linea'>
               Juegos en Linea
             </Dropdown.Item>
             <Dropdown.Item eventKey='Correo electrónico (links a contenido)'>
               Correo electrónico (links a contenido)
             </Dropdown.Item>
-            <Dropdown.Item eventKey='Redes Solciales'>
+            <Dropdown.Item eventKey='Redes Sociales'>
               Redes Sociales
             </Dropdown.Item>
             <Dropdown.Item eventKey='Foros o grupos en linea'>
@@ -249,49 +249,64 @@ const Denounces = () => {
           />
           <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
         </Form.Group>
+        <br />
+        <Container className={style.nameEmail}>
+          <h2>Datos de contacto:</h2>
+          <span className={style.contactInfo}>
+            Si desea una respuesta, por favor, complete los siguientes campos:
+          </span>
+          <Form.Group controlId='name'>
+            <Form.Label className={style.label}>Nombre completo:</Form.Label>
+            <Form.Control
+              name='name'
+              required
+              type='text'
+              placeholder='Ingrese su nombre aquí'
+              value={denounceForm.name}
+              onChange={inputHandler}
+              onBlur={handleBlur}
+            />
+            <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId='email'>
+            <Form.Label className={style.label}>Email:</Form.Label>
+            <Form.Control
+              name='email'
+              required
+              type='email'
+              placeholder='Ingrese su email aquí'
+              value={denounceForm.email}
+              onChange={inputHandler}
+              onBlur={handleBlur}
+            />
 
-        <Form.Group controlId='name'>
-          <Form.Label className={style.label}>Nombre:</Form.Label>
-          <Form.Control
-            name='name'
-            required
-            type='text'
-            placeholder='Ingrese su nombre aquí'
-            value={denounceForm.name}
-            onChange={inputHandler}
-            onBlur={handleBlur}
-          />
-          <Form.Control.Feedback>Correcto!</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId='email'>
-          <Form.Label className={style.label}>Email:</Form.Label>
-          <Form.Control
-            name='email'
-            required
-            type='email'
-            placeholder='Ingrese su email aquí'
-            value={denounceForm.email}
-            onChange={inputHandler}
-            onBlur={handleBlur}
-          />
-
-          <Form.Control.Feedback type='invalid'>
-            Por favor ingrese un email válido.
-          </Form.Control.Feedback>
-        </Form.Group>
-
+            <Form.Control.Feedback type='invalid'>
+              Por favor ingrese un email válido.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <br />
+        </Container>
+        <br />
         <Form.Group controlId='formBasicCheckbox'>
           <Form.Check
             required
             type='checkbox'
             label='Acepto que los datos proporcionados sean utilizada para el envío de información sobre la campaña de denuncias de grooming y abuso sexual infantil.'
           />
+          <a
+            href='https://inhope.org/media/site/1fffcc1905-1614610382/inhope_codeofpractice.pdf?utm_source=Members&utm_medium=link&utm_campaign=INHOPE%20COP'
+            className={style.link}
+            target='_blank'
+            rel='noreferrer'
+          >
+            Código de prácticas de INHOPE
+          </a>
         </Form.Group>
         <br />
         <Button variant='primary' type='submit' className={style.button}>
           Enviar
         </Button>
+        <br />
       </Form>
     </div>
   );
