@@ -1,7 +1,7 @@
 .whatsapp {
   position: fixed;
   top: 90%;
-  left: 30px;
+  left: 12px;
   z-index: 9999;
 }
 
@@ -40,7 +40,7 @@
   bottom: 400px;
   width: 300px;
   height: 400px;
-  background-color: #004B82;
+  background-color: #004b82;
   /* background-image: linear-gradient(to right bottom, #004B82, #ffffff); */
   border: 2px solid #6a6a6a;
   border-radius: 20px;
@@ -73,7 +73,6 @@
 .message {
   display: flex;
   margin-bottom: 10px;
-
 }
 
 .messageText {
@@ -95,7 +94,6 @@
   display: flex;
   align-items: center;
   padding: 10px;
-
 }
 
 .messageInput input {
@@ -128,5 +126,5 @@
 
 .messageInput button:hover {
   background-color: #05406a;
-  border: solid 1px white
+  border: solid 1px white;
 }
