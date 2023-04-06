@@ -1,39 +1,42 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { IoIosLogOut } from "react-icons/io";
-import { BiUser } from "react-icons/bi";
-import { Link } from "react-router-dom";
-import { SidebarData } from "./SidebarData";
-import "./Navbar.css";
-import { IconContext } from "react-icons";
-import logo from "../../assets/LogoB.png";
-import useAuth from "../../hooks/useAuth";
-import useLogout from "../../hooks/useLogout"
+import React, { useState } from 'react';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IoIosLogOut } from 'react-icons/io';
+import { BiUser } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { SidebarData } from './SidebarData';
+import './Navbar.css';
+import { IconContext } from 'react-icons';
+import logo from '../../assets/LogoB.png';
+import useAuth from '../../hooks/useAuth';
+import useLogout from '../../hooks/useLogout';
 
 function Navbar() {
   const { auth } = useAuth();
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  const logout = useLogout()
+  const logout = useLogout();
 
   return (
-    <div className="containerNavbar">
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <FaIcons.FaBars onClick={showSidebar} style={{ cursor: "pointer", width: "35px", height: "35px" }} />
+    <div className='containerNavbar'>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <FaIcons.FaBars
+            onClick={showSidebar}
+            style={{ cursor: 'pointer', width: '35px', height: '35px' }}
+          />
         </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <div>{<img className="logo" src={logo} alt="hola" />}</div>
-              <Link to="#" className="menu-bars">
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <div>{<img className='logo' src={logo} alt='hola' />}</div>
+              <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
             <div>
-              {SidebarData[auth.rol || "user"].map((item, index) => {
+              {SidebarData[auth.rol || 'user'].map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>
@@ -47,42 +50,44 @@ function Navbar() {
           </ul>
         </nav>
       </IconContext.Provider>
-      <div className="perfil">
-        <div className="container_text">
-          <h3 className="name">PANEL DE CONTROL</h3>
-          <h3 className="rol">Rol: {auth?.rol || "user"}</h3>
+      <div className='perfil'>
+        <div className='container_text'>
+          <h3 className='name'>PANEL DE CONTROL</h3>
+          <h3 className='rol'>Rol: {auth?.rol || 'user'}</h3>
         </div>
-        <div className="dropDown">
+        <div className='dropDown'>
           <img
-            src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images.png"
-            className="user"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
+            src='https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images.png'
+            className='user'
+            alt='Black and White Portrait of a Man'
+            loading='lazy'
           />
-          <div className="dropDownContent">
-            <Link to="/panel/profile" className="links">
-              <button className="button_drop"
+          <div className='dropDownContent'>
+            <Link to='/panel/profile' className='links'>
+              <button
+                className='button_drop'
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  height: "1.5rem"
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  height: '1.5rem',
                 }}
               >
                 <p style={{ margin: 0 }}>Perfil</p>
                 <BiUser />
               </button>
             </Link>
-            <div type="button" className="links">
-              <button className="button_drop"
-                onClick={(logout)}
+            <div type='button' className='links'>
+              <button
+                className='button_drop'
+                onClick={logout}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  height: "1.5rem"
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  height: '1.5rem',
                 }}
               >
                 <p style={{ margin: 0 }}>Logout</p>

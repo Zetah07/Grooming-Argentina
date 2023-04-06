@@ -27,6 +27,7 @@ import DeleteUser from './components/pages/DeleteUser/DeleteUser';
 import CreateCourse from './components/Students/CreateCourse/CreateCourse';
 import Footer from './components/Footer/Footer';
 import Denounces from './components/pages/Denounces/Denounces';
+import MyBlogs from './components/pages/MyBlogs/MyBlogs';
 
 const noNav = ['/', '/unauthorized', '/recuperar', '/recuperar/:token'];
 function App() {
@@ -49,6 +50,7 @@ function App() {
           >
             <Route path='/panel/bienvenidos' element={<Bienvenidos />} />
             <Route exact path='/panel/crearblog' element={<CreateBlog />} />
+            <Route exact path='/panel/misblogs' element={<MyBlogs />} />
             <Route path='/panel/profile' element={<Profile />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={['admin', 'hr']} />}>

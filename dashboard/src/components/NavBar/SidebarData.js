@@ -42,6 +42,13 @@ const panelBlogs = {
   cName: 'nav-text',
 };
 
+const misBlogs = {
+  title: 'Mis Blogs',
+  path: '/panel/misblogs',
+  icon: <IoIcons.IoIosPaper />,
+  cName: 'nav-text',
+};
+
 const suscriptores = {
   title: 'Suscriptores NewsLetter',
   path: '/panel/suscriptores',
@@ -101,13 +108,21 @@ export const SidebarData = {
     panelNoticias,
     createNew,
     panelBlogs,
+    misBlogs,
     createBlog,
     suscriptores,
     cursos,
     createCourse,
   ],
-  user: [bienvenidos, createBlog],
-  hr: [bienvenidos, estatusVoluntarios, suscriptores, createBlog],
-  volunteer: [bienvenidos, cursos, createBlog],
-  editor: [bienvenidos, panelBlogs, panelNoticias, createNew, createBlog],
+  user: [bienvenidos, misBlogs, createBlog],
+  hr: [bienvenidos, estatusVoluntarios, suscriptores, misBlogs, createBlog],
+  volunteer: [bienvenidos, cursos, misBlogs, createBlog],
+  editor: [
+    bienvenidos,
+    panelBlogs,
+    panelNoticias,
+    createNew,
+    misBlogs,
+    createBlog,
+  ],
 };

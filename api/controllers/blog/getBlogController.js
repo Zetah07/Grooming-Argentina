@@ -2,7 +2,7 @@ const blog = require('../../models/blogs');
 
 const getPosts = async (req, res) => {
   try {
-    const { title, author, sort, page = 1, limit = 5 } = req.query;
+    const { username, sort, page, limit } = req.query;
 
     const options = {
       page,
@@ -11,11 +11,9 @@ const getPosts = async (req, res) => {
     };
 
     const query = {};
-    if (title) {
-      query.title = { $regex: new RegExp(title, "i") };
-    }
-    if (author) {
-      query.author = { $regex: new RegExp(author, "i") };
+
+    if (username) {
+      query.username = { $regex: new RegExp(username, 'i') };
     }
 
     let blogTitle;
@@ -24,7 +22,7 @@ const getPosts = async (req, res) => {
         page: page,
         limit: limit,
         sort: { _id: 1, createdAt: 1 },
-      }
+      };
       blogTitle = await blog.paginate(query, options);
     } else if (sort === 'newest') {
       blogTitle = await blog.paginate(query, options);
@@ -40,13 +38,14 @@ const getPosts = async (req, res) => {
 
 const getPostById = async (req, res) => {
   try {
-    const post = await blog.findById(req.params.id).populate('author', 'username');
+    const post = await blog
+      .findById(req.params.id)
+      .populate('author', 'username');
 
     res.json(post);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
-}
-
+};
 
 module.exports = { getPosts, getPostById };

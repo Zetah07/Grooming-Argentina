@@ -3,7 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import {
-  getAllBlogs,
+  getMyBlogs,
   resetFilter,
   resetPagination,
 } from '../../../Redux/Actions/index';
@@ -12,9 +12,9 @@ import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 import showAlert from '../../ShowAlert/ShowAlert';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
-import style from './ManageBlogs.module.css';
+import style from './MyBlogs.module.css';
 
-const ManageBlogs = () => {
+const MyBlogs = () => {
   const dispatch = useDispatch();
   const { auth } = useAuth();
   const blogs = useSelector((state) => state.blogs);
@@ -28,13 +28,16 @@ const ManageBlogs = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0)
+
+  if (blogs.docs && blogs.docs.length > 0 && items && items.length === 0) {
     setItems([...blogs.docs]);
+  }
 
   useEffect(() => {
-    dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
+    const userName = auth.user;
+    dispatch(getMyBlogs(currentPage + 1, blogsPerPage, userName));
     dispatch(resetPagination());
-  }, [dispatch, currentPage, blogsPerPage]);
+  }, [dispatch, currentPage, blogsPerPage, auth.user]);
 
   useEffect(() => {
     if (pagination === true) {
@@ -126,7 +129,7 @@ const ManageBlogs = () => {
         message='¿Está seguro que desea eliminar el blog del usuario?'
         onConfirm={async () => {
           await deleteHandler(selectedBlogId);
-          dispatch(getAllBlogs(currentPage + 1, blogsPerPage));
+          dispatch(getMyBlogs(currentPage + 1, blogsPerPage));
           setDeleteModal(false);
         }}
         onCancel={() => {
@@ -134,7 +137,7 @@ const ManageBlogs = () => {
         }}
       />
       <br />
-      <h1 className={style.title}>Administrar Blogs</h1>
+      <h1 className={style.title}>Mis Blogs</h1>
       <br />
       <Table striped bordered hover responsive='xl'>
         <thead>
@@ -144,6 +147,7 @@ const ManageBlogs = () => {
             <th>Autor</th>
             <th>Creado</th>
             <th>Actualizado</th>
+            <th>Modificar Blog</th>
             <th>Eliminar Blog</th>
           </tr>
         </thead>
@@ -156,11 +160,15 @@ const ManageBlogs = () => {
                 <td>{blog.author}</td>
                 <td>{new Date(blog.createdAt).toLocaleDateString('en-US')}</td>
                 <td>{new Date(blog.createdAt).toLocaleDateString('en-US')}</td>
-                <td
-                  style={{
-                    textAlign: 'center',
-                  }}
-                >
+                <td style={{ textAlign: 'center' }}>
+                  <Button
+                    href={`blogs/${blog._id}`}
+                    style={{ backgroundColor: '#004b82' }}
+                  >
+                    Modificar
+                  </Button>
+                </td>
+                <td style={{ textAlign: 'center' }}>
                   <Button
                     onClick={() => handleStatusDelete(blog._id)}
                     variant='danger'
@@ -192,4 +200,4 @@ const ManageBlogs = () => {
     </Container>
   );
 };
-export default ManageBlogs;
+export default MyBlogs;
