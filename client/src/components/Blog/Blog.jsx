@@ -1,14 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, resetFilter, resetPagination } from "../../Redux/Actions";
-import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
-import s from "./Blog.module.css";
-import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
-import { BlogCard } from "../BlogCard/BlogCard";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Stack from "react-bootstrap/Stack";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllBlogs, resetFilter, resetPagination } from '../../Redux/Actions';
+import PaginationComp from '../Pages/PaginationComp/PaginationComp.jsx';
+import s from './Blog.module.css';
+import SearchBar from '../Pages/SeachBar/SearchBar.jsx';
+import { BlogCard } from '../BlogCard/BlogCard';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Blog = () => {
   const pageNumberLimit = 5;
   const firstPage = 1;
   const [items, setItems] = useState([]);
-  const [search, setSearch] = useState({ title: "", sort: "" });
+  const [search, setSearch] = useState({ title: '', sort: '' });
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -99,7 +99,7 @@ const Blog = () => {
   };
 
   const clearHandler = () => {
-    setSearch({ title: "", sort: "" });
+    setSearch({ title: '', sort: '' });
     dispatch(getAllBlogs(firstPage, blogsPerPage));
   };
 
@@ -112,49 +112,48 @@ const Blog = () => {
 
   return (
     <>
-      <div className={s.container1}>
-        <span>Blogs</span>
-      </div>
-      <br />
-      <div class="container">
-        <section class="row pb-3">
-          <article class="row g-3 col-12 col-md-12 col-lg-4 order-lg-1">
-            <Stack>
+      <div className={s.container1}></div>
+      <div class='container'>
+        <span className={s.title}>Blogs</span>
+        <hr />
+        <section class='row pb-3'>
+          <article class='row g-3 col-12 col-md-12 col-lg-4 order-lg-1'>
+            <Stack className={s.filters}>
               <Form.Control
-                id="search"
+                id='search'
                 onChange={searchHandler}
                 value={search.title}
-                className="me-auto"
-                placeholder="Buscar..."
+                className='me-auto'
+                placeholder='Buscar...'
               />
               <Button
-                variant="secondary"
+                variant='secondary'
                 onClick={submitHandler}
                 value={search.title}
               >
                 Buscar
               </Button>
-              <div className="vr" />
-              <Button variant="outline-danger" onClick={clearHandler}>
+              <div className='vr' />
+              <Button variant='outline-danger' onClick={clearHandler}>
                 Limpiar
               </Button>
-              <div className="vr" />
-              <div className="vr" />
-              <h5 className="card-title">Ordenar</h5>
-              <div className="vr" />
+              <div className='vr' />
+              <div className='vr' />
+              <h5 className='card-title'>Ordenar</h5>
+              <div className='vr' />
               <Form.Select
-                aria-label="Default select example"
+                aria-label='Default select example'
                 onChange={selectHandler}
               >
                 <option disabled selected>
                   Seleccione el orden
                 </option>
-                <option value="newest">Más reciente</option>
-                <option value="oldest">Más antiguo</option>
+                <option value='newest'>Más reciente</option>
+                <option value='oldest'>Más antiguo</option>
               </Form.Select>
             </Stack>
           </article>
-          <article class="row g-3 col-12 col-md-12 col-lg-8 ">
+          <article class='row g-3 col-12 col-md-12 col-lg-8 '>
             {items.map((blog) => {
               return (
                 <BlogCard
@@ -169,7 +168,7 @@ const Blog = () => {
             })}
           </article>
         </section>
-        <div className="row offset-2">
+        <div className='row offset-2'>
           <PaginationComp
             totalItems={blogs.totalDocs}
             totalPages={blogs.totalPages}

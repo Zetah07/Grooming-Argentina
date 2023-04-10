@@ -10,102 +10,103 @@ import NewsLetterB from '../../NewsLetterB/NewsLetterB';
 
 const NavBarB = () => {
   return (
-    <Navbar expand='xl'>
-      <Container>
-        <Navbar.Brand as={Link} to='/home'>
-          <img src={Logo} alt='Logo' />
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
-          style={{ color: '#7dc8ec' }}
-        />
-        <Navbar.Collapse id='basic-navbar-nav' className={s.containex}>
-          <Nav /*"me-auto"*/>
-            <Nav.Link
-              as={Link}
-              to='/home'
-              className={s.lashes}
-              style={{ color: 'white' }}
-            >
-              Inicio
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to='/nosotros'
-              className={s.lashes}
-              style={{ color: 'white' }}
-            >
-              Nosotros
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to='/noticias'
-              className={s.lashes}
-              style={{ color: 'white' }}
-            >
-              Noticias
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to='/blog'
-              className={s.lashes}
-              style={{ color: 'white' }}
-            >
-              Blog
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to='/contactanos'
-              className={s.lashes}
-              style={{ color: 'white' }}
-            >
-              contactanos
-            </Nav.Link>
-            <div
-              className={s.lashes}
-              style={{ marginTop: 8, marginRight: 2, zIndex: '1000' }}
-            >
-              APP
-            </div>
-            <NavDropdown id='basic-nav-dropdown'>
-              <NavDropdown.Item
+    <div>
+      <Navbar expand='xl'>
+        <Container>
+          <Navbar.Brand as={Link} to='/home'>
+            <img src={Logo} alt='Logo' />
+          </Navbar.Brand>
+          <Navbar.Toggle
+            aria-controls='basic-navbar-nav'
+            style={{ color: '#7dc8ec' }}
+          />
+          <Navbar.Collapse id='basic-navbar-nav' className={s.containex}>
+            <Nav /*"me-auto"*/>
+              <Nav.Link
                 as={Link}
-                to='https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2'
-                target='_blank'
+                to='/home'
+                className={s.lashes}
+                style={{ color: 'white' }}
               >
-                Android
-              </NavDropdown.Item>
-              <NavDropdown.Item
+                Inicio
+              </Nav.Link>
+              <Nav.Link
                 as={Link}
-                to='https://apps.apple.com/us/app/gapp/id1407275821'
-                c
-                target='_blank'
+                to='/nosotros'
+                className={s.lashes}
+                style={{ color: 'white' }}
               >
-                IOS
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link
-              as={Link}
-              to='/denuncias'
-              className={s.lashes}
-              style={{
-                color: 'red',
-                fontWeight: '600',
-              }}
-            >
-              Denunciar
-            </Nav.Link>
-            <NewsLetterB />
-            <Nav.Link
-              as={Link}
-              to='/voluntariado'
-              className={s.lashes}
-              style={{ color: 'white', fontWeight: '600' }}
-            >
-              voluntariado
-            </Nav.Link>
-          </Nav>
-          {/* <Button
+                Nosotros
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to='/noticias'
+                className={s.lashes}
+                style={{ color: 'white' }}
+              >
+                Noticias
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to='/blog'
+                className={s.lashes}
+                style={{ color: 'white' }}
+              >
+                Blog
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to='/contactanos'
+                className={s.lashes}
+                style={{ color: 'white' }}
+              >
+                contactanos
+              </Nav.Link>
+              <div
+                className={s.lashes}
+                style={{ marginTop: 8, marginRight: 2, zIndex: '1000' }}
+              >
+                APP
+              </div>
+              <NavDropdown id='basic-nav-dropdown'>
+                <NavDropdown.Item
+                  as={Link}
+                  to='https://play.google.com/store/apps/details?id=org.grooming.argentina.gapp2'
+                  target='_blank'
+                >
+                  Android
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to='https://apps.apple.com/us/app/gapp/id1407275821'
+                  c
+                  target='_blank'
+                >
+                  IOS
+                </NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link
+                as={Link}
+                to='/denuncias'
+                className={s.lashes}
+                style={{
+                  color: 'red',
+                  fontWeight: '600',
+                }}
+              >
+                Denunciar
+              </Nav.Link>
+              <NewsLetterB />
+              <Nav.Link
+                as={Link}
+                to='/voluntariado'
+                className={s.lashes}
+                style={{ color: 'white', fontWeight: '600' }}
+              >
+                voluntariado
+              </Nav.Link>
+            </Nav>
+            {/* <Button
             style={{
               backgroundColor: '#004b82',
               borderColor: '#004b82',
@@ -116,9 +117,10 @@ const NavBarB = () => {
               Ser Voluntario
             </Nav.Link>
           </Button> */}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </div>
   );
 };
 
