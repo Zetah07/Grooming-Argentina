@@ -1,19 +1,38 @@
 .container1 {
-    background: url('../../assets/AdobeStock_501666468.jpeg');
-    background-size: cover;
-    min-height: 40vh;
+  background: url('../../assets/AdobeStock_501666468.jpeg');
+  background-size: cover;
+  min-height: 40vh;
 }
- 
-.container1 span {
-    font-family: "Titulo Gotham";
-    font-style: normal;
-    font-size: 68px;
-    line-height: 97px;
-    background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-} 
 
-/* Path: client\src\components\Blog\Blog.module.css */
+.container1 span {
+  font-family: 'Titulo Gotham';
+  font-style: normal;
+  font-size: 68px;
+  line-height: 97px;
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-family: 'Titulo Gotham';
+  font-style: normal;
+  font-size: 68px;
+  line-height: 97px;
+  background: linear-gradient(180deg, #7dc8ec 0%, #1a3e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}

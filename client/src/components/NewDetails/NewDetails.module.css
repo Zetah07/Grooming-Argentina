@@ -1,24 +1,54 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.title{
-    font-size:x-large;
-    font-family: 'Titulo Gotham';
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 1rem;
+.title {
+  font-size: 50px;
+  font-family: 'Titulo Gotham';
+  font-weight: 600;
+  color: #38568f;
+  margin-bottom: 1rem;
+  padding: 1.5%;
 }
-.img{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    width: 100vw;
-    max-height: 50rem;
+.img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100vw;
 }
-.text{
-    font-family: 'Titulo Helvetica';
-    font-size: 18px;
-    font-weight: 100;
+.text {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Titulo Helvetica';
+  font-size: 18px;
+  font-weight: 100;
+  color: #575757;
+}
+.textContent {
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  font-family: 'Titulo Helvetica';
+  font-size: 18px;
+  font-weight: 100;
+  color: #575757;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+.content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 70%;
+  margin: auto;
 }

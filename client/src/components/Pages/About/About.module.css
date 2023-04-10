@@ -11,6 +11,7 @@
 }
 .img {
   clip-path: inset(40% 0 0 0);
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.251);
 }
 
 .banner h1 {

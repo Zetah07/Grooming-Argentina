@@ -1,6 +1,6 @@
 .containex {
   display: flex;
-  flex-direction: center;
+  flex-direction: centrer;
   justify-content: space-between;
   padding: 0 10px;
   background-color: transparent;
@@ -9,19 +9,18 @@
 }
 
 .span {
-  font-family: "Titulo Gotham";
+  font-family: 'Titulo Gotham';
   font-size: larger;
   color: #7dc8ec;
-  ;
 }
 
 .colorF {
-  background: transparent
-    /*var(--secondary-color)*/
+  background: transparent;
+  /*var(--secondary-color)*/
 }
 
 .lashes {
-  font-family: "Texto Helvetica";
+  font-family: 'Texto Helvetica';
   font-size: 16px;
   font-weight: 200;
   color: white;

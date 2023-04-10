@@ -6,8 +6,7 @@ import volunteers from '../../../assets/About/Statistics/voluntarios.png';
 import statistics from '../../../assets/About/Statistics/StadisticContainer.png';
 import provinces from '../../../assets/About/Statistics/provincias.png';
 import s from './About.module.css';
-// import team from "../About/AboutPractice";
-// import TeamCard from "../About/TeamCards/Card";
+import { Button } from 'react-bootstrap';
 
 const About = () => {
   return (
@@ -90,7 +89,9 @@ const About = () => {
             </div>
             <div class='col-sm-12 col-md-11 col-lg-8 col-xl-7 container-fluid'>
               <div className={s.textContainer2}>
-                <h4>Trabajamos para combatir el Grooming</h4>
+                <h4 style={{ color: '#38568f' }}>
+                  Trabajamos para combatir el Grooming
+                </h4>
                 <p>
                   GROOMING ARGENTINA es una organización no gubernamental que
                   vela por la promoción, protección y defensa de los derechos de
@@ -140,6 +141,7 @@ const About = () => {
                     textAlign: 'center',
                     fontSize: '45px',
                     margin: 'auto',
+                    color: '#38568f',
                   }}
                 >
                   Velamos por los derechos de las infancias y adolescencias
@@ -171,9 +173,9 @@ const About = () => {
           height='315'
           src='https://www.youtube.com/embed/GsY1kb5LgHU'
           title='YouTube video player'
-          frameborder='0'
+          frameBorder='0'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
       {/*Values*/}
@@ -184,14 +186,16 @@ const About = () => {
         <div className={s.visionDiv}>
           <div class='row g-3'>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Amplio sentido de la sensibilidad</h3>
+              <h3 style={{ color: '#38568f' }}>
+                Amplio sentido de la sensibilidad
+              </h3>
               <p>
                 Frente a los acontecimientos que nos toca enfrentar, los cuales
                 vulneran los derechos de los niños, niñas y adolescentes.
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Excelencia</h3>
+              <h3 style={{ color: '#38568f' }}>Excelencia</h3>
               <p>
                 Nos esforzamos por llevar a cabo acciones de calidad, con fuerte
                 sentido del compromiso y la responsabilidad, atentos a la
@@ -200,20 +204,20 @@ const About = () => {
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Compromiso</h3>
+              <h3 style={{ color: '#38568f' }}>Compromiso</h3>
               <p>
                 Profesional y ético para el adecuado desempeño de nuestra labor.
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Solidaridad</h3>
+              <h3 style={{ color: '#38568f' }}>Solidaridad</h3>
               <p>
                 Acompañamos a las víctimas y sus familias en los procesos
                 penales y asistencia psicológica.
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Exigencia</h3>
+              <h3 style={{ color: '#38568f' }}>Exigencia</h3>
               <p>
                 Somos exigentes con nosotros mismos y con nuestros
                 colaboradores. Establecemos objetivos ambiciosos y estamos
@@ -222,7 +226,7 @@ const About = () => {
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Cooperación</h3>
+              <h3 style={{ color: '#38568f' }}>Cooperación</h3>
               <p>
                 Trabajamos junto a organizaciones públicas, privadas y
                 organismos de cooperación internacional para aunar esfuerzos en
@@ -230,7 +234,7 @@ const About = () => {
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Convicción</h3>
+              <h3 style={{ color: '#38568f' }}>Convicción</h3>
               <p>
                 Trabajamos junto a organizaciones públicas, privadas y
                 organismos de cooperación internacional para aunar esfuerzos en
@@ -238,7 +242,7 @@ const About = () => {
               </p>
             </div>
             <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-              <h3>Voluntariado Social</h3>
+              <h3 style={{ color: '#38568f' }}>Voluntariado Social</h3>
               <p>
                 Contamos con el cuerpo de voluntarios/as en todo el país que
                 aportan el recurso humano necesario para llevar a cabo las
@@ -249,6 +253,21 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <Button
+        style={{
+          backgroundColor: '#004b82',
+          borderColor: '#004b82',
+          whiteSpace: 'nowrap',
+          marginBottom: '7%',
+          padding: '1.5%',
+        }}
+        href='/voluntariado'
+        target='_blank'
+      >
+        Conviértete en Voluntario
+      </Button>
+
       {/*Statistics*/}
       <div class='container-fluid' className={s.videoContainer}>
         <div class='row' className={s.statiticsDiv}>
@@ -289,6 +308,22 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <Button
+        style={{
+          backgroundColor: '#004b82',
+          borderColor: '#004b82',
+          whiteSpace: 'nowrap',
+          marginBottom: '3%',
+          padding: '1.5%',
+          width: '250px',
+        }}
+        href='https://servicios.paypertic.com/formularios/comercios/1466'
+        target='_blank'
+      >
+        DONAR AHORA
+      </Button>
+
       {/*The team*/}
       {/* <div class="row" className={s.videoContainer}>
         <div class="container-fluid" className={s.teamContainer}>

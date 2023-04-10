@@ -1,28 +1,45 @@
-.buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.shareContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:flex-end;
-    margin-top: 20px;
+.title {
+  font-size: 50px;
+  font-family: 'Titulo Gotham';
+  font-weight: 600;
+  color: #38568f;
+  margin-bottom: 1rem;
+  padding: 1.5%;
 }
-h2{
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    font-family: 'Titulo Gotham';
+.img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100vw;
 }
-p{
-    font-family: 'Titulo Helvetica';
-    font-size: 1rem;
+.text {
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  font-family: 'Titulo Helvetica';
+  font-size: 18px;
+  font-weight: 100;
+  color: #575757;
 }
-h5{
-    font-family: 'Texto Helvetica';
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+.content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 70%;
+  margin: auto;
 }

@@ -1,19 +1,19 @@
-import React from "react";
-import PaginationComp from "../Pages/PaginationComp/PaginationComp.jsx";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import NewCard from "../NewCard/NewCard";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Stack from "react-bootstrap/Stack";
+import React from 'react';
+import PaginationComp from '../Pages/PaginationComp/PaginationComp.jsx';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import NewCard from '../NewCard/NewCard';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
 // import SearchBar from "../Pages/SeachBar/SearchBar.jsx";
 import {
   getAllNews,
   resetFilter,
   resetPagination,
   getCategories,
-} from "../../Redux/Actions/index.js";
-import s from "./News.module.css";
+} from '../../Redux/Actions/index.js';
+import s from './News.module.css';
 
 const News = () => {
   const dispatch = useDispatch();
@@ -26,9 +26,9 @@ const News = () => {
   const firstPage = 1;
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState({
-    title: "",
-    category: "",
-    province: "",
+    title: '',
+    category: '',
+    province: '',
   });
   const [currentPage, setCurrentPage] = useState(0);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
@@ -121,7 +121,7 @@ const News = () => {
   };
 
   const clearHandler = () => {
-    setSearch({ title: "", category: "", province: "" });
+    setSearch({ title: '', category: '', province: '' });
     dispatch(getAllNews(firstPage, newsPerPage));
   };
 
@@ -157,39 +157,39 @@ const News = () => {
 
   return (
     <>
-      <div className={s.container1}>
-        <span>Noticias</span>
-      </div>
-      <br />
-      <div className="container">
-        <section className="row pb-3">
-          <article className="row g-3 col-12 col-md-12 col-lg-4 order-lg-1">
+      <div className={s.container1}></div>
+
+      <div className='container'>
+        <span className={s.title}>Noticias</span>
+        <hr />
+        <section className='row pb-3'>
+          <article className='row g-3 col-12 col-md-12 col-lg-4 order-lg-1'>
             {/* <SearchBar /> */}
-            <Stack>
+            <Stack className={s.filters}>
               <Form.Control
-                id="search"
+                id='search'
                 onChange={searchHandler}
                 value={search.title}
-                className="me-auto"
-                placeholder="Buscar..."
+                className='me-auto'
+                placeholder='Buscar...'
               />
               <Button
-                variant="secondary"
+                variant='secondary'
                 onClick={submitHandler}
                 value={search.title}
               >
                 Buscar
               </Button>
-              <div className="vr" />
-              <Button variant="outline-danger" onClick={clearHandler}>
+              <div className='vr' />
+              <Button variant='outline-danger' onClick={clearHandler}>
                 Limpiar
               </Button>
-              <div className="vr" />
-              <div className="vr" />
-              <h5 className="card-title">Categoria</h5>
-              <div className="vr" />
+              <div className='vr' />
+              <div className='vr' />
+              <h5 className='card-title'>Categoria</h5>
+              <div className='vr' />
               <Form.Select
-                aria-label="Default select example"
+                aria-label='Default select example'
                 onChange={selectHandler}
               >
                 <option disabled selected>
@@ -205,24 +205,24 @@ const News = () => {
                     })
                   : null}
               </Form.Select>
-              <div className="vr" />
-              <h5 className="card-title">Provincia</h5>
-              <div className="vr" />
+              <div className='vr' />
+              <h5 className='card-title'>Provincia</h5>
+              <div className='vr' />
               <Form.Select
-                aria-label="Default select example"
+                aria-label='Default select example'
                 onChange={selectHandlerProvince}
               >
                 <option disabled selected>
                   Seleccione una provincia
                 </option>
-                <option value="Pais de las maravillas">
+                <option value='Pais de las maravillas'>
                   Pais de las maravillas
                 </option>
-                <option value="Buenos Aires">Buenos Aires</option>
+                <option value='Buenos Aires'>Buenos Aires</option>
               </Form.Select>
             </Stack>
           </article>
-          <article className="row g-3 col-12 col-md-12 col-lg-8 ">
+          <article className='row g-3 col-12 col-md-12 col-lg-8 '>
             {items.map((paper) => {
               return (
                 <NewCard
@@ -239,7 +239,7 @@ const News = () => {
             })}
           </article>
         </section>
-        <div className="row offset-2">
+        <div className='row offset-2'>
           <PaginationComp
             totalItems={newspaper.totalDocs}
             totalPages={newspaper.totalPages}
