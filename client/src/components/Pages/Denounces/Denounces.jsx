@@ -259,7 +259,6 @@ const Denounces = () => {
             <Form.Label className={style.label}>Nombre completo:</Form.Label>
             <Form.Control
               name='name'
-              required
               type='text'
               placeholder='Ingrese su nombre aquí'
               value={denounceForm.name}
@@ -272,7 +271,6 @@ const Denounces = () => {
             <Form.Label className={style.label}>Email:</Form.Label>
             <Form.Control
               name='email'
-              required
               type='email'
               placeholder='Ingrese su email aquí'
               value={denounceForm.email}
