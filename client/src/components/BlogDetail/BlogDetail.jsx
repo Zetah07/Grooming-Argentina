@@ -42,9 +42,14 @@ const NewDetails = () => {
           <h2 class={style.title}>{blogId.title}</h2>
           <p className={style.text}>Author: {blogId.author}</p>
           <p className={style.text}>Subtitulo: {blogId.subtitle}</p>
-          <p className={style.text}>Publicado: {blogId.createdAt}</p>
+          <p className={style.text}>
+            Publicado:{' '}
+            {new Date(blogId.createdAt).toLocaleString('es-US', {
+              timeZone: 'America/Argentina/Buenos_Aires',
+            })}
+          </p>
           <div className={style.content}>
-            <p className={style.text}>Contenido: {blogId.content}</p>
+            <p className={style.text}>{blogId.content}</p>
           </div>
           <br />
           <div className={style.shareContainer}>

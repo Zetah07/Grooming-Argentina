@@ -11,8 +11,8 @@
   font-size: 60px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #38568F;
-  font-family: "Titulo Gotham";
+  color: #38568f;
+  font-family: 'Titulo Gotham';
   text-align: center;
 }
 
@@ -41,5 +41,5 @@
 }
 
 .text {
-  font-size: 20px
+  font-size: 20px;
 }

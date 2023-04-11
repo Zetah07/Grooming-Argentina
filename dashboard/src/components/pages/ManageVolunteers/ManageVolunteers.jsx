@@ -191,7 +191,7 @@ const ManageVolunteers = () => {
         <thead>
           <tr>
             <th className={style.firstRow}>#</th>
-            <th className={style.firstRow}>Fecha</th>
+            <th className={style.firstRow}>Postulación</th>
             <th className={style.firstRow}>Nombre/s</th>
             <th className={style.firstRow}>Apellido/s</th>
             <th className={style.firstRow}>Estado del proceso</th>
@@ -222,8 +222,10 @@ const ManageVolunteers = () => {
                 }}
               >
                 <td>{index + 1}</td>
-                <td className={style.action}>
-                  {new Date(userStatus.createdAt).toLocaleDateString('en-US')}
+                <td className={style.action} style={{ fontSize: '20px' }}>
+                  {new Date(userStatus.createdAt).toLocaleString('es-US', {
+                    timeZone: 'America/Argentina/Buenos_Aires',
+                  })}
                 </td>
                 <td>{userStatus.name}</td>
                 <td>{userStatus.lastName}</td>

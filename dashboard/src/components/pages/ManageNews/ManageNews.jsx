@@ -1,18 +1,18 @@
-import Table from "react-bootstrap/Table";
-import { Button, Container } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
+import { Button, Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import {
   getAllNews,
   resetFilter,
   resetPagination,
-} from "../../../Redux/Actions/index";
-import PaginationNewsBlogs from "../PaginationNewsBlogs/PaginationNewsBlogs";
-import axios from "../../../api/axios";
-import useAuth from "../../../hooks/useAuth";
-import showAlert from "../../ShowAlert/ShowAlert";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import style from "./ManageNews.module.css";
+} from '../../../Redux/Actions/index';
+import PaginationNewsBlogs from '../PaginationNewsBlogs/PaginationNewsBlogs';
+import axios from '../../../api/axios';
+import useAuth from '../../../hooks/useAuth';
+import showAlert from '../../ShowAlert/ShowAlert';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import style from './ManageNews.module.css';
 
 const ManageNews = () => {
   const dispatch = useDispatch();
@@ -105,12 +105,12 @@ const ManageNews = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          showAlert("Se eliminó la noticia", "green");
+          showAlert('Se eliminó la noticia', 'green');
         }
       })
       .catch((error) => {
         console.log(error);
-        showAlert("No se pudo eliminar la noticia", "red");
+        showAlert('No se pudo eliminar la noticia', 'red');
       });
   };
 
@@ -127,8 +127,8 @@ const ManageNews = () => {
     <Container className={style.container}>
       <ConfirmationModal
         show={deleteModal}
-        title="Eliminar"
-        message="¿Está seguro que desea eliminar la noticia?"
+        title='Eliminar'
+        message='¿Está seguro que desea eliminar la noticia?'
         onConfirm={async () => {
           await deleteHandler(selectedBlogId);
           dispatch(getAllNews(currentPage + 1, newsPerPage));
@@ -141,7 +141,7 @@ const ManageNews = () => {
       <br />
       <h1 className={style.title}>Panel de Noticias</h1>
       <br />
-      <Table striped bordered hover responsive="xl">
+      <Table striped bordered hover responsive='xl'>
         <thead>
           <tr className={style.rowTitle}>
             <th>Imagen</th>
@@ -157,32 +157,44 @@ const ManageNews = () => {
         <tbody>
           {items.map((paper) => {
             return (
-              <tr key={paper._id} className={style.table}>
+              <tr
+                key={paper._id}
+                className={style.table}
+                style={{ textAlign: 'center' }}
+              >
                 <td>
-                  <img src={paper.img.url} alt="newsImage" className={style.img} />
+                  <img
+                    src={paper.img.url}
+                    alt='newsImage'
+                    className={style.img}
+                  />
                 </td>
                 <td>
                   <p className={style.text}>{paper.title.toLowerCase()}</p>
                 </td>
-                <td style={{ fontSize: "20px" }}>{paper.category}</td>
-                <td style={{ fontSize: "20px" }}>{paper.provinceOrLocation}</td>
+                <td style={{ fontSize: '20px' }}>{paper.category}</td>
+                <td style={{ fontSize: '20px' }}>{paper.provinceOrLocation}</td>
                 <td
                   style={{
-                    fontSize: "20px",
-                    textAlign: "center",
-                    alignItems: "center",
+                    fontSize: '20px',
+                    textAlign: 'center',
+                    alignItems: 'center',
                   }}
                 >
-                  {new Date(paper.createdAt).toLocaleDateString("en-US")}
+                  {new Date(paper.createdAt).toLocaleString('es-US', {
+                    timeZone: 'America/Argentina/Buenos_Aires',
+                  })}
                 </td>
-                <td style={{ fontSize: "20px" }}>
-                  {new Date(paper.createdAt).toLocaleDateString("en-US")}
+                <td style={{ fontSize: '20px', textAlign: 'center' }}>
+                  {new Date(paper.updatedAt).toLocaleString('es-US', {
+                    timeZone: 'America/Argentina/Buenos_Aires',
+                  })}
                 </td>
                 <td>
                   <Button
                     href={`noticias/${paper._id}`}
                     className={style.btn}
-                    style={{ backgroundColor: "#004b82" }}
+                    style={{ backgroundColor: '#004b82' }}
                   >
                     Modificar
                   </Button>
@@ -190,7 +202,7 @@ const ManageNews = () => {
                 <td>
                   <Button
                     onClick={() => handleStatusDelete(paper._id)}
-                    variant="danger"
+                    variant='danger'
                   >
                     Eliminar
                   </Button>

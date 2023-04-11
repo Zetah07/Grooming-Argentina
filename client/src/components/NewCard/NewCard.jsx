@@ -46,7 +46,10 @@ const NewCard = ({
               Provincia: {provinceOrLocation}
             </p>
             <p className='card-subtitle mb-2 text-muted'>
-              Publicado: {createdAt}
+              Publicado:{' '}
+              {new Date(createdAt).toLocaleString('es-US', {
+                timeZone: 'America/Argentina/Buenos_Aires',
+              })}
             </p>
           </div>
           <div className='card-body'>

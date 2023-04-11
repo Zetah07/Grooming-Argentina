@@ -49,8 +49,13 @@ const NewDetails = () => {
               : null}
           </p>
           <p className={style.text}>Provincia: {newID.provinceOrLocation}</p>
-          <p className={style.text}>Publicado: {newID.createdAt}</p>
-          <p className={style.textContent}>Descripción: {newID.description}</p>
+          <p className={style.text}>
+            Publicado:{' '}
+            {new Date(newID.createdAt).toLocaleString('es-US', {
+              timeZone: 'America/Argentina/Buenos_Aires',
+            })}
+          </p>
+          <p className={style.textContent}>{newID.description}</p>
           <p>Enlaces adicionales:</p>
           <a href={newID.link} className={style.text}>
             {newID.link}
