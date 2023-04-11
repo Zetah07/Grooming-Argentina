@@ -21,7 +21,12 @@ export const BlogCard = ({ key, id, author, title, content, createdAt }) => {
         <div class='card-body'>
           <h5 className={`card-title ${style.title}`}>{title}</h5>
           <p class='card-subtitle mb-2 text-muted'>Autor: {author}</p>
-          <p class='card-subtitle mb-2 text-muted'>Publicado: {createdAt}</p>
+          <p class='card-subtitle mb-2 text-muted'>
+            Publicado:{' '}
+            {new Date(createdAt).toLocaleString('es-US', {
+              timeZone: 'America/Argentina/Buenos_Aires',
+            })}
+          </p>
           <p class='card-text' className={style.information}>
             {content.length > 300 ? content.slice(0, 300) + '...' : content}
           </p>

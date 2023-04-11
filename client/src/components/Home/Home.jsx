@@ -299,20 +299,20 @@ const Home = () => {
         <br />
         <Row>
           {news &&
-            news
-              .slice(0, 3)
-              .map((paper) => (
-                <NewCard
-                  key={paper._id}
-                  id={paper._id}
-                  title={paper.title}
-                  image={paper.img.url}
-                  description={paper.description}
-                  provinceOrLocation={paper.provinceOrLocation}
-                  createdAt={paper.createdAt}
-                  category={paper.category}
-                />
-              ))}
+            news.slice(0, 3).map((paper) => (
+              <NewCard
+                key={paper._id}
+                id={paper._id}
+                title={paper.title}
+                image={paper.img.url}
+                description={paper.description}
+                provinceOrLocation={paper.provinceOrLocation}
+                createdAt={new Date(paper.createdAt).toLocaleString('es-US', {
+                  timeZone: 'America/Argentina/Buenos_Aires',
+                })}
+                category={paper.category}
+              />
+            ))}
         </Row>
       </div>
     </>

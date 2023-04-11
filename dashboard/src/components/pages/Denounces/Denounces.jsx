@@ -67,8 +67,10 @@ const Denounces = () => {
                 <React.Fragment key={denounce._id}>
                   <tr onClick={() => handleRowClick(index)}>
                     <td>{index + 1}</td>
-                    <td className={style.action}>
-                      {new Date(denounce.createdAt).toLocaleDateString('en-US')}
+                    <td className={style.action} style={{ fontSize: '20px' }}>
+                      {new Date(denounce.createdAt).toLocaleString('es-US', {
+                        timeZone: 'America/Argentina/Buenos_Aires',
+                      })}
                     </td>
                     <td>{denounce.situation}</td>
                   </tr>

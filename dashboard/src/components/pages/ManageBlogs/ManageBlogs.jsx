@@ -139,23 +139,91 @@ const ManageBlogs = () => {
       <Table striped bordered hover responsive='xl'>
         <thead>
           <tr>
-            <th>Titulo</th>
-            <th>Subtitulo</th>
-            <th>Autor</th>
-            <th>Creado</th>
-            <th>Actualizado</th>
-            <th>Eliminar Blog</th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Titulo
+            </th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Subtitulo
+            </th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Autor
+            </th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Creado
+            </th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Actualizado
+            </th>
+            <th
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Eliminar Blog
+            </th>
           </tr>
         </thead>
         <tbody>
           {items.map((blog) => {
             return (
               <tr key={blog._id}>
-                <td>{blog.title}</td>
-                <td>{blog.subtitle}</td>
-                <td>{blog.author}</td>
-                <td>{new Date(blog.createdAt).toLocaleDateString('en-US')}</td>
-                <td>{new Date(blog.createdAt).toLocaleDateString('en-US')}</td>
+                <td
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  {blog.title}
+                </td>
+                <td
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  {blog.subtitle}
+                </td>
+                <td
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
+                  {blog.author}
+                </td>
+                <td
+                  style={{
+                    fontSize: '20px',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  {new Date(blog.createdAt).toLocaleString('es-US', {
+                    timeZone: 'America/Argentina/Buenos_Aires',
+                  })}
+                </td>
+                <td style={{ fontSize: '20px', textAlign: 'center' }}>
+                  {new Date(blog.updatedAt).toLocaleString('es-US', {
+                    timeZone: 'America/Argentina/Buenos_Aires',
+                  })}
+                </td>
                 <td
                   style={{
                     textAlign: 'center',

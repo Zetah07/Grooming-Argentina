@@ -76,7 +76,9 @@ span {
 }
 
 .logo {
+  margin-left: 13px;
   width: 10.5rem;
+  margin-right: 52px;
 }
 
 .perfil {
