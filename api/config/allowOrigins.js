@@ -10,7 +10,8 @@ const allowOrigins = [
 "http://localhost:3002",
 "https://grooming-backend.up.railway.app", 
 "https://back-grooming-arg.onrender.com",
-"grooming-argentina-production.up.railway.app"
+"grooming-argentina-production.up.railway.app", 
+"https://grooming-argentina-oxfr.vercel.app"
 ]
 
 module.exports = allowOrigins
