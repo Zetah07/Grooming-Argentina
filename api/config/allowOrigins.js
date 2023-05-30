@@ -8,7 +8,9 @@ const allowOrigins = [
 "http://localhost:3000",
 "http://localhost:3001",
 "http://localhost:3002",
-"https://grooming-backend.up.railway.app"
+"https://grooming-backend.up.railway.app", 
+"https://back-grooming-arg.onrender.com",
+"grooming-argentina-production.up.railway.app"
 ]
 
 module.exports = allowOrigins
